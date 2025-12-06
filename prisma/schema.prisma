@@ -1,0 +1,41 @@
+// Prisma Schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model CityRepresentative {
+  id             String          @id @default(uuid())
+  cityName       String          @map("city_name")
+  officeAddress  String?         @map("office_address")
+  officePhone    String?         @map("office_phone")
+  representatives Representative[]
+  createdAt      DateTime        @default(now()) @map("created_at")
+  updatedAt      DateTime        @updatedAt @map("updated_at")
+
+  @@map("city_representatives")
+}
+
+model Representative {
+  id            String              @id @default(uuid())
+  name          String
+  title         String
+  phone         String
+  email         String
+  avatar        String?
+  languages     String[]            @default([])
+  workingHours  String?             @map("working_hours")
+  cityId        String              @map("city_id")
+  city          CityRepresentative  @relation(fields: [cityId], references: [id], onDelete: Cascade)
+  createdAt     DateTime            @default(now()) @map("created_at")
+  updatedAt     DateTime            @updatedAt @map("updated_at")
+
+  @@map("representatives")
+}
+
