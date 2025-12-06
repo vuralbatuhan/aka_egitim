@@ -224,6 +224,22 @@ export const countryMapConfigs: Record<string, CountryMapConfig> = {
     hoverFill: '#ffffff',
     strokeColor: '#AE1C28',
   },
+  'Finlandiya': {
+    geoDataPath: '/data/fi.json',
+    center: [26.0, 64.0],
+    scale: 1200,
+    defaultFill: '#003580', // Finlandiya bayrağının mavisi
+    hoverFill: '#ffffff',
+    strokeColor: '#ffffff',
+  },
+  'İngiltere': {
+    geoDataPath: '/data/gb.json',
+    center: [-2.0, 54.5],
+    scale: 2500,
+    defaultFill: '#012169', // İngiltere bayrağının mavisi
+    hoverFill: '#C8102E',
+    strokeColor: '#ffffff',
+  },
 };
 
 // Ülke temsilci verileri
@@ -672,6 +688,140 @@ export const countryRepresentativesData: Record<string, Record<string, CityRepre
           email: 'anna.jansen@akaegitim.com',
           languages: ['Flemenkçe', 'İngilizce'],
           workingHours: 'Pzt-Cum 09:00-18:00',
+        },
+      ],
+    },
+  },
+  'Finlandiya': {
+    'Uusimaa': {
+      cityName: 'Uusimaa (Helsinki)',
+      officeAddress: 'Mannerheimintie 15, 00100 Helsinki, Finland',
+      officePhone: '+358 9 1234 5678',
+      representatives: [
+        {
+          id: 'fi-1',
+          name: 'Mika Virtanen',
+          title: 'Bölge Müdürü',
+          phone: '+358 40 123 4567',
+          email: 'mika.virtanen@akaegitim.com',
+          languages: ['Fince', 'İngilizce', 'Türkçe'],
+          workingHours: 'Pzt-Cum 09:00-18:00',
+        },
+        {
+          id: 'fi-2',
+          name: 'Anna Korhonen',
+          title: 'Eğitim Danışmanı',
+          phone: '+358 40 234 5678',
+          email: 'anna.korhonen@akaegitim.com',
+          languages: ['Fince', 'İsveççe', 'İngilizce'],
+          workingHours: 'Pzt-Cum 09:00-18:00',
+        },
+      ],
+    },
+    'Pirkanmaa': {
+      cityName: 'Pirkanmaa (Tampere)',
+      officeAddress: 'Hämeenkatu 23, 33200 Tampere, Finland',
+      officePhone: '+358 3 2345 6789',
+      representatives: [
+        {
+          id: 'fi-3',
+          name: 'Jari Mäkinen',
+          title: 'Eğitim Danışmanı',
+          phone: '+358 40 345 6789',
+          email: 'jari.makinen@akaegitim.com',
+          languages: ['Fince', 'İngilizce'],
+          workingHours: 'Pzt-Cum 09:00-18:00',
+        },
+      ],
+    },
+    'Varsinais-Suomi': {
+      cityName: 'Varsinais-Suomi (Turku)',
+      officeAddress: 'Yliopistonkatu 34, 20100 Turku, Finland',
+      officePhone: '+358 2 3456 7890',
+      representatives: [
+        {
+          id: 'fi-4',
+          name: 'Laura Nieminen',
+          title: 'Öğrenci Danışmanı',
+          phone: '+358 40 456 7890',
+          email: 'laura.nieminen@akaegitim.com',
+          languages: ['Fince', 'İsveççe', 'İngilizce'],
+          workingHours: 'Pzt-Cum 09:00-18:00',
+        },
+      ],
+    },
+  },
+  'İngiltere': {
+    'England': {
+      cityName: 'England (London)',
+      officeAddress: '15 Oxford Street, London W1D 2HN, United Kingdom',
+      officePhone: '+44 20 1234 5678',
+      representatives: [
+        {
+          id: 'gb-1',
+          name: 'James Smith',
+          title: 'Bölge Müdürü',
+          phone: '+44 7700 123456',
+          email: 'james.smith@akaegitim.com',
+          languages: ['İngilizce', 'Türkçe'],
+          workingHours: 'Mon-Fri 09:00-18:00',
+        },
+        {
+          id: 'gb-2',
+          name: 'Emily Johnson',
+          title: 'Eğitim Danışmanı',
+          phone: '+44 7700 234567',
+          email: 'emily.johnson@akaegitim.com',
+          languages: ['İngilizce', 'Fransızca'],
+          workingHours: 'Mon-Fri 09:00-18:00',
+        },
+      ],
+    },
+    'Scotland': {
+      cityName: 'Scotland (Edinburgh)',
+      officeAddress: '45 Princes Street, Edinburgh EH2 2BY, United Kingdom',
+      officePhone: '+44 131 234 5678',
+      representatives: [
+        {
+          id: 'gb-3',
+          name: 'Andrew Wilson',
+          title: 'Eğitim Danışmanı',
+          phone: '+44 7700 345678',
+          email: 'andrew.wilson@akaegitim.com',
+          languages: ['İngilizce', 'Türkçe'],
+          workingHours: 'Mon-Fri 09:00-18:00',
+        },
+      ],
+    },
+    'Wales': {
+      cityName: 'Wales (Cardiff)',
+      officeAddress: '23 Queen Street, Cardiff CF10 2BH, United Kingdom',
+      officePhone: '+44 29 2345 6789',
+      representatives: [
+        {
+          id: 'gb-4',
+          name: 'Sarah Davies',
+          title: 'Öğrenci Danışmanı',
+          phone: '+44 7700 456789',
+          email: 'sarah.davies@akaegitim.com',
+          languages: ['İngilizce', 'Galce'],
+          workingHours: 'Mon-Fri 09:00-18:00',
+        },
+      ],
+    },
+    'Northern Ireland': {
+      cityName: 'Northern Ireland (Belfast)',
+      officeAddress: '12 Donegall Square, Belfast BT1 5GS, United Kingdom',
+      officePhone: '+44 28 3456 7890',
+      representatives: [
+        {
+          id: 'gb-5',
+          name: 'Michael Brown',
+          title: 'Eğitim Danışmanı',
+          phone: '+44 7700 567890',
+          email: 'michael.brown@akaegitim.com',
+          languages: ['İngilizce'],
+          workingHours: 'Mon-Fri 09:00-18:00',
         },
       ],
     },
