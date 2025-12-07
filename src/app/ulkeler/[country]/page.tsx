@@ -14,8 +14,8 @@ const CountryMap = dynamic(() => import('@/components/sections/CountryMap'), {
   loading: () => (
     <div className="flex items-center justify-center h-[400px]" style={{ background: 'linear-gradient(135deg, #e0f7f5 0%, #f0fdfa 100%)' }}>
       <div className="text-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 mx-auto mb-4" style={{ borderColor: '#14b8a6' }}></div>
-        <p style={{ color: '#0d9488' }}>Harita yükleniyor...</p>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 mx-auto mb-4" style={{ borderColor: 'var(--primary-dark)' }}></div>
+        <p style={{ color: ' var(--primary)' }}>Harita yükleniyor...</p>
       </div>
     </div>
   ),
@@ -26,7 +26,7 @@ const ContactForm = dynamic(() => import('@/components/forms/ContactForm'), {
   loading: () => (
     <div className="py-12 sm:py-16 lg:py-20" style={{ background: 'linear-gradient(135deg, #f0fdfa 0%, #ffffff 50%, #e0f7f5 100%)' }}>
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 text-center">
-        <div className="animate-pulse" style={{ color: '#14b8a6' }}>Form yükleniyor...</div>
+        <div className="animate-pulse" style={{ color: 'var(--primary-dark)' }}>Form yükleniyor...</div>
       </div>
     </div>
   ),
@@ -147,7 +147,7 @@ export default async function CountryPage({ params }: PageProps) {
       {/* Hero Section - Premium Turkuaz */}
       <section
         className="relative min-h-[70vh] overflow-hidden"
-        style={{ background: 'linear-gradient(135deg, #0d9488 0%, #14b8a6 40%, #2dd4bf 100%)' }}
+        style={{ background: 'linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 40%, var(--primary-light) 100%)' }}
       >
         {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
@@ -191,7 +191,7 @@ export default async function CountryPage({ params }: PageProps) {
                 <Button
                   size="lg"
                   className="font-bold shadow-xl hover:shadow-2xl hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 px-10 py-7 text-lg rounded-xl"
-                  style={{ background: 'white', color: '#0d9488' }}
+                  style={{ background: 'white', color: 'var(--primary-dark)' }}
                 >
                   <span>Ücretsiz Danışmanlık Al</span>
                   <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -203,7 +203,7 @@ export default async function CountryPage({ params }: PageProps) {
                 <Button
                   size="lg"
                   className="backdrop-blur-md border-2 text-white font-bold hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 px-10 py-7 text-lg rounded-xl"
-                  style={{ background: 'rgba(255,255,255,0.2)', borderColor: 'rgba(255,255,255,0.4)' }}
+                  style={{ background: 'var(--btn-secondary-bg)', border: '2px solid var(--btn-secondary-border)' }}
                 >
                   <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -234,10 +234,10 @@ export default async function CountryPage({ params }: PageProps) {
                 style={{ border: '1px solid #e0f7f5' }}
               >
                 <div className="relative z-10">
-                  <div className="flex justify-center mb-4 transition-all duration-300 group-hover:scale-110" style={{ color: '#14b8a6' }}>
+                  <div className="flex justify-center mb-4 transition-all duration-300 group-hover:scale-110" style={{ color: 'var(--primary)' }}>
                     {getIcon(stat.icon)}
                   </div>
-                  <div className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: '#0d9488' }}>
+                  <div className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: 'var(--primary-dark)' }}>
                     {stat.value}
                   </div>
                   <div className="text-sm text-gray-600 font-medium">
@@ -260,14 +260,14 @@ export default async function CountryPage({ params }: PageProps) {
             <div className="text-center mb-12">
               <div
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 text-sm font-semibold"
-                style={{ background: '#e0f7f5', color: '#0d9488' }}
+                style={{ background: '#e0f7f5', color: 'var(--primary)' }}
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                 </svg>
                 Dil Eğitimi
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4" style={{ color: '#0d9488' }}>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4" style={{ color: 'var(--primary)' }}>
                 Dil Programları
               </h2>
               <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
@@ -285,13 +285,13 @@ export default async function CountryPage({ params }: PageProps) {
                   {/* Top gradient bar */}
                   <div
                     className="absolute top-0 left-0 right-0 h-1"
-                    style={{ background: 'linear-gradient(90deg, #14b8a6, #2dd4bf, #0d9488)' }}
+                    style={{ background: 'linear-gradient(90deg, var(--primary-dark) 0%, var(--primary) 60%, var(--primary-light) 40%)' }}
                   ></div>
 
                   <div className="flex items-start gap-5">
                     <div
                       className="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-all duration-500"
-                      style={{ background: 'linear-gradient(135deg, #14b8a6, #0d9488)' }}
+                      style={{ background: 'linear-gradient(135deg, var(--primary-dark), var(--primary)' }}
                     >
                       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -303,7 +303,9 @@ export default async function CountryPage({ params }: PageProps) {
                       </h3>
                       <div
                         className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-semibold mb-3"
-                        style={{ background: '#e0f7f5', color: '#0d9488' }}
+                        style={{
+                          background: '#e0f7f5', color: 'var(--primary'
+                        }}
                       >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -320,7 +322,8 @@ export default async function CountryPage({ params }: PageProps) {
             </div>
           </div>
         </section>
-      )}
+      )
+      }
 
       {/* Why Choose Us Section */}
       <section className="py-16 bg-white relative">
@@ -328,14 +331,14 @@ export default async function CountryPage({ params }: PageProps) {
           <div className="text-center mb-12">
             <div
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 text-sm font-semibold"
-              style={{ background: '#e0f7f5', color: '#0d9488' }}
+              style={{ background: '#e0f7f5', color: ' var(--primary)' }}
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               Avantajlarımız
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4" style={{ color: '#0d9488' }}>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4" style={{ color: ' var(--primary)' }}>
               Neden Bizi Seçmelisiniz?
             </h2>
             <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
@@ -348,12 +351,12 @@ export default async function CountryPage({ params }: PageProps) {
               <div
                 key={index}
                 className="group relative bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 overflow-hidden"
-                style={{ borderLeft: '4px solid #14b8a6' }}
+                style={{ borderLeft: '4px solid var(--primary)' }}
               >
                 <div className="flex items-start gap-4">
                   <div
                     className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md"
-                    style={{ background: 'linear-gradient(135deg, #14b8a6, #0d9488)' }}
+                    style={{ background: 'linear-gradient(135deg, var(--primary), var(--primary-dark))' }}
                   >
                     <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -372,7 +375,7 @@ export default async function CountryPage({ params }: PageProps) {
       {/* Services Section */}
       <section
         className="py-16 relative overflow-hidden"
-        style={{ background: 'linear-gradient(135deg, #0d9488 0%, #14b8a6 50%, #2dd4bf 100%)' }}
+        style={{ background: 'linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%)' }}
       >
         <div className="absolute inset-0">
           <div className="absolute top-10 left-10 w-40 h-40 bg-white/10 rounded-full blur-2xl animate-float"></div>
@@ -421,14 +424,14 @@ export default async function CountryPage({ params }: PageProps) {
           <div className="text-center mb-12">
             <div
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 text-sm font-semibold"
-              style={{ background: '#e0f7f5', color: '#0d9488' }}
+              style={{ background: '#e0f7f5', color: ' var(--primary)' }}
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
               </svg>
               Yaşam Rehberi
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4" style={{ color: '#0d9488' }}>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4" style={{ color: ' var(--primary)' }}>
               {info.name}&apos;da Yaşam
             </h2>
             <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
@@ -451,13 +454,13 @@ export default async function CountryPage({ params }: PageProps) {
                 <div className="flex flex-col items-center text-center">
                   <div
                     className="w-16 h-16 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-all duration-500 shadow-lg"
-                    style={{ background: 'linear-gradient(135deg, #14b8a6, #0d9488)' }}
+                    style={{ background: 'linear-gradient(135deg, var(--primary-dark),  var(--primary))' }}
                   >
                     <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
                     </svg>
                   </div>
-                  <h3 className="text-sm font-bold uppercase tracking-wider mb-2" style={{ color: '#0d9488' }}>
+                  <h3 className="text-sm font-bold uppercase tracking-wider mb-2" style={{ color: ' var(--primary)' }}>
                     {item.label}
                   </h3>
                   <p className="text-gray-900 font-semibold text-lg leading-snug">
@@ -471,66 +474,68 @@ export default async function CountryPage({ params }: PageProps) {
       </section>
 
       {/* Universities Section */}
-      {info.universities && info.universities.length > 0 && (
-        <section
-          className="py-16 relative overflow-hidden"
-          style={{ background: 'linear-gradient(135deg, #f0fdfa 0%, #ffffff 50%, #e0f7f5 100%)' }}
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="text-center mb-12">
-              <div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 text-sm font-semibold"
-                style={{ background: '#e0f7f5', color: '#0d9488' }}
-              >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                </svg>
-                Partner Kurumlar
-              </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4" style={{ color: '#0d9488' }}>
-                Partner Üniversitelerimiz
-              </h2>
-              <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
-                {info.name}&apos;nın en prestijli eğitim kurumlarıyla iş birliğimiz
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {info.universities.map((uni, index) => (
+      {
+        info.universities && info.universities.length > 0 && (
+          <section
+            className="py-16 relative overflow-hidden"
+            style={{ background: 'linear-gradient(135deg, #f0fdfa 0%, #ffffff 50%, #e0f7f5 100%)' }}
+          >
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+              <div className="text-center mb-12">
                 <div
-                  key={index}
-                  className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 overflow-hidden"
-                  style={{ border: '1px solid #d1fae5' }}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 text-sm font-semibold"
+                  style={{ background: '#e0f7f5', color: ' var(--primary)' }}
                 >
-                  <div className="flex items-start gap-4 mb-4">
-                    <div
-                      className="flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-all duration-500"
-                      style={{ background: 'linear-gradient(135deg, #14b8a6, #0d9488)' }}
-                    >
-                      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                      </svg>
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-teal-600 transition-colors">
-                        {uni.name}
-                      </h3>
-                      <div className="flex items-center gap-1.5" style={{ color: '#14b8a6' }}>
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                  Partner Kurumlar
+                </div>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4" style={{ color: ' var(--primary)' }}>
+                  Partner Üniversitelerimiz
+                </h2>
+                <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
+                  {info.name}&apos;nın en prestijli eğitim kurumlarıyla iş birliğimiz
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {info.universities.map((uni, index) => (
+                  <div
+                    key={index}
+                    className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 overflow-hidden"
+                    style={{ border: '1px solid #d1fae5' }}
+                  >
+                    <div className="flex items-start gap-4 mb-4">
+                      <div
+                        className="flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-all duration-500"
+                        style={{ background: 'linear-gradient(135deg, var(--primary-dark),  var(--primary))' }}
+                      >
+                        <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                         </svg>
-                        <span className="text-sm font-medium">{uni.city}</span>
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-teal-600 transition-colors">
+                          {uni.name}
+                        </h3>
+                        <div className="flex items-center gap-1.5" style={{ color: 'var(--primary-dark)' }}>
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                          </svg>
+                          <span className="text-sm font-medium">{uni.city}</span>
+                        </div>
                       </div>
                     </div>
+                    <p className="text-gray-600 text-sm leading-relaxed">{uni.description}</p>
                   </div>
-                  <p className="text-gray-600 text-sm leading-relaxed">{uni.description}</p>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
-      )}
+          </section>
+        )
+      }
 
       {/* Map Section */}
       <section
@@ -541,7 +546,7 @@ export default async function CountryPage({ params }: PageProps) {
           <div className="text-center mb-12">
             <div
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 text-sm font-semibold"
-              style={{ background: '#e0f7f5', color: '#0d9488' }}
+              style={{ background: '#e0f7f5', color: ' var(--primary)' }}
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -549,7 +554,7 @@ export default async function CountryPage({ params }: PageProps) {
               </svg>
               Türkiye Geneli Hizmet
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4" style={{ color: '#0d9488' }}>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4" style={{ color: ' var(--primary)' }}>
               Bölgesel Temsilcilerimiz
             </h2>
             <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
@@ -565,15 +570,15 @@ export default async function CountryPage({ params }: PageProps) {
               <div className="flex items-start gap-4">
                 <div
                   className="flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center text-white shadow-lg"
-                  style={{ background: 'linear-gradient(135deg, #14b8a6, #0d9488)' }}
+                  style={{ background: 'linear-gradient(135deg, var(--primary), var(--primary-dark))' }}
                 >
                   <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
                 <div className="flex-1">
-                  <h4 className="font-bold mb-2 text-lg" style={{ color: '#0d9488' }}>Nasıl Kullanılır?</h4>
-                  <p style={{ color: '#047857' }}>
+                  <h4 className="font-bold mb-2 text-lg" style={{ color: 'var(--primary-dark)' }}>Nasıl Kullanılır?</h4>
+                  <p style={{ color: 'var(--primary-dark)' }}>
                     Harita üzerindeki bölgelerin üzerine gelerek bölge adını görebilir,
                     tıklayarak o bölgedeki temsilcilerimizin iletişim bilgilerini görüntüleyebilirsiniz.
                   </p>
@@ -591,7 +596,7 @@ export default async function CountryPage({ params }: PageProps) {
       {/* CTA Section */}
       <section
         className="relative py-20 overflow-hidden"
-        style={{ background: 'linear-gradient(135deg, #0d9488 0%, #14b8a6 50%, #2dd4bf 100%)' }}
+        style={{ background: 'linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%)' }}
       >
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl animate-float-slow"></div>
@@ -616,7 +621,7 @@ export default async function CountryPage({ params }: PageProps) {
               <Button
                 size="lg"
                 className="font-bold shadow-xl hover:shadow-2xl hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 px-10 py-7 text-lg rounded-xl"
-                style={{ background: 'white', color: '#0d9488' }}
+                style={{ background: 'white', color: 'var(--primary-dark)' }}
               >
                 <span>Hemen Başvur</span>
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -646,6 +651,6 @@ export default async function CountryPage({ params }: PageProps) {
       </div>
 
       <Footer />
-    </main>
+    </main >
   )
 }
