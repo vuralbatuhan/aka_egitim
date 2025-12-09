@@ -1,135 +1,183 @@
+'use client'
+
+import { useState } from 'react'
+import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import Navbar from '@/components/layout/Navbar'
-import PageHero from '@/components/sections/PageHero'
 import Footer from '@/components/layout/Footer'
-import type { Metadata } from 'next'
+import { Card, CardBody, CardFooter, Button } from "@heroui/react"
+import Image from "next/image"
 
-export const metadata: Metadata = {
-  title: 'Yurtdışında Üniversite Eğitimi ve Başvuru Danışmanlığı',
-  description:
-    'Almanya, İtalya, Belçika, Hollanda ve Kazakistan üniversite başvuruları için program seçimi, başvuru evrakları, burs ve vize süreçlerinde profesyonel danışmanlık.',
-  keywords: [
-    'yurtdışında üniversite',
-    'ücretsiz üniversite eğitimi',
-    'almanya üniversite başvurusu',
-    'italya üniversite danışmanlığı',
-    'hollanda lisans programları',
-    'aka eğitim üniversite',
-  ],
-  alternates: {
-    canonical: '/universite',
+const UNIVERSITY_COUNTRIES = [
+  {
+    name: "İngiltere",
+    slug: "ingiltere",
+    flag: "🇬🇧",
+    image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=500&q=80",
+    description: "Dünyanın en prestijli üniversitelerinde eğitim imkanı",
+    studentCount: "600+ öğrenci gönderildi",
+    programs: ["Dil Okulu", "Üniversite", "Yüksek Lisans"]
   },
-  openGraph: {
-    url: 'https://akaegitim.com.tr/universite',
-    title: 'Yurtdışında Üniversite Eğitimi | Aka Eğitim',
-    description:
-      'Program seçimi, uni-assist başvuruları ve konaklama planlaması dahil yurtdışı üniversite eğitimi için kapsamlı danışmanlık.',
-    images: [
-      {
-        url: 'https://akaegitim.com.tr/logo.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Yurtdışında üniversite danışmanlığı',
-      },
-    ],
+  {
+    name: "Almanya",
+    slug: "almanya",
+    flag: "🇩🇪",
+    image: "https://images.unsplash.com/photo-1558002038-1055907df827?w=500&q=80",
+    description: "Avrupa'nın kalbi Almanya'da dünya standartlarında eğitim fırsatları",
+    studentCount: "800+ öğrenci gönderildi",
+    programs: ["Dil Okulu", "Üniversite", "Work & Study"]
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Yurtdışında Üniversite Eğitimi | Aka Eğitim',
-    description:
-      'Almanya, İtalya, Belçika, Hollanda ve Kazakistan üniversite başvurusu için uzman desteği alın.',
-    images: ['https://akaegitim.com.tr/logo.jpg'],
+  {
+    name: "İtalya",
+    slug: "italya",
+    flag: "🇮🇹",
+    image: "https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?w=500&q=80",
+    description: "Sanat, kültür ve gastronomi ile birleşen eğitim deneyimi",
+    studentCount: "500+ öğrenci gönderildi",
+    programs: ["Dil Okulu", "Üniversite", "Yüksek Lisans"]
   },
-}
-
-export const revalidate = 3600
+  {
+    name: "Belçika",
+    slug: "belcika",
+    flag: "🇧🇪",
+    image: "https://images.unsplash.com/photo-1609950611663-583b0c18c5e6?w=500&q=80",
+    description: "Çok kültürlü kampüsler ve AB staj fırsatları",
+    studentCount: "300+ öğrenci gönderildi",
+    programs: ["Dil Okulu", "Üniversite"]
+  },
+  {
+    name: "Hollanda",
+    slug: "hollanda",
+    flag: "🇳🇱",
+    image: "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=500&q=80",
+    description: "İngilizce eğitim ve uygun fiyatlar",
+    studentCount: "400+ öğrenci gönderildi",
+    programs: ["Dil Okulu", "Üniversite", "Work & Study"]
+  },
+  {
+    name: "İspanya",
+    slug: "ispanya",
+    flag: "🇪🇸",
+    image: "https://images.unsplash.com/photo-1558642084-fd07fae5282e?w=500&q=80",
+    description: "Güneşli iklim ve dinamik öğrenci yaşamı",
+    studentCount: "250+ öğrenci gönderildi",
+    programs: ["Dil Okulu", "Üniversite"]
+  }
+]
 
 export default function Universite() {
+  const [searchQuery, setSearchQuery] = useState('')
+
   return (
     <main className="min-h-screen">
       <Navbar />
-      <div className="pt-16 sm:pt-18 lg:pt-20">
-        <PageHero 
-          title="Yurtdışında Üniversite Eğitimi"
-          subtitle="Dünya standartlarında üniversite eğitimi alın"
-          description="İngiltere, Almanya, Hollanda, İtalya, Kanada ve Amerika'da üniversite eğitimi için profesyonel danışmanlık hizmeti."
-        />
-        
-        {/* Üniversite İçeriği */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Neden Yurtdışında Üniversite?
-              </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Dünya standartlarında eğitim, uluslararası deneyim ve kariyer fırsatları için yurtdışında üniversite eğitimi alın.
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-gray-50 rounded-xl p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">İngiltere Üniversiteleri</h3>
-                <p className="text-gray-600 mb-4">Dünyanın en prestijli üniversitelerinde eğitim alın.</p>
-                <Link href="/ulkeler/italya" className="text-turquoise-450 font-semibold hover:text-turquoise-500">
-                  Detayları Gör →
-                </Link>
-              </div>
-              
-              <div className="bg-gray-50 rounded-xl p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Almanya Üniversiteleri</h3>
-                <p className="text-gray-600 mb-4">Ücretsiz eğitim ve yüksek kalite standartları.</p>
-                <Link href="/ulkeler/almanya" className="text-turquoise-450 font-semibold hover:text-turquoise-500">
-                  Detayları Gör →
-                </Link>
-              </div>
-              
-              <div className="bg-gray-50 rounded-xl p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Hollanda Üniversiteleri</h3>
-                <p className="text-gray-600 mb-4">İngilizce eğitim ve uygun fiyatlar.</p>
-                <Link href="/ulkeler/hollanda" className="text-turquoise-450 font-semibold hover:text-turquoise-500">
-                  Detayları Gör →
-                </Link>
-              </div>
 
-              <div className="bg-gray-50 rounded-xl p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Belçika Üniversiteleri</h3>
-                <p className="text-gray-600 mb-4">Çok kültürlü kampüsler ve AB staj fırsatları.</p>
-                <Link href="/ulkeler/belcika" className="text-turquoise-450 font-semibold hover:text-turquoise-500">
-                  Detayları Gör →
-                </Link>
-              </div>
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-[#2FD4C6] via-[#2BB8AC] to-[#1E8B82] py-20 sm:py-24 lg:py-32">
+        <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10"></div>
+        <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 text-center">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+            Eğitim Destinasyonlarımız
+          </h1>
+          <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto mb-10">
+            Dünyanın dört bir yanındaki en iyi eğitim kurumlarıyla iş birliği yapıyoruz.
+            Hayalinizdeki ülkeyi seçin, gerisini bize bırakın.
+          </p>
 
-              <div className="bg-gray-50 rounded-xl p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Kazakistan Üniversiteleri</h3>
-                <p className="text-gray-600 mb-4">Uygun maliyetli İngilizce eğitim seçenekleri.</p>
-                <Link href="/ulkeler/kazakistan" className="text-turquoise-450 font-semibold hover:text-turquoise-500">
-                  Detayları Gör →
-                </Link>
-              </div>
+          {/* Search Bar */}
+          <div className="max-w-2xl mx-auto">
+            <div className="relative">
+              <MagnifyingGlassIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-6 h-6 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Ülke veya program ara..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-14 pr-6 py-4 rounded-full text-lg border-2 border-white/20 bg-white/95 backdrop-blur-sm shadow-xl focus:outline-none focus:ring-2 focus:ring-white/50 transition-all"
+              />
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="max-w-5xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Başvuru Sürecinde Nasıl Destek Oluyoruz?</h2>
-              <p className="text-lg text-gray-600 mb-6">
-                Aka Eğitim olarak program karşılaştırması, başvuru takvimi planlaması, motivasyon mektubu hazırlığı, 
-                burs ve finansal planlama, öğrenci vizesi ve konaklama süreçlerinin her adımında yanınızdayız. 
-                Süreci şeffaf biçimde yöneterek belgelerinizin eksiksiz ve zamanında gönderilmesini sağlıyoruz.
-              </p>
-              <ul className="list-decimal list-inside space-y-3 text-gray-700">
-                <li>Üniversite ve bölüm araştırması sonrasında kişisel başvuru stratejisi oluşturuyoruz.</li>
-                <li>Gerekli akademik ve dil belgelerinin doğruluğunu ve resmi tercümesini kontrol ediyoruz.</li>
-                <li>Uni-Assist, Studielink gibi platformlarda başvuru dosyanızı birlikte tamamlıyoruz.</li>
-                <li>Vize mülakatı, bloke hesap ve sağlık sigortası gibi kritik aşamalarda rehberlik sunuyoruz.</li>
-              </ul>
-            </div>
+      {/* Country Cards */}
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-gray-50 to-white">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 xl:px-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+            {UNIVERSITY_COUNTRIES.map((country) => (
+              <Card
+                key={country.slug}
+                className="hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] group"
+              >
+                <CardBody className="p-0">
+                  <div className="relative h-56 w-full overflow-hidden">
+                    <Image
+                      src={country.image}
+                      alt={`${country.name} üniversite eğitimi`}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                    <div className="absolute bottom-4 left-4 flex items-center gap-3">
+                      <span className="text-5xl">{country.flag}</span>
+                      <h3 className="text-3xl font-bold text-white drop-shadow-lg">{country.name}</h3>
+                    </div>
+                  </div>
+                  <div className="p-6 sm:p-8">
+                    <p className="text-sm text-primary font-semibold mb-2">{country.studentCount}</p>
+                    <p className="text-foreground/80 mb-6 text-base leading-relaxed">
+                      {country.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {country.programs.map((program) => (
+                        <span
+                          key={program}
+                          className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full font-medium"
+                        >
+                          {program}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </CardBody>
+                <CardFooter className="pt-0 px-6 sm:px-8 pb-6 sm:pb-8">
+                  <Button
+                    as={Link}
+                    href={`/ulkeler/${country.slug}`}
+                    color="primary"
+                    variant="solid"
+                    size="lg"
+                    className="w-full font-bold focus:outline-none focus:ring-0"
+                  >
+                    Detayları İncele
+                  </Button>
+                </CardFooter>
+              </Card>
+            ))}
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">Başvuru Sürecinde Nasıl Destek Oluyoruz?</h2>
+            <p className="text-lg text-gray-600 mb-6">
+              Aka Eğitim olarak program karşılaştırması, başvuru takvimi planlaması, motivasyon mektubu hazırlığı,
+              burs ve finansal planlama, öğrenci vizesi ve konaklama süreçlerinin her adımında yanınızdayız.
+              Süreci şeffaf biçimde yöneterek belgelerinizin eksiksiz ve zamanında gönderilmesini sağlıyoruz.
+            </p>
+            <ul className="list-decimal list-inside space-y-3 text-gray-700">
+              <li>Üniversite ve bölüm araştırması sonrasında kişisel başvuru stratejisi oluşturuyoruz.</li>
+              <li>Gerekli akademik ve dil belgelerinin doğruluğunu ve resmi tercümesini kontrol ediyoruz.</li>
+              <li>Uni-Assist, Studielink gibi platformlarda başvuru dosyanızı birlikte tamamlıyoruz.</li>
+              <li>Vize mülakatı, bloke hesap ve sağlık sigortası gibi kritik aşamalarda rehberlik sunuyoruz.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </main>
   )
