@@ -24,7 +24,7 @@ export default function Navbar() {
 
     const handleScroll = () => {
       const currentScrollY = window.scrollY
-      
+
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
         // Scrolling down
         setIsScrolled(true)
@@ -32,7 +32,7 @@ export default function Navbar() {
         // Scrolling up
         setIsScrolled(false)
       }
-      
+
       lastScrollY = currentScrollY
     }
 
@@ -124,7 +124,7 @@ export default function Navbar() {
   // Close mobile menu when screen size becomes large (lg breakpoint)
   useEffect(() => {
     const mediaQuery = window.matchMedia('(min-width: 1024px)')
-    
+
     const handleResize = (e: MediaQueryListEvent | MediaQueryList) => {
       if (e.matches && isGridMenuOpen) {
         setIsGridMenuOpen(false)
@@ -136,7 +136,7 @@ export default function Navbar() {
 
     // Listen for changes
     mediaQuery.addEventListener('change', handleResize)
-    
+
     return () => {
       mediaQuery.removeEventListener('change', handleResize)
     }
@@ -153,7 +153,7 @@ export default function Navbar() {
           wrapper: "px-6 sm:px-8 lg:px-12 xl:px-16 h-20",
           base: "shadow-lg",
         }}
-        style={{ background: 'linear-gradient(135deg, #1E8B82 0%, #2FD4C6 40%, #3DE0D1 100%)' }}
+      // style={{ background: 'linear-gradient(135deg, #a2c2bf 0%, #abbebbff 40%, #a2c2bf 100%)' }}
       >
         {/* Logo */}
         <NavbarBrand>
@@ -179,7 +179,7 @@ export default function Navbar() {
               <Link
                 as={NextLink}
                 href={item.href}
-                className="text-white font-medium hover:text-white/80 transition-colors"
+                className="text-black font-medium hover:text-[var(--color-primary)]/80 transition-colors"
               >
                 {item.name}
               </Link>
@@ -189,17 +189,17 @@ export default function Navbar() {
 
         {/* CTA Button */}
         <NavbarContent justify="end">
-          <NavbarItem className="hidden md:flex">
+          {/* <NavbarItem className="hidden md:flex">
             <Link
               href="tel:+902123456789"
-              className="text-white font-medium flex items-center gap-2 hover:text-white/80 transition-colors"
+              className="text-black font-medium flex items-center gap-2 hover:text-[var(--color-primary)]/80 transition-colors"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
               <span>+90 212 345 67 89</span>
             </Link>
-          </NavbarItem>
+          </NavbarItem> */}
           <NavbarItem>
             <Button
               as={NextLink}

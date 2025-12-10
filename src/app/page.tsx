@@ -1,5 +1,6 @@
 import Navbar from '@/components/layout/Navbar'
 import Hero from '@/components/sections/Hero'
+import EducationalDestinations from '@/components/sections/EducationalDestinations'
 import Benefits from '@/components/sections/Benefits'
 import Features from '@/components/sections/Features'
 import Programs from '@/components/sections/Programs'
@@ -79,8 +80,9 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
-      <Benefits />
-      <Features />
+      <EducationalDestinations />
+      {/* <Benefits /> */}
+      {/* <Features /> */}
       <Programs />
       <PopularCountries />
       <ValuesBanner />

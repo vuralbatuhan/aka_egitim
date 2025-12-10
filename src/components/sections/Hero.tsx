@@ -93,10 +93,10 @@ export default function Hero() {
       <div className="relative z-10 w-full px-6 sm:px-8 lg:px-16 xl:px-24 text-left py-8 pt-20">
         <div className="animate-fade-in max-w-2xl">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-md text-white rounded-full mb-4 shadow-lg">
+          {/* <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-md text-white rounded-full mb-4 shadow-lg">
             <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
             <span className="font-semibold tracking-wide text-sm">Yurtdışı Eğitim Danışmanlığı</span>
-          </div>
+          </div> */}
 
           <h1
             className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 leading-tight text-white"
