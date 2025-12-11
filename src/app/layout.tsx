@@ -68,9 +68,7 @@ export const metadata: Metadata = {
       follow: true,
     },
   },
-  alternates: {
-    canonical: '/',
-  },
+
   icons: {
     icon: [{ url: '/logo.jpg', type: 'image/jpeg' }],
     apple: '/logo.jpg',
@@ -94,7 +92,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="tr" className={`${montserrat.variable} ${poppins.variable}`} data-scroll-behavior="smooth">
-      <body 
+      <body
         style={{ fontFamily: 'var(--font-montserrat), system-ui, sans-serif' }}
         suppressHydrationWarning
       >
