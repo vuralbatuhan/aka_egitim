@@ -60,9 +60,6 @@ export default function PopularCountries() {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Hayalinizdeki Ülkeyi Seçin
           </h2>
-          {/* <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
-            25'ten fazla ülkede 500'den fazla partner okul ile eğitim yolculuğunuza başlayın
-          </p> */}
         </div>
 
         {/* Country Cards Grid */}
