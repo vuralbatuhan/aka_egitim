@@ -4,7 +4,7 @@ import EducationalDestinations from '@/components/sections/EducationalDestinatio
 import Benefits from '@/components/sections/Benefits'
 import Features from '@/components/sections/Features'
 import Programs from '@/components/sections/Programs'
-import PopularCountries from '@/components/sections/PopularCountries'
+// import PopularCountries from '@/components/sections/PopularCountries'
 import ValuesBanner from '@/components/sections/ValuesBanner'
 import CTA from '@/components/sections/CTA'
 import Footer from '@/components/layout/Footer'
@@ -84,7 +84,7 @@ export default function Home() {
       {/* <Benefits /> */}
       {/* <Features /> */}
       <Programs />
-      <PopularCountries />
+      {/* <PopularCountries /> */}
       <ValuesBanner />
       <RepresentativesMapDB />
       <CTA />
