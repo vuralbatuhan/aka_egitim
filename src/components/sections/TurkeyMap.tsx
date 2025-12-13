@@ -1,12 +1,7 @@
-'use client'
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import {
-  ComposableMap,
-  Geographies,
-  Geography,
-  ZoomableGroup,
-} from 'react-simple-maps';
+import React, { useState, useEffect } from "react";
+import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 
 interface GeoProperties {
   name?: string;
@@ -25,24 +20,22 @@ interface TurkeyMapProps {
   highlightedProvinces?: string[];
 }
 
-const TurkeyMap: React.FC<TurkeyMapProps> = ({
-  onProvinceClick,
-}) => {
+const TurkeyMap: React.FC<TurkeyMapProps> = ({ onProvinceClick }) => {
   const [geoData, setGeoData] = useState<unknown>(null);
-  const [hoveredProvince, setHoveredProvince] = useState<string>('');
+  const [hoveredProvince, setHoveredProvince] = useState<string>("");
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     // GeoJSON dosyasını yükle
-    fetch('/data/tr.json')
+    fetch("/data/tr.json")
       .then((response) => response.json())
       .then((data) => setGeoData(data))
-      .catch((error) => console.error('GeoJSON yükleme hatası:', error));
+      .catch((error) => console.error("GeoJSON yükleme hatası:", error));
   }, []);
 
   const handleMouseEnter = (geo: Geography, event: React.MouseEvent) => {
-    const provinceName = geo.properties.name || geo.properties.NAME_1 || '';
-    console.log('Mouse enter:', provinceName, geo.properties);
+    const provinceName = geo.properties.name || geo.properties.NAME_1 || "";
+    console.log("Mouse enter:", provinceName, geo.properties);
     if (provinceName) {
       setHoveredProvince(provinceName);
       setTooltipPosition({
@@ -62,11 +55,11 @@ const TurkeyMap: React.FC<TurkeyMapProps> = ({
   };
 
   const handleMouseLeave = () => {
-    setHoveredProvince('');
+    setHoveredProvince("");
   };
 
   const handleClick = (geo: Geography) => {
-    const provinceName = geo.properties.name || geo.properties.NAME_1 || '';
+    const provinceName = geo.properties.name || geo.properties.NAME_1 || "";
     if (onProvinceClick) {
       onProvinceClick(provinceName);
     }
@@ -85,53 +78,47 @@ const TurkeyMap: React.FC<TurkeyMapProps> = ({
       <ComposableMap
         projection="geoMercator"
         projectionConfig={{
-          scale: 2500,
+          scale: 2300,
           center: [35, 39], // Türkiye'nin merkezi
         }}
         className="w-full h-auto"
-        style={{
-          width: '100%',
-          height: 'auto',
-        }}
       >
-        <ZoomableGroup center={[35, 39]} zoom={1}>
-          <Geographies geography={geoData}>
-            {({ geographies }: { geographies: Geography[] }) =>
-              geographies.map((geo: Geography) => {
-                return (
-                  <Geography
-                    key={geo.rsmKey}
-                    geography={geo}
-                    onMouseEnter={(event) => handleMouseEnter(geo, event)}
-                    onMouseLeave={handleMouseLeave}
-                    onClick={() => handleClick(geo)}
-                    style={{
-                      default: {
-                        fill: '#ef4444',
-                        stroke: '#ffffff',
-                        strokeWidth: 0.5,
-                        outline: 'none',
-                      },
-                      hover: {
-                        fill: '#ffffff',
-                        stroke: '#ef4444',
-                        strokeWidth: 0.75,
-                        outline: 'none',
-                        cursor: 'pointer',
-                      },
-                      pressed: {
-                        fill: '#f9fafb',
-                        stroke: '#ef4444',
-                        strokeWidth: 0.75,
-                        outline: 'none',
-                      },
-                    }}
-                  />
-                );
-              })
-            }
-          </Geographies>
-        </ZoomableGroup>
+        <Geographies geography={geoData}>
+          {({ geographies }: { geographies: Geography[] }) =>
+            geographies.map((geo: Geography) => {
+              return (
+                <Geography
+                  key={geo.rsmKey}
+                  geography={geo}
+                  onMouseEnter={(event) => handleMouseEnter(geo, event)}
+                  onMouseLeave={handleMouseLeave}
+                  onClick={() => handleClick(geo)}
+                  style={{
+                    default: {
+                      fill: "#ef4444",
+                      stroke: "#ffffff",
+                      strokeWidth: 0.5,
+                      outline: "none",
+                    },
+                    hover: {
+                      fill: "#ffffff",
+                      stroke: "#ef4444",
+                      strokeWidth: 0.75,
+                      outline: "none",
+                      cursor: "pointer",
+                    },
+                    pressed: {
+                      fill: "#f9fafb",
+                      stroke: "#ef4444",
+                      strokeWidth: 0.75,
+                      outline: "none",
+                    },
+                  }}
+                />
+              );
+            })
+          }
+        </Geographies>
       </ComposableMap>
 
       {/* Tooltip */}
@@ -141,7 +128,7 @@ const TurkeyMap: React.FC<TurkeyMapProps> = ({
           style={{
             left: `${tooltipPosition.x + 15}px`,
             top: `${tooltipPosition.y - 10}px`,
-            transform: 'translate(0, -100%)',
+            transform: "translate(0, -100%)",
           }}
         >
           {hoveredProvince}
@@ -153,4 +140,3 @@ const TurkeyMap: React.FC<TurkeyMapProps> = ({
 };
 
 export default TurkeyMap;
-
