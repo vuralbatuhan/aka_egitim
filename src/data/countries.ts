@@ -429,6 +429,95 @@ export const countries: Record<string, CountryInfo> = {
       culture: "Sauna kültürü, doğa odaklı yaşam",
     },
   },
+  fransa: {
+    name: "Fransa",
+    slug: "fransa",
+    title: "Fransa Dil Okulu ve Eğitim Danışmanlığı",
+    heroImage:
+      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1800&q=80",
+    description:
+      "Fransa, sanat, kültür ve gastronomi başkenti olarak dünya çapında tanınan prestijli eğitim sistemine sahiptir. Fransızca dil eğitimi, moda, mutfak sanatları ve mühendislik programları ile öğrencilere benzersiz bir akademik deneyim sunar.",
+    whyChooseUs: [
+      "Fransa'nın en prestijli dil okulları ve üniversiteleri ile iş birliği",
+      "Fransızca dil sınavları (DELF, DALF, TCF) hazırlık programları",
+      "Campus France başvuru süreçlerinde uzmanlık",
+      "Kültürel adaptasyon ve Paris'te yaşam danışmanlığı",
+      "Erasmus+ ve burs imkanları konusunda rehberlik",
+      "Staj ve iş bulma süreçlerinde destek",
+    ],
+    services: [
+      "Dil okulu ve üniversite seçimi danışmanlığı",
+      "Campus France başvuru süreçleri",
+      "Öğrenci vizesi başvuruları",
+      "Konaklama çözümleri (aile yanı, residence, studio)",
+      "Havalimanı karşılama ve oryantasyon",
+      "Banka hesabı ve idari işlemler",
+      "Eğitim süresince kesintisiz destek",
+    ],
+    languagePrograms: [
+      {
+        name: "Yoğun Fransızca Kursu",
+        duration: "2-48 hafta",
+        description:
+          "Haftada 20-30 saat Fransızca eğitimi ile dil seviyenizi hızla geliştirin",
+      },
+      {
+        name: "DELF/DALF Hazırlık",
+        duration: "4-12 hafta",
+        description: "Resmi Fransızca dil sınavlarına özel hazırlık programı",
+      },
+      {
+        name: "Üniversite Hazırlık",
+        duration: "6-12 ay",
+        description:
+          "Fransız üniversitelerine kabul için gerekli B2/C1 seviyesi Fransızca",
+      },
+      {
+        name: "Fransızca + Mutfak Sanatları",
+        duration: "4-24 hafta",
+        description:
+          "Fransızca öğrenirken dünyaca ünlü Fransız mutfağını keşfedin",
+      },
+    ],
+    universities: [
+      {
+        name: "Sorbonne Université",
+        city: "Paris",
+        description:
+          "Fransa'nın en prestijli üniversitesi, beşeri bilimler ve sanat",
+      },
+      {
+        name: "École Polytechnique",
+        city: "Paris",
+        description:
+          "Mühendislik ve bilim alanlarında dünya çapında tanınan elit okul",
+      },
+      {
+        name: "Sciences Po Paris",
+        city: "Paris",
+        description:
+          "Siyaset bilimi, uluslararası ilişkiler ve ekonomi alanında lider",
+      },
+      {
+        name: "Université Grenoble Alpes",
+        city: "Grenoble",
+        description: "Araştırma ve inovasyon odaklı kapsamlı üniversite",
+      },
+    ],
+    statistics: [
+      { label: "Başarılı Öğrenci", value: "600+", icon: "users" },
+      { label: "Dil Okulu", value: "20+", icon: "school" },
+      { label: "Partner Üniversite", value: "30+", icon: "building" },
+      { label: "Deneyim Yılı", value: "11+", icon: "calendar" },
+      { label: "Memnuniyet", value: "%97", icon: "star" },
+    ],
+    lifeInCountry: {
+      cost: "€900-1600 / ay (Paris: €1200-1800)",
+      language: "Fransızca, İngilizce kısıtlı",
+      climate: "Ilıman okyanus ve Akdeniz iklimi",
+      culture: "Sanat, moda, gastronomi ve tarih",
+    },
+  },
 };
 
 // URL'den ülke adına mapping
@@ -440,6 +529,7 @@ export const urlToCountryMap: Record<string, string> = {
   kazakistan: "kazakistan",
   hollanda: "hollanda",
   finlandiya: "finlandiya",
+  fransa: "fransa",
 };
 
 // Tüm ülke slug'larını al

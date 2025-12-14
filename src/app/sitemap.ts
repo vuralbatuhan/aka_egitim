@@ -22,6 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'almanya',
     'ingiltere',
     'finlandiya',
+    'fransa',
     'belcika',
     'hollanda',
     'kazakistan',

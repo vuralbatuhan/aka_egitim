@@ -46,7 +46,6 @@ export default function Navbar() {
       { name: "Ülkeler", href: "/#ulkeler" },
       { name: "Dil Okulları", href: "/dil-okullari" },
       { name: "Üniversite", href: "/universite" },
-      { name: "Yüksek Lisans", href: "/yuksek-lisans" },
       { name: "Hakkımızda", href: "/hakkimizda" },
       { name: "İletişim", href: "/iletisim" },
     ],
@@ -206,10 +205,14 @@ export default function Navbar() {
               className="rounded-lg shadow-md sm:w-14 sm:h-14"
             />
             <div className="hidden sm:block">
-              <span className="font-bold text-white text-xl sm:text-2xl">
+              <span className="font-bold text-black text-xl sm:text-2xl">
                 Aka Eğitim
               </span>
-              <p className="text-sm text-white/90 -mt-1">Yurtdışı Eğitim</p>
+              <p className="text-sm text-black/90 -mt-1">
+                <span className="font-bold text-lg">A</span>zim{" "}
+                <span className="font-bold text-lg">K</span>ararlılık{" "}
+                <span className="font-bold text-lg">A</span>yrıcalık
+              </p>
             </div>
           </NextLink>
         </NavbarBrand>

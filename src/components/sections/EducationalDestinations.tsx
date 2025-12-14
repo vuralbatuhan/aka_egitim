@@ -10,6 +10,7 @@ import almanya from "../../app/assets/country_images/almanya.jpg";
 import italya from "../../app/assets/country_images/italya.jpg";
 import ingiltere from "../../app/assets/country_images/ingiltere.jpg";
 import finlandiya from "../../app/assets/country_images/finlandiya.jpg";
+import fransa from "../../app/assets/country_images/finlandiya.jpg";
 
 interface Country {
   name: string;
@@ -40,8 +41,8 @@ const COUNTRIES: Country[] = [
     bgImage:
       "https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?w=1400&q=80",
     description:
-      "Avrupa Birliği merkezinde Fransızca, Flamanca ve İngilizce programlar.",
-    programs: ["Genel İngilizce", "Fransızca Kursları", "Üniversite Hazırlık"],
+      "Dünya'nın en kaliteli eğitim sistemi ve modern yaşam standartları.",
+    programs: ["Genel İngilizce", "Fince Kursları", "Üniversite Hazırlık"],
     price: "€180-340/hafta",
   },
   {
@@ -66,18 +67,31 @@ const COUNTRIES: Country[] = [
     programs: ["Genel İngilizce", "IELTS Hazırlık", "Akademik Hazırlık"],
     price: "€200-380/hafta",
   },
+  // {
+  //   name: "Fransa",
+  //   slug: "fransa",
+  //   image: fransa,
+  //   bgImage:
+  //     "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1400&q=80",
+  //   description:
+  //     "Sanat, moda ve gastronomi başkenti. Fransızca dil eğitimi ve kültürel deneyim.",
+  //   programs: ["Genel Fransızca", "DELF/DALF Hazırlık", "Mutfak Sanatları"],
+  //   price: "€180-350/hafta",
+  // },
 ];
 
 export default function EducationalDestinations() {
   const router = useRouter();
 
   return (
-    <section id="ulkeler" className="py-12 lg:py-16 bg-gradient-to-b from-gray-50 to-white w-full">
+    <section
+      id="ulkeler"
+      className="py-12 lg:py-16 bg-gradient-to-b from-gray-50 to-white w-full"
+    >
       {/* BAŞLIK */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-12 text-center">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-          {/* Popüler Dil Okulu Destinasyonları */}
-          Poüler Eğitim Destinasyonları
+          Popüler Eğitim Destinasyonları
         </h2>
         <p className="text-lg sm:text-xl text-foreground/70">
           Dünyanın en iyi dil okullarında eğitim alın ve global deneyim kazanın
