@@ -7,6 +7,7 @@ import {
   Geographies,
   Geography,
   Marker,
+  ZoomableGroup,
 } from "react-simple-maps";
 
 interface CountryData {
@@ -58,14 +59,14 @@ const HIGHLIGHTED_COUNTRIES: CountryData[] = [
   },
 ];
 
-const geoUrl =
-  "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json";
+const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json";
 
 export default function WorldGlobe() {
   const router = useRouter();
   const [hoveredCountry, setHoveredCountry] = useState<CountryData | null>(
     null
   );
+  const [zoom, setZoom] = useState(1);
 
   const handleCountryClick = (country: CountryData) => {
     router.push(`/ulkeler/${country.slug}`);
@@ -83,7 +84,7 @@ export default function WorldGlobe() {
       id === "276" || // Germany
       id === "380" || // Italy
       id === "826" || // UK
-      id === "246"    // Finland
+      id === "246" // Finland
     );
   };
 
@@ -97,7 +98,7 @@ export default function WorldGlobe() {
             Ağımız
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Avrupa'da 4 farklı ülkede eğitim fırsatları sunuyoruz. Turkuaz
+            Dünya genelinde 4 farklı ülkede eğitim fırsatları sunuyoruz. Turkuaz
             renkli ülkelere tıklayarak detayları keşfedin.
           </p>
         </div>
@@ -105,142 +106,202 @@ export default function WorldGlobe() {
         <div className="max-w-5xl mx-auto">
           {/* Map Container */}
           <div className="relative rounded-2xl overflow-hidden bg-white shadow-2xl border border-gray-200">
-            <div className="relative h-[600px] flex items-center justify-center">
+            <div className="relative h-[600px] w-full flex items-center justify-center">
               <ComposableMap
                 projection="geoMercator"
                 projectionConfig={{
-                  center: [15, 54],
-                  scale: 400,
+                  center: [15, 20],
+                  scale: 150,
                 }}
+                width={800}
+                height={600}
                 style={{ width: "100%", height: "100%" }}
               >
-                <Geographies geography={geoUrl}>
-                  {({ geographies }) =>
-                    geographies.map((geo) => {
-                      const highlighted = isHighlighted(geo);
+                <ZoomableGroup
+                  zoom={zoom}
+                  onMoveEnd={(position) => setZoom(position.zoom)}
+                  maxZoom={8}
+                  minZoom={1}
+                  translateExtent={[
+                    [-100, -100],
+                    [900, 700],
+                  ]}
+                >
+                  <Geographies geography={geoUrl}>
+                    {({ geographies }) =>
+                      geographies.map((geo) => {
+                        const highlighted = isHighlighted(geo);
 
-                      // Sadece Avrupa ülkelerini göster
-                      const name = geo.properties?.name || "";
-                      const europeanCountries = [
-                        "Germany", "Italy", "United Kingdom", "Finland",
-                        "France", "Spain", "Portugal", "Netherlands", "Belgium",
-                        "Switzerland", "Austria", "Poland", "Czech Republic",
-                        "Slovakia", "Hungary", "Romania", "Bulgaria", "Greece",
-                        "Denmark", "Sweden", "Norway", "Ireland", "Croatia",
-                        "Serbia", "Bosnia and Herzegovina", "Albania", "Macedonia",
-                        "Slovenia", "Montenegro", "Estonia", "Latvia", "Lithuania",
-                        "Belarus", "Ukraine", "Moldova"
-                      ];
+                        return (
+                          <Geography
+                            key={geo.rsmKey}
+                            geography={geo}
+                            fill={highlighted ? "#14b8a6" : "#E5E7EB"}
+                            stroke="#9CA3AF"
+                            strokeWidth={0.5}
+                            style={{
+                              default: {
+                                fill: highlighted ? "#14b8a6" : "#E5E7EB",
+                                stroke: "#9CA3AF",
+                                strokeWidth: 0.5,
+                                outline: "none",
+                              },
+                              hover: {
+                                fill: highlighted ? "#0d9488" : "#D1D5DB",
+                                stroke: "#6B7280",
+                                strokeWidth: 1,
+                                outline: "none",
+                                cursor: highlighted ? "pointer" : "default",
+                              },
+                              pressed: {
+                                fill: highlighted ? "#0f766e" : "#D1D5DB",
+                                stroke: "#6B7280",
+                                strokeWidth: 1,
+                                outline: "none",
+                              },
+                            }}
+                            onClick={() => {
+                              const country = HIGHLIGHTED_COUNTRIES.find(
+                                (c) =>
+                                  geo.properties.geounit?.includes(c.name) ||
+                                  geo.properties.name?.includes(c.name) ||
+                                  (geo.properties.name?.includes("Germany") &&
+                                    c.iso === "DEU") ||
+                                  (geo.properties.name?.includes("Italy") &&
+                                    c.iso === "ITA") ||
+                                  (geo.properties.name?.includes(
+                                    "United Kingdom"
+                                  ) &&
+                                    c.iso === "GBR") ||
+                                  (geo.properties.name?.includes("Finland") &&
+                                    c.iso === "FIN")
+                              );
+                              if (country) handleCountryClick(country);
+                            }}
+                            onMouseEnter={() => {
+                              const country = HIGHLIGHTED_COUNTRIES.find(
+                                (c) =>
+                                  geo.properties.geounit?.includes(c.name) ||
+                                  geo.properties.name?.includes(c.name) ||
+                                  (geo.properties.name?.includes("Germany") &&
+                                    c.iso === "DEU") ||
+                                  (geo.properties.name?.includes("Italy") &&
+                                    c.iso === "ITA") ||
+                                  (geo.properties.name?.includes(
+                                    "United Kingdom"
+                                  ) &&
+                                    c.iso === "GBR") ||
+                                  (geo.properties.name?.includes("Finland") &&
+                                    c.iso === "FIN")
+                              );
+                              if (country) setHoveredCountry(country);
+                            }}
+                            onMouseLeave={() => setHoveredCountry(null)}
+                          />
+                        );
+                      })
+                    }
+                  </Geographies>
 
-                      if (!europeanCountries.includes(name)) {
-                        return null;
-                      }
-
-                      return (
-                        <Geography
-                          key={geo.rsmKey}
-                          geography={geo}
-                          fill={highlighted ? "#14b8a6" : "#E5E7EB"}
-                          stroke="#9CA3AF"
-                          strokeWidth={0.5}
-                          style={{
-                            default: {
-                              fill: highlighted ? "#14b8a6" : "#E5E7EB",
-                              stroke: "#9CA3AF",
-                              strokeWidth: 0.5,
-                              outline: "none",
-                            },
-                            hover: {
-                              fill: highlighted ? "#0d9488" : "#D1D5DB",
-                              stroke: "#6B7280",
-                              strokeWidth: 1,
-                              outline: "none",
-                              cursor: highlighted ? "pointer" : "default",
-                            },
-                            pressed: {
-                              fill: highlighted ? "#0f766e" : "#D1D5DB",
-                              stroke: "#6B7280",
-                              strokeWidth: 1,
-                              outline: "none",
-                            },
-                          }}
-                          onClick={() => {
-                            const country = HIGHLIGHTED_COUNTRIES.find(
-                              (c) =>
-                                geo.properties.geounit?.includes(c.name) ||
-                                geo.properties.name?.includes(c.name) ||
-                                (geo.properties.name?.includes("Germany") &&
-                                  c.iso === "DEU") ||
-                                (geo.properties.name?.includes("Italy") &&
-                                  c.iso === "ITA") ||
-                                (geo.properties.name?.includes(
-                                  "United Kingdom"
-                                ) &&
-                                  c.iso === "GBR") ||
-                                (geo.properties.name?.includes("Finland") &&
-                                  c.iso === "FIN")
-                            );
-                            if (country) handleCountryClick(country);
-                          }}
-                          onMouseEnter={() => {
-                            const country = HIGHLIGHTED_COUNTRIES.find(
-                              (c) =>
-                                geo.properties.geounit?.includes(c.name) ||
-                                geo.properties.name?.includes(c.name) ||
-                                (geo.properties.name?.includes("Germany") &&
-                                  c.iso === "DEU") ||
-                                (geo.properties.name?.includes("Italy") &&
-                                  c.iso === "ITA") ||
-                                (geo.properties.name?.includes(
-                                  "United Kingdom"
-                                ) &&
-                                  c.iso === "GBR") ||
-                                (geo.properties.name?.includes("Finland") &&
-                                  c.iso === "FIN")
-                            );
-                            if (country) setHoveredCountry(country);
-                          }}
-                          onMouseLeave={() => setHoveredCountry(null)}
-                        />
-                      );
-                    })
-                  }
-                </Geographies>
-
-                {/* Ülke etiketleri */}
-                {HIGHLIGHTED_COUNTRIES.map((country) => (
-                  <Marker
-                    key={country.slug}
-                    coordinates={[country.lng, country.lat]}
-                  >
-                    <text
-                      textAnchor="middle"
-                      y={-10}
-                      style={{
-                        fontFamily: "system-ui, sans-serif",
-                        fontSize: "14px",
-                        fontWeight: "bold",
-                        fill: "#0f766e",
-                        stroke: "#fff",
-                        strokeWidth: 3,
-                        paintOrder: "stroke",
-                        cursor: "pointer",
-                      }}
-                      onClick={() => handleCountryClick(country)}
+                  {/* Ülke etiketleri */}
+                  {HIGHLIGHTED_COUNTRIES.map((country) => (
+                    <Marker
+                      key={country.slug}
+                      coordinates={[country.lng, country.lat]}
                     >
-                      {country.name}
-                    </text>
-                    <circle
-                      r={5}
-                      fill="#14b8a6"
-                      stroke="#fff"
-                      strokeWidth={2}
-                      style={{ cursor: "pointer" }}
-                      onClick={() => handleCountryClick(country)}
-                    />
-                  </Marker>
-                ))}
+                      <text
+                        textAnchor="middle"
+                        y={-10}
+                        style={{
+                          fontFamily: "system-ui, sans-serif",
+                          fontSize: "14px",
+                          fontWeight: "bold",
+                          fill: "#0f766e",
+                          stroke: "#fff",
+                          strokeWidth: 3,
+                          paintOrder: "stroke",
+                          cursor: "pointer",
+                        }}
+                        onClick={() => handleCountryClick(country)}
+                      >
+                        {country.name}
+                      </text>
+                      <circle
+                        r={5}
+                        fill="#14b8a6"
+                        stroke="#fff"
+                        strokeWidth={2}
+                        style={{ cursor: "pointer" }}
+                        onClick={() => handleCountryClick(country)}
+                      />
+                    </Marker>
+                  ))}
+                </ZoomableGroup>
               </ComposableMap>
+            </div>
+
+            {/* Zoom Kontrolleri */}
+            <div className="absolute bottom-4 right-4 flex flex-col gap-2 z-20">
+              <button
+                onClick={() => setZoom(Math.min(zoom * 1.5, 8))}
+                className="bg-white hover:bg-gray-100 text-gray-700 font-bold p-3 rounded-lg shadow-lg transition-all duration-200 hover:scale-110"
+                title="Yakınlaştır"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 4v16m8-8H4"
+                  />
+                </svg>
+              </button>
+              <button
+                onClick={() => setZoom(Math.max(zoom / 1.5, 1))}
+                className="bg-white hover:bg-gray-100 text-gray-700 font-bold p-3 rounded-lg shadow-lg transition-all duration-200 hover:scale-110"
+                title="Uzaklaştır"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M20 12H4"
+                  />
+                </svg>
+              </button>
+              <button
+                onClick={() => setZoom(1)}
+                className="bg-white hover:bg-gray-100 text-gray-700 font-bold p-3 rounded-lg shadow-lg transition-all duration-200 hover:scale-110"
+                title="Sıfırla"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                  />
+                </svg>
+              </button>
             </div>
 
             {/* Hover Tooltip */}
