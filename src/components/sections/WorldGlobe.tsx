@@ -66,7 +66,10 @@ export default function WorldGlobe() {
   const [hoveredCountry, setHoveredCountry] = useState<CountryData | null>(
     null
   );
-  const [zoom, setZoom] = useState(1);
+  const [position, setPosition] = useState({
+    coordinates: [15, 20] as [number, number],
+    zoom: 1
+  });
 
   const handleCountryClick = (country: CountryData) => {
     router.push(`/ulkeler/${country.slug}`);
@@ -89,7 +92,7 @@ export default function WorldGlobe() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
+    <section id="ulkeler" className="py-20 bg-gradient-to-br from-gray-50 to-white">
       <div className="container mx-auto px-4">
         {/* Başlık */}
         <div className="text-center mb-12">
@@ -118,8 +121,9 @@ export default function WorldGlobe() {
                 style={{ width: "100%", height: "100%" }}
               >
                 <ZoomableGroup
-                  zoom={zoom}
-                  onMoveEnd={(position) => setZoom(position.zoom)}
+                  zoom={position.zoom}
+                  center={position.coordinates}
+                  onMoveEnd={setPosition}
                   maxZoom={8}
                   minZoom={1}
                   translateExtent={[
@@ -243,7 +247,7 @@ export default function WorldGlobe() {
             {/* Zoom Kontrolleri */}
             <div className="absolute bottom-4 right-4 flex flex-col gap-2 z-20">
               <button
-                onClick={() => setZoom(Math.min(zoom * 1.5, 8))}
+                onClick={() => setPosition(pos => ({ ...pos, zoom: Math.min(pos.zoom * 1.5, 8) }))}
                 className="bg-white hover:bg-gray-100 text-gray-700 font-bold p-3 rounded-lg shadow-lg transition-all duration-200 hover:scale-110"
                 title="Yakınlaştır"
               >
@@ -263,7 +267,7 @@ export default function WorldGlobe() {
                 </svg>
               </button>
               <button
-                onClick={() => setZoom(Math.max(zoom / 1.5, 1))}
+                onClick={() => setPosition(pos => ({ ...pos, zoom: Math.max(pos.zoom / 1.5, 1) }))}
                 className="bg-white hover:bg-gray-100 text-gray-700 font-bold p-3 rounded-lg shadow-lg transition-all duration-200 hover:scale-110"
                 title="Uzaklaştır"
               >
@@ -283,7 +287,7 @@ export default function WorldGlobe() {
                 </svg>
               </button>
               <button
-                onClick={() => setZoom(1)}
+                onClick={() => setPosition({ coordinates: [15, 20], zoom: 1 })}
                 className="bg-white hover:bg-gray-100 text-gray-700 font-bold p-3 rounded-lg shadow-lg transition-all duration-200 hover:scale-110"
                 title="Sıfırla"
               >
@@ -321,28 +325,6 @@ export default function WorldGlobe() {
                 </p>
               </div>
             )}
-          </div>
-
-          {/* Ülke Grid */}
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
-            {HIGHLIGHTED_COUNTRIES.map((country) => (
-              <button
-                key={country.slug}
-                onClick={() => handleCountryClick(country)}
-                className="group relative bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-4 text-center border border-gray-100 hover:scale-105"
-              >
-                <div
-                  className="w-3 h-3 rounded-full mx-auto mb-2"
-                  style={{ backgroundColor: country.color }}
-                ></div>
-                <h3 className="font-semibold text-gray-900 mb-1">
-                  {country.name}
-                </h3>
-                <p className="text-xs text-gray-500 line-clamp-2">
-                  {country.description}
-                </p>
-              </button>
-            ))}
           </div>
         </div>
       </div>

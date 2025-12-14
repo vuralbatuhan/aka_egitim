@@ -84,20 +84,7 @@ export default function EducationalDestinations() {
   const router = useRouter();
 
   return (
-    <section
-      id="ulkeler"
-      className="py-12 lg:py-16 bg-gradient-to-b from-gray-50 to-white w-full"
-    >
-      {/* BAŞLIK */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-12 text-center">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-          Popüler Eğitim Destinasyonları
-        </h2>
-        <p className="text-lg sm:text-xl text-foreground/70">
-          Dünyanın en iyi dil okullarında eğitim alın ve global deneyim kazanın
-        </p>
-      </div>
-
+    <section className="pt-0 pb-20 bg-gradient-to-br from-gray-50 to-white w-full">
       {/* GRID */}
       <div className="w-full px-3 sm:px-6 lg:px-10 xl:px-36">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">

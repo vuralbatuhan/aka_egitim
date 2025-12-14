@@ -111,8 +111,8 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
-      <EducationalDestinations />
       <WorldGlobe />
+      <EducationalDestinations />
       <RepresentativesMapDB />
       {/* <Benefits /> */}
       {/* <Features /> */}
