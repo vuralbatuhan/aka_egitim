@@ -27,6 +27,20 @@ const RepresentativesMapDB = dynamic(
   }
 );
 
+const WorldGlobe = dynamic(
+  () => import("@/components/sections/WorldGlobe"),
+  {
+    loading: () => (
+      <div className="flex items-center justify-center h-[600px] bg-gradient-to-br from-gray-900 to-gray-800">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-white/70">Dünya küresi yükleniyor...</p>
+        </div>
+      </div>
+    ),
+  }
+);
+
 const ContactForm = dynamic(() => import("@/components/forms/ContactForm"), {
   loading: () => (
     <div className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 via-white to-primary/5">
@@ -98,6 +112,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <EducationalDestinations />
+      <WorldGlobe />
       <RepresentativesMapDB />
       {/* <Benefits /> */}
       {/* <Features /> */}
