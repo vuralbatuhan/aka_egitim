@@ -39,39 +39,53 @@ const ContactForm = dynamic(() => import("@/components/forms/ContactForm"), {
 });
 
 export const metadata: Metadata = {
-  title: "Yurtdışı Eğitim Danışmanlığı ve Dil Okulları",
+  title: "Aka Eğitim - Yurtdışı Eğitim Danışmanlığı | Dil Okulu, Üniversite, Yüksek Lisans",
   description:
-    "Aka Eğitim ile İngiltere, Almanya, Malta, İtalya ve dünyanın dört bir yanında dil okulu, üniversite, yüksek lisans ve work and study programlarına güvenle başvurun.",
+    "✓ Aka Eğitim ile yurtdışı dil okulu, üniversite ve yüksek lisans programlarına başvurun. İngiltere, Almanya, Malta, İtalya'da eğitim fırsatları. ✓ Ücretsiz danışmanlık ✓ 50+ ülke ✓ 500+ okul",
   keywords: [
+    "aka eğitim",
+    "aka egitim",
     "yurtdışı eğitim",
+    "yurt dışı eğitim",
+    "yurtdışı dil okulu",
     "dil okulu danışmanlığı",
     "yurtdışı üniversite",
+    "yurt dışı üniversite",
+    "yurtdışı yüksek lisans",
     "yabancı dil kursu",
-    "work and study programları",
-    "aka eğitim danışmanlık",
+    "work and study",
+    "ingiltere dil okulu",
+    "almanya dil okulu",
+    "malta dil okulu",
+    "italya dil okulu",
+    "yurtdışı eğitim danışmanı",
+    "yurtdışı eğitim ajansı",
   ],
   alternates: {
-    canonical: "/",
+    canonical: "https://akaegitim.com.tr/",
   },
   openGraph: {
     url: "https://akaegitim.com.tr/",
-    title: "Yurtdışı Eğitim Danışmanlığı ve Dil Okulları | Aka Eğitim",
+    title: "Aka Eğitim - Yurtdışı Eğitim Danışmanlığı | 50+ Ülke, 500+ Okul",
     description:
-      "Dil okulu, üniversite, yüksek lisans ve work and study programları için profesyonel yurtdışı eğitim danışmanlığı.",
+      "Yurtdışı dil okulu, üniversite, yüksek lisans programları için profesyonel danışmanlık. Ücretsiz danışmanlık için hemen başvurun!",
     images: [
       {
         url: "https://akaegitim.com.tr/logo.jpg",
         width: 1200,
         height: 630,
-        alt: "Aka Eğitim yurtdışı eğitim danışmanlığı",
+        alt: "Aka Eğitim - Yurtdışı Eğitim Danışmanlığı",
       },
     ],
+    type: "website",
+    locale: "tr_TR",
+    siteName: "Aka Eğitim",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Yurtdışı Eğitim Danışmanlığı ve Dil Okulları | Aka Eğitim",
+    title: "Aka Eğitim - Yurtdışı Eğitim Danışmanlığı",
     description:
-      "Yurtdışı dil eğitimi ve akademik program seçiminde Aka Eğitim uzmanlarına güvenin.",
+      "Yurtdışı dil okulu, üniversite ve yüksek lisans programları. 50+ ülke, 500+ okul. Ücretsiz danışmanlık!",
     images: ["https://akaegitim.com.tr/logo.jpg"],
   },
 };
@@ -94,6 +108,76 @@ export default function Home() {
       <CTA />
       <ContactForm />
       <Footer />
+
+      {/* SEO - Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Aka Eğitim nedir?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Aka Eğitim, yurtdışı dil okulu, üniversite, yüksek lisans ve work and study programları için profesyonel eğitim danışmanlığı hizmeti sunan güvenilir bir eğitim ajansıdır. 50'den fazla ülkede 500'den fazla okulla çalışmaktayız."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Hangi ülkelere eğitim programları sunuyorsunuz?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "İngiltere, Almanya, İtalya, Malta, Finlandiya, Belçika, Hollanda, Kazakistan, İspanya, İsveç, Amerika, Kanada, Avustralya ve 50'den fazla ülkede dil okulu ve üniversite eğitim programları sunuyoruz."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Dil okulu danışmanlığı ücretsiz mi?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Evet, Aka Eğitim olarak size tamamen ücretsiz danışmanlık hizmeti sunuyoruz. Ülke seçimi, okul önerileri, başvuru süreci ve vize işlemlerinde size rehberlik ediyoruz."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Yurtdışı üniversite başvurusu nasıl yapılır?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Aka Eğitim uzmanları, üniversite seçiminden başvuru belgelerinin hazırlanmasına, dil sınavlarından vize işlemlerine kadar tüm süreci sizin için yönetir. İletişim formunu doldurarak ücretsiz danışmanlık alabilirsiniz."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Work and Study programları nelerdir?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Work and Study programları, yurtdışında hem dil eğitimi almanıza hem de çalışma iznine sahip olmanıza olanak tanıyan özel programlardır. İngiltere, İrlanda, Malta, Avustralya ve Kanada'da bu programları sunuyoruz."
+                }
+              }
+            ]
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Ana Sayfa",
+                "item": "https://akaegitim.com.tr/"
+              }
+            ]
+          })
+        }}
+      />
     </main>
   );
 }
