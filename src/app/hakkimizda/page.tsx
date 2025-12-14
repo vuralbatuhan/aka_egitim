@@ -1,5 +1,5 @@
 import Navbar from "@/components/layout/Navbar";
-import PageHero from "@/components/sections/PageHero";
+// import PageHero from "@/components/sections/PageHero";
 import Footer from "@/components/layout/Footer";
 import ContactForm from "@/components/forms/ContactForm";
 import type { Metadata } from "next";

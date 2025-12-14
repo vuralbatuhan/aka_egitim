@@ -1,9 +1,9 @@
 import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/sections/Hero";
 import EducationalDestinations from "@/components/sections/EducationalDestinations";
-import Benefits from "@/components/sections/Benefits";
-import Features from "@/components/sections/Features";
-import Programs from "@/components/sections/Programs";
+// import Benefits from "@/components/sections/Benefits";
+// import Features from "@/components/sections/Features";
+// import Programs from "@/components/sections/Programs";
 // import PopularCountries from '@/components/sections/PopularCountries'
 import ValuesBanner from "@/components/sections/ValuesBanner";
 import CTA from "@/components/sections/CTA";
@@ -27,19 +27,16 @@ const RepresentativesMapDB = dynamic(
   }
 );
 
-const WorldGlobe = dynamic(
-  () => import("@/components/sections/WorldGlobe"),
-  {
-    loading: () => (
-      <div className="flex items-center justify-center h-[600px] bg-gradient-to-br from-gray-900 to-gray-800">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-white/70">Dünya küresi yükleniyor...</p>
-        </div>
+const WorldGlobe = dynamic(() => import("@/components/sections/WorldGlobe"), {
+  loading: () => (
+    <div className="flex items-center justify-center h-[600px] bg-gradient-to-br from-gray-900 to-gray-800">
+      <div className="text-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+        <p className="text-white/70">Dünya küresi yükleniyor...</p>
       </div>
-    ),
-  }
-);
+    </div>
+  ),
+});
 
 const ContactForm = dynamic(() => import("@/components/forms/ContactForm"), {
   loading: () => (
@@ -53,7 +50,8 @@ const ContactForm = dynamic(() => import("@/components/forms/ContactForm"), {
 });
 
 export const metadata: Metadata = {
-  title: "Aka Eğitim - Yurtdışı Eğitim Danışmanlığı | Dil Okulu, Üniversite, Yüksek Lisans",
+  title:
+    "Aka Eğitim - Yurtdışı Eğitim Danışmanlığı | Dil Okulu, Üniversite, Yüksek Lisans",
   description:
     "✓ Aka Eğitim ile yurtdışı dil okulu, üniversite ve yüksek lisans programlarına başvurun. İngiltere, Almanya, Malta, İtalya'da eğitim fırsatları. ✓ Ücretsiz danışmanlık ✓ 50+ ülke ✓ 500+ okul",
   keywords: [
@@ -131,33 +129,33 @@ export default function Home() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            "mainEntity": [
+            mainEntity: [
               {
                 "@type": "Question",
-                "name": "Aka Egitim nedir?",
-                "acceptedAnswer": {
+                name: "Aka Egitim nedir?",
+                acceptedAnswer: {
                   "@type": "Answer",
-                  "text": "Aka Egitim, yurtdisi dil okulu, universite, yuksek lisans ve work and study programlari icin profesyonel egitim danismanligi hizmeti sunan guvenilir bir egitim ajansidir. 50'den fazla ulkede 500'den fazla okulla calismaktayiz."
-                }
+                  text: "Aka Egitim, yurtdisi dil okulu, universite, yuksek lisans ve work and study programlari icin profesyonel egitim danismanligi hizmeti sunan guvenilir bir egitim ajansidir. 50'den fazla ulkede 500'den fazla okulla calismaktayiz.",
+                },
               },
               {
                 "@type": "Question",
-                "name": "Hangi ulkelere egitim programlari sunuyorsunuz?",
-                "acceptedAnswer": {
+                name: "Hangi ulkelere egitim programlari sunuyorsunuz?",
+                acceptedAnswer: {
                   "@type": "Answer",
-                  "text": "Ingiltere, Almanya, Italya, Malta, Finlandiya, Belcika, Hollanda, Kazakistan, Ispanya, Isvec, Amerika, Kanada, Avustralya ve 50'den fazla ulkede dil okulu ve universite egitim programlari sunuyoruz."
-                }
+                  text: "Ingiltere, Almanya, Italya, Malta, Finlandiya, Belcika, Hollanda, Kazakistan, Ispanya, Isvec, Amerika, Kanada, Avustralya ve 50'den fazla ulkede dil okulu ve universite egitim programlari sunuyoruz.",
+                },
               },
               {
                 "@type": "Question",
-                "name": "Dil okulu danismanligi ucretsiz mi?",
-                "acceptedAnswer": {
+                name: "Dil okulu danismanligi ucretsiz mi?",
+                acceptedAnswer: {
                   "@type": "Answer",
-                  "text": "Evet, Aka Egitim olarak size tamamen ucretsiz danismanlik hizmeti sunuyoruz. Ulke secimi, okul onerileri, basvuru sureci ve vize islemlerinde size rehberlik ediyoruz."
-                }
-              }
-            ]
-          })
+                  text: "Evet, Aka Egitim olarak size tamamen ucretsiz danismanlik hizmeti sunuyoruz. Ulke secimi, okul onerileri, basvuru sureci ve vize islemlerinde size rehberlik ediyoruz.",
+                },
+              },
+            ],
+          }),
         }}
       />
       <script
@@ -166,15 +164,15 @@ export default function Home() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
-            "itemListElement": [
+            itemListElement: [
               {
                 "@type": "ListItem",
-                "position": 1,
-                "name": "Ana Sayfa",
-                "item": "https://akaegitim.com.tr/"
-              }
-            ]
-          })
+                position: 1,
+                name: "Ana Sayfa",
+                item: "https://akaegitim.com.tr/",
+              },
+            ],
+          }),
         }}
       />
     </main>

@@ -3,14 +3,14 @@
 import { Card, CardBody, CardFooter, Button } from "@heroui/react";
 import type { StaticImageData } from "next/image";
 import Image from "next/image";
-import Link from "next/link";
+// import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 import almanya from "../../app/assets/country_images/almanya.jpg";
 import italya from "../../app/assets/country_images/italya.jpg";
 import ingiltere from "../../app/assets/country_images/ingiltere.jpg";
 import finlandiya from "../../app/assets/country_images/finlandiya.jpg";
-import fransa from "../../app/assets/country_images/finlandiya.jpg";
+// import fransa from "../../app/assets/country_images/finlandiya.jpg";
 
 interface Country {
   name: string;

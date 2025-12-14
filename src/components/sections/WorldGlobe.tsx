@@ -20,6 +20,17 @@ interface CountryData {
   description: string;
 }
 
+interface GeoProperties {
+  name?: string;
+  geounit?: string;
+}
+
+interface Geography {
+  rsmKey: string;
+  id?: string;
+  properties: GeoProperties;
+}
+
 const HIGHLIGHTED_COUNTRIES: CountryData[] = [
   {
     name: "Almanya",
@@ -68,14 +79,14 @@ export default function WorldGlobe() {
   );
   const [position, setPosition] = useState({
     coordinates: [15, 20] as [number, number],
-    zoom: 1
+    zoom: 1,
   });
 
   const handleCountryClick = (country: CountryData) => {
     router.push(`/ulkeler/${country.slug}`);
   };
 
-  const isHighlighted = (geo: any) => {
+  const isHighlighted = (geo: Geography) => {
     const name = geo.properties?.name || "";
     const id = geo.id || "";
 
@@ -92,7 +103,10 @@ export default function WorldGlobe() {
   };
 
   return (
-    <section id="ulkeler" className="py-20 bg-gradient-to-br from-gray-50 to-white">
+    <section
+      id="ulkeler"
+      className="py-20 bg-gradient-to-br from-gray-50 to-white"
+    >
       <div className="container mx-auto px-4">
         {/* Başlık */}
         <div className="text-center mb-12">
@@ -247,7 +261,12 @@ export default function WorldGlobe() {
             {/* Zoom Kontrolleri */}
             <div className="absolute bottom-4 right-4 flex flex-col gap-2 z-20">
               <button
-                onClick={() => setPosition(pos => ({ ...pos, zoom: Math.min(pos.zoom * 1.5, 8) }))}
+                onClick={() =>
+                  setPosition((pos) => ({
+                    ...pos,
+                    zoom: Math.min(pos.zoom * 1.5, 8),
+                  }))
+                }
                 className="bg-white hover:bg-gray-100 text-gray-700 font-bold p-3 rounded-lg shadow-lg transition-all duration-200 hover:scale-110"
                 title="Yakınlaştır"
               >
@@ -267,7 +286,12 @@ export default function WorldGlobe() {
                 </svg>
               </button>
               <button
-                onClick={() => setPosition(pos => ({ ...pos, zoom: Math.max(pos.zoom / 1.5, 1) }))}
+                onClick={() =>
+                  setPosition((pos) => ({
+                    ...pos,
+                    zoom: Math.max(pos.zoom / 1.5, 1),
+                  }))
+                }
                 className="bg-white hover:bg-gray-100 text-gray-700 font-bold p-3 rounded-lg shadow-lg transition-all duration-200 hover:scale-110"
                 title="Uzaklaştır"
               >
