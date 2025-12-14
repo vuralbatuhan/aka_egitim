@@ -3,6 +3,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ContactForm from "@/components/forms/ContactForm";
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Hakkımızda | Aka Eğitim Yurtdışı Eğitim Danışmanlığı",
@@ -79,10 +80,19 @@ export default function Hakkimizda() {
               className="relative rounded-2xl overflow-hidden shadow-2xl bg-black border"
               style={{ borderColor: "var(--primary-light)" }}
             >
-              <video controls className="w-full h-auto" preload="metadata">
+              {/* <video controls className="w-full h-auto" preload="metadata">
                 <source src="/videos/hakkimizda.mp4" type="video/mp4" />
                 Tarayıcınız video etiketini desteklemiyor.
-              </video>
+              </video> */}
+              <div className="relative w-full h-[620px] overflow-hidden rounded-2xl">
+                <Image
+                  src="/images/aka_sample_image_ayhan.jpg"
+                  alt="Aka Eğitim Tanıtım Görseli"
+                  fill
+                  className="object-cover object-center"
+                  priority
+                />
+              </div>
             </div>
           </div>
         </div>
