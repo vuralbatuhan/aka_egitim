@@ -72,7 +72,7 @@ export default function EducationalDestinations() {
   const router = useRouter();
 
   return (
-    <section className="py-12 lg:py-16 bg-gradient-to-b from-gray-50 to-white w-full">
+    <section id="ulkeler" className="py-12 lg:py-16 bg-gradient-to-b from-gray-50 to-white w-full">
       {/* BAŞLIK */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-12 text-center">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">

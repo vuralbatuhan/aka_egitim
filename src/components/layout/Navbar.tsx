@@ -1,49 +1,49 @@
-'use client'
+"use client";
 
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from "react";
 import {
   Navbar as HeroNavbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
   Button,
-  Link
-} from "@heroui/react"
-import NextLink from 'next/link'
-import Image from 'next/image'
-import { Squares2X2Icon } from '@heroicons/react/24/outline'
-import MobileGridMenu, { MobileMenuSection } from './MobileGridMenu'
+  Link,
+} from "@heroui/react";
+import NextLink from "next/link";
+import Image from "next/image";
+import { Squares2X2Icon } from "@heroicons/react/24/outline";
+import MobileGridMenu, { MobileMenuSection } from "./MobileGridMenu";
 
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isGridMenuOpen, setIsGridMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isGridMenuOpen, setIsGridMenuOpen] = useState(false);
 
   // Scroll detection
   useEffect(() => {
-    let lastScrollY = window.scrollY
+    let lastScrollY = window.scrollY;
 
     const handleScroll = () => {
-      const currentScrollY = window.scrollY
+      const currentScrollY = window.scrollY;
 
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
         // Scrolling down
-        setIsScrolled(true)
+        setIsScrolled(true);
       } else {
         // Scrolling up
-        setIsScrolled(false)
+        setIsScrolled(false);
       }
 
-      lastScrollY = currentScrollY
-    }
+      lastScrollY = currentScrollY;
+    };
 
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const menuItems = useMemo(
     () => [
       { name: "Ana Sayfa", href: "/" },
-      { name: "Ülkeler", href: "/dil-okullari" },
+      { name: "Ülkeler", href: "/#ulkeler" },
       { name: "Dil Okulları", href: "/dil-okullari" },
       { name: "Üniversite", href: "/universite" },
       { name: "Yüksek Lisans", href: "/yuksek-lisans" },
@@ -51,52 +51,90 @@ export default function Navbar() {
       { name: "İletişim", href: "/iletisim" },
     ],
     []
-  )
+  );
 
   const dilOkullariItems = useMemo(
     () => [
-      { name: "İtalya", href: "/ulkeler/italya", description: "Sanat, kültür ve kaliteli eğitim" },
+      {
+        name: "İtalya",
+        href: "/ulkeler/italya",
+        description: "Sanat, kültür ve kaliteli eğitim",
+      },
       // { name: "Kazakistan", href: "/ulkeler/kazakistan", description: "Uygun maliyetli eğitim" },
-      { name: "Almanya", href: "/ulkeler/almanya", description: "Uygun maliyetli eğitim" },
-      { name: "Finlandiya", href: "/ulkeler/finlandiya", description: "Uygun maliyetli eğitim" },
-      { name: "İngiltere", href: "/ulkeler/ingiltere", description: "Uygun maliyetli eğitim" },
+      {
+        name: "Almanya",
+        href: "/ulkeler/almanya",
+        description: "Uygun maliyetli eğitim",
+      },
+      {
+        name: "Finlandiya",
+        href: "/ulkeler/finlandiya",
+        description: "Uygun maliyetli eğitim",
+      },
+      {
+        name: "İngiltere",
+        href: "/ulkeler/ingiltere",
+        description: "Uygun maliyetli eğitim",
+      },
     ],
     []
-  )
+  );
 
   const universiteItems = useMemo(
     () => [
-      { name: "İtalya", href: "/ulkeler/italya", description: "Sanat, kültür ve kaliteli eğitim" },
-      { name: "Belçika", href: "/ulkeler/belcika", description: "Çok kültürlü eğitim fırsatları" },
-      { name: "Almanya", href: "/ulkeler/almanya", description: "Ücretsiz eğitim fırsatları" },
-      { name: "Kazakistan", href: "/ulkeler/kazakistan", description: "Uygun maliyetli eğitim" },
-      { name: "Hollanda", href: "/ulkeler/hollanda", description: "İngilizce programlar" },
+      {
+        name: "İtalya",
+        href: "/ulkeler/italya",
+        description: "Sanat, kültür ve kaliteli eğitim",
+      },
+      {
+        name: "Belçika",
+        href: "/ulkeler/belcika",
+        description: "Çok kültürlü eğitim fırsatları",
+      },
+      {
+        name: "Almanya",
+        href: "/ulkeler/almanya",
+        description: "Ücretsiz eğitim fırsatları",
+      },
+      {
+        name: "Kazakistan",
+        href: "/ulkeler/kazakistan",
+        description: "Uygun maliyetli eğitim",
+      },
+      {
+        name: "Hollanda",
+        href: "/ulkeler/hollanda",
+        description: "İngilizce programlar",
+      },
     ],
     []
-  )
+  );
 
   const mobileSections: MobileMenuSection[] = useMemo(() => {
     const quickLinkDescriptions: Record<string, string> = {
       "Ana Sayfa": "Aka Eğitim genel bakış ve güncel duyurular",
-      "Ülkeler": "Eğitim destinasyonlarımızı keşfedin",
+      Ülkeler: "Eğitim destinasyonlarımızı keşfedin",
       "Dil Okulları": "Yurtdışında dil eğitimi programları",
-      "Üniversite": "Yurtdışında üniversite eğitimi",
+      Üniversite: "Yurtdışında üniversite eğitimi",
       "Yüksek Lisans": "Master ve MBA başvuru rehberleri",
-      "Hakkımızda": "Misyonumuz ve değerlerimiz",
-      "İletişim": "Bizimle iletişime geçin",
-    }
+      Hakkımızda: "Misyonumuz ve değerlerimiz",
+      İletişim: "Bizimle iletişime geçin",
+    };
 
     return [
       {
-        title: 'Genel',
+        title: "Genel",
         items: menuItems.map((item) => ({
           name: item.name,
           href: item.href,
-          description: quickLinkDescriptions[item.name] ?? "İlgili sayfaya hızlı erişim sağlayın",
+          description:
+            quickLinkDescriptions[item.name] ??
+            "İlgili sayfaya hızlı erişim sağlayın",
         })),
       },
       {
-        title: 'Dil Okulları Ülkeleri',
+        title: "Dil Okulları Ülkeleri",
         items: dilOkullariItems.map((item) => ({
           name: item.name,
           href: item.href,
@@ -104,43 +142,43 @@ export default function Navbar() {
         })),
       },
       {
-        title: 'Üniversite Ülkeleri',
+        title: "Üniversite Ülkeleri",
         items: universiteItems.map((item) => ({
           name: item.name,
           href: item.href,
           description: item.description,
         })),
       },
-    ]
-  }, [menuItems, dilOkullariItems, universiteItems])
+    ];
+  }, [menuItems, dilOkullariItems, universiteItems]);
 
   useEffect(() => {
-    if (!isGridMenuOpen) return
-    const onHashChange = () => setIsGridMenuOpen(false)
-    window.addEventListener('hashchange', onHashChange)
-    return () => window.removeEventListener('hashchange', onHashChange)
-  }, [isGridMenuOpen])
+    if (!isGridMenuOpen) return;
+    const onHashChange = () => setIsGridMenuOpen(false);
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, [isGridMenuOpen]);
 
   // Close mobile menu when screen size becomes large (lg breakpoint)
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(min-width: 1024px)')
+    const mediaQuery = window.matchMedia("(min-width: 1024px)");
 
     const handleResize = (e: MediaQueryListEvent | MediaQueryList) => {
       if (e.matches && isGridMenuOpen) {
-        setIsGridMenuOpen(false)
+        setIsGridMenuOpen(false);
       }
-    }
+    };
 
     // Check initial size
-    handleResize(mediaQuery)
+    handleResize(mediaQuery);
 
     // Listen for changes
-    mediaQuery.addEventListener('change', handleResize)
+    mediaQuery.addEventListener("change", handleResize);
 
     return () => {
-      mediaQuery.removeEventListener('change', handleResize)
-    }
-  }, [isGridMenuOpen])
+      mediaQuery.removeEventListener("change", handleResize);
+    };
+  }, [isGridMenuOpen]);
 
   return (
     <>
@@ -148,12 +186,14 @@ export default function Navbar() {
         maxWidth="xl"
         position="sticky"
         height="80px"
-        className={`transition-transform duration-300 ${isScrolled ? '-translate-y-full' : 'translate-y-0'}`}
+        className={`transition-transform duration-300 ${
+          isScrolled ? "-translate-y-full" : "translate-y-0"
+        }`}
         classNames={{
           wrapper: "px-6 sm:px-8 lg:px-12 xl:px-16 h-20",
           base: "shadow-lg",
         }}
-      // style={{ background: 'linear-gradient(135deg, #a2c2bf 0%, #abbebbff 40%, #a2c2bf 100%)' }}
+        // style={{ background: 'linear-gradient(135deg, #a2c2bf 0%, #abbebbff 40%, #a2c2bf 100%)' }}
       >
         {/* Logo */}
         <NavbarBrand>
@@ -166,7 +206,9 @@ export default function Navbar() {
               className="rounded-lg shadow-md sm:w-14 sm:h-14"
             />
             <div className="hidden sm:block">
-              <span className="font-bold text-white text-xl sm:text-2xl">Aka Eğitim</span>
+              <span className="font-bold text-white text-xl sm:text-2xl">
+                Aka Eğitim
+              </span>
               <p className="text-sm text-white/90 -mt-1">Yurtdışı Eğitim</p>
             </div>
           </NextLink>
@@ -231,5 +273,5 @@ export default function Navbar() {
         sections={mobileSections}
       />
     </>
-  )
+  );
 }
