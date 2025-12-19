@@ -19,7 +19,7 @@ export default function ClientProvider({
         event.preventDefault();
         return;
       }
-      
+
       // Diğer hataları logla ama uygulamayı durdurmadan devam et
       console.warn('Unhandled promise rejection:', event.reason);
       event.preventDefault();

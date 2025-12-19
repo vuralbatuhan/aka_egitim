@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, CardBody, CardFooter, Button } from "@heroui/react";
+import { Card, CardBody, CardFooter } from "@heroui/react";
 import type { StaticImageData } from "next/image";
 import Image from "next/image";
 // import Link from "next/link";
@@ -142,28 +142,23 @@ export default function EducationalDestinations() {
 
                 {/* FOOTER */}
                 <CardFooter className="px-4 sm:px-5 pb-5 pt-0">
-                  {/* Buton tıklanabilir olmasın ki Card click'i bozulmasın */}
-                  <Button
-                    color="primary"
-                    className="w-full font-semibold rounded-md pointer-events-none"
-                    endContent={
-                      <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M17 8l4 4m0 0l-4 4m4-4H3"
-                        />
-                      </svg>
-                    }
-                  >
-                    Detayları Gör
-                  </Button>
+                  {/* Visual button (not a real button to avoid nested button error) */}
+                  <div className="w-full bg-primary text-primary-foreground font-semibold rounded-md py-3 px-4 flex items-center justify-center gap-2">
+                    <span>Detayları Gör</span>
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
+                  </div>
                 </CardFooter>
               </div>
             </Card>
