@@ -24,13 +24,13 @@ export const metadata: Metadata = {
     canonical: '/ne-yapmak-istiyoruz',
   },
   openGraph: {
-    url: 'https://akaegitim.com.tr/ne-yapmak-istiyoruz',
+    url: 'https://www.akaegitim.com.tr/ne-yapmak-istiyoruz',
     title: 'Aka Eğitim’in Gelecek Hedefleri',
     description:
       'Öğrenciler için erişilebilir, kaliteli ve yenilikçi yurtdışı eğitim deneyimleri oluşturmak için yürüttüğümüz projeler ve stratejiler.',
     images: [
       {
-        url: 'https://akaegitim.com.tr/logo.jpg',
+        url: 'https://www.akaegitim.com.tr/logo.jpg',
         width: 1200,
         height: 630,
         alt: 'Aka Eğitim vizyonu',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     title: 'Aka Eğitim’in Gelecek Hedefleri',
     description:
       'Yurtdışı eğitimde sürdürülebilir başarı için odaklandığımız hedefler ve stratejik yol haritalarımız.',
-    images: ['https://akaegitim.com.tr/logo.jpg'],
+    images: ['https://www.akaegitim.com.tr/logo.jpg'],
   },
 }
 
@@ -53,12 +53,12 @@ export default function NeYapmakIstiyoruz() {
     <main className="min-h-screen">
       <Navbar />
       <div className="pt-16 sm:pt-18 lg:pt-20">
-        <PageHero 
+        <PageHero
           title="Ne Yapmak İstiyoruz"
           subtitle="Geleceği birlikte şekillendiriyoruz"
           description="Türkiye'nin en güvenilir yurtdışı eğitim danışmanlık firması olmak ve öğrencilerimizin hayallerini gerçeğe dönüştürmek vizyonumuz"
         />
-        
+
         {/* Vizyonumuz */}
         <section className="py-20 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -70,7 +70,7 @@ export default function NeYapmakIstiyoruz() {
                 Türkiye&apos;nin En Güvenilir Yurtdışı Eğitim Danışmanlık Firması Olmak
               </p>
               <p className="text-xl text-gray-700 leading-relaxed">
-                Her öğrencinin yurtdışında kaliteli eğitim alma hayalini gerçeğe dönüştürmek için 
+                Her öğrencinin yurtdışında kaliteli eğitim alma hayalini gerçeğe dönüştürmek için
                 sürekli gelişen, yenilikçi ve güvenilir hizmet sunmayı hedefliyoruz.
               </p>
             </div>
@@ -86,7 +86,7 @@ export default function NeYapmakIstiyoruz() {
             <p className="text-xl text-gray-600 text-center mb-16">
               Vizyonumuzu gerçekleştirmek için koyduğumuz hedefler
             </p>
-            
+
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
               <Card className="hover:shadow-xl transition-shadow border-l-4 border-primary">
                 <CardBody className="p-8">
@@ -172,7 +172,7 @@ export default function NeYapmakIstiyoruz() {
             <p className="text-xl text-gray-600 text-center mb-16">
               Hedeflerimizi gerçekleştirmek için kullandığımız stratejiler
             </p>
-            
+
             <div className="grid md:grid-cols-2 gap-12">
               <div>
                 <div className="flex items-start mb-8">
@@ -186,7 +186,7 @@ export default function NeYapmakIstiyoruz() {
                       Sürekli İyileştirme
                     </h3>
                     <p className="text-gray-700 text-lg">
-                      Hizmetlerimizi sürekli gözden geçirerek öğrenci geri bildirimlerini değerlendiriyor ve 
+                      Hizmetlerimizi sürekli gözden geçirerek öğrenci geri bildirimlerini değerlendiriyor ve
                       süreçlerimizi optimize ediyoruz.
                     </p>
                   </div>
@@ -285,7 +285,7 @@ export default function NeYapmakIstiyoruz() {
               Birlikte Başarıya Ulaşalım
             </h2>
             <p className="text-xl mb-8 opacity-90">
-              Yurtdışı eğitim yolculuğunuzda yanınızdayız. Hayallerinizi gerçeğe dönüştürmek için 
+              Yurtdışı eğitim yolculuğunuzda yanınızdayız. Hayallerinizi gerçeğe dönüştürmek için
               bugün bizimle iletişime geçin.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

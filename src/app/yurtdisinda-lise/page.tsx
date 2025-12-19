@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     canonical: '/yurtdisinda-lise',
   },
   openGraph: {
-    url: 'https://akaegitim.com.tr/yurtdisinda-lise',
+    url: 'https://www.akaegitim.com.tr/yurtdisinda-lise',
     title: 'Yurtdışında Lise Eğitimi | Aka Eğitim',
     description:
       'Uluslararası diploma, konaklama ve aile yanı seçenekleriyle lise eğitiminizi yurtdışında planlayın.',
     images: [
       {
-        url: 'https://akaegitim.com.tr/logo.jpg',
+        url: 'https://www.akaegitim.com.tr/logo.jpg',
         width: 1200,
         height: 630,
         alt: 'Yurtdışında lise danışmanlığı',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     title: 'Yurtdışında Lise Eğitimi | Aka Eğitim',
     description:
       'Ailenizle birlikte akademik ve kültürel hedefleri analiz ederek doğru lise programını seçiyoruz.',
-    images: ['https://akaegitim.com.tr/logo.jpg'],
+    images: ['https://www.akaegitim.com.tr/logo.jpg'],
   },
 }
 
@@ -49,7 +49,7 @@ export default function YurtdisindaLisePage() {
   return (
     <main className="min-h-screen">
       <Navbar />
-      <PageHero 
+      <PageHero
         title="Yurtdışında Lise"
         subtitle="Uluslararası lise eğitimi ile geleceğinizi şekillendirin"
         backgroundImage="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1200&q=80"
@@ -61,8 +61,8 @@ export default function YurtdisindaLisePage() {
             Yurtdışında Lise Eğitimiyle Üniversiteye Güçlü Bir Başlangıç
           </h2>
           <p className="text-lg text-gray-600 mb-4">
-            Öğrencilerimizin akademik hedeflerini, dil seviyelerini ve bütçelerini değerlendirerek IB, AP, Matura veya Abitur gibi 
-            uluslararası diploma programlarına uygun okul seçenekleri sunuyoruz. Aile yanı konaklama, yurt ve kampüs içi yaşam 
+            Öğrencilerimizin akademik hedeflerini, dil seviyelerini ve bütçelerini değerlendirerek IB, AP, Matura veya Abitur gibi
+            uluslararası diploma programlarına uygun okul seçenekleri sunuyoruz. Aile yanı konaklama, yurt ve kampüs içi yaşam
             alternatiflerini detaylandırarak güvenli bir geçiş planlıyoruz.
           </p>
           <ul className="list-disc list-inside space-y-3 text-gray-700">

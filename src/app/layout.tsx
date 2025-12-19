@@ -18,7 +18,7 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://akaegitim.com.tr'),
+  metadataBase: new URL('https://www.akaegitim.com.tr'),
   title: {
     default: 'Aka Eğitim - Yurtdışı Eğitim Danışmanlığı | Dil Okulu, Üniversite, Yüksek Lisans',
     template: '%s | Aka Eğitim',
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     'study abroad',
     'language school',
   ],
-  authors: [{ name: 'Aka Eğitim', url: 'https://akaegitim.com.tr' }],
+  authors: [{ name: 'Aka Eğitim', url: 'https://www.akaegitim.com.tr' }],
   creator: 'Aka Eğitim',
   publisher: 'Aka Eğitim',
   category: 'education',
@@ -67,14 +67,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'tr_TR',
-    url: 'https://akaegitim.com.tr/',
+    url: 'https://www.akaegitim.com.tr/',
     siteName: 'Aka Eğitim - Yurtdışı Eğitim Danışmanlığı',
     title: 'Aka Eğitim - Yurtdışı Eğitim Danışmanlığı | Dil Okulu & Üniversite',
     description:
       'Yurtdışı dil okulu, üniversite, yüksek lisans ve work and study programları için profesyonel danışmanlık. 50+ ülkede eğitim fırsatları. Ücretsiz danışmanlık!',
     images: [
       {
-        url: 'https://akaegitim.com.tr/logo.jpg',
+        url: 'https://www.akaegitim.com.tr/logo.jpg',
         width: 1200,
         height: 630,
         alt: 'Aka Eğitim - Yurtdışı Eğitim Danışmanlığı',
@@ -86,7 +86,7 @@ export const metadata: Metadata = {
     title: 'Aka Eğitim - Yurtdışı Eğitim Danışmanlığı',
     description:
       'Yurtdışı dil okulu, üniversite ve yüksek lisans programları için profesyonel danışmanlık. 50+ ülkede eğitim fırsatları.',
-    images: ['https://akaegitim.com.tr/logo.jpg'],
+    images: ['https://www.akaegitim.com.tr/logo.jpg'],
   },
   robots: {
     index: true,
@@ -103,7 +103,7 @@ export const metadata: Metadata = {
     google: 'google-site-verification-code-buraya-gelecek',
   },
   alternates: {
-    canonical: 'https://akaegitim.com.tr',
+    canonical: 'https://www.akaegitim.com.tr',
   },
   icons: {
     icon: [{ url: '/logo.jpg', type: 'image/jpeg' }],
@@ -147,14 +147,14 @@ export default function RootLayout({
               '@type': 'EducationalOrganization',
               name: 'Aka Eğitim',
               alternateName: 'Aka Egitim',
-              url: 'https://akaegitim.com.tr',
+              url: 'https://www.akaegitim.com.tr',
               logo: {
                 '@type': 'ImageObject',
-                url: 'https://akaegitim.com.tr/logo.jpg',
+                url: 'https://www.akaegitim.com.tr/logo.jpg',
                 width: 1200,
                 height: 630,
               },
-              image: 'https://akaegitim.com.tr/logo.jpg',
+              image: 'https://www.akaegitim.com.tr/logo.jpg',
               description:
                 'Aka Eğitim, yurtdışı dil okulu, üniversite, yüksek lisans, work and study ve lise programları için profesyonel eğitim danışmanlığı hizmeti sunar. İngiltere, Almanya, İtalya, Malta ve 50+ ülkede eğitim fırsatları.',
               slogan: 'Yurtdışı Eğitimde Güvenilir Çözüm Ortağınız',
@@ -212,25 +212,25 @@ export default function RootLayout({
                 {
                   '@type': 'ContactPoint',
                   contactType: 'customer service',
-                  url: 'https://akaegitim.com.tr/iletisim',
+                  url: 'https://www.akaegitim.com.tr/iletisim',
                   availableLanguage: ['Turkish', 'English'],
                   areaServed: 'TR',
                 },
                 {
                   '@type': 'ContactPoint',
                   contactType: 'customer support',
-                  url: 'https://akaegitim.com.tr/iletisim',
+                  url: 'https://www.akaegitim.com.tr/iletisim',
                   availableLanguage: ['Turkish', 'English'],
                 },
               ],
               sameAs: [
-                'https://akaegitim.com.tr',
+                'https://www.akaegitim.com.tr',
               ],
               potentialAction: {
                 '@type': 'SearchAction',
                 target: {
                   '@type': 'EntryPoint',
-                  urlTemplate: 'https://akaegitim.com.tr/ulkeler/{country}',
+                  urlTemplate: 'https://www.akaegitim.com.tr/ulkeler/{country}',
                 },
                 'query-input': 'required name=country',
               },

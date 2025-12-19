@@ -75,12 +75,12 @@ export async function generateMetadata({
     ],
     alternates: { canonical: `/ulkeler/${country.toLowerCase()}` },
     openGraph: {
-      url: `https://akaegitim.com.tr/ulkeler/${country.toLowerCase()}`,
+      url: `https://www.akaegitim.com.tr/ulkeler/${country.toLowerCase()}`,
       title: `${info.title} | Aka Eğitim`,
       description: info.description,
       images: [
         {
-          url: "https://akaegitim.com.tr/logo.jpg",
+          url: "https://www.akaegitim.com.tr/logo.jpg",
           width: 1200,
           height: 630,
           alt: `${info.name} eğitim danışmanlığı`,
@@ -91,7 +91,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: `${info.title} | Aka Eğitim`,
       description: info.description,
-      images: ["https://akaegitim.com.tr/logo.jpg"],
+      images: ["https://www.akaegitim.com.tr/logo.jpg"],
     },
   };
 }
@@ -209,12 +209,12 @@ export default async function CountryPage({ params }: PageProps) {
             provider: {
               "@type": "Organization",
               name: "Aka Eğitim",
-              url: "https://akaegitim.com.tr",
-              logo: "https://akaegitim.com.tr/logo.jpg",
+              url: "https://www.akaegitim.com.tr",
+              logo: "https://www.akaegitim.com.tr/logo.jpg",
             },
             areaServed: info.name,
             description: info.description,
-            url: `https://akaegitim.com.tr/ulkeler/${country.toLowerCase()}`,
+            url: `https://www.akaegitim.com.tr/ulkeler/${country.toLowerCase()}`,
           }),
         }}
       />
@@ -230,10 +230,9 @@ export default async function CountryPage({ params }: PageProps) {
           <div
             className="absolute left-0 top-0 h-full w-[60%] bg-cover bg-center opacity-25"
             style={{
-              backgroundImage: `url(${
-                info.heroImage ??
+              backgroundImage: `url(${info.heroImage ??
                 "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?w=1400&q=80"
-              })`,
+                })`,
               maskImage:
                 "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 55%, transparent 100%)",
               WebkitMaskImage:

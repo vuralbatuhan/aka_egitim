@@ -19,13 +19,13 @@ export const metadata: Metadata = {
     canonical: '/blog',
   },
   openGraph: {
-    url: 'https://akaegitim.com.tr/blog',
+    url: 'https://www.akaegitim.com.tr/blog',
     title: 'Yurtdışı Eğitim Blogu | Aka Eğitim',
     description:
       'Dil okulu, üniversite, yüksek lisans ve work and study programlarına dair güncel rehberleri keşfedin.',
     images: [
       {
-        url: 'https://akaegitim.com.tr/logo.jpg',
+        url: 'https://www.akaegitim.com.tr/logo.jpg',
         width: 1200,
         height: 630,
         alt: 'Aka Eğitim blog',
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     title: 'Yurtdışı Eğitim Blogu | Aka Eğitim',
     description:
       'Yurtdışı eğitim planlarken bilmeniz gereken adımlar ve ipuçları için blog yazılarımızı okuyun.',
-    images: ['https://akaegitim.com.tr/logo.jpg'],
+    images: ['https://www.akaegitim.com.tr/logo.jpg'],
   },
 }
 
@@ -48,13 +48,13 @@ export default function Blog() {
     <main className="min-h-screen">
       <Navbar />
       <div className="pt-16 sm:pt-18 lg:pt-20">
-        <PageHero 
+        <PageHero
           title="Blog"
           subtitle="Yurtdışı eğitim rehberi ve güncel bilgiler"
           description="Yurtdışı eğitim, dil okulları, üniversite ve yüksek lisans hakkında uzman yazılarımızı okuyun."
           backgroundImage="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
         />
-        
+
         {/* Blog İçeriği */}
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
@@ -66,7 +66,7 @@ export default function Blog() {
                 Yurtdışı eğitim konusunda güncel bilgiler ve uzman tavsiyeleri.
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <article className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-shadow">
                 <div className="text-sm text-gray-500 mb-2">15 Aralık 2024</div>
@@ -80,7 +80,7 @@ export default function Blog() {
                   Devamını Oku →
                 </Link>
               </article>
-              
+
               <article className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-shadow">
                 <div className="text-sm text-gray-500 mb-2">10 Aralık 2024</div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">
@@ -93,7 +93,7 @@ export default function Blog() {
                   Devamını Oku →
                 </Link>
               </article>
-              
+
               <article className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-shadow">
                 <div className="text-sm text-gray-500 mb-2">5 Aralık 2024</div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">

@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     canonical: '/blog/ingiltere-universite-rehberi',
   },
   openGraph: {
-    url: 'https://akaegitim.com.tr/blog/ingiltere-universite-rehberi',
+    url: 'https://www.akaegitim.com.tr/blog/ingiltere-universite-rehberi',
     type: 'article',
     title: "İngiltere'de Üniversite Eğitimi Rehberi",
     description:
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     modifiedTime: '2024-12-15T08:00:00+03:00',
     images: [
       {
-        url: 'https://akaegitim.com.tr/logo.jpg',
+        url: 'https://www.akaegitim.com.tr/logo.jpg',
         width: 1200,
         height: 630,
         alt: 'İngiltere üniversite rehberi',
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     title: "İngiltere'de Üniversite Eğitimi Rehberi",
     description:
       'İngiltere’de üniversite eğitimi planlayan öğrenciler için başvuru süreçleri, maliyetler ve konaklama seçenekleri.',
-    images: ['https://akaegitim.com.tr/logo.jpg'],
+    images: ['https://www.akaegitim.com.tr/logo.jpg'],
   },
 }
 
@@ -66,7 +66,7 @@ export default function IngiltereUniversiteRehberi() {
               'İngiltere’de üniversite eğitimi için UCAS başvurusu, dil gereksinimleri, vize ve maliyetler üzerine kapsamlı rehber.',
             datePublished: '2024-12-15T08:00:00+03:00',
             dateModified: '2024-12-15T08:00:00+03:00',
-            mainEntityOfPage: 'https://akaegitim.com.tr/blog/ingiltere-universite-rehberi',
+            mainEntityOfPage: 'https://www.akaegitim.com.tr/blog/ingiltere-universite-rehberi',
             author: {
               '@type': 'Organization',
               name: 'Aka Eğitim',
@@ -76,21 +76,21 @@ export default function IngiltereUniversiteRehberi() {
               name: 'Aka Eğitim',
               logo: {
                 '@type': 'ImageObject',
-                url: 'https://akaegitim.com.tr/logo.jpg',
+                url: 'https://www.akaegitim.com.tr/logo.jpg',
               },
             },
-            image: 'https://akaegitim.com.tr/logo.jpg',
+            image: 'https://www.akaegitim.com.tr/logo.jpg',
             inLanguage: 'tr-TR',
           }),
         }}
       />
       <div className="pt-16 sm:pt-18 lg:pt-20">
-        <PageHero 
+        <PageHero
           title="İngiltere'de Üniversite Eğitimi Rehberi"
           subtitle="Köklü eğitim geleneği ve dünya çapında tanınan diplomalar"
           description="İngiltere üniversiteleri hakkında bilmeniz gerekenler"
         />
-        
+
         {/* Blog İçeriği */}
         <article className="py-20 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -98,18 +98,18 @@ export default function IngiltereUniversiteRehberi() {
               <div className="text-sm text-gray-500 mb-8">
                 <span>15 Aralık 2024</span> • <span>Yazar: Eğitim Danışmanları</span> • <span>10 dakika okuma</span>
               </div>
-              
+
               <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">
                   Neden İngiltere?
                 </h2>
                 <p className="text-lg text-gray-700 mb-4">
-                  İngiltere, dünya çapında en prestijli üniversitelere ev sahipliği yapan ülkelerden biridir. 
-                  University of Oxford, University of Cambridge, Imperial College London gibi kurumlar 
+                  İngiltere, dünya çapında en prestijli üniversitelere ev sahipliği yapan ülkelerden biridir.
+                  University of Oxford, University of Cambridge, Imperial College London gibi kurumlar
                   global eğitim sektöründe lider konumdadır.
                 </p>
                 <p className="text-lg text-gray-700">
-                  İngiltere üniversitelerinde aldığınız diploma, iş dünyasında yüksek değer görür ve 
+                  İngiltere üniversitelerinde aldığınız diploma, iş dünyasında yüksek değer görür ve
                   kariyer fırsatlarınızı önemli ölçüde artırır.
                 </p>
               </div>
@@ -117,12 +117,12 @@ export default function IngiltereUniversiteRehberi() {
               <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-12">
                 Başvuru Süreci
               </h2>
-              
+
               <h3 className="text-2xl font-semibold text-gray-800 mb-4 mt-8">
                 1. UCAS Başvurusu
               </h3>
               <p className="text-lg text-gray-700 mb-4">
-                İngiltere üniversitelerine başvuru yapmak için UCAS (Universities and Colleges Admissions Service) 
+                İngiltere üniversitelerine başvuru yapmak için UCAS (Universities and Colleges Admissions Service)
                 sistemi kullanılır. Bu sistem aracılığıyla en fazla 5 üniversite ve program seçeneği sunabilirsiniz.
               </p>
               <ul className="list-disc list-inside space-y-2 mb-6 text-gray-700">
@@ -136,14 +136,14 @@ export default function IngiltereUniversiteRehberi() {
                 2. Eğitim Sistemi
               </h3>
               <p className="text-lg text-gray-700 mb-4">
-                İngiltere üniversite sistemi 3 yıl süren lisans eğitimi, 1 yıl master eğitimi sunar. 
+                İngiltere üniversite sistemi 3 yıl süren lisans eğitimi, 1 yıl master eğitimi sunar.
                 Bu yoğun program, 4 yıllık sistemlere göre daha hızlı mezun olmanızı sağlar.
               </p>
-              
+
               <div className="bg-blue-50 border-l-4 border-blue-500 p-6 mb-8">
                 <h4 className="font-bold text-blue-900 mb-2">Önemli Not:</h4>
                 <p className="text-blue-800">
-                  İngiltere üniversitelerinde öğrenim süresi genellikle İskoçya hariç 3 yıldır. 
+                  İngiltere üniversitelerinde öğrenim süresi genellikle İskoçya hariç 3 yıldır.
                   İskoçya&apos;da ise 4 yıllık programlar yaygındır.
                 </p>
               </div>
@@ -152,7 +152,7 @@ export default function IngiltereUniversiteRehberi() {
                 3. Dil Gereksinimleri
               </h3>
               <p className="text-lg text-gray-700 mb-4">
-                İngilizce eğitim almak için yeterli dil seviyesine sahip olmanız şarttır. 
+                İngilizce eğitim almak için yeterli dil seviyesine sahip olmanız şarttır.
                 Genel gereksinimler:
               </p>
               <ul className="list-disc list-inside space-y-2 mb-6 text-gray-700">
@@ -165,7 +165,7 @@ export default function IngiltereUniversiteRehberi() {
               <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-12">
                 Maliyetler
               </h2>
-              
+
               <div className="grid md:grid-cols-3 gap-6 mb-8">
                 <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 border border-green-200">
                   <h4 className="font-bold text-green-900 mb-2">Öğrenim Ücreti</h4>
@@ -201,10 +201,10 @@ export default function IngiltereUniversiteRehberi() {
                 Vize Süreci
               </h2>
               <p className="text-lg text-gray-700 mb-4">
-                İngiltere&apos;de eğitim almak için Student Visa başvurusu yapmalısınız. 
+                İngiltere&apos;de eğitim almak için Student Visa başvurusu yapmalısınız.
                 Süreç yaklaşık 2-3 ay sürebilir.
               </p>
-              
+
               <div className="bg-gradient-to-r from-orange-50 to-red-50 rounded-xl p-8 mb-8 border border-orange-200">
                 <h4 className="font-bold text-orange-900 mb-4">Vize Gereksinimleri:</h4>
                 <ul className="list-disc list-inside space-y-2 text-orange-900">
@@ -244,7 +244,7 @@ export default function IngiltereUniversiteRehberi() {
                 Çalışma İzni
               </h2>
               <p className="text-lg text-gray-700 mb-4">
-                İngiltere&apos;de öğrenim gören uluslararası öğrenciler haftada maksimum 20 saat yarı zamanlı çalışabilir. 
+                İngiltere&apos;de öğrenim gören uluslararası öğrenciler haftada maksimum 20 saat yarı zamanlı çalışabilir.
                 Tatil dönemlerinde tam zamanlı çalışma izni verilir.
               </p>
 
@@ -253,12 +253,12 @@ export default function IngiltereUniversiteRehberi() {
                   Sonuç
                 </h3>
                 <p className="text-lg text-turquoise-800 mb-4">
-                  İngiltere&apos;de üniversite eğitimi almak, akademik kariyeriniz için büyük bir adımdır. 
-                  Köklü eğitim geleneği, dünya çapında tanınan diplomalar ve kültürel zenginlik 
+                  İngiltere&apos;de üniversite eğitimi almak, akademik kariyeriniz için büyük bir adımdır.
+                  Köklü eğitim geleneği, dünya çapında tanınan diplomalar ve kültürel zenginlik
                   bu ülkeyi öğrenciler için cazip kılar.
                 </p>
                 <p className="text-lg text-turquoise-800">
-                  Başvuru sürecinden mezuniyete kadar her aşamada profesyonel destek almak, 
+                  Başvuru sürecinden mezuniyete kadar her aşamada profesyonel destek almak,
                   başarınızı artıracaktır.
                 </p>
               </div>

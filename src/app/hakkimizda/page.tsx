@@ -19,13 +19,13 @@ export const metadata: Metadata = {
     canonical: "/hakkimizda",
   },
   openGraph: {
-    url: "https://akaegitim.com.tr/hakkimizda",
+    url: "https://www.akaegitim.com.tr/hakkimizda",
     title: "Aka Eğitim Hakkında",
     description:
       "Öğrenci odaklı yaklaşımımız ve global partner ağımızla yurtdışı eğitimde güvenilir çözüm ortağınız.",
     images: [
       {
-        url: "https://akaegitim.com.tr/logo.jpg",
+        url: "https://www.akaegitim.com.tr/logo.jpg",
         width: 1200,
         height: 630,
         alt: "Aka Eğitim ekibi",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     title: "Aka Eğitim Hakkında",
     description:
       "Yurtdışı eğitim süreçlerinde şeffaf ve uzman danışmanlık yaklaşımımızı keşfedin.",
-    images: ["https://akaegitim.com.tr/logo.jpg"],
+    images: ["https://www.akaegitim.com.tr/logo.jpg"],
   },
 };
 

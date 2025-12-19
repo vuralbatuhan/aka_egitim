@@ -24,13 +24,13 @@ export const metadata: Metadata = {
     canonical: '/nicin-kurduk',
   },
   openGraph: {
-    url: 'https://akaegitim.com.tr/nicin-kurduk',
+    url: 'https://www.akaegitim.com.tr/nicin-kurduk',
     title: 'Aka Eğitim Neden Kuruldu?',
     description:
       'Kuruluş hikayemiz, öğrenci odaklı hizmet yaklaşımımız ve yurtdışı eğitimde sunduğumuz çözümler.',
     images: [
       {
-        url: 'https://akaegitim.com.tr/logo.jpg',
+        url: 'https://www.akaegitim.com.tr/logo.jpg',
         width: 1200,
         height: 630,
         alt: 'Aka Eğitim kuruluş hikayesi',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     title: 'Aka Eğitim Neden Kuruldu?',
     description:
       'Öğrencilere şeffaf ve özelleştirilmiş yurtdışı eğitim danışmanlığı sunmak amacıyla nasıl yola çıktığımızı keşfedin.',
-    images: ['https://akaegitim.com.tr/logo.jpg'],
+    images: ['https://www.akaegitim.com.tr/logo.jpg'],
   },
 }
 
@@ -53,12 +53,12 @@ export default function NicinKurduk() {
     <main className="min-h-screen">
       <Navbar />
       <div className="pt-16 sm:pt-18 lg:pt-20">
-        <PageHero 
+        <PageHero
           title="Niçin Kurduk"
           subtitle="Yurtdışı eğitim alanında fark yaratan bir vizyon"
           description="Öğrencilerimizin yurtdışı eğitim yolculuklarını daha kolay ve başarılı kılmak için kurulduk"
         />
-        
+
         {/* Kuruluş Hikayesi */}
         <section className="py-20 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -85,7 +85,7 @@ export default function NicinKurduk() {
             <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">
               Niçin Bu İhtiyaç Vardı?
             </h2>
-            
+
             <div className="grid md:grid-cols-2 gap-8 mb-12">
               <Card className="hover:shadow-xl transition-shadow">
                 <CardBody className="p-8">
@@ -100,7 +100,7 @@ export default function NicinKurduk() {
                     </h3>
                   </div>
                   <p className="text-gray-700">
-                    Yurtdışı eğitim başvuruları, vize işlemleri ve konaklama süreçleri öğrenciler için oldukça karmaşıktı. 
+                    Yurtdışı eğitim başvuruları, vize işlemleri ve konaklama süreçleri öğrenciler için oldukça karmaşıktı.
                     Her aşamada farklı firmalarla çalışma zorunluluğu öğrencileri zorluyordu.
                   </p>
                 </CardBody>
@@ -119,7 +119,7 @@ export default function NicinKurduk() {
                     </h3>
                   </div>
                   <p className="text-gray-700">
-                    Öğrenciler güvenilir, güncel ve şeffaf bilgiye erişemiyordu. 
+                    Öğrenciler güvenilir, güncel ve şeffaf bilgiye erişemiyordu.
                     Yanlış bilgilendirme sonucu harcanan zaman ve kaybedilen fırsatlar nedeniyle hayaller gerçekleşmiyordu.
                   </p>
                 </CardBody>
@@ -138,7 +138,7 @@ export default function NicinKurduk() {
                     </h3>
                   </div>
                   <p className="text-gray-700">
-                    Sektörde güvenilir ve şeffaf hizmet veren kurumların eksikliği, öğrencileri endişelendiriyordu. 
+                    Sektörde güvenilir ve şeffaf hizmet veren kurumların eksikliği, öğrencileri endişelendiriyordu.
                     Gizli maliyetler, tutarsız hizmet kalitesi sorunlara yol açıyordu.
                   </p>
                 </CardBody>
@@ -157,7 +157,7 @@ export default function NicinKurduk() {
                     </h3>
                   </div>
                   <p className="text-gray-700">
-                    Her öğrencinin hedefi, bütçesi ve tercihleri farklı olmasına rağmen standart paketler sunuluyordu. 
+                    Her öğrencinin hedefi, bütçesi ve tercihleri farklı olmasına rağmen standart paketler sunuluyordu.
                     Kişiye özel danışmanlık yaklaşımı eksikti.
                   </p>
                 </CardBody>
@@ -175,7 +175,7 @@ export default function NicinKurduk() {
             <p className="text-xl text-gray-600 text-center mb-16">
               Öğrenci odaklı, şeffaf ve kapsamlı hizmet anlayışı
             </p>
-            
+
             <div className="grid md:grid-cols-3 gap-8">
               <div className="text-center p-8 bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl">
                 <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">

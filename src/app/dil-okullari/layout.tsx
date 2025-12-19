@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: 'Yurtdışı Dil Okulları | Aka Eğitim',
         description: 'Yurtdışında dil eğitimi alarak kariyerinize değer katın. Size özel okul ve program seçeneklerini inceleyin.',
-        url: 'https://akaegitim.com.tr/dil-okullari',
+        url: 'https://www.akaegitim.com.tr/dil-okullari',
     },
 }
 

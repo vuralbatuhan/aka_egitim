@@ -18,13 +18,13 @@ export const metadata: Metadata = {
     canonical: '/iletisim',
   },
   openGraph: {
-    url: 'https://akaegitim.com.tr/iletisim',
+    url: 'https://www.akaegitim.com.tr/iletisim',
     title: 'Aka Eğitim İletişim',
     description:
       'Yurtdışı eğitim hedeflerinizi planlamak için telefon, e-posta veya form üzerinden bize ulaşın.',
     images: [
       {
-        url: 'https://akaegitim.com.tr/logo.jpg',
+        url: 'https://www.akaegitim.com.tr/logo.jpg',
         width: 1200,
         height: 630,
         alt: 'Aka Eğitim iletişim kanalları',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: 'Aka Eğitim İletişim',
     description:
       'Uzman danışmanlarımızla iletişime geçerek yurtdışı eğitim çözümleri hakkında bilgi alın.',
-    images: ['https://akaegitim.com.tr/logo.jpg'],
+    images: ['https://www.akaegitim.com.tr/logo.jpg'],
   },
 }
 
@@ -47,15 +47,15 @@ export default function Iletisim() {
     <main className="min-h-screen">
       <Navbar />
       <div className="pt-16 sm:pt-18 lg:pt-20">
-        <PageHero 
+        <PageHero
           title="İletişim"
           subtitle="Ücretsiz Danışmanlık Alın"
           description="Size en uygun eğitim programını bulalım"
           backgroundImage="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1200&q=80"
         />
-        
+
         <ContactForm />
-        
+
         {/* İletişim Bilgileri */}
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -70,7 +70,7 @@ export default function Iletisim() {
                 <p className="text-gray-700 mb-2">+90 212 345 67 89</p>
                 <p className="text-gray-700">+90 532 123 45 67</p>
               </div>
-              
+
               <div className="text-center p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl">
                 <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -81,7 +81,7 @@ export default function Iletisim() {
                 <p className="text-gray-700 mb-2">info@akaegitim.com</p>
                 <p className="text-gray-700">danismanlik@akaegitim.com</p>
               </div>
-              
+
               <div className="text-center p-6 bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl">
                 <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -94,7 +94,7 @@ export default function Iletisim() {
                 <p className="text-gray-700">34330 Beşiktaş/İstanbul</p>
               </div>
             </div>
-            
+
             {/* Çalışma Saatleri */}
             <div className="mt-12 bg-gradient-to-br from-gray-50 to-primary/5 rounded-2xl p-8 text-center">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Çalışma Saatleri</h3>

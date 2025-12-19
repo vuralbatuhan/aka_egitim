@@ -24,13 +24,13 @@ export const metadata: Metadata = {
     canonical: '/biz-kimiz',
   },
   openGraph: {
-    url: 'https://akaegitim.com.tr/biz-kimiz',
+    url: 'https://www.akaegitim.com.tr/biz-kimiz',
     title: 'Aka Eğitim Ekibi | Biz Kimiz',
     description:
       'Yurtdışı eğitim danışmanlığında uzmanlaşmış ekibimizi, çalışma prensiplerimizi ve öğrenci başarılarımızı keşfedin.',
     images: [
       {
-        url: 'https://akaegitim.com.tr/logo.jpg',
+        url: 'https://www.akaegitim.com.tr/logo.jpg',
         width: 1200,
         height: 630,
         alt: 'Aka Eğitim danışmanlık ekibi',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     title: 'Aka Eğitim Danışmanları | Biz Kimiz',
     description:
       'Deneyimli yurtdışı eğitim danışmanlarımız ile tanışın ve öğrenci odaklı yaklaşımımızı keşfedin.',
-    images: ['https://akaegitim.com.tr/logo.jpg'],
+    images: ['https://www.akaegitim.com.tr/logo.jpg'],
   },
 }
 
@@ -53,12 +53,12 @@ export default function BizKimiz() {
     <main className="min-h-screen">
       <Navbar />
       <div className="pt-16 sm:pt-18 lg:pt-20">
-        <PageHero 
+        <PageHero
           title="Biz Kimiz"
           subtitle="Yurtdışı eğitim konusunda güvenilir partneriniz"
           description="Öğrencilerimizin hayallerini gerçeğe dönüştürmek için çalışan deneyimli bir ekibiz"
         />
-        
+
         {/* Misyon ve Değerler Bölümü */}
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -74,7 +74,7 @@ export default function BizKimiz() {
                   Her öğrencinin benzersiz olduğunu bilerek, kişiye özel eğitim planları ve kapsamlı danışmanlık hizmeti sunuyoruz.
                 </p>
               </div>
-              
+
               <div>
                 <h2 className="text-4xl font-bold text-gray-900 mb-6">
                   Değerlerimiz
@@ -91,7 +91,7 @@ export default function BizKimiz() {
                       <p className="text-gray-700">15 yıllık deneyimimiz ve şeffaf iletişimimizle öğrencilerimize güven sağlıyoruz.</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start gap-4">
                     <div className="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
                       <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -103,7 +103,7 @@ export default function BizKimiz() {
                       <p className="text-gray-700">Her öğrencinin ihtiyacına göre kişiselleştirilmiş çözümler sunuyoruz.</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start gap-4">
                     <div className="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
                       <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -130,7 +130,7 @@ export default function BizKimiz() {
             <p className="text-xl text-gray-600 text-center mb-12">
               Alanında uzman danışmanlarımız ve destek ekibimiz sizlerle
             </p>
-            
+
             <div className="grid md:grid-cols-3 gap-8">
               <Card className="hover:shadow-xl transition-shadow">
                 <CardBody className="p-6">
@@ -195,7 +195,7 @@ export default function BizKimiz() {
             <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">
               Başarılarımız
             </h2>
-            
+
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               <div className="text-center">
                 <div className="text-5xl font-bold text-primary mb-2">15+</div>

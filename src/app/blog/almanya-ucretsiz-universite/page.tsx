@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     canonical: '/blog/almanya-ucretsiz-universite',
   },
   openGraph: {
-    url: 'https://akaegitim.com.tr/blog/almanya-ucretsiz-universite',
+    url: 'https://www.akaegitim.com.tr/blog/almanya-ucretsiz-universite',
     type: 'article',
     title: 'Almanya\'da Ücretsiz Üniversite Eğitimi Rehberi',
     description:
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     modifiedTime: '2024-12-10T08:00:00+03:00',
     images: [
       {
-        url: 'https://akaegitim.com.tr/logo.jpg',
+        url: 'https://www.akaegitim.com.tr/logo.jpg',
         width: 1200,
         height: 630,
         alt: 'Almanya ücretsiz üniversite rehberi',
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     title: 'Almanya\'da Ücretsiz Üniversite Eğitimi Rehberi',
     description:
       'Almanya’da ücretsiz üniversite okumak için başvuru adımları, gereken belgeler ve maliyet detayları.',
-    images: ['https://akaegitim.com.tr/logo.jpg'],
+    images: ['https://www.akaegitim.com.tr/logo.jpg'],
   },
 }
 
@@ -66,7 +66,7 @@ export default function AlmanyaUcretsizUniversite() {
               "Almanya'da ücretsiz üniversite eğitimi almak için başvuru şartları, dil gereksinimleri, Uni-Assist süreçleri ve yaşam maliyetleri.",
             datePublished: '2024-12-10T08:00:00+03:00',
             dateModified: '2024-12-10T08:00:00+03:00',
-            mainEntityOfPage: 'https://akaegitim.com.tr/blog/almanya-ucretsiz-universite',
+            mainEntityOfPage: 'https://www.akaegitim.com.tr/blog/almanya-ucretsiz-universite',
             author: {
               '@type': 'Organization',
               name: 'Aka Eğitim',
@@ -76,21 +76,21 @@ export default function AlmanyaUcretsizUniversite() {
               name: 'Aka Eğitim',
               logo: {
                 '@type': 'ImageObject',
-                url: 'https://akaegitim.com.tr/logo.jpg',
+                url: 'https://www.akaegitim.com.tr/logo.jpg',
               },
             },
-            image: 'https://akaegitim.com.tr/logo.jpg',
+            image: 'https://www.akaegitim.com.tr/logo.jpg',
             inLanguage: 'tr-TR',
           }),
         }}
       />
       <div className="pt-16 sm:pt-18 lg:pt-20">
-        <PageHero 
+        <PageHero
           title="Almanya'da Ücretsiz Üniversite Eğitimi"
           subtitle="Kaliteli eğitim, sıfır öğrenim ücreti ve parlak bir gelecek"
           description="Almanya üniversite sistemi hakkında bilmeniz gerekenler"
         />
-        
+
         {/* Blog İçeriği */}
         <article className="py-20 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -98,18 +98,18 @@ export default function AlmanyaUcretsizUniversite() {
               <div className="text-sm text-gray-500 mb-8">
                 <span>10 Aralık 2024</span> • <span>Yazar: Eğitim Danışmanları</span> • <span>12 dakika okuma</span>
               </div>
-              
+
               <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8 mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">
                   Almanya Neden Ücretsiz Eğitim Sunuyor?
                 </h2>
                 <p className="text-lg text-gray-700 mb-4">
-                  Almanya, 2014 yılında uluslararası öğrenciler için öğrenim ücretini kaldırmış, 
-                  eğitimi temel bir hak olarak görmüştür. Baden-Württemberg eyaleti dışında tüm devlet 
+                  Almanya, 2014 yılında uluslararası öğrenciler için öğrenim ücretini kaldırmış,
+                  eğitimi temel bir hak olarak görmüştür. Baden-Württemberg eyaleti dışında tüm devlet
                   üniversitelerinde öğrenim ücreti alınmamaktadır.
                 </p>
                 <p className="text-lg text-gray-700">
-                  Bu sayede dünyanın her yerinden öğrenciler, ücretsiz ve yüksek kaliteli eğitim alma 
+                  Bu sayede dünyanın her yerinden öğrenciler, ücretsiz ve yüksek kaliteli eğitim alma
                   fırsatına sahip oluyor.
                 </p>
               </div>
@@ -117,7 +117,7 @@ export default function AlmanyaUcretsizUniversite() {
               <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-12">
                 Başvuru Süreci ve Gereksinimler
               </h2>
-              
+
               <h3 className="text-2xl font-semibold text-gray-800 mb-4 mt-8">
                 1. Dil Gereksinimleri
               </h3>
@@ -134,7 +134,7 @@ export default function AlmanyaUcretsizUniversite() {
               <div className="bg-blue-50 border-l-4 border-blue-500 p-6 mb-8">
                 <h4 className="font-bold text-blue-900 mb-2">💡 İpucu:</h4>
                 <p className="text-blue-800">
-                  Türkiye&apos;den başvuru yapmadan önce dil hazırlık kursu almak mantıklıdır. 
+                  Türkiye&apos;den başvuru yapmadan önce dil hazırlık kursu almak mantıklıdır.
                   Almanya&apos;da da bir yıl hazırlık eğitimi (Studienkolleg) alınabilir.
                 </p>
               </div>
@@ -168,7 +168,7 @@ export default function AlmanyaUcretsizUniversite() {
               <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-12">
                 Maliyetler
               </h2>
-              
+
               <div className="bg-gradient-to-br from-green-100 to-emerald-100 rounded-xl p-8 mb-8 border-2 border-green-500">
                 <h3 className="text-2xl font-bold text-green-900 mb-6 text-center">
                   Almanya&apos;da Eğitim Maliyeti
@@ -213,7 +213,7 @@ export default function AlmanyaUcretsizUniversite() {
               <div className="bg-orange-50 border-l-4 border-orange-500 p-6 mb-8">
                 <h4 className="font-bold text-orange-900 mb-2">⚠️ Önemli:</h4>
                 <p className="text-orange-800">
-                  Baden-Württemberg eyaletindeki üniversiteler için yıllık €1,500 öğrenim ücreti alınır. 
+                  Baden-Württemberg eyaletindeki üniversiteler için yıllık €1,500 öğrenim ücreti alınır.
                   Diğer eyaletlerde ücretsizdir.
                 </p>
               </div>
@@ -221,12 +221,12 @@ export default function AlmanyaUcretsizUniversite() {
               <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-12">
                 Vize Süreci
               </h2>
-              
+
               <div className="space-y-6 mb-8">
                 <div>
                   <h4 className="font-bold text-gray-900 mb-2 text-lg">1. Student Visa (Öğrenci Vizesi)</h4>
                   <p className="text-gray-700">
-                    Kabul mektubu aldıktan sonra Almanya Konsolosluğu&apos;na vize başvurusu yapılır. 
+                    Kabul mektubu aldıktan sonra Almanya Konsolosluğu&apos;na vize başvurusu yapılır.
                     Süreç yaklaşık 8-12 hafta sürer.
                   </p>
                 </div>
@@ -325,11 +325,11 @@ export default function AlmanyaUcretsizUniversite() {
                   Sonuç ve Tavsiyeler
                 </h3>
                 <p className="text-lg text-turquoise-800 mb-4">
-                  Almanya, kaliteli eğitim, ücretsiz öğrenim ve mezuniyet sonrası iş fırsatları 
+                  Almanya, kaliteli eğitim, ücretsiz öğrenim ve mezuniyet sonrası iş fırsatları
                   sunduğu için uluslararası öğrenciler için ideal bir destinasyondur.
                 </p>
                 <p className="text-lg text-turquoise-800">
-                  Başvuru süreci zahmetli görünebilir, ancak doğru planlama ve profesyonel destekle 
+                  Başvuru süreci zahmetli görünebilir, ancak doğru planlama ve profesyonel destekle
                   bu süreci başarıyla tamamlayabilirsiniz. Erken başvuru ve iyi hazırlık anahtarınızdır.
                 </p>
               </div>

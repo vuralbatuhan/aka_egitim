@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: 'Yurtdışı Üniversite Danışmanlığı | Aka Eğitim',
         description: 'Yurtdışındaki en iyi üniversitelere başvururken yanınızdayız. Bölüm seçimi, başvuru ve vize süreçlerinde profesyonel destek.',
-        url: 'https://akaegitim.com.tr/universite',
+        url: 'https://www.akaegitim.com.tr/universite',
     },
 }
 

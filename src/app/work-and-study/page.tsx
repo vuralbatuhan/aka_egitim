@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     canonical: '/work-and-study',
   },
   openGraph: {
-    url: 'https://akaegitim.com.tr/work-and-study',
+    url: 'https://www.akaegitim.com.tr/work-and-study',
     title: 'Work and Study Programları | Aka Eğitim',
     description:
       'Çalışma izni içeren dil okullarında eğitim alırken yaşam masraflarınızı karşılayın. Vize, konaklama ve iş bulma desteği.',
     images: [
       {
-        url: 'https://akaegitim.com.tr/logo.jpg',
+        url: 'https://www.akaegitim.com.tr/logo.jpg',
         width: 1200,
         height: 630,
         alt: 'Work and Study programı danışmanlığı',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     title: 'Work and Study Programları | Aka Eğitim',
     description:
       'Yurtdışında dil öğrenirken yarı zamanlı çalışma imkanı sunan programlar için ücretsiz danışmanlık alın.',
-    images: ['https://akaegitim.com.tr/logo.jpg'],
+    images: ['https://www.akaegitim.com.tr/logo.jpg'],
   },
 }
 
@@ -49,7 +49,7 @@ export default function WorkAndStudyPage() {
   return (
     <main className="min-h-screen">
       <Navbar />
-      <PageHero 
+      <PageHero
         title="Work and Study"
         subtitle="Çalışarak dil öğrenin, deneyim kazanın ve kariyerinizi geliştirin"
         backgroundImage="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=80"

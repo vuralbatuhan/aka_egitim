@@ -74,16 +74,16 @@ export const metadata: Metadata = {
     "yurtdışı eğitim ajansı",
   ],
   alternates: {
-    canonical: "https://akaegitim.com.tr/",
+    canonical: "https://www.akaegitim.com.tr/",
   },
   openGraph: {
-    url: "https://akaegitim.com.tr/",
+    url: "https://www.akaegitim.com.tr/",
     title: "Aka Eğitim - Yurtdışı Eğitim Danışmanlığı | 50+ Ülke, 500+ Okul",
     description:
       "Yurtdışı dil okulu, üniversite, yüksek lisans programları için profesyonel danışmanlık. Ücretsiz danışmanlık için hemen başvurun!",
     images: [
       {
-        url: "https://akaegitim.com.tr/logo.jpg",
+        url: "https://www.akaegitim.com.tr/logo.jpg",
         width: 1200,
         height: 630,
         alt: "Aka Eğitim - Yurtdışı Eğitim Danışmanlığı",
@@ -98,7 +98,7 @@ export const metadata: Metadata = {
     title: "Aka Eğitim - Yurtdışı Eğitim Danışmanlığı",
     description:
       "Yurtdışı dil okulu, üniversite ve yüksek lisans programları. 50+ ülke, 500+ okul. Ücretsiz danışmanlık!",
-    images: ["https://akaegitim.com.tr/logo.jpg"],
+    images: ["https://www.akaegitim.com.tr/logo.jpg"],
   },
 };
 
@@ -169,7 +169,7 @@ export default function Home() {
                 "@type": "ListItem",
                 position: 1,
                 name: "Ana Sayfa",
-                item: "https://akaegitim.com.tr/",
+                item: "https://www.akaegitim.com.tr/",
               },
             ],
           }),
