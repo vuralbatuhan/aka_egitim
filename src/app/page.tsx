@@ -122,7 +122,6 @@ export default function Home() {
       <ContactForm />
       <Footer />
 
-      {/* SEO - Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
