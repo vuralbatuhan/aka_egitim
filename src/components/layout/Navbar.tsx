@@ -15,30 +15,7 @@ import { Squares2X2Icon } from "@heroicons/react/24/outline";
 import MobileGridMenu, { MobileMenuSection } from "./MobileGridMenu";
 
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isGridMenuOpen, setIsGridMenuOpen] = useState(false);
-
-  // Scroll detection
-  useEffect(() => {
-    let lastScrollY = window.scrollY;
-
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scrolling down
-        setIsScrolled(true);
-      } else {
-        // Scrolling up
-        setIsScrolled(false);
-      }
-
-      lastScrollY = currentScrollY;
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const menuItems = useMemo(
     () => [
@@ -190,9 +167,6 @@ export default function Navbar() {
         maxWidth="xl"
         position="sticky"
         height="80px"
-        className={`transition-transform duration-300 ${
-          isScrolled ? "-translate-y-full" : "translate-y-0"
-        }`}
         classNames={{
           wrapper: "px-6 sm:px-8 lg:px-12 xl:px-16 h-20",
           base: "shadow-lg",
