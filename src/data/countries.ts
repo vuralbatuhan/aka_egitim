@@ -2029,3 +2029,12 @@ export function getAvailableEducationTypes(countrySlug: string) {
     return country[type.key as keyof CountryInfo] !== undefined;
   });
 }
+
+// Belirli bir eğitim türünü sunan ülkeleri al
+export function getCountriesForEducationType(
+  educationTypeKey: "languageSchool" | "university" | "mastersDegree" | "doctorate" | "teacherPrograms"
+) {
+  return Object.values(countries).filter(
+    (country) => country[educationTypeKey] !== undefined
+  );
+}

@@ -46,6 +46,9 @@ export default function Navbar() {
       { name: "Ülkeler", href: "/#ulkeler" },
       { name: "Dil Okulları", href: "/dil-okullari" },
       { name: "Üniversite", href: "/universite" },
+      { name: "Yüksek Lisans", href: "/yuksek-lisans" },
+      { name: "Doktora", href: "/doktora" },
+      { name: "Öğretmen Hareketliliği", href: "/ogretmen-hareketliligi" },
       { name: "Hakkımızda", href: "/hakkimizda" },
       { name: "İletişim", href: "/iletisim" },
     ],
@@ -117,6 +120,8 @@ export default function Navbar() {
       "Dil Okulları": "Yurtdışında dil eğitimi programları",
       Üniversite: "Yurtdışında üniversite eğitimi",
       "Yüksek Lisans": "Master ve MBA başvuru rehberleri",
+      Doktora: "PhD ve doktora programları",
+      "Öğretmen Hareketliliği": "Öğretmenler için mesleki gelişim programları",
       Hakkımızda: "Misyonumuz ve değerlerimiz",
       İletişim: "Bizimle iletişime geçin",
     };
