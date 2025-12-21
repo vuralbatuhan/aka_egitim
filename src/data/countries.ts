@@ -72,8 +72,7 @@ export const countries: Record<string, CountryInfo> = {
       title: "İtalya Eğitim Danışmanlığı",
       description:
         "İtalya, tarihi zenginliği, sanat ve kültür mirası ile dünyanın en önemli eğitim merkezlerinden biridir. İtalyanca dil eğitimi, üniversite, yüksek lisans ve doktora programları ile öğrencilere benzersiz bir akademik ve kültürel deneyim sunar.",
-      heroImage:
-        "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1800&q=80",
+      heroImage: "/images/countries/italya.jpg",
       highlights: [
         "Dil okulları ve üniversitelerde İtalyanca eğitimi",
         "Dünya çapında tanınan üniversite programları",
@@ -595,8 +594,7 @@ export const countries: Record<string, CountryInfo> = {
       title: "İngiltere Eğitim Danışmanlığı",
       description:
         "İngiltere, dünyanın en prestijli üniversitelerine ev sahipliği yapar ve İngilizce öğrenmek için en ideal destinasyonlardan biridir. Oxford, Cambridge ve London gibi tarihi şehirlerde kaliteli eğitim imkanları sunar.",
-      heroImage:
-        "https://images.unsplash.com/photo-1486299267070-83823f5448dd?w=1800&q=80",
+      heroImage: "/images/countries/ingiltere.jpg",
       highlights: [
         "Dünya çapında tanınan üniversiteler",
         "İngilizce dil eğitiminde öncü ülke",
@@ -939,8 +937,7 @@ export const countries: Record<string, CountryInfo> = {
       title: "Almanya Eğitim Danışmanlığı",
       description:
         "Almanya, dünya çapında tanınan üniversiteleri, güçlü ekonomisi ve ücretsiz eğitim fırsatlarıyla uluslararası öğrenciler için en popüler destinasyonlardan biridir. Mühendislik, teknoloji ve araştırma alanlarında öncü konumdadır.",
-      heroImage:
-        "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1800&q=80",
+      heroImage: "/images/countries/almanya.jpg",
       highlights: [
         "Ücretsiz veya düşük maliyetli eğitim",
         "Dünya çapında tanınan üniversiteler",
@@ -1452,8 +1449,7 @@ export const countries: Record<string, CountryInfo> = {
       title: "Finlandiya Eğitim Danışmanlığı",
       description:
         "Finlandiya, dünyanın en başarılı eğitim sistemine sahip ülkelerden biridir. Kaliteli ücretsiz eğitim, yüksek yaşam standartları ve doğal güzellikleri ile ideal bir destinasyondur.",
-      heroImage:
-        "https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?w=1800&q=80",
+      heroImage: "/images/countries/finlandiya.jpg",
       highlights: [
         "Dünya'nın en iyi eğitim sistemi",
         "Ücretsiz eğitim (AB vatandaşları için)",
