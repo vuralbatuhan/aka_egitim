@@ -1,53 +1,15 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@heroui/react";
-import { getCountryMapConfig } from "@/lib/representatives";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import dynamic from "next/dynamic";
-import { getAllCountrySlugs, getCountryBySlug } from "@/data/countries";
+import {
+  getAllCountrySlugs,
+  getCountryBySlug,
+  getAvailableEducationTypes,
+} from "@/data/countries";
 import Link from "next/link";
 import { ReactNode } from "react";
-
-// Heavy components'leri lazy load et
-const CountryMap = dynamic(() => import("@/components/sections/CountryMap"), {
-  loading: () => (
-    <div
-      className="flex items-center justify-center h-[400px]"
-      style={{
-        background: "linear-gradient(135deg, #e0f7f5 0%, #f0fdfa 100%)",
-      }}
-    >
-      <div className="text-center">
-        <div
-          className="animate-spin rounded-full h-12 w-12 border-b-2 mx-auto mb-4"
-          style={{ borderColor: "var(--primary-dark)" }}
-        ></div>
-        <p style={{ color: " var(--primary)" }}>Harita yükleniyor...</p>
-      </div>
-    </div>
-  ),
-  ssr: true,
-});
-
-const ContactForm = dynamic(() => import("@/components/forms/ContactForm"), {
-  loading: () => (
-    <div
-      className="py-12 sm:py-16 lg:py-20"
-      style={{
-        background:
-          "linear-gradient(135deg, #f0fdfa 0%, #ffffff 50%, #e0f7f5 100%)",
-      }}
-    >
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 text-center">
-        <div className="animate-pulse" style={{ color: "var(--primary-dark)" }}>
-          Form yükleniyor...
-        </div>
-      </div>
-    </div>
-  ),
-  ssr: true,
-});
 
 interface PageProps {
   params: Promise<{ country: string }>;
@@ -64,8 +26,8 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${info.title} | Aka Eğitim`,
-    description: info.description,
+    title: `${info.overview.title} | Aka Eğitim`,
+    description: info.overview.description,
     keywords: [
       `${info.name.toLowerCase()} eğitim danışmanlığı`,
       `${info.name.toLowerCase()} dil okulu`,
@@ -76,8 +38,8 @@ export async function generateMetadata({
     alternates: { canonical: `/ulkeler/${country.toLowerCase()}` },
     openGraph: {
       url: `https://www.akaegitim.com.tr/ulkeler/${country.toLowerCase()}`,
-      title: `${info.title} | Aka Eğitim`,
-      description: info.description,
+      title: `${info.overview.title} | Aka Eğitim`,
+      description: info.overview.description,
       images: [
         {
           url: "https://www.akaegitim.com.tr/logo.jpg",
@@ -89,8 +51,8 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${info.title} | Aka Eğitim`,
-      description: info.description,
+      title: `${info.overview.title} | Aka Eğitim`,
+      description: info.overview.description,
       images: ["https://www.akaegitim.com.tr/logo.jpg"],
     },
   };
@@ -184,14 +146,18 @@ const getIcon = (iconName: string) => {
   return icons[iconName] || icons.users;
 };
 
-export default async function CountryPage({ params }: PageProps) {
+export default async function CountryOverviewPage({ params }: PageProps) {
   const { country } = await params;
   const info = getCountryBySlug(country.toLowerCase());
-  const mapConfig = info ? getCountryMapConfig(info.name) : null;
+  const availableEducationTypes = info
+    ? getAvailableEducationTypes(country.toLowerCase())
+    : [];
 
-  if (!info || !mapConfig) {
+  if (!info) {
     notFound();
   }
+
+  const { overview } = info;
 
   return (
     <main className="bg-white">
@@ -213,12 +179,13 @@ export default async function CountryPage({ params }: PageProps) {
               logo: "https://www.akaegitim.com.tr/logo.jpg",
             },
             areaServed: info.name,
-            description: info.description,
+            description: overview.description,
             url: `https://www.akaegitim.com.tr/ulkeler/${country.toLowerCase()}`,
           }),
         }}
       />
 
+      {/* Hero Section */}
       <section
         className="relative min-h-[70vh] overflow-hidden flex items-center"
         style={{
@@ -230,9 +197,10 @@ export default async function CountryPage({ params }: PageProps) {
           <div
             className="absolute left-0 top-0 h-full w-[60%] bg-cover bg-center opacity-25"
             style={{
-              backgroundImage: `url(${info.heroImage ??
+              backgroundImage: `url(${
+                overview.heroImage ??
                 "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?w=1400&q=80"
-                })`,
+              })`,
               maskImage:
                 "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 55%, transparent 100%)",
               WebkitMaskImage:
@@ -249,144 +217,75 @@ export default async function CountryPage({ params }: PageProps) {
             className="absolute -bottom-24 -right-24 w-[420px] h-[420px] rounded-full blur-3xl animate-float-slow"
             style={{ background: "rgba(255,255,255,0.08)" }}
           ></div>
-
-          {/* Decorative dots */}
-          <div className="absolute top-24 right-[18%] w-3 h-3 bg-white/40 rounded-full animate-float-reverse"></div>
-          <div className="absolute top-48 left-[25%] w-4 h-4 bg-white/30 rounded-full animate-float"></div>
-          <div className="absolute bottom-40 right-[35%] w-2 h-2 bg-white/25 rounded-full animate-float-slow"></div>
         </div>
 
-        {/* CONTENT */}
-        <div className="relative z-10 w-full px-6 sm:px-8 lg:px-16 xl:px-24 py-24">
-          <div className="max-w-5xl mx-auto text-center animate-fade-in">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/20 backdrop-blur-md text-white rounded-full mb-8 border border-white/30 shadow-lg">
-              <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              <span className="font-semibold tracking-wide">
-                {info.name} Eğitim Fırsatları
+        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20 w-full">
+          <div className="max-w-3xl">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+              {info.name}
+              <span className="block text-3xl sm:text-4xl lg:text-5xl mt-2 opacity-90">
+                Eğitim Danışmanlığı
               </span>
-            </div>
-
-            {/* Title */}
-            <h1
-              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 text-white leading-tight"
-              style={{ textShadow: "0 4px 20px rgba(0,0,0,0.25)" }}
-            >
-              {info.title}
             </h1>
-
-            {/* Description */}
-            <p className="text-lg sm:text-xl lg:text-2xl max-w-4xl mx-auto text-white/90 leading-relaxed mb-12">
-              {info.description}
+            <p className="text-xl sm:text-2xl text-white/90 mb-8 leading-relaxed">
+              {overview.description}
             </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up">
-              <Link href="#contact-form">
+            <div className="flex flex-wrap gap-4">
+              <Link href="#egitim-turleri">
                 <Button
                   size="lg"
-                  className="font-bold shadow-xl hover:shadow-2xl hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 px-10 py-7 text-lg rounded-xl"
-                  style={{ background: "white", color: "var(--primary-dark)" }}
+                  style={{
+                    background: "white",
+                    color: "var(--primary-dark)",
+                    fontWeight: "600",
+                  }}
+                  className="hover:scale-105 transition-transform"
                 >
-                  Ücretsiz Danışmanlık Al
-                  <svg
-                    className="w-5 h-5 ml-2"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
+                  Eğitim Türlerini Keşfet
                 </Button>
               </Link>
-
-              <a href="tel:+902123456789">
+              <Link href="#iletisim">
                 <Button
                   size="lg"
-                  className="backdrop-blur-md border-2 text-white font-bold hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 px-10 py-7 text-lg rounded-xl"
+                  variant="bordered"
                   style={{
-                    background: "rgba(255,255,255,0.12)",
-                    border: "2px solid rgba(255,255,255,0.35)",
+                    borderColor: "white",
+                    color: "white",
+                    fontWeight: "600",
                   }}
+                  className="hover:bg-white/10 transition-all"
                 >
-                  <svg
-                    className="w-5 h-5 mr-2"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                    />
-                  </svg>
-                  Hemen Arayın
+                  İletişime Geç
                 </Button>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
-
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg
-            viewBox="0 0 1440 120"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-auto"
-          >
-            <path
-              d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H0Z"
-              fill="white"
-            />
-          </svg>
-        </div>
       </section>
 
-      <section className="py-16 bg-white relative -mt-1">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
-            {info.statistics.map((stat, index) => (
+      {/* Statistics Section */}
+      <section className="py-12 sm:py-16 bg-gradient-to-br from-gray-50 to-white">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            {overview.statistics.map((stat, index) => (
               <div
                 key={index}
-                className="group relative bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 overflow-hidden"
-                style={{ border: "1px solid #e0f7f5" }}
+                className="bg-white rounded-2xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow group"
               >
-                <div className="relative z-10">
-                  <div
-                    className="flex justify-center mb-4 transition-all duration-300 group-hover:scale-110"
-                    style={{ color: "var(--primary)" }}
-                  >
-                    {getIcon(stat.icon)}
-                  </div>
-                  <div
-                    className="text-3xl sm:text-4xl font-bold mb-2"
-                    style={{ color: "var(--primary-dark)" }}
-                  >
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-gray-600 font-medium">
-                    {stat.label}
-                  </div>
+                <div
+                  className="flex justify-center mb-4 group-hover:scale-110 transition-transform"
+                  style={{ color: "var(--primary)" }}
+                >
+                  {getIcon(stat.icon)}
+                </div>
+                <div
+                  className="text-3xl font-bold mb-2"
+                  style={{ color: "var(--primary-dark)" }}
+                >
+                  {stat.value}
+                </div>
+                <div className="text-sm text-gray-600 font-medium">
+                  {stat.label}
                 </div>
               </div>
             ))}
@@ -394,73 +293,149 @@ export default async function CountryPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Language Programs Section */}
-      {info.languagePrograms && info.languagePrograms.length > 0 && (
-        <section
-          className="py-16 relative overflow-hidden"
-          style={{
-            background:
-              "linear-gradient(135deg, #f0fdfa 0%, #ffffff 50%, #e0f7f5 100%)",
-          }}
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="text-center mb-12">
-              <div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 text-sm font-semibold"
-                style={{ background: "#e0f7f5", color: "var(--primary)" }}
-              >
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                  />
-                </svg>
-                Dil Eğitimi
-              </div>
-              <h2
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4"
-                style={{ color: "var(--primary)" }}
-              >
-                Dil Programları
-              </h2>
-              <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
-                {info.name} dilini öğrenmek için özel hazırlanmış programlarımız
-              </p>
-            </div>
+      {/* Education Types Section */}
+      <section
+        id="egitim-turleri"
+        className="py-16 sm:py-20 lg:py-24"
+        style={{
+          background:
+            "linear-gradient(135deg, #f0fdfa 0%, #ffffff 50%, #e0f7f5 100%)",
+        }}
+      >
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="text-center mb-12">
+            <h2
+              className="text-4xl sm:text-5xl font-bold mb-4"
+              style={{ color: "var(--primary-dark)" }}
+            >
+              {info.name} Eğitim Programları
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              {info.name}&apos;da sunduğumuz çeşitli eğitim programlarını
+              keşfedin
+            </p>
+          </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
-              {info.languagePrograms.map((program, index) => (
-                <div
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {availableEducationTypes.map((type, index) => {
+              const typeData = info[
+                type.key as keyof typeof info
+              ] as unknown as { description: string };
+              if (!typeData) return null;
+
+              // Icon belirleme
+              const typeIcons: Record<string, ReactNode> = {
+                languageSchool: (
+                  <svg
+                    className="w-12 h-12"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"
+                    />
+                  </svg>
+                ),
+                university: (
+                  <svg
+                    className="w-12 h-12"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+                    />
+                  </svg>
+                ),
+                mastersDegree: (
+                  <svg
+                    className="w-12 h-12"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                    />
+                  </svg>
+                ),
+                doctorate: (
+                  <svg
+                    className="w-12 h-12"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+                    />
+                  </svg>
+                ),
+                teacherPrograms: (
+                  <svg
+                    className="w-12 h-12"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                    />
+                  </svg>
+                ),
+              };
+
+              return (
+                <Link
                   key={index}
-                  className="group relative bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden"
-                  style={{ border: "1px solid #d1fae5" }}
+                  href={`/ulkeler/${country}/${type.slug}`}
+                  className="group"
                 >
-                  {/* Top gradient bar */}
-                  <div
-                    className="absolute top-0 left-0 right-0 h-1"
-                    style={{
-                      background:
-                        "linear-gradient(90deg, var(--primary-dark) 0%, var(--primary) 60%, var(--primary-light) 40%)",
-                    }}
-                  ></div>
-
-                  <div className="flex items-start gap-5">
+                  <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl transition-all hover:-translate-y-2 h-full">
                     <div
-                      className="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-all duration-500"
-                      style={{
-                        background:
-                          "linear-gradient(135deg, var(--primary-dark), var(--primary)",
-                      }}
+                      className="mb-6 group-hover:scale-110 transition-transform"
+                      style={{ color: "var(--primary)" }}
                     >
+                      {typeIcons[type.key]}
+                    </div>
+                    <h3
+                      className="text-2xl font-bold mb-3"
+                      style={{ color: "var(--primary-dark)" }}
+                    >
+                      {type.name}
+                    </h3>
+                    <p className="text-gray-600 mb-6 line-clamp-3">
+                      {typeData.description}
+                    </p>
+                    <div className="flex items-center text-sm font-semibold group-hover:translate-x-2 transition-transform">
+                      <span style={{ color: "var(--primary)" }}>
+                        Detaylı Bilgi
+                      </span>
                       <svg
-                        className="w-8 h-8"
+                        className="w-5 h-5 ml-2"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -469,184 +444,55 @@ export default async function CountryPage({ params }: PageProps) {
                           strokeLinecap="round"
                           strokeLinejoin="round"
                           strokeWidth={2}
-                          d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                          d="M9 5l7 7-7 7"
                         />
                       </svg>
                     </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-teal-600 transition-colors">
-                        {program.name}
-                      </h3>
-                      <div
-                        className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-semibold mb-3"
-                        style={{
-                          background: "#e0f7f5",
-                          color: "var(--primary",
-                        }}
-                      >
-                        <svg
-                          className="w-4 h-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                          />
-                        </svg>
-                        {program.duration}
-                      </div>
-                      <p className="text-gray-600 leading-relaxed">
-                        {program.description}
-                      </p>
-                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Why Choose Us Section */}
-      <section className="py-16 bg-white relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 text-sm font-semibold"
-              style={{ background: "#e0f7f5", color: " var(--primary)" }}
-            >
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              Avantajlarımız
-            </div>
-            <h2
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4"
-              style={{ color: " var(--primary)" }}
-            >
-              Neden Bizi Seçmelisiniz?
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
-              Yıllara dayanan tecrübemiz ve başarı hikayelerimizle yanınızdayız
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {info.whyChooseUs.map((reason, index) => (
-              <div
-                key={index}
-                className="group relative bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 overflow-hidden"
-                style={{ borderLeft: "4px solid var(--primary)" }}
-              >
-                <div className="flex items-start gap-4">
-                  <div
-                    className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, var(--primary), var(--primary-dark))",
-                    }}
-                  >
-                    <svg
-                      className="w-6 h-6 text-white"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </div>
-                  <p className="text-gray-700 leading-relaxed flex-1 font-medium group-hover:text-gray-900 transition-colors">
-                    {reason}
-                  </p>
-                </div>
-              </div>
-            ))}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section
-        className="py-16 relative overflow-hidden"
-        style={{
-          background:
-            "linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%)",
-        }}
-      >
-        <div className="absolute inset-0">
-          <div className="absolute top-10 left-10 w-40 h-40 bg-white/10 rounded-full blur-2xl animate-float"></div>
-          <div className="absolute bottom-10 right-10 w-60 h-60 bg-white/10 rounded-full blur-3xl animate-float-slow"></div>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* Highlights Section */}
+      <section className="py-16 sm:py-20 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm text-white rounded-full mb-4 text-sm font-semibold border border-white/30">
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                />
-              </svg>
-              Profesyonel Hizmetler
-            </div>
             <h2
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4"
-              style={{ textShadow: "0 2px 10px rgba(0,0,0,0.2)" }}
+              className="text-4xl sm:text-5xl font-bold mb-4"
+              style={{ color: "var(--primary-dark)" }}
             >
-              Hizmetlerimiz
+              Neden {info.name}?
             </h2>
-            <p className="text-lg sm:text-xl text-white/90 max-w-2xl mx-auto">
-              A&apos;dan Z&apos;ye tüm eğitim sürecinizde yanınızdayız
-            </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {info.services.map((service, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {overview.highlights.map((highlight, index) => (
               <div
                 key={index}
-                className="group flex items-center gap-4 p-5 bg-white/15 backdrop-blur-md rounded-xl hover:bg-white/25 transition-all duration-300 border border-white/25 hover:border-white/40 hover:scale-[1.02]"
+                className="flex items-start p-6 bg-gradient-to-br from-teal-50 to-white rounded-xl shadow-md hover:shadow-lg transition-shadow"
               >
-                <div className="flex-shrink-0 w-3 h-3 bg-white/80 rounded-full group-hover:scale-150 group-hover:bg-white transition-all duration-300"></div>
-                <svg
-                  className="w-5 h-5 text-white/80 flex-shrink-0 group-hover:text-white transition-colors"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+                <div
+                  className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center mr-4"
+                  style={{ background: "var(--primary)" }}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-                <span className="text-white font-medium">{service}</span>
+                  <svg
+                    className="w-6 h-6 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </div>
+                <p className="text-gray-700 font-medium">{highlight}</p>
               </div>
             ))}
           </div>
@@ -655,322 +501,39 @@ export default async function CountryPage({ params }: PageProps) {
 
       {/* Life in Country Section */}
       <section
-        className="py-16 relative"
+        className="py-16 sm:py-20 lg:py-24"
         style={{
           background:
-            "linear-gradient(180deg, #ffffff 0%, #f0fdfa 50%, #ffffff 100%)",
+            "linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%)",
         }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-12">
-            <div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 text-sm font-semibold"
-              style={{ background: "#e0f7f5", color: " var(--primary)" }}
-            >
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                />
-              </svg>
-              Yaşam Rehberi
-            </div>
-            <h2
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4"
-              style={{ color: " var(--primary)" }}
-            >
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-white">
               {info.name}&apos;da Yaşam
             </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
-              Eğitim hayatınız boyunca sizi bekleyen yaşam koşulları
-            </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                label: "Aylık Maliyet",
-                value: info.lifeInCountry.cost,
-                icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
-              },
-              {
-                label: "Dil",
-                value: info.lifeInCountry.language,
-                icon: "M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129",
-              },
-              {
-                label: "İklim",
-                value: info.lifeInCountry.climate,
-                icon: "M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z",
-              },
-              {
-                label: "Kültür",
-                value: info.lifeInCountry.culture,
-                icon: "M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9",
-              },
-            ].map((item, index) => (
-              <div
-                key={index}
-                className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden"
-                style={{ border: "1px solid #d1fae5" }}
-              >
-                <div className="flex flex-col items-center text-center">
-                  <div
-                    className="w-16 h-16 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-all duration-500 shadow-lg"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, var(--primary-dark),  var(--primary))",
-                    }}
-                  >
-                    <svg
-                      className="w-8 h-8 text-white"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d={item.icon}
-                      />
-                    </svg>
-                  </div>
-                  <h3
-                    className="text-sm font-bold uppercase tracking-wider mb-2"
-                    style={{ color: " var(--primary)" }}
-                  >
-                    {item.label}
-                  </h3>
-                  <p className="text-gray-900 font-semibold text-lg leading-snug">
-                    {item.value}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Universities Section */}
-      {info.universities && info.universities.length > 0 && (
-        <section
-          className="py-16 relative overflow-hidden"
-          style={{
-            background:
-              "linear-gradient(135deg, #f0fdfa 0%, #ffffff 50%, #e0f7f5 100%)",
-          }}
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="text-center mb-12">
-              <div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 text-sm font-semibold"
-                style={{ background: "#e0f7f5", color: " var(--primary)" }}
-              >
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                  />
-                </svg>
-                Partner Kurumlar
-              </div>
-              <h2
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4"
-                style={{ color: " var(--primary)" }}
-              >
-                Partner Üniversitelerimiz
-              </h2>
-              <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
-                {info.name}&apos;nın en prestijli eğitim kurumlarıyla iş
-                birliğimiz
-              </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-white">
+              <div className="text-4xl mb-4">💰</div>
+              <h3 className="text-xl font-bold mb-2">Yaşam Maliyeti</h3>
+              <p className="text-white/90">{overview.lifeInCountry.cost}</p>
             </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {info.universities.map((uni, index) => (
-                <div
-                  key={index}
-                  className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 overflow-hidden"
-                  style={{ border: "1px solid #d1fae5" }}
-                >
-                  <div className="flex items-start gap-4 mb-4">
-                    <div
-                      className="flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-all duration-500"
-                      style={{
-                        background:
-                          "linear-gradient(135deg, var(--primary-dark),  var(--primary))",
-                      }}
-                    >
-                      <svg
-                        className="w-7 h-7"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                        />
-                      </svg>
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-teal-600 transition-colors">
-                        {uni.name}
-                      </h3>
-                      <div
-                        className="flex items-center gap-1.5"
-                        style={{ color: "var(--primary-dark)" }}
-                      >
-                        <svg
-                          className="w-4 h-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                          />
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                          />
-                        </svg>
-                        <span className="text-sm font-medium">{uni.city}</span>
-                      </div>
-                    </div>
-                  </div>
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    {uni.description}
-                  </p>
-                </div>
-              ))}
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-white">
+              <div className="text-4xl mb-4">🗣️</div>
+              <h3 className="text-xl font-bold mb-2">Dil</h3>
+              <p className="text-white/90">{overview.lifeInCountry.language}</p>
             </div>
-          </div>
-        </section>
-      )}
-
-      {/* Map Section */}
-      <section
-        className="py-16 relative overflow-hidden"
-        style={{
-          background:
-            "linear-gradient(180deg, #ffffff 0%, #f0fdfa 50%, #e0f7f5 100%)",
-        }}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-12">
-            <div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 text-sm font-semibold"
-              style={{ background: "#e0f7f5", color: " var(--primary)" }}
-            >
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-              </svg>
-              Türkiye Geneli Hizmet
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-white">
+              <div className="text-4xl mb-4">🌤️</div>
+              <h3 className="text-xl font-bold mb-2">İklim</h3>
+              <p className="text-white/90">{overview.lifeInCountry.climate}</p>
             </div>
-            <h2
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4"
-              style={{ color: " var(--primary)" }}
-            >
-              Bölgesel Temsilcilerimiz
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
-              Türkiye&apos;nin her yerinden bize kolayca ulaşabilirsiniz
-            </p>
-          </div>
-
-          <div
-            className="bg-white/90 backdrop-blur-lg rounded-3xl shadow-2xl p-8 overflow-hidden"
-            style={{ border: "1px solid #d1fae5" }}
-          >
-            <div
-              className="mb-8 p-6 rounded-2xl"
-              style={{
-                background: "linear-gradient(135deg, #e0f7f5 0%, #f0fdfa 100%)",
-                border: "1px solid #a7f3d0",
-              }}
-            >
-              <div className="flex items-start gap-4">
-                <div
-                  className="flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center text-white shadow-lg"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, var(--primary), var(--primary-dark))",
-                  }}
-                >
-                  <svg
-                    className="w-7 h-7"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-                <div className="flex-1">
-                  <h4
-                    className="font-bold mb-2 text-lg"
-                    style={{ color: "var(--primary-dark)" }}
-                  >
-                    Nasıl Kullanılır?
-                  </h4>
-                  <p style={{ color: "var(--primary-dark)" }}>
-                    Harita üzerindeki bölgelerin üzerine gelerek bölge adını
-                    görebilir, tıklayarak o bölgedeki temsilcilerimizin iletişim
-                    bilgilerini görüntüleyebilirsiniz.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div
-              className="rounded-2xl p-6"
-              style={{ background: "#f0fdfa", border: "1px solid #d1fae5" }}
-            >
-              <CountryMap config={mapConfig} />
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-white">
+              <div className="text-4xl mb-4">🎭</div>
+              <h3 className="text-xl font-bold mb-2">Kültür</h3>
+              <p className="text-white/90">{overview.lifeInCountry.culture}</p>
             </div>
           </div>
         </div>
@@ -978,90 +541,51 @@ export default async function CountryPage({ params }: PageProps) {
 
       {/* CTA Section */}
       <section
-        className="relative py-20 overflow-hidden"
-        style={{
-          background:
-            "linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%)",
-        }}
+        id="iletisim"
+        className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-gray-50 to-white"
       >
-        <div className="absolute inset-0">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl animate-float-slow"></div>
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white/10 rounded-full blur-3xl animate-float"></div>
-        </div>
-
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm text-white rounded-full mb-6 text-sm font-semibold border border-white/30">
-            <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
-            Hemen Başvurun
-          </div>
-
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
           <h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-white"
-            style={{ textShadow: "0 2px 15px rgba(0,0,0,0.2)" }}
+            className="text-4xl sm:text-5xl font-bold mb-6"
+            style={{ color: "var(--primary-dark)" }}
           >
-            Hayalinizdeki Eğitime Bir Adım Kaldı!
+            {info.name} Eğitim Hayalinizi Gerçeğe Dönüştürün
           </h2>
-          <p className="text-lg sm:text-xl lg:text-2xl mb-10 text-white/90 leading-relaxed max-w-3xl mx-auto">
-            {info.name} eğitim yolculuğunuza bugün başlayın. Uzman ekibimiz size
-            özel çözümler sunmaya hazır.
+          <p className="text-xl text-gray-600 mb-8">
+            Uzman ekibimiz, {info.name} eğitim yolculuğunuzda size rehberlik
+            etmeye hazır. Hemen iletişime geçin, ücretsiz danışmanlık hizmeti
+            alın.
           </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-wrap justify-center gap-4">
             <Link href="/iletisim">
               <Button
                 size="lg"
-                className="font-bold shadow-xl hover:shadow-2xl hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 px-10 py-7 text-lg rounded-xl"
-                style={{ background: "white", color: "var(--primary-dark)" }}
+                style={{
+                  background: "var(--primary)",
+                  color: "white",
+                  fontWeight: "600",
+                }}
+                className="hover:scale-105 transition-transform"
               >
-                <span>Hemen Başvur</span>
-                <svg
-                  className="w-5 h-5 ml-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
-                  />
-                </svg>
+                Ücretsiz Danışmanlık Al
               </Button>
             </Link>
-            <a href="tel:+902123456789">
+            <Link href="tel:+902129999999">
               <Button
                 size="lg"
-                className="backdrop-blur-md border-2 text-white font-bold hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 px-10 py-7 text-lg rounded-xl"
+                variant="bordered"
                 style={{
-                  background: "rgba(255,255,255,0.2)",
-                  borderColor: "rgba(255,255,255,0.4)",
+                  borderColor: "var(--primary)",
+                  color: "var(--primary)",
+                  fontWeight: "600",
                 }}
               >
-                <svg
-                  className="w-5 h-5 mr-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                  />
-                </svg>
-                <span>Bizi Arayın</span>
+                Hemen Ara
               </Button>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
-
-      {/* Contact Form */}
-      <div id="contact-form">
-        <ContactForm />
-      </div>
 
       <Footer />
     </main>
