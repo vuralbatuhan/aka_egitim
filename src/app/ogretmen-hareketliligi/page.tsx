@@ -6,7 +6,7 @@ import Link from 'next/link'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import ContactForm from '@/components/forms/ContactForm'
-import { Card, CardBody, CardFooter, Button } from "@heroui/react"
+import { Card, CardBody, CardFooter } from "@heroui/react"
 import Image from "next/image"
 import { getCountriesForEducationType } from '@/data/countries'
 
@@ -26,7 +26,12 @@ export default function OgretmenHareketliligi() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-teal-400 via-cyan-500 to-teal-600 py-20 sm:py-24 lg:py-32">
+      <section
+        className="relative py-20 sm:py-24 lg:py-32"
+        style={{
+          background: "linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 40%, var(--primary-light) 100%)"
+        }}
+      >
         <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10"></div>
         <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 text-center">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
@@ -54,47 +59,65 @@ export default function OgretmenHareketliligi() {
       </section>
 
       {/* Country Cards */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 xl:px-16">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-gray-50 to-white w-full">
+        <div className="w-full px-3 sm:px-6 lg:px-10 xl:px-36">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
             {TEACHER_COUNTRIES.map((country) => (
-              <Card
-                key={country.slug}
-                className="hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] group"
-              >
-                <CardBody className="p-0">
-                  <div className="relative h-56 w-full overflow-hidden">
-                    <Image
-                      src={country.image}
-                      alt={`${country.name} öğretmen programları`}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                    <div className="absolute bottom-4 left-4">
-                      <h3 className="text-3xl font-bold text-white drop-shadow-lg">{country.name}</h3>
-                    </div>
+              <Link key={country.slug} href={`/ulkeler/${country.slug}/ogretmen`}>
+                <Card
+                  isPressable
+                  className="relative h-full flex flex-col group overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-[1.01] cursor-pointer"
+                >
+                  <div
+                    className="absolute inset-0 bg-cover bg-center opacity-20 blur-xl scale-110"
+                    style={{ backgroundImage: `url(${country.image})` }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/60 to-white/90" />
+
+                  <div className="relative z-10 flex flex-col h-full">
+                    <CardBody className="p-0 flex flex-col flex-1">
+                      <div className="relative h-32 sm:h-36 lg:h-56 w-full overflow-hidden rounded-t-lg">
+                        <Image
+                          src={country.image}
+                          alt={`${country.name} öğretmen programları`}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-110"
+                          sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 25vw"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                        <h3 className="absolute bottom-3 left-4 text-2xl sm:text-3xl font-bold text-white drop-shadow">
+                          {country.name}
+                        </h3>
+                      </div>
+
+                      <div className="p-4 sm:p-5 flex flex-col flex-1">
+                        <p className="text-sm sm:text-base text-foreground/80 mb-4 leading-relaxed">
+                          {country.description}
+                        </p>
+                      </div>
+                    </CardBody>
+
+                    <CardFooter className="px-4 sm:px-5 pb-5 pt-0">
+                      <div className="w-full bg-primary text-primary-foreground font-semibold rounded-md py-3 px-4 flex items-center justify-center gap-2">
+                        <span>Detayları Gör</span>
+                        <svg
+                          className="w-5 h-5"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"
+                          />
+                        </svg>
+                      </div>
+                    </CardFooter>
                   </div>
-                  <div className="p-6 sm:p-8">
-                    <p className="text-foreground/80 mb-6 text-base leading-relaxed">
-                      {country.description}
-                    </p>
-                  </div>
-                </CardBody>
-                <CardFooter className="pt-0 px-6 sm:px-8 pb-6 sm:pb-8">
-                  <Button
-                    as={Link}
-                    href={`/ulkeler/${country.slug}/ogretmen`}
-                    color="primary"
-                    variant="solid"
-                    size="lg"
-                    className="w-full font-bold focus:outline-none focus:ring-0"
-                  >
-                    Detayları İncele
-                  </Button>
-                </CardFooter>
-              </Card>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>
