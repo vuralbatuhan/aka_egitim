@@ -11,9 +11,9 @@ const LazyContactForm = dynamic(() => import('@/components/forms/ContactForm'), 
 })
 
 export const metadata: Metadata = {
-  title: 'Ne Yapmak İstiyoruz | Aka Eğitim’in Gelecek Vizyonu',
+  title: 'Ne Yapmak İstiyoruz | AKA Eğitim Vizyonu - Her Ülke Bir Ansiklopedidir',
   description:
-    'Aka Eğitim’in yurtdışı eğitim sektöründe erişilebilirlik, kalite ve inovasyon odaklı hedeflerini ve bu hedeflere ulaşmak için izlediği stratejileri keşfedin.',
+    'AKA Eğitim vizyonu: "Her ülke öğretmen için bir ansiklopedidir." Öğretmen rehberliğinde coğrafi sınırları kaldırarak muasır medeniyet çizgisinin üstüne taşımak.',
   keywords: [
     'aka eğitim vizyonu',
     'yurtdışı eğitim hedeflerimiz',
@@ -55,8 +55,8 @@ export default function NeYapmakIstiyoruz() {
       <div className="pt-16 sm:pt-18 lg:pt-20">
         <PageHero
           title="Ne Yapmak İstiyoruz"
-          subtitle="Geleceği birlikte şekillendiriyoruz"
-          description="Türkiye'nin en güvenilir yurtdışı eğitim danışmanlık firması olmak ve öğrencilerimizin hayallerini gerçeğe dönüştürmek vizyonumuz"
+          subtitle="Her Ülke Bir Ansiklopedidir"
+          description="Öğretmen dokunuşuyla yapılan yurtdışı eğitim hareketliliğinde coğrafi sınırları kaldırarak öğrencinin ufuk çizgisini muasır medeniyet çizgisinin üstüne taşımak"
         />
 
         {/* Vizyonumuz */}
@@ -64,14 +64,19 @@ export default function NeYapmakIstiyoruz() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Vizyonumuz
+                Felsefemiz
               </h2>
-              <p className="text-2xl text-primary font-semibold mb-8">
-                Türkiye&apos;nin En Güvenilir Yurtdışı Eğitim Danışmanlık Firması Olmak
-              </p>
-              <p className="text-xl text-gray-700 leading-relaxed">
-                Her öğrencinin yurtdışında kaliteli eğitim alma hayalini gerçeğe dönüştürmek için
-                sürekli gelişen, yenilikçi ve güvenilir hizmet sunmayı hedefliyoruz.
+              <div className="bg-primary/5 border-l-4 border-primary p-8 rounded-r-lg mb-8 max-w-3xl mx-auto">
+                <p className="text-2xl text-primary font-semibold mb-4">
+                  &ldquo;Her ülke öğretmen için bir ansiklopedidir.&rdquo;
+                </p>
+                <p className="text-lg text-gray-700">
+                  &ldquo;Konu ülkenin geleceği ise özne eğitim, eğitimin öznesi ise değerli kılınmış öğretmendir.&rdquo;
+                </p>
+              </div>
+              <p className="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
+                AKA Eğitim, öğrenmenin ve öğretmenin evrenselliğine inanır. Her yeni gözlemin ve yaşantının
+                öğretmen rehberliğinde öğrencilere aktarılan cümlelerde olduğuna inanır.
               </p>
             </div>
           </div>

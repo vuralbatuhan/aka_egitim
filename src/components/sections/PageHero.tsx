@@ -12,14 +12,16 @@ interface PageHeroProps {
 
 export default function PageHero({ title, subtitle, description, backgroundImage }: PageHeroProps) {
   return (
-    <section 
-      className="relative min-h-[400px] sm:min-h-[500px] flex items-center justify-center bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700"
-      style={backgroundImage ? { backgroundImage: `url(${backgroundImage})` } : {}}
+    <section
+      className="relative min-h-[400px] sm:min-h-[500px] flex items-center justify-center"
+      style={{
+        background: backgroundImage
+          ? `url(${backgroundImage})`
+          : "linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 40%, var(--primary-light) 100%)"
+      }}
     >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/50"></div>
-      
-      {/* Content */}
+      {backgroundImage && <div className="absolute inset-0 bg-black/50"></div>}
+
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 drop-shadow-lg text-white">
           {title}
@@ -33,7 +35,7 @@ export default function PageHero({ title, subtitle, description, backgroundImage
           </p>
         )}
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-          <Button 
+          <Button
             as={Link}
             href="/iletisim"
             color="primary"
@@ -43,7 +45,7 @@ export default function PageHero({ title, subtitle, description, backgroundImage
           >
             Ücretsiz Danışmanlık Al
           </Button>
-          <Button 
+          <Button
             as={Link}
             href="/dil-okullari"
             size="lg"

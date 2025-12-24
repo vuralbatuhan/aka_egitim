@@ -11,9 +11,9 @@ const LazyContactForm = dynamic(() => import('@/components/forms/ContactForm'), 
 })
 
 export const metadata: Metadata = {
-  title: 'Niçin Kurduk | Aka Eğitim’in Kuruluş Hikayesi',
+  title: 'Niçin Kurduk | AKA Eğitim Kuruluş Amacı - Atatürk Vizyonu',
   description:
-    'Aka Eğitim’in yurtdışı eğitim danışmanlığındaki boşluğu doldurmak için nasıl kurulduğunu, öğrenci odaklı vizyonunu ve sunduğu çözümleri öğrenin.',
+    'AKA Eğitim, Atatürk\'ün "Kıvılcım olarak gönderiyorum, alev olarak dönmelisiniz" vizyonuyla kuruldu. Öğretmen rehberliğinde yurtdışı eğitim hareketliliğinin öncüsü.',
   keywords: [
     'aka eğitim niçin kuruldu',
     'yurtdışı eğitim kuruluş hikayesi',
@@ -55,8 +55,8 @@ export default function NicinKurduk() {
       <div className="pt-16 sm:pt-18 lg:pt-20">
         <PageHero
           title="Niçin Kurduk"
-          subtitle="Yurtdışı eğitim alanında fark yaratan bir vizyon"
-          description="Öğrencilerimizin yurtdışı eğitim yolculuklarını daha kolay ve başarılı kılmak için kurulduk"
+          subtitle="Atatürk'ün Vizyonuyla Yola Çıktık"
+          description="Kıvılcım olarak gönderilen öğrencilerin, alev olarak dönmesi için öğretmen rehberliğinde güvenli eğitim yolculuğu sunmak üzere kurulduk"
         />
 
         {/* Kuruluş Hikayesi */}
@@ -64,16 +64,26 @@ export default function NicinKurduk() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="prose prose-lg max-w-none">
               <h2 className="text-4xl font-bold text-gray-900 mb-8">
-                Hikayemiz
+                Kuruluş Amacımız
               </h2>
+              <div className="bg-primary/5 border-l-4 border-primary p-6 rounded-r-lg mb-8">
+                <p className="text-xl text-gray-800 italic mb-4">
+                  &ldquo;Sizleri birer kıvılcım olarak gönderiyorum, alevler olarak geri dönmelisiniz!&rdquo;
+                </p>
+                <p className="text-gray-700">
+                  — Gazi Mustafa Kemal Atatürk (1924)
+                </p>
+              </div>
               <p className="text-xl text-gray-700 mb-6">
-                15 yıl önce, kendimiz de yurtdışı eğitim deneyimi yaşamış bir ekip olarak, Türkiye&apos;deki öğrencilerin yaşadığı zorlukları bizzat deneyimledik.
+                Yol haritamız, Gazi Mustafa Kemal Atatürk&apos;ün 1924 yılında yurt dışına gönderilen öğrencilere hitaben söylediği bu sözüdür.
               </p>
               <p className="text-xl text-gray-700 mb-6">
-                Yurtdışı eğitim süreçlerinde öğrencilerin şeffaf bilgi alamaması, güvenilir danışmanlık hizmeti bulamaması ve süreçlerin karmaşık olması bizleri bu alanda bir fark yaratmaya itti.
+                <strong>Bu vizyonla;</strong> Yurt dışına gidecek her öğrencimizin, ülkesine katma değer sağlayacak donanımla ve özgüvenle geri dönmesini sağlamak,
+                eğitim hareketliliğini öğretmen rehberliğinde pedagojik bir süreç olarak yürütmek için kurulduk.
               </p>
-              <p className="text-xl text-gray-700 mb-6">
-                Bugün, binlerce öğrencinin hayallerini gerçeğe dönüştürerek Türkiye&apos;nin en güvenilir yurtdışı eğitim danışmanlık firmalarından biri olmanın gururunu yaşıyoruz.
+              <p className="text-xl text-gray-700">
+                Öğrencilerimizi karakterlerine en uygun mesleklere ve okullara yönlendirerek, <strong>&ldquo;Yeni nesil sizin eserinizdir!&rdquo;</strong> düsturuyla
+                üzerimize düşen sorumluluğu yerine getirmek misyonumuzdur.
               </p>
             </div>
           </div>
@@ -82,83 +92,86 @@ export default function NicinKurduk() {
         {/* Neden Bu İhtiyaç Vardı? */}
         <section className="py-20 bg-gradient-to-br from-gray-50 to-primary/5">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">
-              Niçin Bu İhtiyaç Vardı?
+            <h2 className="text-4xl font-bold text-gray-900 mb-4 text-center">
+              Sistemimizin Temeli
             </h2>
+            <p className="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto">
+              Sistemimiz; öğrencinin henüz yurt dışına çıkmadan tüm yetenek ve özellikleri ile tanınması esasına dayanır
+            </p>
 
             <div className="grid md:grid-cols-2 gap-8 mb-12">
-              <Card className="hover:shadow-xl transition-shadow">
+              <Card className="hover:shadow-xl transition-shadow border-l-4 border-primary">
                 <CardBody className="p-8">
                   <div className="flex items-center mb-6">
-                    <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                       </svg>
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900 ml-4">
-                      Karmaşık Süreçler
+                      Karakter Analizi
                     </h3>
                   </div>
                   <p className="text-gray-700">
-                    Yurtdışı eğitim başvuruları, vize işlemleri ve konaklama süreçleri öğrenciler için oldukça karmaşıktı.
-                    Her aşamada farklı firmalarla çalışma zorunluluğu öğrencileri zorluyordu.
+                    Karakterine en uygun mesleki planlamanın yapılması için öğrenci detaylı olarak tanınır.
+                    Her öğrenci benzersiz yetenekleri ile değerlendirilir.
                   </p>
                 </CardBody>
               </Card>
 
-              <Card className="hover:shadow-xl transition-shadow">
+              <Card className="hover:shadow-xl transition-shadow border-l-4 border-primary">
                 <CardBody className="p-8">
                   <div className="flex items-center mb-6">
-                    <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                       </svg>
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900 ml-4">
-                      Bilgi Eksikliği
+                      Doğru Yönlendirme
                     </h3>
                   </div>
                   <p className="text-gray-700">
-                    Öğrenciler güvenilir, güncel ve şeffaf bilgiye erişemiyordu.
-                    Yanlış bilgilendirme sonucu harcanan zaman ve kaybedilen fırsatlar nedeniyle hayaller gerçekleşmiyordu.
+                    Bu rotaya uygun okul tercihinin belirlenmesi ve eğitim süresince takibi sağlanır.
+                    Öğretmen rehberliğinde en uygun programlar seçilir.
                   </p>
                 </CardBody>
               </Card>
 
-              <Card className="hover:shadow-xl transition-shadow">
+              <Card className="hover:shadow-xl transition-shadow border-l-4 border-primary">
                 <CardBody className="p-8">
                   <div className="flex items-center mb-6">
-                    <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <svg className="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                       </svg>
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900 ml-4">
-                      Güven Sorunu
+                      Sürekli Takip
                     </h3>
                   </div>
                   <p className="text-gray-700">
-                    Sektörde güvenilir ve şeffaf hizmet veren kurumların eksikliği, öğrencileri endişelendiriyordu.
-                    Gizli maliyetler, tutarsız hizmet kalitesi sorunlara yol açıyordu.
+                    Gençlerimizin ülkeleri adına bilinçli ve donanımlı bireyler olarak geri dönmeleri için
+                    süreç boyunca öğretmen rehberliğinde takip edilir.
                   </p>
                 </CardBody>
               </Card>
 
-              <Card className="hover:shadow-xl transition-shadow">
+              <Card className="hover:shadow-xl transition-shadow border-l-4 border-primary">
                 <CardBody className="p-8">
                   <div className="flex items-center mb-6">
-                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                       </svg>
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900 ml-4">
-                      Kişiselleştirme Eksikliği
+                      Öğretmen Eşliği
                     </h3>
                   </div>
                   <p className="text-gray-700">
-                    Her öğrencinin hedefi, bütçesi ve tercihleri farklı olmasına rağmen standart paketler sunuluyordu.
-                    Kişiye özel danışmanlık yaklaşımı eksikti.
+                    Türkiye&apos;de evinden alınıp havalimanından uğurlanır; gittiği ülkede Türk öğretmen tarafından karşılanır.
+                    Asla yalnız bırakılmaz.
                   </p>
                 </CardBody>
               </Card>

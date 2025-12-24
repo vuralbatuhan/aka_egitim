@@ -51,9 +51,9 @@ const ContactForm = dynamic(() => import("@/components/forms/ContactForm"), {
 
 export const metadata: Metadata = {
   title:
-    "Aka Eğitim - Yurtdışı Eğitim Danışmanlığı | Dil Okulu, Üniversite, Yüksek Lisans",
+    "AKA Eğitim - Öğretmen Rehberliğinde Yurtdışı Eğitim | Dil Okulu, Üniversite, Yüksek Lisans",
   description:
-    "✓ Aka Eğitim ile yurtdışı dil okulu, üniversite ve yüksek lisans programlarına başvurun. İngiltere, Almanya, Malta, İtalya'da eğitim fırsatları. ✓ Ücretsiz danışmanlık ✓ 50+ ülke ✓ 500+ okul",
+    "AKA Eğitim - Ayhan KORKMAZ Akademi. Öğretmen rehberliğinde yurtdışı dil okulu, üniversite ve yüksek lisans programları. Evden havalimanına öğretmen eşliği. ✓ 50+ ülke ✓ 500+ okul ✓ Azim, Kararlılık, Ayrıcalık",
   keywords: [
     "aka eğitim",
     "aka egitim",
@@ -78,9 +78,9 @@ export const metadata: Metadata = {
   },
   openGraph: {
     url: "https://www.akaegitim.com.tr/",
-    title: "Aka Eğitim - Yurtdışı Eğitim Danışmanlığı | 50+ Ülke, 500+ Okul",
+    title: "AKA Eğitim - Öğretmen Rehberliğinde Yurtdışı Eğitim | 50+ Ülke, 500+ Okul",
     description:
-      "Yurtdışı dil okulu, üniversite, yüksek lisans programları için profesyonel danışmanlık. Ücretsiz danışmanlık için hemen başvurun!",
+      "Öğretmen rehberliğinde yurtdışı dil okulu, üniversite, yüksek lisans programları. Evden havalimanına öğretmen eşliği ile güvenli eğitim yolculuğu!",
     images: [
       {
         url: "https://www.akaegitim.com.tr/logo.jpg",

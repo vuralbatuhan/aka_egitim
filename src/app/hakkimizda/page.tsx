@@ -6,9 +6,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Hakkımızda | Aka Eğitim Yurtdışı Eğitim Danışmanlığı",
+  title: "Hakkımızda | AKA Eğitim - Öğretmen Rehberliğinde Yurtdışı Eğitim",
   description:
-    "Aka Eğitim, 15 yılı aşkın deneyimiyle dil okulu, üniversite, yüksek lisans ve work and study programlarında binlerce öğrencinin yurtdışı eğitim hedefini gerçekleştirdi.",
+    "AKA Eğitim - Ayhan KORKMAZ Akademi. Öğretmen rehberliğinde, evden havalimanına eşlikle güvenli yurtdışı eğitim. Dil okulu, üniversite ve öğretmen hareketliliği programları.",
   keywords: [
     "aka eğitim hakkında",
     "yurtdışı eğitim danışmanlık şirketi",
@@ -48,7 +48,6 @@ export default function Hakkimizda() {
     <main className="min-h-screen">
       <Navbar />
 
-      {/* Video Hero Section */}
       <section className="relative min-h-[70vh] overflow-hidden flex items-center bg-white">
         <div className="absolute inset-0 overflow-hidden">
           <div
@@ -68,11 +67,11 @@ export default function Hakkimizda() {
                 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6"
                 style={{ color: "var(--primary)" }}
               >
-                Aka Eğitim Hakkında
+                AKA Eğitim Hakkında
               </h1>
               <p className="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto mb-8">
-                15 yıllık deneyimimiz ve binlerce başarılı öğrencimizle yurtdışı
-                eğitim konusunda profesyonel hizmet veriyoruz
+                AKA – Ayhan KORKMAZ Akademi: Öğretmen rehberliğinde yurtdışı eğitim hareketliliğinin adı soyadı.
+                Azim, Kararlılık ve Ayrıcalık ilkeleriyle öğrencilerinize güvenli eğitim yolculuğu.
               </p>
             </div>
 
@@ -119,11 +118,13 @@ export default function Hakkimizda() {
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
                 <h2 className="text-4xl font-bold text-white mb-4">
-                  Misyonumuz
+                  Kuruluş Amacımız
                 </h2>
-                <p className="text-lg text-white/90">
-                  Öğrencilerimizin yurtdışında kaliteli eğitim almalarını
-                  sağlamak ve kariyer hedeflerine ulaşmalarına yardımcı olmak.
+                <p className="text-lg text-white/90 max-w-4xl mx-auto mb-4">
+                  Yol haritamız, Gazi Mustafa Kemal Atatürk&apos;ün 1924 yılında yurt dışına gönderilen öğrencilere hitaben söylediği;
+                </p>
+                <p className="text-xl font-semibold text-white/95 italic max-w-4xl mx-auto">
+                  &ldquo;Sizleri birer kıvılcım olarak gönderiyorum, alevler olarak geri dönmelisiniz!&rdquo;
                 </p>
               </div>
 
@@ -146,16 +147,16 @@ export default function Hakkimizda() {
 
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20">
                 <h3 className="text-2xl font-bold text-white mb-4">
-                  Vizyonumuz
+                  AKA Farkı
                 </h3>
-                <p className="text-white/90 mb-4">
-                  Türkiye&apos;nin en güvenilir yurtdışı eğitim danışmanlık
-                  firması olmak ve öğrencilerimizin hayallerini gerçeğe
-                  dönüştürmek.
+                <p className="text-white/90 mb-3">
+                  <strong>Öğretmen Rehberliği:</strong> Eğitim hareketliliğini öğretmen rehberliğinde pedagojik bir süreç olarak yürütüyoruz.
+                </p>
+                <p className="text-white/90 mb-3">
+                  <strong>Karakter Odaklı:</strong> Öğrencinin henüz yurt dışına çıkmadan tüm yetenek ve özellikleri ile tanınması esasına dayanırız.
                 </p>
                 <p className="text-white/90">
-                  Kaliteli hizmet, şeffaf iletişim ve öğrenci odaklı
-                  yaklaşımımızla fark yaratıyoruz.
+                  <strong>Tam Destek:</strong> Evden havalimanına, kayıt ofisine kadar öğretmen eşliğinde sürekli destek.
                 </p>
               </div>
             </div>
@@ -169,12 +170,12 @@ export default function Hakkimizda() {
                 className="text-3xl sm:text-4xl font-bold mb-6 text-center"
                 style={{ color: "var(--primary)" }}
               >
-                Neden Aka Eğitim?
+                Neden AKA Eğitim?
               </h2>
               <p className="text-lg text-gray-600 mb-10 text-center max-w-3xl mx-auto">
-                Aka Eğitim, yurtdışı eğitim süreçlerinin her adımını planlayan,
-                şeffaf raporlama sağlayan ve öğrencilerinin kariyer hedeflerine
-                uygun çözümler sunan bir danışmanlık ekibidir.
+                AKA Eğitim, yurtdışı eğitimin merkezine <strong>&ldquo;Öğretmen Rehberliği&rdquo;</strong> koyar.
+                Öğrencinizin yurtdışı eğitim yolculuğuna bir aile ferdi içtenliği ile bakar,
+                evinizden havalimanına danışman öğretmeni sizinle beraber eşlik eder.
               </p>
               <div className="grid md:grid-cols-2 gap-6">
                 <div
