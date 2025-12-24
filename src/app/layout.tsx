@@ -106,8 +106,13 @@ export const metadata: Metadata = {
     canonical: 'https://www.akaegitim.com.tr',
   },
   icons: {
-    icon: [{ url: '/logo.jpg', type: 'image/jpeg' }],
-    apple: '/logo.jpg',
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
+      { url: '/favicon-16x16.png', type: 'image/png', sizes: '16x16' },
+      { url: '/logo.jpg', type: 'image/jpeg' },
+    ],
+    apple: '/apple-touch-icon.png',
   },
   other: {
     'format-detection': 'telephone=no, address=no, email=no',
@@ -130,6 +135,11 @@ export default function RootLayout({
     <html lang="tr" className={`${montserrat.variable} ${poppins.variable}`} data-scroll-behavior="smooth">
       <head>
         <GoogleAnalytics gaId="G-XXXXXXXXXX" />
+        {/* Favicons for browsers */}
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </head>
       <body
         style={{ fontFamily: 'var(--font-montserrat), system-ui, sans-serif' }}
