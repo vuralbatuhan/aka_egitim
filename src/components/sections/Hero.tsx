@@ -2,60 +2,24 @@
 
 import { Button } from "@heroui/react";
 import Link from "next/link";
-import { useState, useEffect, useRef } from "react";
-
-// Counter animation hook
-const useCounter = (end: number, duration: number = 2000) => {
-  const [count, setCount] = useState(0);
-  const [hasStarted, setHasStarted] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasStarted) {
-          setHasStarted(true);
-        }
-      },
-      { threshold: 0.5 }
-    );
-
-    const currentRef = ref.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
-    };
-  }, [hasStarted]);
-
-  useEffect(() => {
-    if (!hasStarted) return;
-
-    let startTime: number | null = null;
-    const step = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / duration, 1);
-      setCount(Math.floor(progress * end));
-
-      if (progress < 1) {
-        requestAnimationFrame(step);
-      }
-    };
-
-    requestAnimationFrame(step);
-  }, [hasStarted, end, duration]);
-
-  return { count, ref };
-};
+import { useState, useEffect } from "react";
+import Globe from "../Globe";
 
 export default function Hero() {
-  const countries = useCounter(25);
-  const schools = useCounter(500);
-  const students = useCounter(10000);
+  const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
+
+  const quotes = [
+    "AKA'da eğitime dair her yolculuk bir öğretmen eşliğinde başlar ve öğretmen eşliğinde tamamlanır.",
+    "AKA : Öğretmen pusulasında yurt dışı eğitim hareketliliğinin adı soyadı",
+    "AKA ile her öğrenci yurt dışına kıvılcım olarak gider ateş olarak döner, bu bizim memleket ödevimizdir."
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentQuoteIndex((prev) => (prev + 1) % quotes.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [quotes.length]);
 
   return (
     <section
@@ -97,158 +61,97 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 w-full px-6 sm:px-8 lg:px-16 xl:px-24 text-left py-8 pt-20">
-        <div className="animate-fade-in max-w-2xl">
-          <h1
-            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 leading-tight text-white"
-            style={{ textShadow: "0 3px 20px rgba(0,0,0,0.2)" }}
-          >
-            Konu Ülkenin Geleceği İse
-            <span
-              className="block text-transparent bg-clip-text animate-gradient-x mt-1"
-              style={{
-                backgroundImage:
-                  "linear-gradient(90deg, #fef08a, #fde047, #facc15, #fde047, #fef08a)",
-                backgroundSize: "200% 100%",
-                filter: "drop-shadow(0 0 20px rgba(253,224,71,0.4))",
-              }}
-            >
-              Özne Eğitimdir
-            </span>
-          </h1>
-          <p
-            className="text-sm sm:text-base md:text-base lg:text-lg mb-5 leading-relaxed text-white/90"
-            style={{ textShadow: "0 2px 8px rgba(0,0,0,0.1)" }}
-          >
-            Dil eğitiminden üniversite programlarına kadar yurtdışı eğitim
-            yolculuğunuzda profesyonel danışmanlık hizmetiyle yanınızdayız
-          </p>
-        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Sol Taraf - İçerik */}
+          <div>
+            <div className="animate-fade-in max-w-2xl">
+              <h1
+                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 leading-tight text-white"
+                style={{ textShadow: "0 3px 20px rgba(0,0,0,0.2)" }}
+              >
+                Konu Ülkenin Geleceği İse
+                <span
+                  className="block text-transparent bg-clip-text animate-gradient-x mt-1"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(90deg, #fef08a, #fde047, #facc15, #fde047, #fef08a)",
+                    backgroundSize: "200% 100%",
+                    filter: "drop-shadow(0 0 20px rgba(253,224,71,0.4))",
+                  }}
+                >
+                  Özne Eğitimdir
+                </span>
+              </h1>
+            </div>
 
-        <div className="animate-slide-up max-w-2xl">
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8">
-            <Button
-              as={Link}
-              href="/iletisim"
-              size="lg"
-              className="font-bold hover:scale-105 transition-all duration-300 w-full sm:w-auto px-8 py-6 text-base shadow-xl rounded-xl"
-              style={{ background: "white", color: "var(--primary-dark)" }}
-            >
-              Ücretsiz Danışmanlık Al
-            </Button>
-            <Button
-              as={Link}
-              href="/dil-okullari"
-              size="lg"
-              className="text-white font-bold hover:scale-105 transition-all duration-300 w-full sm:w-auto px-8 py-6 text-base backdrop-blur-md rounded-xl"
-              style={{
-                background: "rgba(255,255,255,0.1)",
-                border: "2px solid rgba(255,255,255,0.3)",
-              }}
-            >
-              Programları İncele
-            </Button>
+            <div className="animate-slide-up max-w-2xl">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8">
+                <Button
+                  as={Link}
+                  href="/iletisim"
+                  size="lg"
+                  className="font-bold hover:scale-105 transition-all duration-300 w-full sm:w-auto px-8 py-6 text-base shadow-xl rounded-xl"
+                  style={{ background: "white", color: "var(--primary-dark)" }}
+                >
+                  Ücretsiz Danışmanlık Al
+                </Button>
+                <Button
+                  as={Link}
+                  href="/dil-okullari"
+                  size="lg"
+                  className="text-white font-bold hover:scale-105 transition-all duration-300 w-full sm:w-auto px-8 py-6 text-base backdrop-blur-md rounded-xl"
+                  style={{
+                    background: "rgba(255,255,255,0.1)",
+                    border: "2px solid rgba(255,255,255,0.3)",
+                  }}
+                >
+                  Programları İncele
+                </Button>
+              </div>
+
+              {/* Dönen Cümleler */}
+              <div className="mt-8">
+                <div
+                  className="backdrop-blur-lg rounded-2xl p-6 min-h-[120px] flex items-center justify-center shadow-xl relative overflow-hidden"
+                  style={{ background: "rgba(255,255,255,0.15)" }}
+                >
+                  {quotes.map((quote, index) => (
+                    <p
+                      key={index}
+                      className={`text-white text-base sm:text-lg font-medium text-center leading-relaxed absolute inset-0 flex items-center justify-center px-6 transition-all duration-700 ${
+                        index === currentQuoteIndex
+                          ? "opacity-100 translate-y-0"
+                          : "opacity-0 translate-y-4"
+                      }`}
+                    >
+                      {quote}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* İstatistikler */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-4">
-            <div
-              ref={countries.ref}
-              className="backdrop-blur-lg rounded-lg p-4 hover:scale-105 transition-all duration-300 shadow-lg group"
-              style={{ background: "rgba(255,255,255,0.15)" }}
-            >
-              <div className="flex items-center justify-center mb-2">
-                <div
-                  className="w-10 h-10 rounded-full flex items-center justify-center group-hover:scale-110 transition-all"
-                  style={{ background: "rgba(255,255,255,0.2)" }}
-                >
-                  <svg
-                    className="w-5 h-5 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <div className="text-2xl sm:text-3xl font-bold mb-1 text-white">
-                {countries.count}+
-              </div>
-              <div className="text-xs sm:text-sm font-medium text-white/90">
-                Ülkede Eğitim
-              </div>
+          {/* Sağ Taraf - Dönen Globe */}
+          <div className="hidden lg:flex flex-col items-center justify-start space-y-6 pl-12 -mt-12">
+            {/* Dönen 3D Dünya Küresi */}
+            <div className="relative w-full max-w-[400px] flex items-center justify-center">
+              <Globe />
             </div>
 
-            <div
-              ref={schools.ref}
-              className="backdrop-blur-lg rounded-lg p-4 hover:scale-105 transition-all duration-300 shadow-lg group"
-              style={{ background: "rgba(255,255,255,0.15)" }}
-            >
-              <div className="flex items-center justify-center mb-2">
-                <div
-                  className="w-10 h-10 rounded-full flex items-center justify-center group-hover:scale-110 transition-all"
-                  style={{ background: "rgba(255,255,255,0.2)" }}
-                >
-                  <svg
-                    className="w-5 h-5 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <div className="text-2xl sm:text-3xl font-bold mb-1 text-white">
-                {schools.count}+
-              </div>
-              <div className="text-xs sm:text-sm font-medium text-white/90">
-                Partner Okul
-              </div>
+            {/* Logo */}
+            <div className="w-28 h-28 rounded-full overflow-hidden shadow-2xl border-4 border-white/30 hover:scale-110 transition-transform duration-300">
+              <img
+                src="/logo.jpg"
+                alt="AKA Logo"
+                className="w-full h-full object-cover"
+              />
             </div>
 
-            <div
-              ref={students.ref}
-              className="backdrop-blur-lg rounded-lg p-4 hover:scale-105 transition-all duration-300 shadow-lg group"
-              style={{ background: "rgba(255,255,255,0.15)" }}
-            >
-              <div className="flex items-center justify-center mb-2">
-                <div
-                  className="w-10 h-10 rounded-full flex items-center justify-center group-hover:scale-110 transition-all"
-                  style={{ background: "rgba(255,255,255,0.2)" }}
-                >
-                  <svg
-                    className="w-5 h-5 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <div className="text-2xl sm:text-3xl font-bold mb-1 text-white">
-                {students.count.toLocaleString("tr-TR")}+
-              </div>
-              <div className="text-xs sm:text-sm font-medium text-white/90">
-                Mutlu Öğrenci
-              </div>
-            </div>
+            {/* Metin */}
+            <p className="text-white text-xl font-bold text-center max-w-xs tracking-wide drop-shadow-lg">
+              Öğretmen Dokunuşuyla Dünya Keşfi
+            </p>
           </div>
         </div>
       </div>

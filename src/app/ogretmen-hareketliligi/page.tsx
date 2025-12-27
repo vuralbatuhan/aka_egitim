@@ -1,7 +1,5 @@
 'use client'
 
-import { useState } from 'react'
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
@@ -19,7 +17,6 @@ const TEACHER_COUNTRIES = getCountriesForEducationType('teacherPrograms').map(co
 }))
 
 export default function OgretmenHareketliligi() {
-  const [searchQuery, setSearchQuery] = useState('')
 
   return (
     <main className="min-h-screen">
@@ -27,34 +24,19 @@ export default function OgretmenHareketliligi() {
 
       {/* Hero Section */}
       <section
-        className="relative py-20 sm:py-24 lg:py-32"
+        className="relative min-h-[280px] flex items-center justify-center"
         style={{
           background: "linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 40%, var(--primary-light) 100%)"
         }}
       >
         <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10"></div>
-        <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 text-center">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+        <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 text-center py-8">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-3">
             Öğretmen Hareketliliği Programları
           </h1>
-          <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto mb-10">
-            Öğretmenler için yurtdışında eğitim, sertifika ve mesleki gelişim programları.
-            Kariyerinizi uluslararası deneyimle güçlendirin.
+          <p className="text-base sm:text-lg text-white/90 max-w-4xl mx-auto leading-relaxed">
+            Öğretmenlerimizin mesleki gelişimleri için uzmanlar tarafından hazırlanmış tematik gelişim programları ve uluslararası geçerliliğe sahip sertifika programları yürütüyoruz.
           </p>
-
-          {/* Search Bar */}
-          <div className="max-w-2xl mx-auto">
-            <div className="relative">
-              <MagnifyingGlassIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-6 h-6 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Ülke veya program ara..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-14 pr-6 py-4 rounded-full text-lg border-2 border-white/20 bg-white/95 backdrop-blur-sm shadow-xl focus:outline-none focus:ring-2 focus:ring-white/50 transition-all"
-              />
-            </div>
-          </div>
         </div>
       </section>
 

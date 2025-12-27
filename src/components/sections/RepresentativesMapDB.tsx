@@ -1,16 +1,20 @@
-'use client'
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import { Button } from '@heroui/react';
-import Link from 'next/link';
-import TurkeyMap from './TurkeyMap';
-import RepresentativesModal from '../modals/RepresentativesModal';
-import { CityRepresentatives } from '@/lib/representatives-db';
+import React, { useState, useEffect } from "react";
+import { Button } from "@heroui/react";
+import Link from "next/link";
+import TurkeyMap from "./TurkeyMap";
+import RepresentativesModal from "../modals/RepresentativesModal";
+import { CityRepresentatives } from "@/lib/representatives-db";
 
 const RepresentativesMapDB: React.FC = () => {
-  const [selectedCity, setSelectedCity] = useState<CityRepresentatives | null>(null);
+  const [selectedCity, setSelectedCity] = useState<CityRepresentatives | null>(
+    null
+  );
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [citiesWithRepresentatives, setCitiesWithRepresentatives] = useState<string[]>([]);
+  const [citiesWithRepresentatives, setCitiesWithRepresentatives] = useState<
+    string[]
+  >([]);
   const [totalCities, setTotalCities] = useState(0);
   const [totalRepresentatives, setTotalRepresentatives] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -19,7 +23,7 @@ const RepresentativesMapDB: React.FC = () => {
   useEffect(() => {
     async function loadCities() {
       try {
-        const response = await fetch('/api/representatives/cities');
+        const response = await fetch("/api/representatives/cities");
         if (response.ok) {
           const data = await response.json();
           setCitiesWithRepresentatives(data.cities);
@@ -27,7 +31,7 @@ const RepresentativesMapDB: React.FC = () => {
           setTotalRepresentatives(data.totalRepresentatives || 0);
         }
       } catch (error) {
-        console.error('Şehir listesi yükleme hatası:', error);
+        console.error("Şehir listesi yükleme hatası:", error);
       } finally {
         setLoading(false);
       }
@@ -37,17 +41,21 @@ const RepresentativesMapDB: React.FC = () => {
 
   const handleProvinceClick = async (province: string) => {
     try {
-      const response = await fetch(`/api/representatives/city?name=${encodeURIComponent(province)}`);
+      const response = await fetch(
+        `/api/representatives/city?name=${encodeURIComponent(province)}`
+      );
       if (response.ok) {
         const cityData = await response.json();
         setSelectedCity(cityData);
         setIsModalOpen(true);
       } else {
-        alert(`${province} için henüz temsilci bulunmamaktadır. En yakın ofislerimiz için iletişime geçebilirsiniz.`);
+        alert(
+          `${province} için henüz temsilci bulunmamaktadır. En yakın ofislerimiz için iletişime geçebilirsiniz.`
+        );
       }
     } catch (error) {
-      console.error('Şehir temsilcileri yükleme hatası:', error);
-      alert('Bir hata oluştu. Lütfen daha sonra tekrar deneyin.');
+      console.error("Şehir temsilcileri yükleme hatası:", error);
+      alert("Bir hata oluştu. Lütfen daha sonra tekrar deneyin.");
     }
   };
 
@@ -70,17 +78,13 @@ const RepresentativesMapDB: React.FC = () => {
         {/* Başlık */}
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Türkiye Genelinde
-            <span className="text-blue-600"> Temsilcilerimiz</span>
+            Bizimle yol yürümeye var mısınız ? Birlikte büyüyoruz.
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-6">
-            Türkiye&apos;nin farklı şehirlerinde ofislerimiz ve deneyimli temsilcilerimiz
-            sizlere en iyi hizmeti sunmak için hazır. Harita üzerinde mavi renkle
-            işaretli şehirlere tıklayarak temsilcilerimizi görebilirsiniz.
+            Türkiye&apos;nin farklı şehirlerinde ofislerimiz ve deneyimli
+            temsilcilerimiz sizlere en iyi hizmeti sunmak için hazır. Harita
+            üzerinde şehirlere tıklayarak temsilcilerimizi görebilirsiniz.
           </p>
-          
-          {/* Bilgi Kutucukları */}
-          
         </div>
 
         {/* Harita */}
@@ -89,12 +93,12 @@ const RepresentativesMapDB: React.FC = () => {
             onProvinceClick={handleProvinceClick}
             highlightedProvinces={citiesWithRepresentatives}
           />
-          
+
           {/* Talimatlar */}
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-500">
-              Harita üzerinde bir şehre tıklayarak o şehirdeki
-              temsilcilerimizi ve iletişim bilgilerini görebilirsiniz.
+              Harita üzerinde bir şehre tıklayarak o şehirdeki temsilcilerimizi
+              ve iletişim bilgilerini görebilirsiniz.
             </p>
           </div>
         </div>
@@ -107,14 +111,14 @@ const RepresentativesMapDB: React.FC = () => {
             </div>
             <div className="text-gray-600 font-medium">Şehirde Ofisimiz</div>
           </div>
-          
+
           <div className="bg-white rounded-xl shadow-md p-6 text-center">
             <div className="text-4xl font-bold text-blue-600 mb-2">
               {totalRepresentatives}+
             </div>
             <div className="text-gray-600 font-medium">Deneyimli Temsilci</div>
           </div>
-          
+
           <div className="bg-white rounded-xl shadow-md p-6 text-center">
             <div className="text-4xl font-bold text-blue-600 mb-2">7/24</div>
             <div className="text-gray-600 font-medium">Destek Hattı</div>
@@ -149,4 +153,3 @@ const RepresentativesMapDB: React.FC = () => {
 };
 
 export default RepresentativesMapDB;
-

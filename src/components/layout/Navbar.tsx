@@ -20,7 +20,7 @@ export default function Navbar() {
   const menuItems = useMemo(
     () => [
       { name: "Ana Sayfa", href: "/" },
-      { name: "Ülkeler", href: "/#ulkeler" },
+      // { name: "Ülkeler", href: "/#ulkeler" },
       { name: "Dil Okulları", href: "/dil-okullari" },
       { name: "Üniversite", href: "/universite" },
       // { name: "Yüksek Lisans", href: "/yuksek-lisans" },

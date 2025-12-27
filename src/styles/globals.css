@@ -27,7 +27,7 @@
   --color-turquoise-200: #99f6e4;
   --color-turquoise-300: #5eead4;
   --color-turquoise-400: #2dd4bf;
-  --color-turquoise-450: #2FD4C6;
+  --color-turquoise-450: #2fd4c6;
   --color-turquoise-500: #14b8a6;
   --color-turquoise-600: #0d9488;
   --color-turquoise-700: #0f766e;
@@ -43,6 +43,7 @@ body {
     "Helvetica Neue", Arial, sans-serif;
   margin: 0;
   padding: 0;
+  /* cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Ccircle cx='12' cy='12' r='10' fill='%2314a0b8' stroke='white' stroke-width='2'/%3E%3Cpath d='M12 6v12M6 12h12' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") 12 12, auto; */
 }
 
 * {
@@ -142,19 +143,18 @@ textarea {
 [role="menuitem"][data-hover="true"],
 li[role="menuitem"]:hover {
   background: rgba(47, 212, 198, 0.1) !important;
-  color: #2FD4C6 !important;
+  color: #2fd4c6 !important;
 }
 
 [role="menuitem"][data-focus="true"] {
   background: rgba(47, 212, 198, 0.1) !important;
-  color: #2FD4C6 !important;
+  color: #2fd4c6 !important;
 }
 
 /* ===== TURKUAZ PREMIUM TASARIM ANIMASYONLARI ===== */
 
 /* Floating Animation - Yüzen elementler için */
 @keyframes float {
-
   0%,
   100% {
     transform: translateY(0px) rotate(0deg);
@@ -166,7 +166,6 @@ li[role="menuitem"]:hover {
 }
 
 @keyframes float-slow {
-
   0%,
   100% {
     transform: translateY(0px);
@@ -178,7 +177,6 @@ li[role="menuitem"]:hover {
 }
 
 @keyframes float-reverse {
-
   0%,
   100% {
     transform: translateY(-15px);
@@ -202,7 +200,6 @@ li[role="menuitem"]:hover {
 
 /* Pulse Glow - Turkuaz ışıldama */
 @keyframes pulse-glow {
-
   0%,
   100% {
     box-shadow: 0 0 20px rgba(47, 212, 198, 0.3);
@@ -230,7 +227,6 @@ li[role="menuitem"]:hover {
 
 /* Scale Pulse - Nabız atışı efekti */
 @keyframes scale-pulse {
-
   0%,
   100% {
     transform: scale(1);
@@ -255,7 +251,12 @@ li[role="menuitem"]:hover {
 }
 
 .animate-shimmer {
-  background: linear-gradient(90deg, transparent, rgba(47, 212, 198, 0.2), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(47, 212, 198, 0.2),
+    transparent
+  );
   background-size: 200% 100%;
   animation: shimmer 3s infinite;
 }
@@ -297,7 +298,7 @@ li[role="menuitem"]:hover {
 }
 
 .gradient-border::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
@@ -339,4 +340,18 @@ li[role="menuitem"]:hover {
 /* Glow Effect */
 .glow-turquoise {
   filter: drop-shadow(0 0 10px rgba(47, 212, 198, 0.5));
+}
+
+/* Slow Spin Animation for Globe */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 30s linear infinite;
 }

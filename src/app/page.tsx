@@ -78,7 +78,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     url: "https://www.akaegitim.com.tr/",
-    title: "AKA Eğitim - Öğretmen Rehberliğinde Yurtdışı Eğitim | 50+ Ülke, 500+ Okul",
+    title:
+      "AKA Eğitim - Öğretmen Rehberliğinde Yurtdışı Eğitim | 50+ Ülke, 500+ Okul",
     description:
       "Öğretmen rehberliğinde yurtdışı dil okulu, üniversite, yüksek lisans programları. Evden havalimanına öğretmen eşliği ile güvenli eğitim yolculuğu!",
     images: [
@@ -109,8 +110,8 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
-      <WorldGlobe />
-      <EducationalDestinations />
+      {/* <WorldGlobe /> */}
+      {/* <EducationalDestinations /> */}
       <RepresentativesMapDB />
       {/* <Benefits /> */}
       {/* <Features /> */}

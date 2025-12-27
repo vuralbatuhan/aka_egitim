@@ -1,61 +1,53 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
-import Link from 'next/link'
-import Navbar from '@/components/layout/Navbar'
-import Footer from '@/components/layout/Footer'
-import ProgramTypes from '@/components/sections/ProgramTypes'
-import ContactForm from '@/components/forms/ContactForm'
-import { Card, CardBody, CardFooter } from "@heroui/react"
-import Image from "next/image"
-import { getCountriesForEducationType } from '@/data/countries'
+import Link from "next/link";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import ProgramTypes from "@/components/sections/ProgramTypes";
+import ContactForm from "@/components/forms/ContactForm";
+import { Card, CardBody, CardFooter } from "@heroui/react";
+import Image from "next/image";
+import { getCountriesForEducationType } from "@/data/countries";
 
 // Dil okulu programı sunan ülkeleri dinamik olarak al
-const LANGUAGE_SCHOOL_COUNTRIES = getCountriesForEducationType('languageSchool').map(country => ({
+const LANGUAGE_SCHOOL_COUNTRIES = getCountriesForEducationType(
+  "languageSchool"
+).map((country) => ({
   name: country.name,
   slug: country.slug,
-  description: country.languageSchool?.description || '',
-  image: country.overview.heroImage || 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=500&q=80'
-}))
+  description: country.languageSchool?.description || "",
+  image:
+    country.overview.heroImage ||
+    "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=500&q=80",
+}));
 
 export default function DilOkullariPage() {
-  const [searchQuery, setSearchQuery] = useState('')
-
   return (
     <main className="min-h-screen">
       <Navbar />
 
       {/* Hero Section */}
       <section
-        className="relative py-20 sm:py-24 lg:py-32"
+        className="relative min-h-[280px] flex items-center justify-center"
         style={{
-          background: "linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 40%, var(--primary-light) 100%)"
+          background:
+            "linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 40%, var(--primary-light) 100%)",
         }}
       >
         <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10"></div>
-        <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 text-center">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+        <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 text-center py-8">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-3">
             Dil Okulu Destinasyonlarımız
           </h1>
-          <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto mb-10">
-            Dünyanın dört bir yanındaki en iyi dil okullarıyla iş birliği yapıyoruz.
-            Hayalinizdeki ülkeyi seçin, gerisini bize bırakın.
+          <p className="text-base sm:text-lg text-white/90 max-w-4xl mx-auto leading-relaxed">
+            Ortaöğretim öğrencilerimiz için akran öğrenmesi ve özgüven
+            gelişimini merkeze alan, öğretmen gözetiminde kısa süreli dil okulu
+            programları düzenliyoruz. Öğrencinin kendi okuluyla ortaklaşa
+            planlanan bu süreçte, eğitimler gidilen ülkenin uzmanlarınca
+            verilirken, koordinasyon ve üniversite gezileri AKA tarafından
+            yönetilerek takip edilir. Program sonunda okula, veliye ve öğrenciye
+            detaylı bir "Gelişim Raporu" sunulur.
           </p>
-
-          {/* Search Bar */}
-          <div className="max-w-2xl mx-auto">
-            <div className="relative">
-              <MagnifyingGlassIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-6 h-6 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Ülke veya program ara..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-14 pr-6 py-4 rounded-full text-lg border-2 border-white/20 bg-white/95 backdrop-blur-sm shadow-xl focus:outline-none focus:ring-2 focus:ring-white/50 transition-all"
-              />
-            </div>
-          </div>
         </div>
       </section>
 
@@ -64,7 +56,10 @@ export default function DilOkullariPage() {
         <div className="w-full px-3 sm:px-6 lg:px-10 xl:px-36">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
             {LANGUAGE_SCHOOL_COUNTRIES.map((country) => (
-              <Link key={country.slug} href={`/ulkeler/${country.slug}/dil-okulu`}>
+              <Link
+                key={country.slug}
+                href={`/ulkeler/${country.slug}/dil-okulu`}
+              >
                 <Card
                   isPressable
                   className="relative h-full flex flex-col group overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-[1.01] cursor-pointer"
@@ -132,14 +127,28 @@ export default function DilOkullariPage() {
             Dil Okulu Seçerken Nelere Dikkat Etmelisiniz?
           </h2>
           <p className="text-lg text-gray-600 mb-4">
-            Aka Eğitim, hedeflerinize uygun programı belirlerken dil seviyeniz, bütçeniz, çalışma planlarınız ve vize koşullarını analiz eder.
-            Destinasyon seçimi yaparken yıl boyu yaşam maliyetlerini, konaklama alternatiflerini ve kültürel uyum sürecinizi birlikte planlarız.
+            Aka Eğitim, hedeflerinize uygun programı belirlerken dil seviyeniz,
+            bütçeniz, çalışma planlarınız ve vize koşullarını analiz eder.
+            Destinasyon seçimi yaparken yıl boyu yaşam maliyetlerini, konaklama
+            alternatiflerini ve kültürel uyum sürecinizi birlikte planlarız.
           </p>
           <ul className="list-disc list-inside space-y-3 text-gray-700">
-            <li>Program yoğunlukları (genel, yarı-yoğun, yoğun) ve sınav hazırlık seçeneklerini karşılaştırın.</li>
-            <li>Haftalık fiyat aralıkları ve promosyon dönemleri için danışmanınızdan güncel teklif isteyin.</li>
-            <li>Work and Study ve yarı zamanlı çalışma izinleri gibi vize avantajlarını değerlendirin.</li>
-            <li>Okulun şehir merkezine, toplu taşımaya ve öğrenci konaklama olanaklarına yakınlığını inceleyin.</li>
+            <li>
+              Program yoğunlukları (genel, yarı-yoğun, yoğun) ve sınav hazırlık
+              seçeneklerini karşılaştırın.
+            </li>
+            <li>
+              Haftalık fiyat aralıkları ve promosyon dönemleri için
+              danışmanınızdan güncel teklif isteyin.
+            </li>
+            <li>
+              Work and Study ve yarı zamanlı çalışma izinleri gibi vize
+              avantajlarını değerlendirin.
+            </li>
+            <li>
+              Okulun şehir merkezine, toplu taşımaya ve öğrenci konaklama
+              olanaklarına yakınlığını inceleyin.
+            </li>
           </ul>
         </div>
       </section>
@@ -147,6 +156,5 @@ export default function DilOkullariPage() {
       <ContactForm />
       <Footer />
     </main>
-  )
+  );
 }
-
