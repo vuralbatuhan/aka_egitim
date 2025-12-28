@@ -107,12 +107,13 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.ico' },
-      { url: '/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
-      { url: '/favicon-16x16.png', type: 'image/png', sizes: '16x16' },
       { url: '/logo.jpg', type: 'image/jpeg' },
+      // { url: '/favicon.ico' },
+      // { url: '/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
+      // { url: '/favicon-16x16.png', type: 'image/png', sizes: '16x16' },
     ],
-    apple: '/apple-touch-icon.png',
+    apple: '/logo.jpg',
+    shortcut: '/logo.jpg',
   },
   other: {
     'format-detection': 'telephone=no, address=no, email=no',
@@ -135,11 +136,15 @@ export default function RootLayout({
     <html lang="tr" className={`${montserrat.variable} ${poppins.variable}`} data-scroll-behavior="smooth">
       <head>
         <GoogleAnalytics gaId="G-XXXXXXXXXX" />
-        {/* Favicons for browsers */}
+        {/* Favicons for browsers - Logo.jpg kullanılıyor */}
+        <link rel="icon" type="image/jpeg" href="/logo.jpg" />
+        <link rel="apple-touch-icon" href="/logo.jpg" />
+        <link rel="shortcut icon" href="/logo.jpg" />
+        {/* Eski favicon'lar - yorum satırında
         <link rel="icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        */}
       </head>
       <body
         style={{ fontFamily: 'var(--font-montserrat), system-ui, sans-serif' }}
