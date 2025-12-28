@@ -1951,6 +1951,123 @@ export const countries: Record<string, CountryInfo> = {
     },
   },
 
+  isvicre: {
+    name: "İsviçre",
+    slug: "isvicre",
+
+    overview: {
+      title: "İsviçre Eğitim Danışmanlığı",
+      description:
+        "İsviçre, yüksek kaliteli eğitim sistemi, çok dilli yapısı ve Alpler'in muhteşem doğasıyla öğretmen eğitimi ve profesyonel gelişim için ideal bir destinasyondur. Dünya çapında tanınan pedagojik yaklaşımlar ve uluslararası standartlar sunmaktadır.",
+      heroImage: "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?w=1800&q=80",
+      highlights: [
+        "Yüksek kaliteli eğitim sistemi",
+        "Çok dilli yapı (Almanca, Fransızca, İtalyanca, İngilizce)",
+        "Mükemmel yaşam kalitesi",
+        "Alpler'in muhteşem doğası",
+        "Uluslararası standartlarda pedagojik programlar",
+        "Yüksek güvenlik ve istikrar",
+      ],
+      statistics: [
+        { label: "Başarılı Öğrenci", value: "150+", icon: "users" },
+        { label: "Eğitim Kurumu", value: "12+", icon: "school" },
+        { label: "Partner Üniversite", value: "8+", icon: "building" },
+        { label: "Deneyim Yılı", value: "6+", icon: "calendar" },
+        { label: "Memnuniyet", value: "%99", icon: "star" },
+      ],
+      lifeInCountry: {
+        cost: "CHF 1200-2000 / ay",
+        language: "Almanca, Fransızca, İtalyanca, İngilizce",
+        climate: "Alp iklimi, soğuk kışlar ve ılık yazlar",
+        culture: "Çok kültürlü, doğa odaklı yaşam",
+      },
+    },
+
+    teacherPrograms: {
+      title: "İsviçre Öğretmen Eğitim Programları",
+      description:
+        "İsviçre, uluslararası eğitim standartları ve çok dilli eğitim sistemleri ile öğretmen yetiştirme programlarında öncü konumdadır. Pedagojik yaklaşımlar, çok kültürlü sınıf yönetimi ve modern eğitim teknolojileri konusunda uzmanlaşma fırsatı sunar.",
+      heroImage: "https://images.unsplash.com/photo-1531835551805-16d864c8d311?w=1800&q=80",
+      whyChooseThis: [
+        "Dünya çapında tanınan pedagojik programlar",
+        "Çok dilli eğitim sistemi deneyimi",
+        "Uluslararası geçerliliği olan sertifikalar",
+        "Modern eğitim teknolojileri ve metodolojiler",
+        "Çok kültürlü sınıf yönetimi uzmanlığı",
+        "Erasmus+ öğretmen hareketliliği programları",
+      ],
+      programs: [
+        {
+          name: "Uluslararası Öğretmenlik Sertifikası",
+          duration: "2-6 hafta",
+          description:
+            "Çok dilli eğitim, modern pedagoji ve sınıf yönetimi konularında sertifika programı",
+          tuitionFee: "CHF 1500-3500",
+        },
+        {
+          name: "Erken Çocukluk Eğitimi Gelişim Programı",
+          duration: "1-3 ay",
+          description:
+            "0-6 yaş çocuk gelişimi ve eğitimi konusunda uzmanlaşma programı",
+          tuitionFee: "CHF 3000-6000",
+        },
+        {
+          name: "Çok Dilli Eğitim ve CLIL Metodolojisi",
+          duration: "2-4 hafta",
+          description:
+            "İçerik ve Dil Entegre Öğrenimi (CLIL) metodolojisi eğitimi",
+          tuitionFee: "CHF 2000-4000",
+        },
+        {
+          name: "Eğitim Liderliği ve Yönetimi",
+          duration: "3-6 ay",
+          description:
+            "Okul yöneticiliği ve eğitim liderliği konusunda profesyonel gelişim programı",
+          tuitionFee: "CHF 5000-8000",
+        },
+      ],
+      requirements: [
+        "Lisans diploması (eğitim veya ilgili alan)",
+        "Öğretmenlik deneyimi (minimum 2 yıl)",
+        "İngilizce, Almanca veya Fransızca yeterlilik (B2+)",
+        "Motivasyon mektubu",
+        "Referans mektupları (2 adet)",
+        "Özgeçmiş",
+      ],
+      process: [
+        "Program seçimi ve danışmanlık",
+        "Online başvuru formu doldurma",
+        "Belgelerinin hazırlanması ve gönderilmesi",
+        "Kabul ve kayıt işlemleri",
+        "Vize başvurusu (gerekirse)",
+        "Konaklama ayarlamaları",
+        "Programa başlama ve sertifika alma",
+      ],
+      faqs: [
+        {
+          question: "İsviçre'de hangi dilde eğitim alacağım?",
+          answer:
+            "Programlar genellikle İngilizce, Almanca veya Fransızca olarak sunulmaktadır. Program seçimine göre değişiklik gösterebilir.",
+        },
+        {
+          question: "Erasmus+ kapsamında program var mı?",
+          answer:
+            "Evet, İsviçre birçok Erasmus+ öğretmen hareketliliği programına ev sahipliği yapmaktadır.",
+        },
+        {
+          question: "Sertifika uluslararası geçerliliğe sahip mi?",
+          answer:
+            "Evet, İsviçre'den alacağınız sertifikalar dünya çapında tanınmakta ve geçerliliğe sahiptir.",
+        },
+        {
+          question: "Konaklama desteği sağlanıyor mu?",
+          answer:
+            "Birçok program, konuk evi veya otel konaklaması konusunda destek sağlamaktadır. Detaylar program sağlayıcıya göre değişir.",
+        },
+      ],
+    },
+  },
+
   fransa: {
     name: "Fransa",
     slug: "fransa",
@@ -1994,6 +2111,7 @@ export const urlToCountryMap: Record<string, string> = {
   kazakistan: "kazakistan",
   hollanda: "hollanda",
   finlandiya: "finlandiya",
+  isvicre: "isvicre",
   fransa: "fransa",
 };
 

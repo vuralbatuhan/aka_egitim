@@ -10,7 +10,7 @@ import Image from "next/image";
 import { getCountriesForEducationType } from "@/data/countries";
 
 // Dil okulu programı sunan ülkeleri dinamik olarak al
-const LANGUAGE_SCHOOL_COUNTRIES = getCountriesForEducationType(
+const ALL_LANGUAGE_SCHOOL_COUNTRIES = getCountriesForEducationType(
   "languageSchool"
 ).map((country) => ({
   name: country.name,
@@ -20,6 +20,14 @@ const LANGUAGE_SCHOOL_COUNTRIES = getCountriesForEducationType(
     country.overview.heroImage ||
     "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=500&q=80",
 }));
+
+// Sadece İngiltere ve Finlandiya'yı göster
+const LANGUAGE_SCHOOL_COUNTRIES = ALL_LANGUAGE_SCHOOL_COUNTRIES.filter(
+  (country) => country.slug === "ingiltere" || country.slug === "finlandiya"
+);
+
+// Diğer ülkeler (yorum satırında):
+// İtalya, Almanya, Malta, İspanya, İsveç, vb.
 
 export default function DilOkullariPage() {
   return (
@@ -46,7 +54,7 @@ export default function DilOkullariPage() {
             planlanan bu süreçte, eğitimler gidilen ülkenin uzmanlarınca
             verilirken, koordinasyon ve üniversite gezileri AKA tarafından
             yönetilerek takip edilir. Program sonunda okula, veliye ve öğrenciye
-            detaylı bir "Gelişim Raporu" sunulur.
+            detaylı bir &quot;Gelişim Raporu&quot; sunulur.
           </p>
         </div>
       </section>
@@ -54,7 +62,7 @@ export default function DilOkullariPage() {
       {/* Country Cards */}
       <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-gray-50 to-white w-full">
         <div className="w-full px-3 sm:px-6 lg:px-10 xl:px-36">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6 max-w-4xl mx-auto">
             {LANGUAGE_SCHOOL_COUNTRIES.map((country) => (
               <Link
                 key={country.slug}

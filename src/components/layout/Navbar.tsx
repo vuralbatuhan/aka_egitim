@@ -16,6 +16,8 @@ import MobileGridMenu, { MobileMenuSection } from "./MobileGridMenu";
 
 export default function Navbar() {
   const [isGridMenuOpen, setIsGridMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
 
   const menuItems = useMemo(
     () => [
@@ -161,6 +163,26 @@ export default function Navbar() {
     };
   }, [isGridMenuOpen]);
 
+  // Hide navbar on scroll down, show on scroll up
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+
+      // Show navbar when scrolling up or at top of page
+      // Hide navbar when scrolling down and not at top
+      if (currentScrollPos < prevScrollPos || currentScrollPos < 10) {
+        setIsVisible(true);
+      } else if (currentScrollPos > prevScrollPos && currentScrollPos > 80) {
+        setIsVisible(false);
+      }
+
+      setPrevScrollPos(currentScrollPos);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [prevScrollPos]);
+
   return (
     <>
       <HeroNavbar
@@ -171,7 +193,10 @@ export default function Navbar() {
           wrapper: "px-6 sm:px-8 lg:px-12 xl:px-16 h-20",
           base: "shadow-lg",
         }}
-        // style={{ background: 'linear-gradient(135deg, #a2c2bf 0%, #abbebbff 40%, #a2c2bf 100%)' }}
+        style={{
+          transform: isVisible ? "translateY(0)" : "translateY(-100%)",
+          transition: "transform 0.3s ease-in-out",
+        }}
       >
         {/* Logo */}
         <NavbarBrand>

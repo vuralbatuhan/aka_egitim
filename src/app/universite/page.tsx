@@ -34,7 +34,7 @@ export default function Universite() {
             Eğitim Destinasyonlarımız
           </h1>
           <p className="text-base sm:text-lg text-white/90 max-w-4xl mx-auto leading-relaxed">
-            Hem yurt dışında üniversite okumak isteyen Türk öğrencilere hem de Türkiye'de eğitim almak isteyen uluslararası öğrencilere hedeflerine uygun üniversite yerleşimi için rehberlik hizmeti sunuyoruz.
+            Hem yurt dışında üniversite okumak isteyen Türk öğrencilere hem de Türkiye&apos;de eğitim almak isteyen uluslararası öğrencilere hedeflerine uygun üniversite yerleşimi için rehberlik hizmeti sunuyoruz.
           </p>
         </div>
       </section>

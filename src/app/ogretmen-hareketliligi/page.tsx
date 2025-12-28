@@ -9,12 +9,20 @@ import Image from "next/image"
 import { getCountriesForEducationType } from '@/data/countries'
 
 // Öğretmen programları sunan ülkeleri dinamik olarak al
-const TEACHER_COUNTRIES = getCountriesForEducationType('teacherPrograms').map(country => ({
+const ALL_TEACHER_COUNTRIES = getCountriesForEducationType('teacherPrograms').map(country => ({
   name: country.name,
   slug: country.slug,
   description: country.teacherPrograms?.description || '',
   image: country.overview.heroImage || 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=500&q=80'
 }))
+
+// Sadece Finlandiya ve İsviçre'yi göster
+const TEACHER_COUNTRIES = ALL_TEACHER_COUNTRIES.filter(
+  (country) => country.slug === "finlandiya" || country.slug === "isvicre"
+)
+
+// Diğer ülkeler (yorum satırında):
+// İtalya, İngiltere, vb.
 
 export default function OgretmenHareketliligi() {
 
@@ -43,7 +51,7 @@ export default function OgretmenHareketliligi() {
       {/* Country Cards */}
       <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-gray-50 to-white w-full">
         <div className="w-full px-3 sm:px-6 lg:px-10 xl:px-36">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6 max-w-4xl mx-auto">
             {TEACHER_COUNTRIES.map((country) => (
               <Link key={country.slug} href={`/ulkeler/${country.slug}/ogretmen`}>
                 <Card

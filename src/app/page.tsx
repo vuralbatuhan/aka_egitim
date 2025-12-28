@@ -1,6 +1,6 @@
 import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/sections/Hero";
-import EducationalDestinations from "@/components/sections/EducationalDestinations";
+// import EducationalDestinations from "@/components/sections/EducationalDestinations";
 // import Benefits from "@/components/sections/Benefits";
 // import Features from "@/components/sections/Features";
 // import Programs from "@/components/sections/Programs";
@@ -27,16 +27,16 @@ const RepresentativesMapDB = dynamic(
   }
 );
 
-const WorldGlobe = dynamic(() => import("@/components/sections/WorldGlobe"), {
-  loading: () => (
-    <div className="flex items-center justify-center h-[600px] bg-gradient-to-br from-gray-900 to-gray-800">
-      <div className="text-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-        <p className="text-white/70">Dünya küresi yükleniyor...</p>
-      </div>
-    </div>
-  ),
-});
+// const WorldGlobe = dynamic(() => import("@/components/sections/WorldGlobe"), {
+//   loading: () => (
+//     <div className="flex items-center justify-center h-[600px] bg-gradient-to-br from-gray-900 to-gray-800">
+//       <div className="text-center">
+//         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+//         <p className="text-white/70">Dünya küresi yükleniyor...</p>
+//       </div>
+//     </div>
+//   ),
+// });
 
 const ContactForm = dynamic(() => import("@/components/forms/ContactForm"), {
   loading: () => (

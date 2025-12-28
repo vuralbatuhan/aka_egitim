@@ -3,6 +3,7 @@
 import { Button } from "@heroui/react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Globe from "../Globe";
 
 export default function Hero() {
@@ -141,9 +142,11 @@ export default function Hero() {
 
             {/* Logo */}
             <div className="w-28 h-28 rounded-full overflow-hidden shadow-2xl border-4 border-white/30 hover:scale-110 transition-transform duration-300">
-              <img
+              <Image
                 src="/logo.jpg"
                 alt="AKA Logo"
+                width={112}
+                height={112}
                 className="w-full h-full object-cover"
               />
             </div>

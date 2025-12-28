@@ -614,7 +614,7 @@ export default function ContactForm() {
               </div>
 
               {/* Gizlilik ve Güvenlik Bölümü */}
-              <div className="bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 border-2 border-green-200 rounded-2xl p-6 sm:p-8 pt-8 shadow-lg">
+              {/* <div className="bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 border-2 border-green-200 rounded-2xl p-6 sm:p-8 pt-8 shadow-lg">
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 mt-1">
                     <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 shadow-lg">
@@ -717,7 +717,7 @@ export default function ContactForm() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
               <div className="space-y-6 pt-4">
                 <Button
