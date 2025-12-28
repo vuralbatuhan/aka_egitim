@@ -1,25 +1,29 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
-import Link from 'next/link'
-import Navbar from '@/components/layout/Navbar'
-import Footer from '@/components/layout/Footer'
-import ContactForm from '@/components/forms/ContactForm'
-import { Card, CardBody, CardFooter } from "@heroui/react"
-import Image from "next/image"
-import { getCountriesForEducationType } from '@/data/countries'
+import { useState } from "react";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import ContactForm from "@/components/forms/ContactForm";
+import { Card, CardBody, CardFooter } from "@heroui/react";
+import Image from "next/image";
+import { getCountriesForEducationType } from "@/data/countries";
 
 // Yüksek lisans programı sunan ülkeleri dinamik olarak al
-const MASTERS_COUNTRIES = getCountriesForEducationType('mastersDegree').map(country => ({
-  name: country.name,
-  slug: country.slug,
-  description: country.mastersDegree?.description || '',
-  image: country.overview.heroImage || 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=500&q=80'
-}))
+const MASTERS_COUNTRIES = getCountriesForEducationType("mastersDegree").map(
+  (country) => ({
+    name: country.name,
+    slug: country.slug,
+    description: country.mastersDegree?.description || "",
+    image:
+      country.overview.heroImage ||
+      "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=500&q=80",
+  })
+);
 
 export default function YuksekLisans() {
-  const [searchQuery, setSearchQuery] = useState('')
+  const [searchQuery, setSearchQuery] = useState("");
 
   return (
     <main className="min-h-screen">
@@ -29,7 +33,8 @@ export default function YuksekLisans() {
       <section
         className="relative py-20 sm:py-24 lg:py-32"
         style={{
-          background: "linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 40%, var(--primary-light) 100%)"
+          background:
+            "linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 40%, var(--primary-light) 100%)",
         }}
       >
         <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10"></div>
@@ -38,8 +43,8 @@ export default function YuksekLisans() {
             Yüksek Lisans Destinasyonlarımız
           </h1>
           <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto mb-10">
-            Kariyerinizi bir üst seviyeye taşıyacak MBA ve Master programları için
-            dünyanın en iyi üniversitelerinde eğitim fırsatları.
+            Kariyerinizi bir üst seviyeye taşıyacak MBA ve Master programları
+            için dünyanın en iyi üniversitelerinde eğitim fırsatları.
           </p>
 
           {/* Search Bar */}
@@ -63,10 +68,13 @@ export default function YuksekLisans() {
         <div className="w-full px-3 sm:px-6 lg:px-10 xl:px-36">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
             {MASTERS_COUNTRIES.map((country) => (
-              <Link key={country.slug} href={`/ulkeler/${country.slug}/yuksek-lisans`}>
+              <Link
+                key={country.slug}
+                href={`/ulkeler/${country.slug}/yuksek-lisans`}
+              >
                 <Card
                   isPressable
-                  className="relative h-full flex flex-col group overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-[1.01] cursor-pointer"
+                  className="relative h-full flex flex-col group overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]  "
                 >
                   <div
                     className="absolute inset-0 bg-cover bg-center opacity-20 blur-xl scale-110"
@@ -126,16 +134,32 @@ export default function YuksekLisans() {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Başvuru Dokümanlarınızı Güçlendirin</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              Başvuru Dokümanlarınızı Güçlendirin
+            </h2>
             <p className="text-lg text-gray-600 mb-4">
-              Başvuru paketinizin her aşamasını uzman ekibimizle birlikte planlarız. Program gerekliliklerine göre akademik transkriptlerinizi,
-              referans mektuplarınızı ve motivasyon yazınızı değerlendirip revize ederiz.
+              Başvuru paketinizin her aşamasını uzman ekibimizle birlikte
+              planlarız. Program gerekliliklerine göre akademik
+              transkriptlerinizi, referans mektuplarınızı ve motivasyon yazınızı
+              değerlendirip revize ederiz.
             </p>
             <ul className="list-disc list-inside space-y-3 text-gray-700">
-              <li>GRE, GMAT, IELTS ve TOEFL skor hedefleri için hazırlık partnerlerimizle yönlendirme yapıyoruz.</li>
-              <li>Üniversite profesörlerine etkili referans talebi oluşturmanızı sağlayan şablonlar sunuyoruz.</li>
-              <li>Kariyer hedeflerinizi akademik amaçlarınıza bağlayan güçlü motivasyon mektupları hazırlıyoruz.</li>
-              <li>Ön kabul sonrası vize ve konaklama süreçlerini planlayarak kesintisiz bir geçiş sağlıyoruz.</li>
+              <li>
+                GRE, GMAT, IELTS ve TOEFL skor hedefleri için hazırlık
+                partnerlerimizle yönlendirme yapıyoruz.
+              </li>
+              <li>
+                Üniversite profesörlerine etkili referans talebi oluşturmanızı
+                sağlayan şablonlar sunuyoruz.
+              </li>
+              <li>
+                Kariyer hedeflerinizi akademik amaçlarınıza bağlayan güçlü
+                motivasyon mektupları hazırlıyoruz.
+              </li>
+              <li>
+                Ön kabul sonrası vize ve konaklama süreçlerini planlayarak
+                kesintisiz bir geçiş sağlıyoruz.
+              </li>
             </ul>
           </div>
         </div>
@@ -144,6 +168,5 @@ export default function YuksekLisans() {
       <ContactForm />
       <Footer />
     </main>
-  )
+  );
 }
-

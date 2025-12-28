@@ -1,25 +1,29 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
-import Link from 'next/link'
-import Navbar from '@/components/layout/Navbar'
-import Footer from '@/components/layout/Footer'
-import ContactForm from '@/components/forms/ContactForm'
-import { Card, CardBody, CardFooter } from "@heroui/react"
-import Image from "next/image"
-import { getCountriesForEducationType } from '@/data/countries'
+import { useState } from "react";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import ContactForm from "@/components/forms/ContactForm";
+import { Card, CardBody, CardFooter } from "@heroui/react";
+import Image from "next/image";
+import { getCountriesForEducationType } from "@/data/countries";
 
 // Doktora programı sunan ülkeleri dinamik olarak al
-const DOCTORATE_COUNTRIES = getCountriesForEducationType('doctorate').map(country => ({
-  name: country.name,
-  slug: country.slug,
-  description: country.doctorate?.description || '',
-  image: country.overview.heroImage || 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=500&q=80'
-}))
+const DOCTORATE_COUNTRIES = getCountriesForEducationType("doctorate").map(
+  (country) => ({
+    name: country.name,
+    slug: country.slug,
+    description: country.doctorate?.description || "",
+    image:
+      country.overview.heroImage ||
+      "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=500&q=80",
+  })
+);
 
 export default function Doktora() {
-  const [searchQuery, setSearchQuery] = useState('')
+  const [searchQuery, setSearchQuery] = useState("");
 
   return (
     <main className="min-h-screen">
@@ -29,7 +33,8 @@ export default function Doktora() {
       <section
         className="relative py-20 sm:py-24 lg:py-32"
         style={{
-          background: "linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 40%, var(--primary-light) 100%)"
+          background:
+            "linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 40%, var(--primary-light) 100%)",
         }}
       >
         <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10"></div>
@@ -38,8 +43,8 @@ export default function Doktora() {
             Doktora (PhD) Destinasyonlarımız
           </h1>
           <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto mb-10">
-            Akademik kariyerinizi şekillendirecek doktora programları için dünyanın önde gelen
-            araştırma üniversitelerinde eğitim fırsatları.
+            Akademik kariyerinizi şekillendirecek doktora programları için
+            dünyanın önde gelen araştırma üniversitelerinde eğitim fırsatları.
           </p>
 
           {/* Search Bar */}
@@ -63,10 +68,13 @@ export default function Doktora() {
         <div className="w-full px-3 sm:px-6 lg:px-10 xl:px-36">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
             {DOCTORATE_COUNTRIES.map((country) => (
-              <Link key={country.slug} href={`/ulkeler/${country.slug}/doktora`}>
+              <Link
+                key={country.slug}
+                href={`/ulkeler/${country.slug}/doktora`}
+              >
                 <Card
                   isPressable
-                  className="relative h-full flex flex-col group overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-[1.01] cursor-pointer"
+                  className="relative h-full flex flex-col group overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]  "
                 >
                   <div
                     className="absolute inset-0 bg-cover bg-center opacity-20 blur-xl scale-110"
@@ -126,17 +134,35 @@ export default function Doktora() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Doktora Başvurusu Nasıl Yapılır?</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              Doktora Başvurusu Nasıl Yapılır?
+            </h2>
             <p className="text-lg text-gray-600 mb-6">
-              Aka Eğitim olarak doktora başvuru sürecinin her aşamasında yanınızdayız. Araştırma önerinizden,
-              danışman seçimine, burs başvurularından vize süreçlerine kadar tüm adımlarda profesyonel destek sunuyoruz.
+              Aka Eğitim olarak doktora başvuru sürecinin her aşamasında
+              yanınızdayız. Araştırma önerinizden, danışman seçimine, burs
+              başvurularından vize süreçlerine kadar tüm adımlarda profesyonel
+              destek sunuyoruz.
             </p>
             <ul className="list-disc list-inside space-y-3 text-gray-700">
-              <li>Araştırma alanınıza uygun üniversite ve danışman araştırması yapıyoruz.</li>
-              <li>Research Proposal (Araştırma Önerisi) hazırlama sürecinde akademik danışmanlık veriyoruz.</li>
-              <li>Burs ve funding (fonlama) başvuruları için strateji geliştiriyoruz.</li>
-              <li>Referans mektupları, CV ve motivasyon yazınızı akademik standartlara göre düzenliyoruz.</li>
-              <li>Vize başvurusu ve ülkeye giriş sürecinde tam destek sağlıyoruz.</li>
+              <li>
+                Araştırma alanınıza uygun üniversite ve danışman araştırması
+                yapıyoruz.
+              </li>
+              <li>
+                Research Proposal (Araştırma Önerisi) hazırlama sürecinde
+                akademik danışmanlık veriyoruz.
+              </li>
+              <li>
+                Burs ve funding (fonlama) başvuruları için strateji
+                geliştiriyoruz.
+              </li>
+              <li>
+                Referans mektupları, CV ve motivasyon yazınızı akademik
+                standartlara göre düzenliyoruz.
+              </li>
+              <li>
+                Vize başvurusu ve ülkeye giriş sürecinde tam destek sağlıyoruz.
+              </li>
             </ul>
           </div>
         </div>
@@ -145,5 +171,5 @@ export default function Doktora() {
       <ContactForm />
       <Footer />
     </main>
-  )
+  );
 }

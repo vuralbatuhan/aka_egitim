@@ -93,7 +93,7 @@ export default function EducationalDestinations() {
               key={country.slug}
               isPressable
               onPress={() => router.push(`/ulkeler/${country.slug}`)}
-              className="relative h-full flex flex-col group overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-[1.01] cursor-pointer"
+              className="relative h-full flex flex-col group overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]  "
             >
               {/* ✅ ÜLKEYE ÖZEL ARKAPLAN */}
               <div

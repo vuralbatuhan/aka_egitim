@@ -169,7 +169,7 @@ export default function WorldGlobe() {
                                 stroke: "#6B7280",
                                 strokeWidth: 1,
                                 outline: "none",
-                                cursor: highlighted ? "pointer" : "default",
+                                // cursor: highlighted ? "pointer" : "default",
                               },
                               pressed: {
                                 fill: highlighted ? "#0f766e" : "#D1D5DB",
@@ -238,7 +238,7 @@ export default function WorldGlobe() {
                           stroke: "#fff",
                           strokeWidth: 3,
                           paintOrder: "stroke",
-                          cursor: "pointer",
+                          // cursor: "pointer",
                         }}
                         onClick={() => handleCountryClick(country)}
                       >
@@ -249,7 +249,7 @@ export default function WorldGlobe() {
                         fill="#14b8a6"
                         stroke="#fff"
                         strokeWidth={2}
-                        style={{ cursor: "pointer" }}
+                        // style={{ cursor: "pointer" }}
                         onClick={() => handleCountryClick(country)}
                       />
                     </Marker>

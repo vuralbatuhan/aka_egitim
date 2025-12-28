@@ -1,22 +1,25 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import Navbar from '@/components/layout/Navbar'
-import Footer from '@/components/layout/Footer'
-import { Card, CardBody, CardFooter } from "@heroui/react"
-import Image from "next/image"
-import { getCountriesForEducationType } from '@/data/countries'
+import Link from "next/link";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import { Card, CardBody, CardFooter } from "@heroui/react";
+import Image from "next/image";
+import { getCountriesForEducationType } from "@/data/countries";
 
 // Üniversite programı sunan ülkeleri dinamik olarak al
-const UNIVERSITY_COUNTRIES = getCountriesForEducationType('university').map(country => ({
-  name: country.name,
-  slug: country.slug,
-  description: country.university?.description || '',
-  image: country.overview.heroImage || 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=500&q=80'
-}))
+const UNIVERSITY_COUNTRIES = getCountriesForEducationType("university").map(
+  (country) => ({
+    name: country.name,
+    slug: country.slug,
+    description: country.university?.description || "",
+    image:
+      country.overview.heroImage ||
+      "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=500&q=80",
+  })
+);
 
 export default function Universite() {
-
   return (
     <main className="min-h-screen">
       <Navbar />
@@ -25,7 +28,8 @@ export default function Universite() {
       <section
         className="relative min-h-[280px] flex items-center justify-center"
         style={{
-          background: "linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 40%, var(--primary-light) 100%)"
+          background:
+            "linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 40%, var(--primary-light) 100%)",
         }}
       >
         <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10"></div>
@@ -34,7 +38,10 @@ export default function Universite() {
             Eğitim Destinasyonlarımız
           </h1>
           <p className="text-base sm:text-lg text-white/90 max-w-4xl mx-auto leading-relaxed">
-            Hem yurt dışında üniversite okumak isteyen Türk öğrencilere hem de Türkiye&apos;de eğitim almak isteyen uluslararası öğrencilere hedeflerine uygun üniversite yerleşimi için rehberlik hizmeti sunuyoruz.
+            Hem yurt dışında üniversite okumak isteyen Türk öğrencilere hem de
+            Türkiye&apos;de eğitim almak isteyen uluslararası öğrencilere
+            hedeflerine uygun üniversite yerleşimi için rehberlik hizmeti
+            sunuyoruz.
           </p>
         </div>
       </section>
@@ -44,10 +51,13 @@ export default function Universite() {
         <div className="w-full px-3 sm:px-6 lg:px-10 xl:px-36">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
             {UNIVERSITY_COUNTRIES.map((country) => (
-              <Link key={country.slug} href={`/ulkeler/${country.slug}/universite`}>
+              <Link
+                key={country.slug}
+                href={`/ulkeler/${country.slug}/universite`}
+              >
                 <Card
                   isPressable
-                  className="relative h-full flex flex-col group overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-[1.01] cursor-pointer"
+                  className="relative h-full flex flex-col group overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]  "
                 >
                   <div
                     className="absolute inset-0 bg-cover bg-center opacity-20 blur-xl scale-110"
@@ -107,17 +117,33 @@ export default function Universite() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Başvuru Sürecinde Nasıl Destek Oluyoruz?</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              Başvuru Sürecinde Nasıl Destek Oluyoruz?
+            </h2>
             <p className="text-lg text-gray-600 mb-6">
-              Aka Eğitim olarak program karşılaştırması, başvuru takvimi planlaması, motivasyon mektubu hazırlığı,
-              burs ve finansal planlama, öğrenci vizesi ve konaklama süreçlerinin her adımında yanınızdayız.
-              Süreci şeffaf biçimde yöneterek belgelerinizin eksiksiz ve zamanında gönderilmesini sağlıyoruz.
+              Aka Eğitim olarak program karşılaştırması, başvuru takvimi
+              planlaması, motivasyon mektubu hazırlığı, burs ve finansal
+              planlama, öğrenci vizesi ve konaklama süreçlerinin her adımında
+              yanınızdayız. Süreci şeffaf biçimde yöneterek belgelerinizin
+              eksiksiz ve zamanında gönderilmesini sağlıyoruz.
             </p>
             <ul className="list-decimal list-inside space-y-3 text-gray-700">
-              <li>Üniversite ve bölüm araştırması sonrasında kişisel başvuru stratejisi oluşturuyoruz.</li>
-              <li>Gerekli akademik ve dil belgelerinin doğruluğunu ve resmi tercümesini kontrol ediyoruz.</li>
-              <li>Uni-Assist, Studielink gibi platformlarda başvuru dosyanızı birlikte tamamlıyoruz.</li>
-              <li>Vize mülakatı, bloke hesap ve sağlık sigortası gibi kritik aşamalarda rehberlik sunuyoruz.</li>
+              <li>
+                Üniversite ve bölüm araştırması sonrasında kişisel başvuru
+                stratejisi oluşturuyoruz.
+              </li>
+              <li>
+                Gerekli akademik ve dil belgelerinin doğruluğunu ve resmi
+                tercümesini kontrol ediyoruz.
+              </li>
+              <li>
+                Uni-Assist, Studielink gibi platformlarda başvuru dosyanızı
+                birlikte tamamlıyoruz.
+              </li>
+              <li>
+                Vize mülakatı, bloke hesap ve sağlık sigortası gibi kritik
+                aşamalarda rehberlik sunuyoruz.
+              </li>
             </ul>
           </div>
         </div>
@@ -125,6 +151,5 @@ export default function Universite() {
 
       <Footer />
     </main>
-  )
+  );
 }
-

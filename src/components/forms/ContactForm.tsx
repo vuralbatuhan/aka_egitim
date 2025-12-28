@@ -666,7 +666,7 @@ export default function ContactForm() {
                           }}
                         />
                         <label
-                          className="text-sm sm:text-base text-gray-700 leading-relaxed flex-1 cursor-pointer"
+                          className="text-sm sm:text-base text-gray-700 leading-relaxed flex-1  "
                           onClick={() =>
                             setFormData({
                               ...formData,

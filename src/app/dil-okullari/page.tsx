@@ -70,7 +70,7 @@ export default function DilOkullariPage() {
               >
                 <Card
                   isPressable
-                  className="relative h-full flex flex-col group overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-[1.01] cursor-pointer"
+                  className="relative h-full flex flex-col group overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]"
                 >
                   <div
                     className="absolute inset-0 bg-cover bg-center opacity-20 blur-xl scale-110"

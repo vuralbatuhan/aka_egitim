@@ -105,7 +105,7 @@ const TurkeyMap: React.FC<TurkeyMapProps> = ({ onProvinceClick }) => {
                       stroke: "#ef4444",
                       strokeWidth: 0.75,
                       outline: "none",
-                      cursor: "pointer",
+                      // cursor: "pointer",
                     },
                     pressed: {
                       fill: "#f9fafb",

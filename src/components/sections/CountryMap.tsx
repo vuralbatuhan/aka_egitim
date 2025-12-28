@@ -1,12 +1,12 @@
-'use client'
+"use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   ComposableMap,
   Geographies,
   Geography,
   ZoomableGroup,
-} from 'react-simple-maps';
+} from "react-simple-maps";
 
 interface GeoProperties {
   name?: string;
@@ -42,7 +42,7 @@ const CountryMap: React.FC<CountryMapProps> = ({
   highlightedRegions = [],
 }) => {
   const [geoData, setGeoData] = useState<unknown>(null);
-  const [hoveredRegion, setHoveredRegion] = useState<string>('');
+  const [hoveredRegion, setHoveredRegion] = useState<string>("");
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -50,11 +50,11 @@ const CountryMap: React.FC<CountryMapProps> = ({
     fetch(config.geoDataPath)
       .then((response) => response.json())
       .then((data) => setGeoData(data))
-      .catch((error) => console.error('GeoJSON yükleme hatası:', error));
+      .catch((error) => console.error("GeoJSON yükleme hatası:", error));
   }, [config.geoDataPath]);
 
   const handleMouseEnter = (geo: Geography, event: React.MouseEvent) => {
-    const regionName = geo.properties.name || geo.properties.NAME_1 || '';
+    const regionName = geo.properties.name || geo.properties.NAME_1 || "";
     setHoveredRegion(regionName);
     setTooltipPosition({
       x: event.clientX,
@@ -72,11 +72,11 @@ const CountryMap: React.FC<CountryMapProps> = ({
   };
 
   const handleMouseLeave = () => {
-    setHoveredRegion('');
+    setHoveredRegion("");
   };
 
   const handleClick = (geo: Geography) => {
-    const regionName = geo.properties.name || geo.properties.NAME_1 || '';
+    const regionName = geo.properties.name || geo.properties.NAME_1 || "";
     if (onRegionClick) {
       onRegionClick(regionName);
     }
@@ -100,15 +100,16 @@ const CountryMap: React.FC<CountryMapProps> = ({
         }}
         className="w-full h-auto"
         style={{
-          width: '100%',
-          height: 'auto',
+          width: "100%",
+          height: "auto",
         }}
       >
         <ZoomableGroup center={config.center} zoom={1}>
           <Geographies geography={geoData}>
             {({ geographies }: { geographies: Geography[] }) =>
               geographies.map((geo: Geography) => {
-                const regionName = geo.properties.name || geo.properties.NAME_1 || '';
+                const regionName =
+                  geo.properties.name || geo.properties.NAME_1 || "";
                 const isHighlighted = highlightedRegions.includes(regionName);
 
                 return (
@@ -120,25 +121,25 @@ const CountryMap: React.FC<CountryMapProps> = ({
                     onClick={() => handleClick(geo)}
                     style={{
                       default: {
-                        fill: isHighlighted 
-                          ? '#3b82f6' 
-                          : (config.defaultFill || '#10b981'),
-                        stroke: config.strokeColor || '#ffffff',
+                        fill: isHighlighted
+                          ? "#3b82f6"
+                          : config.defaultFill || "#10b981",
+                        stroke: config.strokeColor || "#ffffff",
                         strokeWidth: 0.5,
-                        outline: 'none',
+                        outline: "none",
                       },
                       hover: {
-                        fill: config.hoverFill || '#ffffff',
-                        stroke: config.defaultFill || '#10b981',
+                        fill: config.hoverFill || "#ffffff",
+                        stroke: config.defaultFill || "#10b981",
                         strokeWidth: 0.75,
-                        outline: 'none',
-                        cursor: 'pointer',
+                        outline: "none",
+                        // cursor: 'pointer',
                       },
                       pressed: {
-                        fill: '#f9fafb',
-                        stroke: config.defaultFill || '#10b981',
+                        fill: "#f9fafb",
+                        stroke: config.defaultFill || "#10b981",
                         strokeWidth: 0.75,
-                        outline: 'none',
+                        outline: "none",
                       },
                     }}
                   />
@@ -156,7 +157,7 @@ const CountryMap: React.FC<CountryMapProps> = ({
           style={{
             left: `${tooltipPosition.x + 10}px`,
             top: `${tooltipPosition.y + 10}px`,
-            transform: 'translate(0, -50%)',
+            transform: "translate(0, -50%)",
           }}
         >
           {hoveredRegion}
@@ -167,4 +168,3 @@ const CountryMap: React.FC<CountryMapProps> = ({
 };
 
 export default CountryMap;
-
