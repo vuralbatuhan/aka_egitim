@@ -23,7 +23,7 @@ export default function CTA() {
           Hayalinizdeki Eğitim Bir Adım Uzağınızda
         </h2>
         <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto drop-shadow-md animate-fade-in">
-          Profesyonel danışmanlarımızla görüşün ve size özel eğitim planınızı oluşturalım
+          Aka Eğitim (aka egitim) profesyonel danışmanlarımızla görüşün ve size özel yurtdışı eğitim planınızı oluşturalım
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button

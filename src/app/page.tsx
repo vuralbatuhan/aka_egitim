@@ -57,6 +57,11 @@ export const metadata: Metadata = {
   keywords: [
     "aka eğitim",
     "aka egitim",
+    "akaegitim",
+    "aka eğitim danışmanlık",
+    "aka egitim danışmanlık",
+    "aka eğitim yurtdışı",
+    "aka egitim yurtdışı",
     "yurtdışı eğitim",
     "yurt dışı eğitim",
     "yurtdışı dil okulu",
@@ -70,6 +75,7 @@ export const metadata: Metadata = {
     "almanya dil okulu",
     "malta dil okulu",
     "italya dil okulu",
+    "finlandiya dil okulu",
     "yurtdışı eğitim danışmanı",
     "yurtdışı eğitim ajansı",
   ],
@@ -132,26 +138,26 @@ export default function Home() {
             mainEntity: [
               {
                 "@type": "Question",
-                name: "Aka Egitim nedir?",
+                name: "Aka Eğitim nedir?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Aka Egitim, yurtdisi dil okulu, universite, yuksek lisans ve work and study programlari icin profesyonel egitim danismanligi hizmeti sunan guvenilir bir egitim ajansidir. 50'den fazla ulkede 500'den fazla okulla calismaktayiz.",
+                  text: "Aka Eğitim (aka egitim), yurtdışı dil okulu, üniversite, yüksek lisans ve work and study programları için profesyonel eğitim danışmanlığı hizmeti sunan güvenilir bir eğitim ajansıdır. 50'den fazla ülkede 500'den fazla okulla çalışmaktayız.",
                 },
               },
               {
                 "@type": "Question",
-                name: "Hangi ulkelere egitim programlari sunuyorsunuz?",
+                name: "Aka Egitim hangi ülkelere eğitim programları sunuyor?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Ingiltere, Almanya, Italya, Malta, Finlandiya, Belcika, Hollanda, Kazakistan, Ispanya, Isvec, Amerika, Kanada, Avustralya ve 50'den fazla ulkede dil okulu ve universite egitim programlari sunuyoruz.",
+                  text: "Aka Eğitim olarak İngiltere, Almanya, İtalya, Malta, Finlandiya, İsviçre, Belçika, Hollanda, Kazakistan, İspanya, İsveç, Amerika, Kanada, Avustralya ve 50'den fazla ülkede dil okulu ve üniversite eğitim programları sunuyoruz.",
                 },
               },
               {
                 "@type": "Question",
-                name: "Dil okulu danismanligi ucretsiz mi?",
+                name: "Aka Eğitim danışmanlığı ücretli mi?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Evet, Aka Egitim olarak size tamamen ucretsiz danismanlik hizmeti sunuyoruz. Ulke secimi, okul onerileri, basvuru sureci ve vize islemlerinde size rehberlik ediyoruz.",
+                  text: "Hayır, Aka Eğitim (aka egitim) olarak size tamamen ücretsiz danışmanlık hizmeti sunuyoruz. Ülke seçimi, okul önerileri, başvuru süreci ve vize işlemlerinde size rehberlik ediyoruz.",
                 },
               },
             ],

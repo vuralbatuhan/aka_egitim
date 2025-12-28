@@ -49,7 +49,8 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-white opacity-90 leading-relaxed mb-6 max-w-sm">
-              Yurtdışı eğitim danışmanlığında uzman ekibimizle hayallerinizdeki
+              Aka Eğitim (aka egitim), yurtdışı eğitim danışmanlığında uzman ekibimizle
+              dil okulu, üniversite ve yüksek lisans programları için hayallerinizdeki
               eğitimi sizin için planlıyoruz.
             </p>
             <div className="flex space-x-4">
