@@ -3,7 +3,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ContactForm from "@/components/forms/ContactForm";
 import type { Metadata } from "next";
-import Image from "next/image";
+// import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Hakkımızda | AKA Eğitim - Öğretmen Rehberliğinde Yurtdışı Eğitim",
@@ -48,7 +48,7 @@ export default function Hakkimizda() {
     <main className="min-h-screen">
       <Navbar />
 
-      <section className="relative min-h-[70vh] overflow-hidden flex items-center bg-white">
+      <section className="relative min-h-[40vh] overflow-hidden flex items-center bg-white">
         <div className="absolute inset-0 overflow-hidden">
           <div
             className="absolute top-16 right-16 w-[520px] h-[520px] rounded-full blur-3xl animate-float"
@@ -60,29 +60,29 @@ export default function Hakkimizda() {
           ></div>
         </div>
 
-        <div className="relative z-10 w-full px-6 sm:px-8 lg:px-16 xl:px-24 py-24">
+        <div className="relative z-10 w-full px-6 sm:px-8 lg:px-16 xl:px-24 py-12">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
+            <div className="text-center mb-6">
               <h1
-                className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6"
+                className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4"
                 style={{ color: "var(--primary)" }}
               >
                 AKA Eğitim Hakkında
               </h1>
-              <p className="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto mb-8">
+              <p className="text-base sm:text-lg text-gray-700 max-w-3xl mx-auto mb-4">
                 AKA – Ayhan KORKMAZ Akademi: Öğretmen rehberliğinde yurtdışı eğitim hareketliliğinin adı soyadı.
                 Azim, Kararlılık ve Ayrıcalık ilkeleriyle öğrencilerinize güvenli eğitim yolculuğu.
               </p>
             </div>
 
-            <div
+            {/*} <div
               className="relative rounded-2xl overflow-hidden shadow-2xl bg-black border"
               style={{ borderColor: "var(--primary-light)" }}
             >
-              {/* <video controls className="w-full h-auto" preload="metadata">
+               <video controls className="w-full h-auto" preload="metadata">
                 <source src="/videos/hakkimizda.mp4" type="video/mp4" />
                 Tarayıcınız video etiketini desteklemiyor.
-              </video> */}
+              </video> 
               <div className="relative w-full h-[620px] overflow-hidden rounded-2xl">
                 <Image
                   src="/images/aka_sample_image_ayhan.jpg"
@@ -92,7 +92,7 @@ export default function Hakkimizda() {
                   priority
                 />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -128,7 +128,7 @@ export default function Hakkimizda() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+              {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                 <div className="text-center">
                   <div className="text-4xl font-bold text-white mb-2">15+</div>
                   <div className="text-white/80">Yıllık Deneyim</div>
@@ -143,7 +143,7 @@ export default function Hakkimizda() {
                   <div className="text-4xl font-bold text-white mb-2">50+</div>
                   <div className="text-white/80">Ülke Seçeneği</div>
                 </div>
-              </div>
+              </div> */}
 
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20">
                 <h3 className="text-2xl font-bold text-white mb-4">

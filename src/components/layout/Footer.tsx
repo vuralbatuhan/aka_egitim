@@ -5,19 +5,21 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const dilOkullari = [
-    { name: "İtalya Dil Eğitimi", href: "/ulkeler/italya" },
+    // { name: "İtalya Dil Eğitimi", href: "/ulkeler/italya" },
     // { name: "Kazakistan Dil Eğitimi", href: "/ulkeler/kazakistan" },
-    { name: "Almanya Dil Eğitimi", href: "/ulkeler/almanya" },
-    { name: "İngiltere Dil Eğitimi", href: "/ulkeler/ingiltere" },
-    { name: "Finlandiya Dil Eğitimi", href: "/ulkeler/finlandiya" },
+    // { name: "Almanya Dil Eğitimi", href: "/ulkeler/almanya" },
+    { name: "İngiltere Dil Eğitimi", href: "/ulkeler/ingiltere/dil-okulu" },
+    { name: "Finlandiya Dil Eğitimi", href: "/ulkeler/finlandiya/dil-okulu" },
   ];
 
   const universiteler = [
-    { name: "İtalya'da Üniversite", href: "/ulkeler/italya" },
-    { name: "Belçika'da Üniversite", href: "/ulkeler/belcika" },
-    { name: "Almanya Üniversiteleri", href: "/ulkeler/almanya" },
-    { name: "Kazakistan'da Üniversite", href: "/ulkeler/kazakistan" },
-    { name: "Hollanda'da Üniversite", href: "/ulkeler/hollanda" },
+    { name: "İtalya'da Üniversite", href: "/ulkeler/italya/universite" },
+    { name: "Finlandiya'da Üniversite", href: "/ulkeler/finlandiya/universite" },
+    { name: "İngiltere'de Üniversite", href: "/ulkeler/ingiltere/universite" },
+    // { name: "Belçika'da Üniversite", href: "/ulkeler/belcika" },
+    { name: "Almanya Üniversiteleri", href: "/ulkeler/almanya/universite" },
+    // { name: "Kazakistan'da Üniversite", href: "/ulkeler/kazakistan" },
+    // { name: "Hollanda'da Üniversite", href: "/ulkeler/hollanda" },
   ];
 
   const kurumsal = [
@@ -116,7 +118,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Üniversite */}
           <div>
             <h3 className="text-lg font-bold text-white mb-6">Üniversite</h3>
             <ul className="space-y-3">
@@ -133,7 +134,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Kurumsal */}
           <div>
             <h3 className="text-lg font-bold text-white mb-6">Kurumsal</h3>
             <ul className="space-y-3">
@@ -151,13 +151,12 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Alt Çizgi */}
         <div className="border-t border-zinc-700 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-white opacity-70 text-sm">
-              © {currentYear} Aka Eğitim. Tüm hakları saklıdır.
+              © {currentYear} Ayhan Korkmaz Eğitim ve Danışmanlık. Tüm hakları saklıdır.
             </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
+            {/* <div className="flex space-x-6 mt-4 md:mt-0">
               <Link
                 href="/gizlilik"
                 className="text-white opacity-70 hover:opacity-100 hover:text-turquoise-400 text-sm transition-all"
@@ -176,7 +175,7 @@ export default function Footer() {
               >
                 Çerez Politikası
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
