@@ -13,6 +13,7 @@ import {
   Checkbox,
 } from "@heroui/react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import HighlightText from "@/components/ui/HighlightText";
 
 export default function ContactForm() {
   const [loading, setLoading] = useState(false);
@@ -45,7 +46,7 @@ export default function ContactForm() {
   const programs = [
     { key: "dil-okulu", label: "Dil Okulu" },
     { key: "universite", label: "Üniversite" },
-    { key: "ogretmen-hareketliligi", label: "Öğretmen Hareketliliği" },
+    { key: "ogretmen-hareketliligi", label: <HighlightText>Öğretmen Hareketliliği</HighlightText> },
   ];
 
   // Program türüne göre ülkeleri filtrele

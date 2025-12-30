@@ -6,7 +6,8 @@
       "Bash(curl:*)",
       "Bash(npm install:*)",
       "Bash(npm run build:*)",
-      "WebSearch"
+      "WebSearch",
+      "Bash(mkdir:*)"
     ],
     "deny": [],
     "ask": []

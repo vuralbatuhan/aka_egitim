@@ -7,6 +7,7 @@ import ContactForm from "@/components/forms/ContactForm";
 import { Card, CardBody, CardFooter } from "@heroui/react";
 import Image from "next/image";
 import { getCountriesForEducationType } from "@/data/countries";
+import HighlightText from "@/components/ui/HighlightText";
 
 // Öğretmen programları sunan ülkeleri dinamik olarak al
 const ALL_TEACHER_COUNTRIES = getCountriesForEducationType(
@@ -44,12 +45,12 @@ export default function OgretmenHareketliligi() {
         <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10"></div>
         <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 text-center py-8">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-3">
-            Öğretmen Hareketliliği Programları
+            <HighlightText>Öğretmen Hareketliliği Programları</HighlightText>
           </h1>
           <p className="text-base sm:text-lg text-white/90 max-w-4xl mx-auto leading-relaxed">
-            Öğretmenlerimizin mesleki gelişimleri için uzmanlar tarafından
+            <HighlightText>Öğretmenlerimizin mesleki gelişimleri için uzmanlar tarafından
             hazırlanmış tematik gelişim programları ve uluslararası geçerliliğe
-            sahip sertifika programları yürütüyoruz.
+            sahip sertifika programları yürütüyoruz.</HighlightText>
           </p>
         </div>
       </section>
@@ -126,31 +127,31 @@ export default function OgretmenHareketliligi() {
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold text-gray-900 mb-6">
-              Öğretmen Hareketliliği Nedir?
+              <HighlightText>Öğretmen Hareketliliği Nedir?</HighlightText>
             </h2>
             <p className="text-lg text-gray-600 mb-6">
-              Öğretmen hareketliliği programları, eğitimcilerin yurtdışında
+              <HighlightText>Öğretmen hareketliliği programları, eğitimcilerin yurtdışında
               eğitim metodolojileri öğrenmesi, sertifika alması ve profesyonel
               gelişimini sürdürmesi için tasarlanmış programlardır. Aka Eğitim
               olarak, öğretmenlerin kariyerlerini uluslararası platformda
-              geliştirmelerine destek oluyoruz.
+              geliştirmelerine destek oluyoruz.</HighlightText>
             </p>
             <ul className="list-disc list-inside space-y-3 text-gray-700">
               <li>
-                CELTA, DELTA, TESOL gibi uluslararası öğretmenlik sertifikaları
-                için başvuru desteği.
+                <HighlightText>CELTA, DELTA, TESOL gibi uluslararası öğretmenlik sertifikaları
+                için başvuru desteği.</HighlightText>
               </li>
               <li>
-                Avrupa Birliği Erasmus+ öğretmen hareketliliği programlarına
-                başvuru rehberliği.
+                <HighlightText>Avrupa Birliği Erasmus+ öğretmen hareketliliği programlarına
+                başvuru rehberliği.</HighlightText>
               </li>
               <li>
-                Yurtdışında öğretmen eğitimi ve mesleki gelişim kursları için
-                danışmanlık.
+                <HighlightText>Yurtdışında öğretmen eğitimi ve mesleki gelişim kursları için
+                danışmanlık.</HighlightText>
               </li>
               <li>
-                Yabancı dil öğretimi metodolojileri ve sertifika programları
-                hakkında bilgilendirme.
+                <HighlightText>Yabancı dil öğretimi metodolojileri ve sertifika programları
+                hakkında bilgilendirme.</HighlightText>
               </li>
               <li>Program sonrası iş bulma ve kariyer planlama desteği.</li>
             </ul>

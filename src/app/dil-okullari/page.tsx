@@ -8,6 +8,7 @@ import ContactForm from "@/components/forms/ContactForm";
 import { Card, CardBody, CardFooter } from "@heroui/react";
 import Image from "next/image";
 import { getCountriesForEducationType } from "@/data/countries";
+import HighlightText from "@/components/ui/HighlightText";
 
 // Dil okulu programı sunan ülkeleri dinamik olarak al
 const ALL_LANGUAGE_SCHOOL_COUNTRIES = getCountriesForEducationType(
@@ -49,8 +50,8 @@ export default function DilOkullariPage() {
           </h1>
           <p className="text-base sm:text-lg text-white/90 max-w-4xl mx-auto leading-relaxed">
             Ortaöğretim öğrencilerimiz için akran öğrenmesi ve özgüven
-            gelişimini merkeze alan, öğretmen gözetiminde kısa süreli dil okulu
-            programları düzenliyoruz. Öğrencinin kendi okuluyla ortaklaşa
+            gelişimini merkeze alan, <HighlightText>öğretmen gözetiminde kısa süreli dil okulu
+            programları düzenliyoruz.</HighlightText> Öğrencinin kendi okuluyla ortaklaşa
             planlanan bu süreçte, eğitimler gidilen ülkenin uzmanlarınca
             verilirken, koordinasyon ve üniversite gezileri AKA tarafından
             yönetilerek takip edilir. Program sonunda okula, veliye ve öğrenciye

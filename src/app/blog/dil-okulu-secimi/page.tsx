@@ -3,6 +3,7 @@ import Footer from '@/components/layout/Footer'
 import PageHero from '@/components/sections/PageHero'
 import type { Metadata } from 'next'
 import dynamic from 'next/dynamic'
+import HighlightText from '@/components/ui/HighlightText'
 
 const LazyContactForm = dynamic(() => import('@/components/forms/ContactForm'), {
   ssr: true
@@ -357,7 +358,7 @@ export default function DilOkuluSecimi() {
                   <li>✓ Okul hangi akreditasyonlara sahip?</li>
                   <li>✓ Sınıflar ne kadar büyük? (Ortalama öğrenci sayısı)</li>
                   <li>✓ Öğrenciler hangi ülkelerden geliyor? (Türk oranı)</li>
-                  <li>✓ Öğretmenler nitelikli mi? (sertifikaları var mı?)</li>
+                  <li><HighlightText>✓ Öğretmenler nitelikli mi? (sertifikaları var mı?)</HighlightText></li>
                   <li>✓ Tesisler nasıl? (kütüphane, bilgisayar, öğrenci salonu)</li>
                   <li>✓ Acil durum desteği var mı?</li>
                   <li>✓ Gerçek öğrenci yorumları ne diyor?</li>

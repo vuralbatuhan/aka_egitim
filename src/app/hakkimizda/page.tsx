@@ -3,6 +3,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ContactForm from "@/components/forms/ContactForm";
 import type { Metadata } from "next";
+import HighlightText from "@/components/ui/HighlightText";
 // import Image from "next/image";
 
 export const metadata: Metadata = {
@@ -70,7 +71,7 @@ export default function Hakkimizda() {
                 AKA Eğitim Hakkında
               </h1>
               <p className="text-base sm:text-lg text-gray-700 max-w-3xl mx-auto mb-4">
-                AKA – Ayhan KORKMAZ Akademi: Öğretmen rehberliğinde yurtdışı eğitim hareketliliğinin adı soyadı.
+                AKA – Ayhan KORKMAZ Akademi: <HighlightText>Öğretmen rehberliğinde yurtdışı eğitim hareketliliğinin adı soyadı.</HighlightText>{' '}
                 Azim, Kararlılık ve Ayrıcalık ilkeleriyle öğrencilerinize güvenli eğitim yolculuğu.
               </p>
             </div>
@@ -150,13 +151,13 @@ export default function Hakkimizda() {
                   AKA Farkı
                 </h3>
                 <p className="text-white/90 mb-3">
-                  <strong>Öğretmen Rehberliği:</strong> Eğitim hareketliliğini öğretmen rehberliğinde pedagojik bir süreç olarak yürütüyoruz.
+                  <strong><HighlightText>Öğretmen Rehberliği:</HighlightText></strong> <HighlightText>Eğitim hareketliliğini öğretmen rehberliğinde pedagojik bir süreç olarak yürütüyoruz.</HighlightText>
                 </p>
                 <p className="text-white/90 mb-3">
                   <strong>Karakter Odaklı:</strong> Öğrencinin henüz yurt dışına çıkmadan tüm yetenek ve özellikleri ile tanınması esasına dayanırız.
                 </p>
                 <p className="text-white/90">
-                  <strong>Tam Destek:</strong> Evden havalimanına, kayıt ofisine kadar öğretmen eşliğinde sürekli destek.
+                  <strong>Tam Destek:</strong> <HighlightText>Evden havalimanına, kayıt ofisine kadar öğretmen eşliğinde sürekli destek.</HighlightText>
                 </p>
               </div>
             </div>
@@ -173,9 +174,9 @@ export default function Hakkimizda() {
                 Neden AKA Eğitim?
               </h2>
               <p className="text-lg text-gray-600 mb-10 text-center max-w-3xl mx-auto">
-                AKA Eğitim, yurtdışı eğitimin merkezine <strong>&ldquo;Öğretmen Rehberliği&rdquo;</strong> koyar.
-                Öğrencinizin yurtdışı eğitim yolculuğuna bir aile ferdi içtenliği ile bakar,
-                evinizden havalimanına danışman öğretmeni sizinle beraber eşlik eder.
+                AKA Eğitim, yurtdışı eğitimin merkezine <strong>&ldquo;<HighlightText>Öğretmen Rehberliği</HighlightText>&rdquo;</strong> koyar.
+                <HighlightText>Öğrencinizin yurtdışı eğitim yolculuğuna bir aile ferdi içtenliği ile bakar,
+                evinizden havalimanına danışman öğretmeni sizinle beraber eşlik eder.</HighlightText>
               </p>
               <div className="grid md:grid-cols-2 gap-6">
                 <div

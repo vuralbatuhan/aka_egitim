@@ -2,6 +2,7 @@
 
 import { Button } from "@heroui/react";
 import Link from "next/link";
+import HighlightText from "@/components/ui/HighlightText";
 
 interface PageHeroProps {
   title: string;
@@ -31,7 +32,7 @@ export default function PageHero({ title, subtitle, description, backgroundImage
         </p>
         {description && (
           <p className="text-base sm:text-lg mb-6 sm:mb-8 max-w-4xl mx-auto drop-shadow-md px-4 opacity-90">
-            {description}
+            <HighlightText>{description}</HighlightText>
           </p>
         )}
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">

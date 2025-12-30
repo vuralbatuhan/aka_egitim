@@ -4,6 +4,7 @@ import Footer from '@/components/layout/Footer'
 import { Card, CardBody } from '@heroui/react'
 import type { Metadata } from 'next'
 import dynamic from 'next/dynamic'
+import HighlightText from '@/components/ui/HighlightText'
 
 // ContactForm'u lazy load et
 const LazyContactForm = dynamic(() => import('@/components/forms/ContactForm'), {
@@ -68,15 +69,15 @@ export default function NeYapmakIstiyoruz() {
               </h2>
               <div className="bg-primary/5 border-l-4 border-primary p-8 rounded-r-lg mb-8 max-w-3xl mx-auto">
                 <p className="text-2xl text-primary font-semibold mb-4">
-                  &ldquo;Her ülke öğretmen için bir ansiklopedidir.&rdquo;
+                  <HighlightText>&ldquo;Her ülke öğretmen için bir ansiklopedidir.&rdquo;</HighlightText>
                 </p>
                 <p className="text-lg text-gray-700">
-                  &ldquo;Konu ülkenin geleceği ise özne eğitim, eğitimin öznesi ise değerli kılınmış öğretmendir.&rdquo;
+                  <HighlightText>&ldquo;Konu ülkenin geleceği ise özne eğitim, eğitimin öznesi ise değerli kılınmış öğretmendir.&rdquo;</HighlightText>
                 </p>
               </div>
               <p className="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
-                AKA Eğitim, öğrenmenin ve öğretmenin evrenselliğine inanır. Her yeni gözlemin ve yaşantının
-                öğretmen rehberliğinde öğrencilere aktarılan cümlelerde olduğuna inanır.
+                <HighlightText>AKA Eğitim, öğrenmenin ve öğretmenin evrenselliğine inanır. Her yeni gözlemin ve yaşantının
+                öğretmen rehberliğinde öğrencilere aktarılan cümlelerde olduğuna inanır.</HighlightText>
               </p>
             </div>
           </div>

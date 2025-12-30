@@ -4,8 +4,8 @@ import Footer from '@/components/layout/Footer'
 import { Card, CardBody } from '@heroui/react'
 import type { Metadata } from 'next'
 import dynamic from 'next/dynamic'
+import HighlightText from '@/components/ui/HighlightText'
 
-// ContactForm'u lazy load et
 const LazyContactForm = dynamic(() => import('@/components/forms/ContactForm'), {
   ssr: true
 })
@@ -68,13 +68,13 @@ export default function BizKimiz() {
                   Kimiz?
                 </h2>
                 <p className="text-lg text-gray-700 mb-4">
-                  AKA–Ayhan KORKMAZ Akademi; <strong>&ldquo;Konu ülkenin geleceği ise özne eğitimdir.&rdquo;</strong> ilkesiyle yola çıkan öğretmenlerin kurduğu öncü bir eğitim oluşumudur.
+                  AKA–Ayhan KORKMAZ Akademi; <strong>&ldquo;Konu ülkenin geleceği ise özne eğitimdir.&rdquo;</strong> <HighlightText>ilkesiyle yola çıkan öğretmenlerin kurduğu öncü bir eğitim oluşumudur.</HighlightText>
                 </p>
                 <p className="text-lg text-gray-700 mb-4">
                   <strong>Azim, Kararlılık ve Ayrıcalık</strong> ilkelerini güven temeliyle birleştiren eğitimciler tarafından dayanışma ruhuyla hayata geçirilmiştir.
                 </p>
                 <p className="text-lg text-gray-700">
-                  Bünyemiz, uluslararası öğrenci ve öğretmen hareketliliğini bizzat eğitimci bakış açısıyla yöneten profesyonellerden oluşmaktadır.
+                  <HighlightText>Bünyemiz, uluslararası öğrenci ve öğretmen hareketliliğini bizzat eğitimci bakış açısıyla yöneten profesyonellerden oluşmaktadır.</HighlightText>
                 </p>
               </div>
 
@@ -90,8 +90,8 @@ export default function BizKimiz() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900 mb-2">Öğretmen Rehberliği</h3>
-                      <p className="text-gray-700">Sürece başladığı andan itibaren öğrencimize atanan bir meslek rehberi öğretmen ile ilerler.</p>
+                      <h3 className="font-semibold text-gray-900 mb-2"><HighlightText>Öğretmen Rehberliği</HighlightText></h3>
+                      <p className="text-gray-700"><HighlightText>Sürece başladığı andan itibaren öğrencimize atanan bir meslek rehberi öğretmen ile ilerler.</HighlightText></p>
                     </div>
                   </div>
 
@@ -103,7 +103,7 @@ export default function BizKimiz() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-2">Evden Havalimanına Eşlik</h3>
-                      <p className="text-gray-700">Türkiye&apos;de öğretmeni tarafından evinden alınıp havalimanından uğurlanır; gittiği ülkede Türk öğretmen tarafından karşılanır.</p>
+                      <p className="text-gray-700"><HighlightText>Türkiye'de öğretmeni tarafından evinden alınıp havalimanından uğurlanır; gittiği ülkede Türk öğretmen tarafından karşılanır.</HighlightText></p>
                     </div>
                   </div>
 
@@ -115,7 +115,7 @@ export default function BizKimiz() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-2">Asla Yalnız Değil</h3>
-                      <p className="text-gray-700">Kayıt ve konaklama dahil tüm süreçlerde öğrencimiz asla yalnız yürümez. Öğretmen eşliğinde her adım takip edilir.</p>
+                      <p className="text-gray-700"><HighlightText>Kayıt ve konaklama dahil tüm süreçlerde öğrencimiz asla yalnız yürümez. Öğretmen eşliğinde her adım takip edilir.</HighlightText></p>
                     </div>
                   </div>
                 </div>
@@ -147,7 +147,7 @@ export default function BizKimiz() {
                     </h3>
                   </div>
                   <p className="text-gray-700">
-                    Ortaöğretim öğrencilerimiz için akran öğrenmesi ve özgüven gelişimini merkeze alan, öğretmen gözetiminde kısa süreli dil okulu programları. Program sonunda detaylı &ldquo;Gelişim Raporu&rdquo; sunulur.
+                    <HighlightText>Ortaöğretim öğrencilerimiz için akran öğrenmesi ve özgüven gelişimini merkeze alan, öğretmen gözetiminde kısa süreli dil okulu programları. Program sonunda detaylı "Gelişim Raporu" sunulur.</HighlightText>
                   </p>
                 </CardBody>
               </Card>
@@ -180,11 +180,11 @@ export default function BizKimiz() {
                       </svg>
                     </div>
                     <h3 className="text-xl font-bold text-gray-900 ml-4">
-                      Öğretmen Hareketliliği
+                      <HighlightText>Öğretmen Hareketliliği</HighlightText>
                     </h3>
                   </div>
                   <p className="text-gray-700">
-                    Öğretmenlerimizin mesleki gelişimleri için uzmanlar tarafından hazırlanmış tematik gelişim programları ve uluslararası geçerliliğe sahip sertifika programları yürütüyoruz.
+                    <HighlightText>Öğretmenlerimizin mesleki gelişimleri için uzmanlar tarafından hazırlanmış tematik gelişim programları ve uluslararası geçerliliğe sahip sertifika programları yürütüyoruz.</HighlightText>
                   </p>
                 </CardBody>
               </Card>

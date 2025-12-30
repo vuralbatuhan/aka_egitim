@@ -4,6 +4,7 @@ import Footer from '@/components/layout/Footer'
 import { Card, CardBody } from '@heroui/react'
 import type { Metadata } from 'next'
 import dynamic from 'next/dynamic'
+import HighlightText from '@/components/ui/HighlightText'
 
 // ContactForm'u lazy load et
 const LazyContactForm = dynamic(() => import('@/components/forms/ContactForm'), {
@@ -78,8 +79,8 @@ export default function NicinKurduk() {
                 Yol haritamız, Gazi Mustafa Kemal Atatürk&apos;ün 1924 yılında yurt dışına gönderilen öğrencilere hitaben söylediği bu sözüdür.
               </p>
               <p className="text-xl text-gray-700 mb-6">
-                <strong>Bu vizyonla;</strong> Yurt dışına gidecek her öğrencimizin, ülkesine katma değer sağlayacak donanımla ve özgüvenle geri dönmesini sağlamak,
-                eğitim hareketliliğini öğretmen rehberliğinde pedagojik bir süreç olarak yürütmek için kurulduk.
+                <strong>Bu vizyonla;</strong> <HighlightText>Yurt dışına gidecek her öğrencimizin, ülkesine katma değer sağlayacak donanımla ve özgüvenle geri dönmesini sağlamak,
+                eğitim hareketliliğini öğretmen rehberliğinde pedagojik bir süreç olarak yürütmek için kurulduk.</HighlightText>
               </p>
               <p className="text-xl text-gray-700">
                 Öğrencilerimizi karakterlerine en uygun mesleklere ve okullara yönlendirerek, <strong>&ldquo;Yeni nesil sizin eserinizdir!&rdquo;</strong> düsturuyla
@@ -132,8 +133,8 @@ export default function NicinKurduk() {
                     </h3>
                   </div>
                   <p className="text-gray-700">
-                    Bu rotaya uygun okul tercihinin belirlenmesi ve eğitim süresince takibi sağlanır.
-                    Öğretmen rehberliğinde en uygun programlar seçilir.
+                    <HighlightText>Bu rotaya uygun okul tercihinin belirlenmesi ve eğitim süresince takibi sağlanır.
+                    Öğretmen rehberliğinde en uygun programlar seçilir.</HighlightText>
                   </p>
                 </CardBody>
               </Card>
@@ -151,8 +152,8 @@ export default function NicinKurduk() {
                     </h3>
                   </div>
                   <p className="text-gray-700">
-                    Gençlerimizin ülkeleri adına bilinçli ve donanımlı bireyler olarak geri dönmeleri için
-                    süreç boyunca öğretmen rehberliğinde takip edilir.
+                    <HighlightText>Gençlerimizin ülkeleri adına bilinçli ve donanımlı bireyler olarak geri dönmeleri için
+                    süreç boyunca öğretmen rehberliğinde takip edilir.</HighlightText>
                   </p>
                 </CardBody>
               </Card>
@@ -166,12 +167,12 @@ export default function NicinKurduk() {
                       </svg>
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900 ml-4">
-                      Öğretmen Eşliği
+                      <HighlightText>Öğretmen Eşliği</HighlightText>
                     </h3>
                   </div>
                   <p className="text-gray-700">
-                    Türkiye&apos;de evinden alınıp havalimanından uğurlanır; gittiği ülkede Türk öğretmen tarafından karşılanır.
-                    Asla yalnız bırakılmaz.
+                    <HighlightText>Türkiye'de evinden alınıp havalimanından uğurlanır; gittiği ülkede Türk öğretmen tarafından karşılanır.
+                    Asla yalnız bırakılmaz.</HighlightText>
                   </p>
                 </CardBody>
               </Card>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Globe from "../Globe";
+import HighlightText from "@/components/ui/HighlightText";
 
 export default function Hero() {
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
@@ -117,16 +118,18 @@ export default function Hero() {
                   style={{ background: "rgba(255,255,255,0.15)" }}
                 >
                   {quotes.map((quote, index) => (
-                    <p
+                    <div
                       key={index}
-                      className={`text-white text-base sm:text-lg font-medium text-center leading-relaxed absolute inset-0 flex items-center justify-center px-6 transition-all duration-700 ${
+                      className={`absolute inset-0 flex items-center justify-center px-6 transition-all duration-700 ${
                         index === currentQuoteIndex
                           ? "opacity-100 translate-y-0"
                           : "opacity-0 translate-y-4"
                       }`}
                     >
-                      {quote}
-                    </p>
+                      <p className="text-white text-base sm:text-lg font-medium text-center leading-relaxed">
+                        <HighlightText>{quote}</HighlightText>
+                      </p>
+                    </div>
                   ))}
                 </div>
               </div>

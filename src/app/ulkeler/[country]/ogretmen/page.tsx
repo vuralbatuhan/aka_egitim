@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getCountryBySlug } from "@/data/countries";
 import Link from "next/link";
+import HighlightText from "@/components/ui/HighlightText";
 
 interface PageProps {
   params: Promise<{ country: string }>;
@@ -77,7 +78,7 @@ export default async function TeacherProgramsPage({ params }: PageProps) {
                 {info.name}
               </Link>
               <span className="mx-2">/</span>
-              <span className="text-white">Öğretmen Programları</span>
+              <span className="text-white"><HighlightText>Öğretmen Programları</HighlightText></span>
             </nav>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
               {teacherPrograms.title}
@@ -110,7 +111,7 @@ export default async function TeacherProgramsPage({ params }: PageProps) {
               className="text-4xl font-bold mb-4"
               style={{ color: "var(--primary-dark)" }}
             >
-              Neden {info.name} Öğretmen Eğitimi?
+              <HighlightText>Neden {info.name} Öğretmen Eğitimi?</HighlightText>
             </h2>
           </div>
 
@@ -160,7 +161,7 @@ export default async function TeacherProgramsPage({ params }: PageProps) {
               className="text-4xl font-bold mb-4"
               style={{ color: "var(--primary-dark)" }}
             >
-              Öğretmen Eğitim Programları
+              <HighlightText>Öğretmen Eğitim Programları</HighlightText>
             </h2>
             <p className="text-xl text-gray-600">
               İhtiyacınıza uygun programı seçin
