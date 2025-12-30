@@ -103,7 +103,7 @@ export default function BizKimiz() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-2">Evden Havalimanına Eşlik</h3>
-                      <p className="text-gray-700"><HighlightText>Türkiye'de öğretmeni tarafından evinden alınıp havalimanından uğurlanır; gittiği ülkede Türk öğretmen tarafından karşılanır.</HighlightText></p>
+                      <p className="text-gray-700"><HighlightText>Türkiye&apos;de öğretmeni tarafından evinden alınıp havalimanından uğurlanır; gittiği ülkede Türk öğretmen tarafından karşılanır.</HighlightText></p>
                     </div>
                   </div>
 
@@ -147,7 +147,7 @@ export default function BizKimiz() {
                     </h3>
                   </div>
                   <p className="text-gray-700">
-                    <HighlightText>Ortaöğretim öğrencilerimiz için akran öğrenmesi ve özgüven gelişimini merkeze alan, öğretmen gözetiminde kısa süreli dil okulu programları. Program sonunda detaylı "Gelişim Raporu" sunulur.</HighlightText>
+                    <HighlightText>Ortaöğretim öğrencilerimiz için akran öğrenmesi ve özgüven gelişimini merkeze alan, öğretmen gözetiminde kısa süreli dil okulu programları. Program sonunda detaylı &ldquo;Gelişim Raporu&rdquo; sunulur.</HighlightText>
                   </p>
                 </CardBody>
               </Card>

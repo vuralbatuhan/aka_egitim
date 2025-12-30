@@ -7,7 +7,9 @@
       "Bash(npm install:*)",
       "Bash(npm run build:*)",
       "WebSearch",
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)"
     ],
     "deny": [],
     "ask": []

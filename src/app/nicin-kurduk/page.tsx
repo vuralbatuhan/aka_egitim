@@ -171,7 +171,7 @@ export default function NicinKurduk() {
                     </h3>
                   </div>
                   <p className="text-gray-700">
-                    <HighlightText>Türkiye'de evinden alınıp havalimanından uğurlanır; gittiği ülkede Türk öğretmen tarafından karşılanır.
+                    <HighlightText>Türkiye&apos;de evinden alınıp havalimanından uğurlanır; gittiği ülkede Türk öğretmen tarafından karşılanır.
                     Asla yalnız bırakılmaz.</HighlightText>
                   </p>
                 </CardBody>
