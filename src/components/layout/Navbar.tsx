@@ -37,25 +37,14 @@ export default function Navbar() {
   const dilOkullariItems = useMemo(
     () => [
       {
-        name: "İtalya",
-        href: "/ulkeler/italya",
-        description: "Sanat, kültür ve kaliteli eğitim",
-      },
-      // { name: "Kazakistan", href: "/ulkeler/kazakistan", description: "Uygun maliyetli eğitim" },
-      {
-        name: "Almanya",
-        href: "/ulkeler/almanya",
-        description: "Uygun maliyetli eğitim",
+        name: "İngiltere",
+        href: "/ulkeler/ingiltere",
+        description: "İngilizce eğitiminde dünya lideri",
       },
       {
         name: "Finlandiya",
         href: "/ulkeler/finlandiya",
-        description: "Uygun maliyetli eğitim",
-      },
-      {
-        name: "İngiltere",
-        href: "/ulkeler/ingiltere",
-        description: "Uygun maliyetli eğitim",
+        description: "İngilizce eğitimi ve kaliteli yaşam",
       },
     ],
     []
@@ -69,9 +58,9 @@ export default function Navbar() {
         description: "Sanat, kültür ve kaliteli eğitim",
       },
       {
-        name: "Belçika",
-        href: "/ulkeler/belcika",
-        description: "Çok kültürlü eğitim fırsatları",
+        name: "İngiltere",
+        href: "/ulkeler/ingiltere",
+        description: "Prestijli üniversiteler",
       },
       {
         name: "Almanya",
@@ -79,14 +68,25 @@ export default function Navbar() {
         description: "Ücretsiz eğitim fırsatları",
       },
       {
-        name: "Kazakistan",
-        href: "/ulkeler/kazakistan",
-        description: "Uygun maliyetli eğitim",
+        name: "Finlandiya",
+        href: "/ulkeler/finlandiya",
+        description: "Dünya'nın en iyi eğitim sistemi",
+      },
+    ],
+    []
+  );
+
+  const ogretmenHareketliligiItems = useMemo(
+    () => [
+      {
+        name: "Finlandiya",
+        href: "/ulkeler/finlandiya/ogretmen",
+        description: "Dünya'nın en iyi eğitim sistemi",
       },
       {
-        name: "Hollanda",
-        href: "/ulkeler/hollanda",
-        description: "İngilizce programlar",
+        name: "İsviçre",
+        href: "/ulkeler/isvicre/ogretmen",
+        description: "Çok dilli pedagojik programlar",
       },
     ],
     []
@@ -132,8 +132,16 @@ export default function Navbar() {
           description: item.description,
         })),
       },
+      {
+        title: "Öğretmen Hareketliliği Ülkeleri",
+        items: ogretmenHareketliligiItems.map((item) => ({
+          name: item.name,
+          href: item.href,
+          description: item.description,
+        })),
+      },
     ];
-  }, [menuItems, dilOkullariItems, universiteItems]);
+  }, [menuItems, dilOkullariItems, universiteItems, ogretmenHareketliligiItems]);
 
   useEffect(() => {
     if (!isGridMenuOpen) return;

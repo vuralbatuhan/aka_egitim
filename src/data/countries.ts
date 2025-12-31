@@ -1476,44 +1476,44 @@ export const countries: Record<string, CountryInfo> = {
     languageSchool: {
       title: "Finlandiya Dil Okulu Programları",
       description:
-        "Finlandiya'da Fince veya İsveççe öğrenmek, İskandinav yaşam tarzını deneyimleme ve eğitim sisteminde uzmanlaşma fırsatıdır. Modern dil okullarında kaliteli eğitim alabilirsiniz.",
+        "Finlandiya'da İngilizce öğrenmek, İskandinav yaşam tarzını deneyimleme ve dünya'nın en iyi eğitim sistemini yakından tanıma fırsatıdır. Modern dil okullarında kaliteli İngilizce eğitimi alabilirsiniz.",
       heroImage:
         "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1800&q=80",
       whyChooseThis: [
-        "Dünya'nın en iyi eğitim sisteminde dil öğrenimi",
+        "Dünya'nın en iyi eğitim sisteminde İngilizce öğrenimi",
         "Küçük sınıf mevcutları ve kişiselleştirilmiş eğitim",
         "Doğa içinde öğrenme ortamı",
-        "İngilizce yaygın olarak konuşulur",
+        "Yüksek kaliteli yaşam standardı",
         "Schengen vizesi ile Avrupa gezme imkanı",
-        "Yüksek yaşam kalitesi ve güvenlik",
+        "Güvenli ve huzurlu öğrenme ortamı",
       ],
       programs: [
         {
-          name: "Yoğun Fince Kursu",
+          name: "Yoğun İngilizce Kursu",
           duration: "4-36 hafta",
           description:
-            "Haftada 15-20 saat Fince eğitimi ile A1'den C1'e kadar tüm seviyeler",
+            "Haftada 15-20 saat İngilizce eğitimi ile A1'den C1'e kadar tüm seviyeler",
           tuitionFee: "€200-300 / hafta",
         },
         {
-          name: "İsveççe Dil Kursu",
+          name: "İngilizce İletişim Kursu",
           duration: "4-24 hafta",
           description:
-            "Finlandiya'nın resmi dillerinden İsveççe öğrenin",
+            "Günlük yaşam ve iş hayatı için pratik İngilizce iletişim becerileri",
           tuitionFee: "€200-300 / hafta",
         },
         {
-          name: "Üniversite Hazırlık",
-          duration: "6-12 ay",
+          name: "IELTS/TOEFL Hazırlık",
+          duration: "6-12 hafta",
           description:
-            "Fin üniversitelerine kabul için dil ve akademik hazırlık programı",
-          tuitionFee: "€3000-5000 / dönem",
+            "Uluslararası İngilizce sınavlarına hazırlık ve akademik İngilizce",
+          tuitionFee: "€250-350 / hafta",
         },
         {
-          name: "Fince + Kültür Programı",
+          name: "İngilizce + Kültür Programı",
           duration: "2-12 hafta",
           description:
-            "Fince öğrenirken Fin kültürü, sauna, doğa ve yaşam tarzını keşfedin",
+            "İngilizce öğrenirken Fin kültürü, sauna, doğa ve yaşam tarzını keşfedin",
           tuitionFee: "€250-350 / hafta",
         },
       ],
@@ -1536,9 +1536,9 @@ export const countries: Record<string, CountryInfo> = {
       ],
       faqs: [
         {
-          question: "Fince öğrenmek zor mu?",
+          question: "Finlandiya'da İngilizce eğitimi nasıl?",
           answer:
-            "Fince farklı bir dil ailesi olsa da, iyi programlar ile öğrenilebilir. Ayrıca Finlandiya'da İngilizce yaygındır.",
+            "Finlandiya, dünya'nın en iyi eğitim sistemine sahiptir. İngilizce eğitimi kaliteli, modern yöntemlerle ve deneyimli öğretmenler tarafından verilir.",
         },
         {
           question: "Dil kursu sonrası kalabilir miyim?",
