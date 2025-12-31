@@ -72,7 +72,7 @@ export default function Footer() {
               </Link>
 
               <Link
-                href="https://www.instagram.com/aka.education"
+                href="https://www.instagram.com/aka_egitim"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-turquoise-600 hover:bg-turquoise-700 rounded-full flex items-center justify-center transition-colors duration-200"
