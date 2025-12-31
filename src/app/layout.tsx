@@ -25,42 +25,62 @@ export const metadata: Metadata = {
   },
   applicationName: 'Aka Eğitim',
   description:
-    'Aka Eğitim ile yurtdışı dil okulu, üniversite, yüksek lisans, work and study programlarına başvurun. İngiltere, Almanya, İtalya, Malta ve 50+ ülkede eğitim fırsatları. Ücretsiz danışmanlık için hemen başvurun!',
+    'Aka Eğitim ile yurtdışı dil okulu, üniversite, yüksek lisans, work and study programlarına başvurun. İngiltere, Almanya, İtalya, Finlandiya ve 50+ ülkede eğitim fırsatları. Ücretsiz danışmanlık için hemen başvurun!',
   keywords: [
-    'yurtdışı eğitim',
-    'yurt dışı eğitim',
-    'yurtdışı eğitim danışmanlığı',
     'aka eğitim',
     'aka egitim',
     'akaegitim',
+    'akaeğitim',
+    'aka eigitim',
+    'aka e gitim',
+    'aka education',
     'aka eğitim danışmanlık',
     'aka egitim danışmanlık',
+    'aka eğitim istanbul',
+    'aka egitim istanbul',
+    'yurtdışı eğitim',
+    'yurt dışı eğitim',
+    'yurtdışı eğitim danışmanlığı',
+    'yurt dışı eğitim danışmanlığı',
+    'yurtdışı eğitim ajansı',
+    'yurt dışı eğitim ajansı',
+    'eğitim danışmanlığı',
+    'egitim danışmanlığı',
     'dil okulu',
     'yurtdışı dil okulu',
     'yurt dışı dil okulu',
     'dil kursu',
     'ingilizce dil okulu',
     'almanca dil okulu',
-    'yurtdışında üniversite',
-    'yurt dışında üniversite',
-    'yurtdışı üniversite',
-    'yurtdışı yüksek lisans',
-    'yurt dışı master',
-    'work and study',
-    'work and travel',
-    'yurtdışında lise',
-    'erasmus',
     'ingiltere dil okulu',
+    'finlandiya dil okulu',
     'almanya dil okulu',
     'malta dil okulu',
     'italya dil okulu',
-    'amerikada dil okulu',
-    'kanadada dil okulu',
-    'avustralya dil okulu',
-    'yurtdışı eğitim ajansı',
+    'yurtdışında üniversite',
+    'yurt dışında üniversite',
+    'yurtdışı üniversite',
+    'yurt dışı üniversite',
+    'yurtdışı üniversite okumak',
+    'ingiltere üniversite',
+    'almanya üniversite',
+    'italya üniversite',
+    'finlandiya üniversite',
+    'yurtdışı yüksek lisans',
+    'yurt dışı yüksek lisans',
+    'yurt dışı master',
+    'yurtdışı master',
+    'work and study',
+    'work and travel',
+    'öğretmen hareketliliği',
+    'ogretmen hareketliligi',
+    'erasmus',
+    'erasmus programı',
     'education abroad',
     'study abroad',
     'language school',
+    'study in uk',
+    'study in germany',
   ],
   authors: [{ name: 'Aka Eğitim', url: 'https://www.akaegitim.com.tr' }],
   creator: 'Aka Eğitim',
@@ -139,10 +159,22 @@ export default function RootLayout({
     <html lang="tr" className={`${montserrat.variable} ${poppins.variable}`} data-scroll-behavior="smooth">
       <head>
         <GoogleAnalytics gaId="G-XXXXXXXXXX" />
-        {/* Favicons for browsers - Logo.jpg kullanılıyor */}
+
         <link rel="icon" type="image/jpeg" href="/logo.jpg" />
         <link rel="apple-touch-icon" href="/logo.jpg" />
         <link rel="shortcut icon" href="/logo.jpg" />
+
+        <meta name="google-site-verification" content="google-site-verification-code-buraya-gelecek" />
+        <meta name="author" content="Aka Eğitim" />
+        <meta name="geo.region" content="TR-34" />
+        <meta name="geo.placename" content="İstanbul" />
+        <meta name="geo.position" content="41.0082;28.9784" />
+        <meta name="ICBM" content="41.0082, 28.9784" />
+
+        <link rel="canonical" href="https://www.akaegitim.com.tr" />
+
+        <meta httpEquiv="content-language" content="tr" />
+
         {/* Eski favicon'lar - yorum satırında
         <link rel="icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -164,7 +196,7 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'EducationalOrganization',
               name: 'Aka Eğitim',
-              alternateName: 'Aka Egitim',
+              alternateName: ['Aka Egitim', 'AkaEgitim', 'Aka Eğitim Danışmanlık', 'Aka Education'],
               url: 'https://www.akaegitim.com.tr',
               logo: {
                 '@type': 'ImageObject',
@@ -251,6 +283,29 @@ export default function RootLayout({
                   urlTemplate: 'https://www.akaegitim.com.tr/ulkeler/{country}',
                 },
                 'query-input': 'required name=country',
+              },
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: 'Aka Eğitim',
+              alternateName: ['Aka Egitim', 'AkaEgitim', 'Aka E Gitim', 'Aka Eigitim'],
+              url: 'https://www.akaegitim.com.tr',
+              description: 'Yurtdışı eğitim danışmanlığı - Dil okulu, üniversite, yüksek lisans programları',
+              inLanguage: 'tr',
+              potentialAction: {
+                '@type': 'SearchAction',
+                target: {
+                  '@type': 'EntryPoint',
+                  urlTemplate: 'https://www.akaegitim.com.tr/?s={search_term_string}',
+                },
+                'query-input': 'required name=search_term_string',
               },
             }),
           }}
