@@ -264,9 +264,10 @@ export default function Navbar() {
           <NavbarItem className="lg:hidden">
             <Button
               isIconOnly
-              variant="light"
+              variant="solid"
+              color="primary"
               aria-label="Navigasyon menüsünü aç"
-              className="bg-white/20 hover:bg-white/30 text-white rounded-full shadow-sm focus:outline-none focus:ring-0"
+              className="hover:bg-white/30 text-white rounded-full shadow-sm focus:outline-none focus:ring-0"
               onPress={() => setIsGridMenuOpen(true)}
             >
               <Squares2X2Icon className="w-6 h-6" />
