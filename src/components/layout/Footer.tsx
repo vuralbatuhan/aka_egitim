@@ -57,7 +57,7 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4">
               <Link
-                href="https://x.com/aka_education"
+                href="https://x.com/aka_egitimder"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-turquoise-600 hover:bg-turquoise-700 rounded-full flex items-center justify-center transition-colors duration-200"
