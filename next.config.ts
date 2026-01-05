@@ -50,9 +50,22 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-  // Webpack ayarları (eski webpack kullanılırsa)
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'akaegitim.com.tr',
+          },
+        ],
+        destination: 'https://www.akaegitim.com.tr/:path*',
+        permanent: true,
+      },
+    ];
+  },
   webpack: (config, { dev, isServer }) => {
-    // Development mode'da HMR hatalarını yakala
     if (dev && !isServer) {
       config.optimization = {
         ...config.optimization,
