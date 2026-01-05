@@ -130,13 +130,14 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/logo.jpg', type: 'image/jpeg' },
-      // { url: '/favicon.ico' },
-      // { url: '/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
-      // { url: '/favicon-16x16.png', type: 'image/png', sizes: '16x16' },
+      { url: '/favicon.ico', type: 'image/x-icon' },
+      { url: '/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
+      { url: '/favicon-16x16.png', type: 'image/png', sizes: '16x16' },
+      { url: '/favicon-48x48.png', type: 'image/png', sizes: '48x48' },
+      { url: '/favicon-192x192.png', type: 'image/png', sizes: '192x192' },
     ],
-    apple: '/logo.jpg',
-    shortcut: '/logo.jpg',
+    apple: '/apple-touch-icon.png',
+    shortcut: '/favicon.ico',
   },
   other: {
     'format-detection': 'telephone=no, address=no, email=no',
@@ -160,9 +161,13 @@ export default function RootLayout({
       <head>
         <GoogleAnalytics gaId="G-XXXXXXXXXX" />
 
-        <link rel="icon" type="image/jpeg" href="/logo.jpg" />
-        <link rel="apple-touch-icon" href="/logo.jpg" />
-        <link rel="shortcut icon" href="/logo.jpg" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/favicon.ico" />
 
         <meta name="google-site-verification" content="google-site-verification-code-buraya-gelecek" />
         <meta name="author" content="Aka Eğitim" />
@@ -175,11 +180,6 @@ export default function RootLayout({
 
         <meta httpEquiv="content-language" content="tr" />
 
-        {/* Eski favicon'lar - yorum satırında
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        */}
       </head>
       <body
         style={{ fontFamily: 'var(--font-montserrat), system-ui, sans-serif' }}
@@ -314,4 +314,3 @@ export default function RootLayout({
     </html>
   )
 }
-
