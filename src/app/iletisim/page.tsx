@@ -67,7 +67,7 @@ export default function Iletisim() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Telefon</h3>
-                <p className="text-gray-700 mb-2">+90 536 689 72 63</p>
+                <p className="text-gray-700 mb-2">+90 542 623 07 24</p>
                 {/* <p className="text-gray-700">+90 532 123 45 67</p> */}
               </div>
 

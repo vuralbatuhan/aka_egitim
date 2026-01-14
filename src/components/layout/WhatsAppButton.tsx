@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 const WhatsAppButton = () => {
   const [isHovered, setIsHovered] = useState(false);
-  const phoneNumber = '905366897263'; // +90 536 689 72 63
+  const phoneNumber = '905426230724'; // +90 542 623 07 24
   const message = 'Bilgi almak istiyorum.';
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
@@ -16,9 +16,8 @@ const WhatsAppButton = () => {
 
       {/* Tooltip */}
       <div
-        className={`absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-gray-900 text-white px-4 py-2 rounded-lg whitespace-nowrap text-sm font-medium shadow-xl transition-all duration-300 ${
-          isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2 pointer-events-none'
-        }`}
+        className={`absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-gray-900 text-white px-4 py-2 rounded-lg whitespace-nowrap text-sm font-medium shadow-xl transition-all duration-300 ${isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2 pointer-events-none'
+          }`}
       >
         WhatsApp&apos;tan Yazın
         <div className="absolute right-full top-1/2 -translate-y-1/2 border-8 border-transparent border-r-gray-900"></div>
