@@ -1,5 +1,5 @@
 # Aka Eğitim - Yurtdışı Eğitim Platformu
-# AKA
+# AKA Eğitim
 
 Modern ve kullanıcı dostu yurtdışı eğitim danışmanlık platformu.
 
