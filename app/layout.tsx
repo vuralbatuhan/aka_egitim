@@ -12,6 +12,10 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Aka Eğitim",
   description: "Modern eğitim platformu",
+  metadataBase: new URL('https://aka-omervordexs-projects.vercel.app'),
+  alternates: {
+    canonical: '/',
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
