@@ -25,10 +25,10 @@ export default function Footer() {
 
   return (
     <footer className="text-white" style={{ background: 'linear-gradient(to bottom, #1A1A1A, #0A0A0A)' }}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12" style={{ maxWidth: '1200px' }}>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12" style={{ maxWidth: '1200px' }}>
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {/* Brand Section */}
-          <div>
+          <div className="col-span-2 md:col-span-1">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -36,68 +36,77 @@ export default function Footer() {
               transition={{ duration: 0.6 }}
             >
               {/* Logo */}
-              <div className="mb-4">
+              <div className="mb-3 md:mb-4">
                 <Image
                   src="/images/beyaz logo.png"
                   alt="AKA EĞİTİM Logo"
                   width={250}
                   height={80}
-                  className="h-auto object-contain"
+                  className="h-auto object-contain w-[180px] md:w-[250px]"
                 />
               </div>
               
               {/* Slogan */}
-              <p className="text-sm text-white mb-4">Azim Kararlılık Ayrıcalık</p>
+              <p className="text-xs md:text-sm text-white mb-3 md:mb-4">Azim Kararlılık Ayrıcalık</p>
               
               {/* Description */}
-              <p className="text-sm text-white mb-6 leading-relaxed">
+              <p className="text-xs md:text-sm text-white mb-4 md:mb-6 leading-relaxed">
                 Aka Eğitim yurtdışı eğitim danışmanlığında uzman ekibimizle dil okulu, üniversite ve yüksek lisans programları için hayallerinizdeki eğitimi planlıyoruz.
               </p>
               
               {/* Social Media Icons */}
-              <div className="flex space-x-3">
+              <div className="flex space-x-2 md:space-x-3">
                 {/* Instagram */}
                 <a
                   href="#"
-                  className="w-10 h-10 rounded-full bg-white flex items-center justify-center transition-all duration-300 hover:bg-[#EB702B] hover:shadow-lg group"
+                  className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white flex items-center justify-center transition-all duration-300 hover:!bg-[#60091B] hover:shadow-lg group"
                   aria-label="Instagram"
+                  style={{ backgroundColor: 'white' }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#60091B'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'white'}
                 >
                   <Image
                     src="/images/instagram.png"
                     alt="Instagram"
                     width={20}
                     height={20}
-                    className="object-contain group-hover:brightness-0 group-hover:invert transition-all duration-300"
+                    className="object-contain group-hover:brightness-0 group-hover:invert transition-all duration-300 w-4 h-4 md:w-5 md:h-5"
                   />
                 </a>
                 
                 {/* Facebook */}
                 <a
                   href="#"
-                  className="w-10 h-10 rounded-full bg-white flex items-center justify-center transition-all duration-300 hover:bg-[#EB702B] hover:shadow-lg group"
+                  className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white flex items-center justify-center transition-all duration-300 hover:!bg-[#60091B] hover:shadow-lg group"
                   aria-label="Facebook"
+                  style={{ backgroundColor: 'white' }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#60091B'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'white'}
                 >
                   <Image
                     src="/images/facebook-app-symbol.png"
                     alt="Facebook"
                     width={20}
                     height={20}
-                    className="object-contain group-hover:brightness-0 group-hover:invert transition-all duration-300"
+                    className="object-contain group-hover:brightness-0 group-hover:invert transition-all duration-300 w-4 h-4 md:w-5 md:h-5"
                   />
                 </a>
                 
                 {/* X (Twitter) */}
                 <a
                   href="#"
-                  className="w-10 h-10 rounded-full bg-white flex items-center justify-center transition-all duration-300 hover:bg-[#EB702B] hover:shadow-lg group"
+                  className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white flex items-center justify-center transition-all duration-300 hover:!bg-[#60091B] hover:shadow-lg group"
                   aria-label="X (Twitter)"
+                  style={{ backgroundColor: 'white' }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#60091B'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'white'}
                 >
                   <Image
                     src="/images/twitter.png"
                     alt="Twitter"
                     width={20}
                     height={20}
-                    className="object-contain group-hover:brightness-0 group-hover:invert transition-all duration-300"
+                    className="object-contain group-hover:brightness-0 group-hover:invert transition-all duration-300 w-4 h-4 md:w-5 md:h-5"
                   />
                 </a>
               </div>
@@ -105,23 +114,23 @@ export default function Footer() {
           </div>
 
           {/* Kurumsal Section */}
-          <div>
+          <div className="col-span-1">
             <motion.h4
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-white font-bold mb-4"
+              className="text-white font-bold mb-2 md:mb-4 text-sm md:text-base"
               style={{ color: '#FF6B35' }}
             >
               Kurumsal
             </motion.h4>
-            <ul className="space-y-2">
+            <ul className="space-y-1.5 md:space-y-2">
               {footerLinks.kurumsal.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-white text-sm hover:opacity-80 transition-opacity"
+                    className="text-white text-xs md:text-sm hover:opacity-80 transition-opacity"
                   >
                     {link.name}
                   </a>
@@ -131,23 +140,23 @@ export default function Footer() {
           </div>
 
           {/* Üniversite Section */}
-          <div>
+          <div className="col-span-1">
             <motion.h4
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-white font-bold mb-4"
+              className="text-white font-bold mb-2 md:mb-4 text-sm md:text-base"
               style={{ color: '#FF6B35' }}
             >
               Üniversite
             </motion.h4>
-            <ul className="space-y-2">
+            <ul className="space-y-1.5 md:space-y-2">
               {footerLinks.universite.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-white text-sm hover:opacity-80 transition-opacity"
+                    className="text-white text-xs md:text-sm hover:opacity-80 transition-opacity"
                   >
                     {link.name}
                   </a>
@@ -157,23 +166,23 @@ export default function Footer() {
           </div>
 
           {/* Dil Okulları Section */}
-          <div>
+          <div className="col-span-1">
             <motion.h4
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-white font-bold mb-4"
+              className="text-white font-bold mb-2 md:mb-4 text-sm md:text-base"
               style={{ color: '#FF6B35' }}
             >
               Dil Okulları
             </motion.h4>
-            <ul className="space-y-2">
+            <ul className="space-y-1.5 md:space-y-2">
               {footerLinks.dilOkullari.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-white text-sm hover:opacity-80 transition-opacity"
+                    className="text-white text-xs md:text-sm hover:opacity-80 transition-opacity"
                   >
                     {link.name}
                   </a>
@@ -189,10 +198,10 @@ export default function Footer() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-8 pt-8 text-center border-t"
+          className="mt-6 md:mt-8 pt-6 md:pt-8 text-center border-t"
           style={{ borderColor: '#2A2A2A' }}
         >
-          <p className="text-white text-sm">
+          <p className="text-white text-xs md:text-sm">
             ©2026 Ayhan Korkmaz Eğitim ve Danışmanlık. Tüm hakları saklıdır.
           </p>
         </motion.div>

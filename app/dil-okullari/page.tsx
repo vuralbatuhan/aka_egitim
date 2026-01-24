@@ -1,36 +1,32 @@
 import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import ProfessionalConsultancy from "@/components/ProfessionalConsultancy";
-import WhyAKA from "@/components/WhyAKA";
-import InstagramPosts from "@/components/InstagramPosts";
-import Values from "@/components/Values";
-import OverseasEducationForm from "@/components/OverseasEducationForm";
-import ContactUs from "@/components/ContactUs";
 import Footer from "@/components/Footer";
+import LanguageSchoolHero from "@/components/LanguageSchoolHero";
+import WhyEngland from "@/components/WhyEngland";
+import LanguagePrograms from "@/components/LanguagePrograms";
+import ApplicationProcess from "@/components/ApplicationProcess";
+import LanguageFAQ from "@/components/LanguageFAQ";
+import LanguageSchoolCTA from "@/components/LanguageSchoolCTA";
 import AnimatedSection from "@/components/AnimatedSection";
 
-export default function Home() {
+export default function DilOkullari() {
   return (
     <main className="min-h-screen flex flex-col gap-8 md:gap-16" style={{ backgroundColor: "#F5F5F5" }}>
       <Header />
-      <Hero />
+      <LanguageSchoolHero />
       <AnimatedSection direction="up" delay={0.1}>
-        <ContactUs />
+        <WhyEngland />
       </AnimatedSection>
       <AnimatedSection direction="up" delay={0.2}>
-        <ProfessionalConsultancy />
+        <LanguagePrograms />
       </AnimatedSection>
       <AnimatedSection direction="up" delay={0.3}>
-        <Values />
+        <ApplicationProcess />
       </AnimatedSection>
       <AnimatedSection direction="up" delay={0.4}>
-        <WhyAKA />
+        <LanguageFAQ />
       </AnimatedSection>
       <AnimatedSection direction="up" delay={0.5}>
-        <InstagramPosts />
-      </AnimatedSection>
-      <AnimatedSection direction="up" delay={0.6}>
-        <OverseasEducationForm />
+        <LanguageSchoolCTA />
       </AnimatedSection>
       <Footer />
     </main>

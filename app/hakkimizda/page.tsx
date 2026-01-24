@@ -1,35 +1,33 @@
 import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import ProfessionalConsultancy from "@/components/ProfessionalConsultancy";
+import PageHeader from "@/components/PageHeader";
+import AboutAKA from "@/components/AboutAKA";
+import MissionStatement from "@/components/MissionStatement";
 import WhyAKA from "@/components/WhyAKA";
-import InstagramPosts from "@/components/InstagramPosts";
-import Values from "@/components/Values";
 import OverseasEducationForm from "@/components/OverseasEducationForm";
-import ContactUs from "@/components/ContactUs";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
 
-export default function Home() {
+export default function Hakkimizda() {
   return (
     <main className="min-h-screen flex flex-col gap-8 md:gap-16" style={{ backgroundColor: "#F5F5F5" }}>
       <Header />
-      <Hero />
-      <AnimatedSection direction="up" delay={0.1}>
-        <ContactUs />
+      <AnimatedSection direction="fade" delay={0.1}>
+        <PageHeader 
+          title="Hakkımızda" 
+          breadcrumbs={["Anasayfa", "Hakkımızda"]}
+          description="AKA olarak, eğitim alanında uzman kadromuzla öğrencilerimize ve öğretmenlerimize yurt içi ve yurt dışında kaliteli eğitim hizmetleri sunuyoruz. Misyonumuz, eğitim yolculuğunuzda güvenilir bir rehber olmak ve hedeflerinize ulaşmanızda size destek olmaktır."
+        />
       </AnimatedSection>
       <AnimatedSection direction="up" delay={0.2}>
-        <ProfessionalConsultancy />
+        <AboutAKA />
       </AnimatedSection>
       <AnimatedSection direction="up" delay={0.3}>
-        <Values />
+        <MissionStatement />
       </AnimatedSection>
       <AnimatedSection direction="up" delay={0.4}>
         <WhyAKA />
       </AnimatedSection>
       <AnimatedSection direction="up" delay={0.5}>
-        <InstagramPosts />
-      </AnimatedSection>
-      <AnimatedSection direction="up" delay={0.6}>
         <OverseasEducationForm />
       </AnimatedSection>
       <Footer />

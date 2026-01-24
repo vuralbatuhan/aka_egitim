@@ -2,17 +2,20 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
 
   const navItems = [
-    { name: 'Ana Sayfa', href: '#home', active: true },
-    { name: 'Hakkımızda', href: '#about', active: false },
-    { name: 'Dil Okulları', href: '#dil-okullari', active: false },
-    { name: 'Üniversite', href: '#universite', active: false },
-    { name: 'Öğretmen Hareketliliği', href: '#ogretmen-hareketliligi', active: false },
-    { name: 'İletişim', href: '#contact', active: false },
+    { name: 'Ana Sayfa', href: '/', active: pathname === '/' },
+    { name: 'Hakkımızda', href: '/hakkimizda', active: pathname === '/hakkimizda' },
+    { name: 'Dil Okulları', href: '/dil-okullari', active: pathname === '/dil-okullari' },
+    { name: 'Üniversite', href: '/universite', active: pathname === '/universite' },
+    { name: 'Öğretmen Hareketliliği', href: '/ogretmen-hareketliligi', active: pathname === '/ogretmen-hareketliligi' },
+    { name: 'İletişim', href: '/iletisim', active: pathname === '/iletisim' },
   ]
 
   return (
@@ -21,7 +24,7 @@ export default function Header() {
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
           {/* Logo */}
-          <div className="flex items-center shrink-0">
+          <Link href="/" className="flex items-center shrink-0">
             <Image
               src="/images/Group 108.png"
               alt="AKA EĞİTİM Logo"
@@ -30,25 +33,46 @@ export default function Header() {
               className="h-auto object-contain"
               priority
             />
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8 flex-1 justify-center">
             {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className={`text-sm font-normal transition-colors relative ${
-                  item.active
-                    ? 'text-[#6A0B1C]'
-                    : 'text-[#333333] hover:text-[#6A0B1C]'
-                }`}
-              >
-                {item.name}
-                {item.active && (
-                  <span className="absolute bottom-[-8px] left-1/2 transform -translate-x-1/2 w-[60%] h-[2px] bg-[#6A0B1C]"></span>
-                )}
-              </a>
+              item.href.startsWith('/') ? (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`text-sm font-bold transition-colors duration-300 relative ${
+                    item.active
+                      ? 'text-[#6A0B1C]'
+                      : 'text-[#333333] hover:text-[#6A0B1C]'
+                  }`}
+                >
+                  {item.name}
+                  <span 
+                    className={`absolute bottom-[-8px] left-1/2 transform -translate-x-1/2 h-[2px] bg-[#6A0B1C] transition-all duration-300 ease-in-out ${
+                      item.active ? 'w-[60%] opacity-100' : 'w-0 opacity-0'
+                    }`}
+                  ></span>
+                </Link>
+              ) : (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className={`text-sm font-bold transition-colors duration-300 relative ${
+                    item.active
+                      ? 'text-[#6A0B1C]'
+                      : 'text-[#333333] hover:text-[#6A0B1C]'
+                  }`}
+                >
+                  {item.name}
+                  <span 
+                    className={`absolute bottom-[-8px] left-1/2 transform -translate-x-1/2 h-[2px] bg-[#6A0B1C] transition-all duration-300 ease-in-out ${
+                      item.active ? 'w-[60%] opacity-100' : 'w-0 opacity-0'
+                    }`}
+                  ></span>
+                </a>
+              )
             ))}
           </div>
 
@@ -56,9 +80,14 @@ export default function Header() {
           <div className="hidden lg:flex items-center gap-3 shrink-0">
             {/* Instagram */}
             <a
-              href="#"
-              className="w-10 h-10 rounded-full bg-[#EEEEEE] flex items-center justify-center hover:bg-[#60091B] hover:shadow-lg transition-all duration-300 group"
+              href="https://www.instagram.com/aka_egitim"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full bg-[#EEEEEE] flex items-center justify-center hover:!bg-[#60091B] hover:shadow-lg transition-all duration-300 group"
               aria-label="Instagram"
+              style={{ backgroundColor: '#EEEEEE' }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#60091B'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#EEEEEE'}
             >
               <Image
                 src="/images/instagram.png"
@@ -72,8 +101,11 @@ export default function Header() {
             {/* Facebook */}
             <a
               href="#"
-              className="w-10 h-10 rounded-full bg-[#EEEEEE] flex items-center justify-center hover:bg-[#60091B] hover:shadow-lg transition-all duration-300 group"
+              className="w-10 h-10 rounded-full bg-[#EEEEEE] flex items-center justify-center hover:!bg-[#60091B] hover:shadow-lg transition-all duration-300 group"
               aria-label="Facebook"
+              style={{ backgroundColor: '#EEEEEE' }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#60091B'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#EEEEEE'}
             >
               <Image
                 src="/images/facebook-app-symbol.png"
@@ -86,9 +118,14 @@ export default function Header() {
             
             {/* X (Twitter) */}
             <a
-              href="#"
-              className="w-10 h-10 rounded-full bg-[#EEEEEE] flex items-center justify-center hover:bg-[#60091B] hover:shadow-lg transition-all duration-300 group"
+              href="https://x.com/aka_egitimder"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full bg-[#EEEEEE] flex items-center justify-center hover:!bg-[#60091B] hover:shadow-lg transition-all duration-300 group"
               aria-label="X (Twitter)"
+              style={{ backgroundColor: '#EEEEEE' }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#60091B'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#EEEEEE'}
             >
               <Image
                 src="/images/twitter.png"
@@ -129,22 +166,40 @@ export default function Header() {
         <div className="lg:hidden bg-white border-t">
           <div className="container mx-auto px-4 py-4 space-y-4">
             {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={`block font-normal transition-colors ${
-                  item.active ? 'text-[#6A0B1C]' : 'text-[#333333]'
-                } hover:text-[#6A0B1C]`}
-              >
-                {item.name}
-              </a>
+              item.href.startsWith('/') ? (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`block font-bold transition-colors duration-300 ${
+                    item.active ? 'text-[#6A0B1C]' : 'text-[#333333]'
+                  } hover:text-[#6A0B1C]`}
+                >
+                  {item.name}
+                </Link>
+              ) : (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`block font-bold transition-colors duration-300 ${
+                    item.active ? 'text-[#6A0B1C]' : 'text-[#333333]'
+                  } hover:text-[#6A0B1C]`}
+                >
+                  {item.name}
+                </a>
+              )
             ))}
             <div className="flex items-center gap-3 pt-4">
               <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-[#EEEEEE] flex items-center justify-center hover:bg-[#60091B] hover:shadow-lg transition-all duration-300 group"
+                href="https://www.instagram.com/aka_egitim"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-[#EEEEEE] flex items-center justify-center hover:!bg-[#60091B] hover:shadow-lg transition-all duration-300 group"
                 aria-label="Instagram"
+                style={{ backgroundColor: '#EEEEEE' }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#60091B'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#EEEEEE'}
               >
                 <Image
                   src="/images/instagram.png"
@@ -156,8 +211,11 @@ export default function Header() {
               </a>
               <a
                 href="#"
-                className="w-10 h-10 rounded-full bg-[#EEEEEE] flex items-center justify-center hover:bg-[#60091B] hover:shadow-lg transition-all duration-300 group"
+                className="w-10 h-10 rounded-full bg-[#EEEEEE] flex items-center justify-center hover:!bg-[#60091B] hover:shadow-lg transition-all duration-300 group"
                 aria-label="Facebook"
+                style={{ backgroundColor: '#EEEEEE' }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#60091B'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#EEEEEE'}
               >
                 <Image
                   src="/images/facebook-app-symbol.png"
@@ -168,9 +226,14 @@ export default function Header() {
                 />
               </a>
               <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-[#EEEEEE] flex items-center justify-center hover:bg-[#60091B] hover:shadow-lg transition-all duration-300 group"
+                href="https://x.com/aka_egitimder"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-[#EEEEEE] flex items-center justify-center hover:!bg-[#60091B] hover:shadow-lg transition-all duration-300 group"
                 aria-label="X (Twitter)"
+                style={{ backgroundColor: '#EEEEEE' }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#60091B'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#EEEEEE'}
               >
                 <Image
                   src="/images/twitter.png"

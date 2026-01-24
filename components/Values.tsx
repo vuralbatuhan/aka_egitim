@@ -22,32 +22,32 @@ const values = [
 
 export default function Values() {
   return (
-    <section className="py-20 bg-[#F5F5F5]">
+    <section className="py-10 md:py-20 bg-[#F5F5F5]">
       <div
         className="container mx-auto px-4 sm:px-6 lg:px-8"
         style={{ maxWidth: "1200px" }}
       >
         {/* Header Section */}
-        <div className="flex items-start justify-between mb-12">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8 md:mb-12">
           {/* Title with vertical line */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 md:gap-4">
             <div
-              className="w-1 h-16"
+              className="w-1 h-10 md:h-16"
               style={{ backgroundColor: "#60091b" }}
             ></div>
-            <h2 className="text-5xl font-bold" style={{ color: "#1a1a1a" }}>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold" style={{ color: "#1a1a1a" }}>
               Değerlerimiz
             </h2>
           </div>
 
           {/* Logo */}
-          <div className="flex flex-col items-end">
+          <div className="hidden sm:flex flex-col items-end">
             <Image
               src="/images/Group 33 (1).png"
               alt="AKÆĞİTİM Logo"
               width={140}
               height={56}
-              className="object-contain"
+              className="object-contain w-24 md:w-32 lg:w-[140px]"
             />
           </div>
         </div>
@@ -55,8 +55,7 @@ export default function Values() {
 
       {/* Value Cards */}
       <div
-        className="flex flex-col md:flex-row items-center justify-center gap-6 mx-auto"
-        style={{ width: "1100px", maxWidth: "100%" }}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mx-auto px-4 sm:px-6 lg:px-8 max-w-[1200px]"
       >
         {values.map((value, index) => {
           // Format description with line breaks as shown in the image
@@ -65,7 +64,8 @@ export default function Values() {
               return (
                 <>
                   Hedeflerinize ulaşma
-                  <br />
+                  <br className="hidden md:block" />
+                  <span className="md:hidden"> </span>
                   yolunda kararlı adımlar
                 </>
               );
@@ -74,7 +74,8 @@ export default function Values() {
               return (
                 <>
                   Eğitim yolculuğunuzda yanınızda
-                  <br />
+                  <br className="hidden md:block" />
+                  <span className="md:hidden"> </span>
                   kalma taahhüdü
                 </>
               );
@@ -83,7 +84,8 @@ export default function Values() {
               return (
                 <>
                   Her öğrenciye eşit fırsat ve
-                  <br />
+                  <br className="hidden md:block" />
+                  <span className="md:hidden"> </span>
                   şeffaf süreç
                 </>
               );
@@ -94,24 +96,13 @@ export default function Values() {
           return (
             <div
               key={value.title}
-              className="group flex flex-col items-start justify-start shrink-0 relative cursor-pointer transition-all duration-300"
-              style={{
-                backgroundColor: "#FFFFFF",
-                border: "1px solid #E5E5E5",
-                borderRadius: "24px",
-                padding: "32px 24px",
-                width: "370px",
-                height: "235px",
-              }}
+              className="value-card group flex flex-col items-start justify-start relative cursor-pointer transition-all duration-300 bg-white border border-[#E5E5E5] rounded-xl md:rounded-2xl p-5 md:p-8 min-h-[180px] md:min-h-[235px]"
             >
               {/* Icon Circle - Top Left */}
               <div
-                className="icon-container rounded-full flex items-center justify-center mb-4 transition-all duration-300 overflow-hidden"
+                className="icon-container rounded-full flex items-center justify-center mb-3 md:mb-4 transition-all duration-300 overflow-hidden w-12 h-12 md:w-[60px] md:h-[60px]"
                 style={{
                   backgroundColor: "#E5E5E5",
-                  width: "60px",
-                  height: "60px",
-                  borderRadius: "50%",
                 }}
               >
                 <Image
@@ -119,7 +110,7 @@ export default function Values() {
                   alt={value.title}
                   width={36}
                   height={36}
-                  className="icon-image object-contain transition-all duration-300"
+                  className="icon-image object-contain transition-all duration-300 w-7 h-7 md:w-9 md:h-9"
                   style={{
                     filter: "none",
                   }}
@@ -128,7 +119,7 @@ export default function Values() {
 
               {/* Title - Left Aligned */}
               <h3
-                className="text-2xl font-bold mb-3 text-left transition-colors duration-300 group-hover:text-[#8B253A]"
+                className="text-xl md:text-2xl font-bold mb-2 md:mb-3 text-left transition-colors duration-300 group-hover:text-white"
                 style={{ color: "#1a1a1a" }}
               >
                 {value.title}
@@ -136,7 +127,7 @@ export default function Values() {
 
               {/* Description - Left Aligned */}
               <p
-                className="text-base leading-relaxed text-left transition-colors duration-300 group-hover:text-[#8B253A]"
+                className="text-sm md:text-base leading-relaxed text-left transition-colors duration-300 group-hover:text-white"
                 style={{ color: "#1a1a1a" }}
               >
                 {formatDescription(value.description)}
@@ -144,15 +135,24 @@ export default function Values() {
 
               {/* Hover Styles */}
               <style jsx global>{`
-                .group:hover {
-                  background-color: #f5efef !important;
-                  border-color: #8b253a !important;
+                .value-card:hover {
+                  background-color: #8B253A !important;
+                  border-color: #8B253A !important;
+                  box-shadow: 0 4px 12px rgba(139, 37, 58, 0.2) !important;
                 }
-                .group:hover .icon-container {
-                  background-color: #8b253a !important;
+                .value-card:hover h3,
+                .value-card:hover .text-2xl {
+                  color: #FFFFFF !important;
                 }
-                .group:hover .icon-image,
-                .group:hover img.icon-image {
+                .value-card:hover p,
+                .value-card:hover .text-base {
+                  color: #FFFFFF !important;
+                }
+                .value-card:hover .icon-container {
+                  background-color: #F26721 !important;
+                }
+                .value-card:hover .icon-image,
+                .value-card:hover img.icon-image {
                   filter: brightness(0) saturate(100%) invert(1) !important;
                   -webkit-filter: brightness(0) saturate(100%) invert(1) !important;
                 }

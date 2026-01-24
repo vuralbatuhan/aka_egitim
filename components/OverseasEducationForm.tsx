@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { supabase } from "@/lib/supabase";
 
 export default function OverseasEducationForm() {
   const [formData, setFormData] = useState({
@@ -13,6 +14,8 @@ export default function OverseasEducationForm() {
     program: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error' | null; message: string }>({ type: null, message: '' });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -21,37 +24,81 @@ export default function OverseasEducationForm() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Form submission logic here
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      const { data, error } = await supabase
+        .from('contact_submissions')
+        .insert([
+          {
+            first_name: formData.firstName,
+            last_name: formData.lastName,
+            phone: formData.phone,
+            city: formData.city || null,
+            program_type: formData.programType || null,
+            program: formData.program || null,
+            message: formData.message || null,
+          },
+        ])
+        .select();
+
+      if (error) throw error;
+
+      setSubmitStatus({ 
+        type: 'success', 
+        message: 'Formunuz başarıyla gönderildi! En kısa sürede sizinle iletişime geçeceğiz.' 
+      });
+      
+      // Reset form
+      setFormData({
+        firstName: "",
+        lastName: "",
+        phone: "",
+        city: "",
+        programType: "",
+        program: "",
+        message: "",
+      });
+    } catch (error: any) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus({ 
+        type: 'error', 
+        message: 'Bir hata oluştu. Lütfen tekrar deneyin veya bizimle doğrudan iletişime geçin.' 
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <section className="relative py-10 px-4 bg-[#F5F5F5]">
+    <section id="contact-form" className="relative py-10 px-4" style={{ backgroundColor: "#F5F5F5" }}>
       <div className="container mx-auto" style={{ maxWidth: "1200px" }}>
         {/* Header Text Section */}
-        <div className="flex flex-col lg:flex-row gap-8 mb-8 items-start">
+        <div className="flex flex-col lg:flex-row gap-4 md:gap-8 mb-6 md:mb-8 items-start">
           <div className="flex items-start gap-3 flex-shrink-0">
-            <div className="w-1 bg-blue-500 rounded-full" style={{ minHeight: "60px" }}></div>
+            <div className="w-1 bg-blue-500 rounded-full min-h-[50px] md:min-h-[60px]"></div>
             <h2
-              className="text-gray-900 font-bold"
-              style={{ fontSize: "34px", fontWeight: "700", lineHeight: "1.2" }}
+              className="text-gray-900 font-bold text-2xl sm:text-3xl md:text-[34px] leading-tight"
             >
               Yurt Dışı Eğitim<br />
               Yolculuğunuza Başlayın
             </h2>
           </div>
           <p
-            className="text-gray-600 flex-1 lg:ml-6"
-            style={{ fontSize: "15px", lineHeight: "1.6" }}
+            className="text-gray-600 flex-1 text-sm md:text-[15px] leading-relaxed ml-0 lg:ml-auto lg:max-w-md lg:text-right"
           >
-            Formu doldurun, uzman danışmanlarımız en kısa sürede sizinle iletişime geçsin ve size özel eğitim planınızı oluşturalım
+            Formu doldurun, uzman danışmanlarımız en kısa sürede sizinle
+            <br className="hidden md:block" />
+            <span className="md:hidden"> </span>
+            iletişime geçsin ve size özel eğitim planınızı oluşturalım
           </p>
         </div>
 
         {/* Form and Image Container with Rounded Corners */}
-        <div className="bg-[#F5F5F5] rounded-2xl overflow-hidden shadow-lg">
+        <div className="bg-[#FFFFFF] rounded-2xl overflow-hidden shadow-lg">
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {/* Left Column - Form */}
             <div className="p-6 lg:p-8">
@@ -59,7 +106,7 @@ export default function OverseasEducationForm() {
                 {/* Personal Information Section */}
                 <div className="space-y-4">
                   <div className="flex items-center gap-3 mb-2">
-                    <h3 className="text-gray-900 font-bold" style={{ fontSize: "18px" }}>
+                    <h3 className="text-gray-900 font-bold text-base md:text-lg">
                       Kişisel Bilgiler
                     </h3>
                     <svg
@@ -87,7 +134,7 @@ export default function OverseasEducationForm() {
                     </svg>
                   </div>
                   <div className="h-px bg-gray-200 mb-4"></div>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-gray-700 mb-2" style={{ fontSize: "14px" }}>
                         Adınız Soyadınız
@@ -150,7 +197,7 @@ export default function OverseasEducationForm() {
                 {/* Education Preferences Section */}
                 <div className="space-y-4">
                   <div className="flex items-center gap-3 mb-2">
-                    <h3 className="text-gray-900 font-bold" style={{ fontSize: "18px" }}>
+                    <h3 className="text-gray-900 font-bold text-base md:text-lg">
                       Eğitim Tercihleri
                     </h3>
                     <svg
@@ -199,9 +246,9 @@ export default function OverseasEducationForm() {
                     </svg>
                   </div>
                   <div className="h-px bg-gray-200 mb-4"></div>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-gray-700 mb-2" style={{ fontSize: "14px" }}>
+                      <label className="block text-gray-700 mb-2 text-sm">
                         Program Türünü Seçin
                       </label>
                       <div className="relative">
@@ -282,7 +329,7 @@ export default function OverseasEducationForm() {
                 {/* Message Section */}
                 <div className="space-y-4">
                   <div className="flex items-center gap-3 mb-2">
-                    <h3 className="text-gray-900 font-bold" style={{ fontSize: "18px" }}>
+                    <h3 className="text-gray-900 font-bold text-base md:text-lg">
                       Mesajınız
                     </h3>
                     <svg
@@ -319,33 +366,49 @@ export default function OverseasEducationForm() {
                   </div>
                 </div>
 
+                {/* Submit Status Message */}
+                {submitStatus.type && (
+                  <div
+                    className={`p-4 rounded-lg ${
+                      submitStatus.type === 'success'
+                        ? 'bg-green-50 text-green-800 border border-green-200'
+                        : 'bg-red-50 text-red-800 border border-red-200'
+                    }`}
+                  >
+                    {submitStatus.message}
+                  </div>
+                )}
+
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className="w-full text-white rounded-lg font-bold hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
+                  disabled={isSubmitting}
+                  className="w-full text-white rounded-lg font-bold hover:opacity-90 transition-opacity flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                   style={{
                     padding: "14px 32px",
                     background: "linear-gradient(to right, #1E88E5, #26C6DA)",
                     fontSize: "16px",
                   }}
                 >
-                  Ücretsiz Danışmanlık Alın
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="ml-1"
-                  >
-                    <path
-                      d="M21 2L3 10.53V11.5L9.84 14.16L12.5 21H13.46L21 2Z"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  {isSubmitting ? 'Gönderiliyor...' : 'Ücretsiz Danışmanlık Alın'}
+                  {!isSubmitting && (
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="ml-1"
+                    >
+                      <path
+                        d="M21 2L3 10.53V11.5L9.84 14.16L12.5 21H13.46L21 2Z"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  )}
                 </button>
               </form>
             </div>
@@ -367,21 +430,18 @@ export default function OverseasEducationForm() {
         </div>
 
         {/* Bottom Section - Benefit Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5 mt-6 md:mt-8">
           {/* Card 1: 100% Ücretsiz */}
           <div
-            className="flex items-center gap-3 p-5"
+            className="flex items-center gap-3 p-4 md:p-5 rounded-2xl"
             style={{
               backgroundColor: "#F0FFF0",
               border: "2px solid #5CB85C",
-              borderRadius: "18px",
             }}
           >
             <div
-              className="shrink-0 rounded-full flex items-center justify-center"
+              className="shrink-0 rounded-full flex items-center justify-center w-12 h-12 md:w-[60px] md:h-[60px]"
               style={{
-                width: "60px",
-                height: "60px",
                 backgroundColor: "#5CB85C",
               }}
             >
@@ -392,6 +452,7 @@ export default function OverseasEducationForm() {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 style={{ color: "white" }}
+                className="w-6 h-6 md:w-8 md:h-8"
               >
                 <path
                   d="M20 6L9 17L4 12"
@@ -404,13 +465,14 @@ export default function OverseasEducationForm() {
             </div>
             <div>
               <h4
-                className="font-bold mb-1"
-                style={{ fontSize: "19px", color: "#1a1a1a" }}
+                className="font-bold mb-0.5 md:mb-1 text-base md:text-lg"
+                style={{ color: "#1a1a1a" }}
               >
                 100% Ücretsiz
               </h4>
               <p
-                style={{ fontSize: "15px", color: "#1a1a1a" }}
+                className="text-sm md:text-[15px]"
+                style={{ color: "#1a1a1a" }}
               >
                 Danışmanlık Hizmeti
               </p>
@@ -419,18 +481,15 @@ export default function OverseasEducationForm() {
 
           {/* Card 2: 24 Saat İçinde */}
           <div
-            className="flex items-center gap-3 p-5"
+            className="flex items-center gap-3 p-4 md:p-5 rounded-2xl"
             style={{
               backgroundColor: "#E8F3F8",
               border: "2px solid #60A5FA",
-              borderRadius: "18px",
             }}
           >
             <div
-              className="shrink-0 rounded-full flex items-center justify-center"
+              className="shrink-0 rounded-full flex items-center justify-center w-12 h-12 md:w-[60px] md:h-[60px]"
               style={{
-                width: "60px",
-                height: "60px",
                 backgroundColor: "#60A5FA",
               }}
             >
@@ -439,18 +498,20 @@ export default function OverseasEducationForm() {
                 alt="Saat ikonu"
                 width={32}
                 height={32}
+                className="w-6 h-6 md:w-8 md:h-8"
                 style={{ filter: "brightness(0) invert(1)" }}
               />
             </div>
             <div>
               <h4
-                className="font-bold mb-1"
-                style={{ fontSize: "19px", color: "#1a1a1a" }}
+                className="font-bold mb-0.5 md:mb-1 text-base md:text-lg"
+                style={{ color: "#1a1a1a" }}
               >
                 24 Saat İçinde
               </h4>
               <p
-                style={{ fontSize: "15px", color: "#1a1a1a" }}
+                className="text-sm md:text-[15px]"
+                style={{ color: "#1a1a1a" }}
               >
                 Hızlı Geri Dönüş
               </p>
@@ -459,18 +520,15 @@ export default function OverseasEducationForm() {
 
           {/* Card 3: Uzman Kadro */}
           <div
-            className="flex items-center gap-3 p-5"
+            className="flex items-center gap-3 p-4 md:p-5 rounded-2xl sm:col-span-2 md:col-span-1"
             style={{
               backgroundColor: "#FFF0F0",
               border: "2px solid #B91C1C",
-              borderRadius: "18px",
             }}
           >
             <div
-              className="shrink-0 rounded-full flex items-center justify-center"
+              className="shrink-0 rounded-full flex items-center justify-center w-12 h-12 md:w-[60px] md:h-[60px]"
               style={{
-                width: "60px",
-                height: "60px",
                 backgroundColor: "#B91C1C",
               }}
             >
@@ -479,18 +537,20 @@ export default function OverseasEducationForm() {
                 alt="İnsanlar ikonu"
                 width={32}
                 height={32}
+                className="w-6 h-6 md:w-8 md:h-8"
                 style={{ filter: "brightness(0) invert(1)" }}
               />
             </div>
             <div>
               <h4
-                className="font-bold mb-1"
-                style={{ fontSize: "19px", color: "#1a1a1a" }}
+                className="font-bold mb-0.5 md:mb-1 text-base md:text-lg"
+                style={{ color: "#1a1a1a" }}
               >
                 Uzman Kadro
               </h4>
               <p
-                style={{ fontSize: "15px", color: "#1a1a1a" }}
+                className="text-sm md:text-[15px]"
+                style={{ color: "#1a1a1a" }}
               >
                 Profesyonel Destek
               </p>

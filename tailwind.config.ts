@@ -18,6 +18,9 @@ const config: Config = {
         'aka-light-gray': '#666666',
         'aka-bg-gray': '#EEEEEE',
       },
+      fontFamily: {
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+      },
     },
   },
   plugins: [],
