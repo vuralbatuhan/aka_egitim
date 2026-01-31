@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import LanguageCampPopup from "@/components/LanguageCampPopup";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const inter = Inter({ 
   subsets: ["latin", "latin-ext"],
@@ -23,6 +24,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="tr">
       <body className={inter.variable} suppressHydrationWarning>
+        <ScrollToTop />
         {children}
         <LanguageCampPopup />
       </body>

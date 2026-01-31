@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 import { supabase } from "@/lib/supabase";
 import AdminToast, { type ToastState } from "@/components/admin/AdminToast";
 
@@ -613,8 +614,12 @@ export default function AdminPanel() {
           </h2>
         </div>
 
-        <div className="flex-1 p-4 sm:p-6 lg:p-8 max-w-6xl mx-auto w-full">
-
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          className="flex-1 p-4 sm:p-6 lg:p-8 max-w-6xl mx-auto w-full"
+        >
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div className="bg-white rounded-xl shadow-md p-6 border-l-4" style={{ borderLeftColor: "#F07D2C" }}>
@@ -1466,7 +1471,7 @@ export default function AdminPanel() {
             </div>
           </div>
         )}
-        </div>
+        </motion.div>
       </main>
       <AdminToast toast={toast} onClose={hideToast} />
     </div>

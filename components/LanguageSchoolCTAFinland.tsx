@@ -31,7 +31,7 @@ export default function LanguageSchoolCTAFinland() {
               className="text-center lg:text-left"
             >
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 md:mb-3">
-                Finlandiya Öğretmen Eğitimine{' '}
+                Finlandiya Dil Eğitimine{' '}
                 <span>
                   <span className="relative inline-block">
                     <span className="text-[#F07D2C]">Başlamaya</span>
@@ -45,7 +45,7 @@ export default function LanguageSchoolCTAFinland() {
               </h2>
               
               <p className="text-white text-sm sm:text-base md:text-lg lg:text-xl mb-1 md:mb-2 mt-3 md:mt-4">
-                Uzman ekibimiz size Finlandiya&apos;da öğretmen eğitimi programını seçmenizde yardımcı olacak.
+                Uzman ekibimiz size Finlandiya&apos;da dil eğitimi programını seçmenizde yardımcı olacak.
               </p>
               <p className="text-white text-sm sm:text-base md:text-lg lg:text-xl mb-4 md:mb-6">
                 Hemen iletişime geçin!

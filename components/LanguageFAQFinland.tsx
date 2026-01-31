@@ -2,16 +2,16 @@
 
 const faqs = [
   {
-    question: "Finlandiya'da öğretmen olabilir miyim?",
-    answer: "Evet, Fince öğrenirseniz ve gerekli sertifikaları alırsanız Finlandiya'da öğretmen olarak çalışabilirsiniz.",
+    question: "Finlandiya'da İngilizce eğitimi nasıl?",
+    answer: "Finlandiya, dünya'nın en iyi eğitim sistemine sahiptir. İngilizce eğitimi kaliteli, modern yöntemlerle ve deneyimli öğretmenler tarafından verilir.",
   },
   {
-    question: "Program İngilizce mi?",
-    answer: "Evet, birçok master düzeyinde öğretmen eğitimi programı İngilizce olarak sunulmaktadır.",
+    question: "Dil kursu sonrası kalabilir miyim?",
+    answer: "Evet, dil eğitimi sonrası üniversiteye başvurabilir veya iş arayabilirsiniz.",
   },
   {
-    question: "Mezuniyet sonrası iş bulma şansım nedir?",
-    answer: "Finlandiya'da öğretmenlere yüksek talep vardır. Ayrıca uluslararası okullarda da çalışabilirsiniz.",
+    question: "Yaşam maliyeti nasıl?",
+    answer: "Finlandiya'da yaşam maliyeti orta seviyededir. Aylık €700-1000 yeterli olabilir.",
   },
 ];
 

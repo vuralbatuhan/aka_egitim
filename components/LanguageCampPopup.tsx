@@ -75,25 +75,25 @@ export default function LanguageCampPopup() {
           </button>
         </div>
 
-        <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden overscroll-contain p-3 sm:p-3">
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-3">
+        <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden overscroll-contain p-2 sm:p-3">
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
             <div className="flex-shrink-0 sm:flex-1 min-w-0">
               <a
                 href="/dil-okullari"
                 className="block rounded-xl overflow-hidden border-2 border-transparent hover:border-amber-500 active:border-amber-500 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
               >
-                <div className="relative aspect-[3/4] sm:aspect-[2/3] w-full max-h-[40vh] sm:max-h-[50vh]">
+                <div className="relative w-full h-[32vh] sm:h-auto sm:aspect-[2/3] sm:max-h-[50vh]">
                   <Image
                     src="/images/Dil Kampı Cambridge - Aka Eğitim 1.png"
                     alt="Londra & Cambridge Dil Kampı - 8 Gün 7 Gece, Haziran Temmuz Ağustos"
                     fill
                     sizes="(max-width: 640px) 100vw, 50vw"
-                    className="object-cover object-top"
+                    className="object-contain sm:object-cover sm:object-top"
                     priority
                   />
                 </div>
               </a>
-              <p className="text-center text-sm text-gray-600 mt-2 font-medium">
+              <p className="text-center text-xs sm:text-sm text-gray-600 mt-1 sm:mt-2 font-medium">
                 Londra & Cambridge Dil Kampı
               </p>
             </div>
@@ -102,18 +102,18 @@ export default function LanguageCampPopup() {
                 href="/dil-okullari/finlandiya"
                 className="block rounded-xl overflow-hidden border-2 border-transparent hover:border-amber-500 active:border-amber-500 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
               >
-                <div className="relative aspect-[3/4] sm:aspect-[2/3] w-full max-h-[40vh] sm:max-h-[50vh]">
+                <div className="relative w-full h-[32vh] sm:h-auto sm:aspect-[2/3] sm:max-h-[50vh]">
                   <Image
                     src="/images/Finlandiya - Aka Eğitim -Anadolu.png"
                     alt="Helsinki & Huvitus Dil Kampı - 8 Gün 7 Gece, Yaz Boyu Hareketlilik"
                     fill
                     sizes="(max-width: 640px) 100vw, 50vw"
-                    className="object-cover object-top"
+                    className="object-contain sm:object-cover sm:object-top"
                     priority
                   />
                 </div>
               </a>
-              <p className="text-center text-sm text-gray-600 mt-2 font-medium">
+              <p className="text-center text-xs sm:text-sm text-gray-600 mt-1 sm:mt-2 font-medium">
                 Helsinki & Huvitus Dil Kampı
               </p>
             </div>

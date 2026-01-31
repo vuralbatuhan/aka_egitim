@@ -13,10 +13,10 @@ export default function DilOkullariFinlandiya() {
       <Header />
       <LanguageSchoolHeroFinland />
       <AnimatedSection direction="up" delay={0.1}>
-        <WhyFinland />
+        <WhyFinland variant="language" />
       </AnimatedSection>
       <AnimatedSection direction="up" delay={0.2}>
-        <ApplicationProcessFinland />
+        <ApplicationProcessFinland variant="language" />
       </AnimatedSection>
       <AnimatedSection direction="up" delay={0.3}>
         <LanguageFAQFinland />

@@ -1,6 +1,6 @@
 "use client";
 
-const requirements = [
+const requirementsTeacher = [
   "Lisans diploması (eğitim veya ilgili alan)",
   "İngilizce yeterlilik (IELTS 6.5-7.0)",
   "Öğretmenlik deneyimi (tercih edilir)",
@@ -9,7 +9,7 @@ const requirements = [
   "Mülakat",
 ];
 
-const processSteps = [
+const processStepsTeacher = [
   "Program seçimi ve araştırma",
   "Studyinfo.fi üzerinden başvuru",
   "Belgelerinin hazırlanması",
@@ -19,7 +19,30 @@ const processSteps = [
   "Eğitime başlama ve staj",
 ];
 
-export default function ApplicationProcessFinland() {
+const requirementsLanguage = [
+  "18 yaş ve üzeri olmak",
+  "Pasaport (en az 6 ay geçerli)",
+  "Dil okulu kabul mektubu",
+  "Finansal yeterlilik belgesi (€6720/yıl)",
+  "Sağlık sigortası",
+  "Konaklama belgesi",
+];
+
+const processStepsLanguage = [
+  "Dil okulu ve program seçimi",
+  "Online başvuru ve kayıt",
+  "Kabul mektubunun alınması",
+  "Konaklama ayarlamaları",
+  "Residence permit başvurusu",
+  "Sağlık sigortası düzenleme",
+  "Finlandiya'ya varış ve kayıt",
+];
+
+type ApplicationProcessFinlandVariant = "teacher" | "language";
+
+export default function ApplicationProcessFinland({ variant = "teacher" }: { variant?: ApplicationProcessFinlandVariant }) {
+  const requirements = variant === "language" ? requirementsLanguage : requirementsTeacher;
+  const processSteps = variant === "language" ? processStepsLanguage : processStepsTeacher;
   return (
     <section className="py-10 md:py-20 bg-[#F5F5F5]">
       <div

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { supabase } from "@/lib/supabase";
 
 export default function LoginPage() {
@@ -59,7 +60,10 @@ export default function LoginPage() {
     >
       <div className="max-w-md w-full">
         {/* Login Card */}
-        <div 
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           className="bg-white rounded-2xl shadow-2xl p-8 space-y-6 transform transition-all"
           style={{
             backdropFilter: "blur(10px)",
@@ -185,7 +189,7 @@ export default function LoginPage() {
           <div className="text-center text-xs text-gray-500 mt-6">
             <p>© 2026 AKA Eğitim. Tüm hakları saklıdır.</p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

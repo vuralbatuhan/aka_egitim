@@ -57,17 +57,6 @@ export default function LanguageSchoolHero() {
           >
             İngiltere'de İngilizce öğrenmek, dilin doğduğu yerde aksan ve kültürünü deneyimleme fırsatıdır. British Council onaylı kaliteli dil okullarında eğitim alabilirsiniz.
           </motion.p>
-
-          {/* CTA Button */}
-          <motion.button
-            className="px-6 py-3 md:px-8 md:py-4 rounded-lg text-white font-medium transition-all duration-300 hover:opacity-90 hover:shadow-lg text-sm md:text-base"
-            style={{ backgroundColor: "#FF8C00" }}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-          >
-            Programları İncele
-          </motion.button>
         </div>
       </div>
     </section>
