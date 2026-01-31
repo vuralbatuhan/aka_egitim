@@ -2,14 +2,17 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Footer() {
   const footerLinks = {
     kurumsal: [
+      { name: 'Programlar', href: '/programlar' },
       { name: 'Hakkımızda', href: '#about' },
-      { name: 'Biz Kimiz', href: '#' },
-      { name: 'Niçin Kurduk', href: '#' },
-      { name: 'Ne Yapmak İstiyoruz', href: '#' },
+      { name: 'Biz Kimiz', href: '/biz-kimiz' },
+      { name: 'Kurucumuz Kimdir', href: '/kurucumuz-kimdir' },
+      { name: 'Niçin Kurduk', href: '/nicin-kurduk' },
+      { name: 'Ne Yapmak İstiyoruz', href: '/ne-yapmak-istiyoruz' },
     ],
     universite: [
       { name: 'İngiltere Dil Eğitimi', href: '#' },
@@ -18,7 +21,8 @@ export default function Footer() {
       { name: 'Almanya Üniversiteleri', href: '#' },
     ],
     dilOkullari: [
-      { name: 'İngiltere Dil Eğitimi', href: '#' },
+      { name: 'Dil Eğitimi', href: '/dil-egitimi' },
+      { name: 'İngiltere Dil Okulları', href: '/dil-okullari' },
       { name: 'Finlandiya Dil Eğitimi', href: '#' },
     ],
   }
@@ -128,12 +132,21 @@ export default function Footer() {
             <ul className="space-y-1.5 md:space-y-2">
               {footerLinks.kurumsal.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="text-white text-xs md:text-sm hover:opacity-80 transition-opacity"
-                  >
-                    {link.name}
-                  </a>
+                  {link.href.startsWith('/') ? (
+                    <Link
+                      href={link.href}
+                      className="text-white text-xs md:text-sm hover:opacity-80 transition-opacity"
+                    >
+                      {link.name}
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className="text-white text-xs md:text-sm hover:opacity-80 transition-opacity"
+                    >
+                      {link.name}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
@@ -180,12 +193,21 @@ export default function Footer() {
             <ul className="space-y-1.5 md:space-y-2">
               {footerLinks.dilOkullari.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="text-white text-xs md:text-sm hover:opacity-80 transition-opacity"
-                  >
-                    {link.name}
-                  </a>
+                  {link.href.startsWith('/') ? (
+                    <Link
+                      href={link.href}
+                      className="text-white text-xs md:text-sm hover:opacity-80 transition-opacity"
+                    >
+                      {link.name}
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className="text-white text-xs md:text-sm hover:opacity-80 transition-opacity"
+                    >
+                      {link.name}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
@@ -202,7 +224,7 @@ export default function Footer() {
           style={{ borderColor: '#2A2A2A' }}
         >
           <p className="text-white text-xs md:text-sm">
-            ©2026 Ayhan Korkmaz Eğitim ve Danışmanlık. Tüm hakları saklıdır.
+            ©2026 Aka Eğitim ve Danışmanlık. Tüm hakları saklıdır.
           </p>
         </motion.div>
       </div>

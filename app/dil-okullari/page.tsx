@@ -2,7 +2,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LanguageSchoolHero from "@/components/LanguageSchoolHero";
 import WhyEngland from "@/components/WhyEngland";
-import LanguagePrograms from "@/components/LanguagePrograms";
 import ApplicationProcess from "@/components/ApplicationProcess";
 import LanguageFAQ from "@/components/LanguageFAQ";
 import LanguageSchoolCTA from "@/components/LanguageSchoolCTA";
@@ -17,9 +16,6 @@ export default function DilOkullari() {
         <WhyEngland />
       </AnimatedSection>
       <AnimatedSection direction="up" delay={0.2}>
-        <LanguagePrograms />
-      </AnimatedSection>
-      <AnimatedSection direction="up" delay={0.3}>
         <ApplicationProcess />
       </AnimatedSection>
       <AnimatedSection direction="up" delay={0.4}>

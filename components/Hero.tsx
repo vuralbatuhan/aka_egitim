@@ -11,6 +11,10 @@ export default function Hero() {
     router.push("/iletisim#contact-form");
   };
 
+  const handleProgramsClick = () => {
+    router.push("/dil-egitimi");
+  };
+
   return (
     <section
       id="home"
@@ -93,7 +97,7 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 md:pt-4 justify-center lg:justify-start">
               <button
                 onClick={handleConsultationClick}
-                className="text-white rounded-full font-semibold hover:opacity-90 transition-opacity text-sm sm:text-base px-6 py-3 sm:px-8 sm:py-4 lg:px-10 lg:py-4"
+                className="cursor-pointer text-white rounded-full font-semibold hover:opacity-90 transition-opacity text-sm sm:text-base px-6 py-3 sm:px-8 sm:py-4 lg:px-10 lg:py-4"
                 style={{
                   backgroundColor: "#F07D2C",
                 }}
@@ -101,7 +105,8 @@ export default function Hero() {
                 Ücretsiz Danışmanlık
               </button>
               <button
-                className="bg-transparent text-white rounded-full font-semibold hover:bg-white/10 transition-colors text-sm sm:text-base px-6 py-3 sm:px-8 sm:py-4 lg:px-10 lg:py-4"
+                onClick={handleProgramsClick}
+                className="cursor-pointer bg-transparent text-white rounded-full font-semibold hover:bg-white/10 transition-colors text-sm sm:text-base px-6 py-3 sm:px-8 sm:py-4 lg:px-10 lg:py-4"
                 style={{
                   border: "2px solid white",
                 }}

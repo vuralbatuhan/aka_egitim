@@ -1,5 +1,23 @@
 @import "tailwindcss";
 
+html,
+body,
+* {
+  cursor: url('/images/cursor-32.png') 16 16, auto;
+}
+
 body {
   font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+a,
+button,
+[role="button"],
+[type="button"],
+[type="submit"],
+input[type="image"],
+select,
+label[for],
+.cursor-pointer {
+  cursor: url('/images/cursor-32.png') 16 16, pointer;
 }

@@ -22,11 +22,8 @@ const values = [
 
 export default function Values() {
   return (
-    <section className="py-10 md:py-20 bg-[#F5F5F5]">
-      <div
-        className="container mx-auto px-4 sm:px-6 lg:px-8"
-        style={{ maxWidth: "1200px" }}
-      >
+    <section className="py-10 md:py-20 px-4 lg:px-8 bg-[#F5F5F5]">
+      <div className="w-full max-w-[1200px] mx-auto">
         {/* Header Section */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8 md:mb-12">
           {/* Title with vertical line */}
@@ -51,12 +48,11 @@ export default function Values() {
             />
           </div>
         </div>
-      </div>
 
-      {/* Value Cards */}
-      <div
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mx-auto px-4 sm:px-6 lg:px-8 max-w-[1200px]"
-      >
+        {/* Value Cards */}
+        <div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 w-full"
+        >
         {values.map((value, index) => {
           // Format description with line breaks as shown in the image
           const formatDescription = (desc: string) => {
@@ -160,6 +156,7 @@ export default function Values() {
             </div>
           );
         })}
+        </div>
       </div>
     </section>
   );

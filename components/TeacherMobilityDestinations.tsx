@@ -49,7 +49,7 @@ export default function TeacherMobilityDestinations() {
                   {destination.description}
                 </p>
                 <Link
-                  href="#"
+                  href={destination.name === "Finlandiya" ? "/ogretmen-hareketliligi/finlandiya" : destination.name === "İsviçre" ? "/ogretmen-hareketliligi/isvicre" : "#"}
                   className="inline-flex items-center justify-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 rounded-lg md:rounded-xl text-white text-xs sm:text-sm font-semibold transition-all duration-300 shadow-md w-fit bg-gray-800 group-hover:bg-[#FF8C00] group-hover:scale-105 group-hover:shadow-lg"
                 >
                   Detaylı Bilgi

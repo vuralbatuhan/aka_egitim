@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 
 export default function LoginPage() {
@@ -9,7 +8,6 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const router = useRouter();
 
   useEffect(() => {
     checkSession();
@@ -18,7 +16,7 @@ export default function LoginPage() {
   const checkSession = async () => {
     const { data: { session } } = await supabase.auth.getSession();
     if (session) {
-      router.push("/aka-2026-admin");
+      window.location.replace("/aka-2026-admin");
     }
   };
 
@@ -36,11 +34,17 @@ export default function LoginPage() {
       if (error) throw error;
 
       if (data.user) {
-        router.push("/aka-2026-admin");
-        router.refresh();
+        // Tam sayfa yönlendirme: cookie'ler kesin gitsin, middleware session görsün (refresh loop önlenir)
+        window.location.replace("/aka-2026-admin");
+        return;
       }
-    } catch (error: any) {
-      setError(error.message || "Giriş yapılırken bir hata oluştu.");
+    } catch (err: unknown) {
+      // Güvenlik: Detaylı hata gösterme, genel mesaj kullan
+      const msg = err && typeof err === "object" && "message" in err ? String((err as { message: string }).message) : "";
+      const isAuthError =
+        /invalid login credentials|invalid_credentials|email not confirmed|user not found/i.test(msg) ||
+        msg.includes("Invalid login");
+      setError(isAuthError ? "E-posta veya şifre hatalı. Lütfen tekrar deneyin." : "Giriş yapılamadı. Lütfen tekrar deneyin.");
     } finally {
       setLoading(false);
     }
@@ -64,7 +68,7 @@ export default function LoginPage() {
         >
           {/* Logo/Header */}
           <div className="text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4" style={{ backgroundColor: "#60091b" }}>
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4 bg-aka-maroon">
               <svg
                 className="w-8 h-8 text-white"
                 fill="none"
@@ -79,7 +83,7 @@ export default function LoginPage() {
                 />
               </svg>
             </div>
-            <h2 className="text-3xl font-bold" style={{ color: "#60091b" }}>
+            <h2 className="text-3xl font-bold text-aka-maroon">
               Admin Girişi
             </h2>
             <p className="mt-2 text-sm text-gray-600">
@@ -155,10 +159,8 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg text-white font-semibold text-base transition-all duration-200 transform hover:scale-105 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-              style={{ 
-                backgroundColor: "#F07D2C",
-              }}
+              className="w-full flex justify-center items-center gap-2 py-3.5 px-4 mt-4 rounded-xl text-white font-semibold text-base transition-all duration-200 hover:opacity-95 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed border-0 min-h-[48px]"
+              style={{ backgroundColor: "#F07D2C" }}
             >
               {loading ? (
                 <>
@@ -171,7 +173,7 @@ export default function LoginPage() {
               ) : (
                 <>
                   Giriş Yap
-                  <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </>

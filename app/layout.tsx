@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ReactNode } from "react";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import LanguageCampPopup from "@/components/LanguageCampPopup";
 
 const inter = Inter({ 
   subsets: ["latin", "latin-ext"],
@@ -21,7 +22,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="tr">
-      <body className={inter.variable} suppressHydrationWarning>{children}</body>
+      <body className={inter.variable} suppressHydrationWarning>
+        {children}
+        <LanguageCampPopup />
+      </body>
     </html>
   );
 }

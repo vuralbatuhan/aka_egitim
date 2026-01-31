@@ -5,12 +5,12 @@ import { motion } from "framer-motion";
 export default function PageHeader({ title, breadcrumbs, description }: { title: string; breadcrumbs: string[]; description?: string }) {
   return (
     <section
-      className="w-full px-4 lg:px-8 flex items-center min-h-[280px] sm:min-h-[320px] md:min-h-[400px] mt-20 md:mt-24"
+      className="w-full flex items-center min-h-[280px] sm:min-h-[320px] md:min-h-[400px] mt-20 md:mt-24"
       style={{ backgroundColor: "#641a29" }}
     >
       <div
-        className="container mx-auto w-full px-4 sm:px-6 md:pl-12 lg:pl-24 xl:pl-32 2xl:pl-40 py-6 md:pt-8 lg:pt-12"
-        style={{ maxWidth: "1920px" }}
+        className="container mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 md:pt-8 lg:pt-12"
+        style={{ maxWidth: "1200px" }}
       >
         {/* Breadcrumbs */}
         <motion.div 
@@ -24,7 +24,8 @@ export default function PageHeader({ title, breadcrumbs, description }: { title:
               <span key={index}>
                 {index > 0 && <span className="mx-1.5 md:mx-2 text-white">/</span>}
                 <span 
-                  className={index === breadcrumbs.length - 1 ? "text-white font-semibold" : "text-white"}
+                  className={index === breadcrumbs.length - 1 ? "font-semibold" : "text-white"}
+                  style={index === breadcrumbs.length - 1 ? { color: "#f0771b" } : undefined}
                 >
                   {crumb}
                 </span>

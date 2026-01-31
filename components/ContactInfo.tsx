@@ -2,12 +2,12 @@
 
 export default function ContactInfo() {
   return (
-    <section className="py-10 md:py-16 lg:py-24 px-4" style={{ backgroundColor: "#F5F5F5" }}>
-      <div className="container mx-auto" style={{ maxWidth: "1200px" }}>
-        <div className="flex flex-col md:flex-row gap-4 sm:gap-6 md:gap-10 justify-center items-stretch">
+    <section className="py-10 md:py-16 lg:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "#F5F5F5" }}>
+      <div className="w-full max-w-[1200px] mx-auto">
+        <div className="flex flex-col md:flex-row flex-wrap gap-4 sm:gap-5 md:gap-8 justify-center items-stretch">
           {/* Phone Card */}
           <div 
-            className="flex-1 max-w-2xl rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-6 lg:p-8 border-2 flex items-center gap-4 md:gap-6"
+            className="flex-1 min-w-0 rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-5 border-2 flex items-center gap-4 md:gap-5"
             style={{ 
               backgroundColor: "#FFF5F5",
               borderColor: "#6A0B1C"
@@ -15,11 +15,11 @@ export default function ContactInfo() {
           >
             {/* Phone Icon */}
             <div 
-              className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full flex items-center justify-center shrink-0"
+              className="w-11 h-11 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center shrink-0"
               style={{ backgroundColor: "#6A0B1C" }}
             >
               <svg 
-                className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 text-white" 
+                className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white" 
                 fill="none" 
                 stroke="currentColor" 
                 viewBox="0 0 24 24"
@@ -34,16 +34,16 @@ export default function ContactInfo() {
             </div>
 
             {/* Phone Content */}
-            <div className="flex flex-col">
+            <div className="flex flex-col min-w-0">
               <span 
-                className="text-sm sm:text-base lg:text-lg font-medium mb-1 md:mb-2"
+                className="text-sm sm:text-base font-medium mb-1"
                 style={{ color: "#6A0B1C" }}
               >
                 Telefon
               </span>
               <a 
                 href="tel:+905426230724"
-                className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold hover:opacity-80 transition-opacity"
+                className="text-base sm:text-lg md:text-xl font-bold hover:opacity-80 transition-opacity truncate"
                 style={{ color: "#6A0B1C" }}
               >
                 +90 542 623 07 24
@@ -53,7 +53,7 @@ export default function ContactInfo() {
 
           {/* Email Card */}
           <div 
-            className="flex-1 max-w-2xl rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-6 lg:p-8 border-2 flex items-center gap-4 md:gap-6"
+            className="flex-1 min-w-0 rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-5 border-2 flex items-center gap-4 md:gap-5"
             style={{ 
               backgroundColor: "#FFF5F5",
               borderColor: "#6A0B1C"
@@ -61,11 +61,11 @@ export default function ContactInfo() {
           >
             {/* Email Icon */}
             <div 
-              className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full flex items-center justify-center shrink-0"
+              className="w-11 h-11 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center shrink-0"
               style={{ backgroundColor: "#6A0B1C" }}
             >
               <svg 
-                className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 text-white" 
+                className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white" 
                 fill="none" 
                 stroke="currentColor" 
                 viewBox="0 0 24 24"
@@ -82,18 +82,69 @@ export default function ContactInfo() {
             {/* Email Content */}
             <div className="flex flex-col min-w-0">
               <span 
-                className="text-sm sm:text-base lg:text-lg font-medium mb-1 md:mb-2"
+                className="text-sm sm:text-base font-medium mb-1"
                 style={{ color: "#6A0B1C" }}
               >
                 e-posta
               </span>
               <a 
                 href="mailto:info@akaegitim.com.tr"
-                className="text-base sm:text-lg md:text-2xl lg:text-3xl font-bold hover:opacity-80 transition-opacity break-all"
+                className="text-base sm:text-lg md:text-xl font-bold hover:opacity-80 transition-opacity break-all"
                 style={{ color: "#6A0B1C" }}
               >
                 info@akaegitim.com.tr
               </a>
+            </div>
+          </div>
+
+          {/* Address Card */}
+          <div 
+            className="flex-1 min-w-0 rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-5 border-2 flex items-center gap-4 md:gap-5"
+            style={{ 
+              backgroundColor: "#FFF5F5",
+              borderColor: "#6A0B1C"
+            }}
+          >
+            {/* Location Icon */}
+            <div 
+              className="w-11 h-11 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center shrink-0"
+              style={{ backgroundColor: "#6A0B1C" }}
+            >
+              <svg 
+                className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" 
+                />
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" 
+                />
+              </svg>
+            </div>
+
+            {/* Address Content */}
+            <div className="flex flex-col min-w-0">
+              <span 
+                className="text-sm sm:text-base font-medium mb-1"
+                style={{ color: "#6A0B1C" }}
+              >
+                Adres
+              </span>
+              <span 
+                className="text-base sm:text-lg md:text-xl font-bold break-words"
+                style={{ color: "#6A0B1C" }}
+              >
+                Lorem Ipsum Adres 123
+              </span>
             </div>
           </div>
         </div>

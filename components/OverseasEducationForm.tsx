@@ -74,8 +74,8 @@ export default function OverseasEducationForm() {
   };
 
   return (
-    <section id="contact-form" className="relative py-10 px-4" style={{ backgroundColor: "#F5F5F5" }}>
-      <div className="container mx-auto" style={{ maxWidth: "1200px" }}>
+    <section id="contact-form" className="relative py-10 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "#F5F5F5" }}>
+      <div className="w-full max-w-[1200px] mx-auto">
         {/* Header Text Section */}
         <div className="flex flex-col lg:flex-row gap-4 md:gap-8 mb-6 md:mb-8 items-start">
           <div className="flex items-start gap-3 flex-shrink-0">
@@ -430,58 +430,10 @@ export default function OverseasEducationForm() {
         </div>
 
         {/* Bottom Section - Benefit Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5 mt-6 md:mt-8">
-          {/* Card 1: 100% Ücretsiz */}
-          <div
-            className="flex items-center gap-3 p-4 md:p-5 rounded-2xl"
-            style={{
-              backgroundColor: "#F0FFF0",
-              border: "2px solid #5CB85C",
-            }}
-          >
-            <div
-              className="shrink-0 rounded-full flex items-center justify-center w-12 h-12 md:w-[60px] md:h-[60px]"
-              style={{
-                backgroundColor: "#5CB85C",
-              }}
-            >
-              <svg
-                width="32"
-                height="32"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                style={{ color: "white" }}
-                className="w-6 h-6 md:w-8 md:h-8"
-              >
-                <path
-                  d="M20 6L9 17L4 12"
-                  stroke="currentColor"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
-            <div>
-              <h4
-                className="font-bold mb-0.5 md:mb-1 text-base md:text-lg"
-                style={{ color: "#1a1a1a" }}
-              >
-                100% Ücretsiz
-              </h4>
-              <p
-                className="text-sm md:text-[15px]"
-                style={{ color: "#1a1a1a" }}
-              >
-                Danışmanlık Hizmeti
-              </p>
-            </div>
-          </div>
-
+        <div className="flex flex-wrap justify-center gap-4 md:gap-5 mt-6 md:mt-8">
           {/* Card 2: 24 Saat İçinde */}
           <div
-            className="flex items-center gap-3 p-4 md:p-5 rounded-2xl"
+            className="flex items-center gap-3 p-4 md:p-5 rounded-2xl min-w-[300px] max-w-[420px]"
             style={{
               backgroundColor: "#E8F3F8",
               border: "2px solid #60A5FA",
@@ -520,7 +472,7 @@ export default function OverseasEducationForm() {
 
           {/* Card 3: Uzman Kadro */}
           <div
-            className="flex items-center gap-3 p-4 md:p-5 rounded-2xl sm:col-span-2 md:col-span-1"
+            className="flex items-center gap-3 p-4 md:p-5 rounded-2xl min-w-[300px] max-w-[420px]"
             style={{
               backgroundColor: "#FFF0F0",
               border: "2px solid #B91C1C",

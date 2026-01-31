@@ -12,7 +12,7 @@ export default function Header() {
   const navItems = [
     { name: 'Ana Sayfa', href: '/', active: pathname === '/' },
     { name: 'Hakkımızda', href: '/hakkimizda', active: pathname === '/hakkimizda' },
-    { name: 'Dil Okulları', href: '/dil-okullari', active: pathname === '/dil-okullari' },
+    { name: 'Dil Eğitimi', href: '/dil-egitimi', active: pathname === '/dil-egitimi' || pathname.startsWith('/dil-okullari') },
     { name: 'Üniversite', href: '/universite', active: pathname === '/universite' },
     { name: 'Öğretmen Hareketliliği', href: '/ogretmen-hareketliligi', active: pathname === '/ogretmen-hareketliligi' },
     { name: 'İletişim', href: '/iletisim', active: pathname === '/iletisim' },
@@ -21,7 +21,7 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white">
       {/* Main Header */}
-      <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <nav className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1200px]">
         <div className="flex items-center justify-between h-24">
           {/* Logo */}
           <Link href="/" className="flex items-center shrink-0">
@@ -164,7 +164,7 @@ export default function Header() {
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="lg:hidden bg-white border-t">
-          <div className="container mx-auto px-4 py-4 space-y-4">
+          <div className="container mx-auto px-4 py-4 space-y-4 max-w-[1200px]">
             {navItems.map((item) => (
               item.href.startsWith('/') ? (
                 <Link
