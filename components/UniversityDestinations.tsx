@@ -8,26 +8,30 @@ export default function UniversityDestinations() {
     {
       name: "İngiltere",
       image: "/images/ingiltere-vizesi.png",
-      description: "İngiltere'de İngilizce öğrenmek, dilin doğduğu yerde aksan ve kültürünü deneyimleme fırsatıdır. British Council onaylı kaliteli dil okullarında eğitim alabilirsiniz.",
+      description: "İngiltere'nin dünyaca ünlü üniversiteleri, çeşitli alanlarda lisans ve önlisans programları sunar. Oxford ve Cambridge gibi tarihi üniversitelerden modern araştırma üniversitelerine kadar geniş seçenekler.",
       buttonColor: "#FF8C00",
+      href: "/universite/ingiltere",
     },
     {
       name: "Finlandiya",
       image: "/images/1ec1d4a296c8860bf4765bb90d75a641-1200.png",
-      description: "Finlandiya'da İngilizce öğrenmek, İskandinav yaşam tarzını deneyimleme ve dünya'nın en iyi eğitim sistemini yakından tanıma fırsatıdır.",
+      description: "Finlandiya'nın dünyaca ünlü üniversiteleri, İngilizce lisans programları ve kaliteli eğitim sunar. AB vatandaşları için ücretsiz eğitim imkanı vardır.",
       buttonColor: "#333333",
+      href: "/universite/finlandiya",
     },
     {
       name: "Almanya",
       image: "/images/shutterstock_551502508_4_3_1533105146.png",
       description: "Almanya'nın prestijli üniversiteleri dünya çapında tanınan lisans programları sunar. Ücretsiz veya çok düşük maliyetli eğitim ile kaliteli akademik deneyim.",
       buttonColor: "#333333",
+      href: "#",
     },
     {
       name: "İtalya",
       image: "/images/MyIC_Inline_20316.png",
-      description: "İtalya'nın köklü üniversiteleri, dünya çapında tanınan akademik programlar sunar.",
+      description: "İtalya'nın köklü üniversiteleri, dünya çapında tanınan akademik programlar sunar. Bologna Üniversitesi gibi dünyanın en eski üniversitelerinden modern teknik üniversitelere kadar geniş bir yelpazede eğitim imkanları bulunur.",
       buttonColor: "#333333",
+      href: "/universite/italya",
     },
   ];
 
@@ -61,7 +65,7 @@ export default function UniversityDestinations() {
                   {destination.description}
                 </p>
                 <Link
-                  href="#"
+                  href={destination.href}
                   className="inline-flex items-center justify-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 rounded-lg md:rounded-xl text-white text-xs sm:text-sm font-semibold transition-all duration-300 shadow-md w-fit bg-gray-800 group-hover:bg-[#FF8C00] group-hover:scale-105 group-hover:shadow-lg"
                 >
                   Detaylı Bilgi

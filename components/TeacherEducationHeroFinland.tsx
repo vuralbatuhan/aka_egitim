@@ -1,23 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function TeacherEducationHeroFinland() {
   return (
-    <section className="relative w-full min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] flex items-center justify-center mt-20 md:mt-24">
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/1ec1d4a296c8860bf4765bb90d75a641-1200.png"
-          alt="Finlandiya Öğretmen Eğitim Programları"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0" style={{ backgroundColor: "#800000", opacity: 0.5 }}></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/40"></div>
-      </div>
+    <section className="relative w-full min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] flex items-center justify-center mt-20 md:mt-24" style={{ backgroundColor: "#4A0F18" }}>
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8" style={{ maxWidth: "1200px" }}>
         <div className="max-w-3xl">

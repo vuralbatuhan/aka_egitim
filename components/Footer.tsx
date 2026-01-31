@@ -8,23 +8,54 @@ export default function Footer() {
   const footerLinks = {
     kurumsal: [
       { name: 'Programlar', href: '/programlar' },
-      { name: 'Hakkımızda', href: '#about' },
+      { name: 'Hakkımızda', href: '/hakkimizda' },
       { name: 'Biz Kimiz', href: '/biz-kimiz' },
       { name: 'Kurucumuz Kimdir', href: '/kurucumuz-kimdir' },
       { name: 'Niçin Kurduk', href: '/nicin-kurduk' },
       { name: 'Ne Yapmak İstiyoruz', href: '/ne-yapmak-istiyoruz' },
     ],
     universite: [
-      { name: 'İngiltere Dil Eğitimi', href: '#' },
-      { name: "Finlandiya'da Üniversite", href: '#' },
-      { name: "İngiltere'de Üniversite", href: '#' },
-      { name: 'Almanya Üniversiteleri', href: '#' },
+      { name: 'İngiltere Dil Eğitimi', href: '/dil-okullari' },
+      { name: "Finlandiya'da Üniversite", href: '/universite/finlandiya' },
+      { name: "İngiltere'de Üniversite", href: '/universite/ingiltere' },
+      { name: 'Üniversite Programları', href: '/universite' },
     ],
     dilOkullari: [
       { name: 'Dil Eğitimi', href: '/dil-egitimi' },
       { name: 'İngiltere Dil Okulları', href: '/dil-okullari' },
-      { name: 'Finlandiya Dil Eğitimi', href: '#' },
+      { name: 'Finlandiya Dil Eğitimi', href: '/dil-okullari/finlandiya' },
     ],
+  }
+
+  const linkClass =
+    'inline-block text-white text-xs md:text-sm transition-all duration-300 ease-out ' +
+    'hover:text-[#FF6B35] hover:translate-x-1 relative group'
+
+  function FooterNavLink({ link }: { link: { name: string; href: string } }) {
+    const isInternal = link.href.startsWith('/')
+    const content = (
+      <>
+        <span className="relative">
+          {link.name}
+          <span
+            className="absolute left-0 bottom-0 h-px w-0 bg-[#FF6B35] transition-all duration-300 ease-out group-hover:w-full"
+            aria-hidden
+          />
+        </span>
+      </>
+    )
+    if (isInternal) {
+      return (
+        <Link href={link.href} className={linkClass}>
+          {content}
+        </Link>
+      )
+    }
+    return (
+      <a href={link.href} className={linkClass}>
+        {content}
+      </a>
+    )
   }
 
   return (
@@ -130,24 +161,16 @@ export default function Footer() {
               Kurumsal
             </motion.h4>
             <ul className="space-y-1.5 md:space-y-2">
-              {footerLinks.kurumsal.map((link) => (
-                <li key={link.name}>
-                  {link.href.startsWith('/') ? (
-                    <Link
-                      href={link.href}
-                      className="text-white text-xs md:text-sm hover:opacity-80 transition-opacity"
-                    >
-                      {link.name}
-                    </Link>
-                  ) : (
-                    <a
-                      href={link.href}
-                      className="text-white text-xs md:text-sm hover:opacity-80 transition-opacity"
-                    >
-                      {link.name}
-                    </a>
-                  )}
-                </li>
+              {footerLinks.kurumsal.map((link, i) => (
+                <motion.li
+                  key={link.name}
+                  initial={{ opacity: 0, x: -8 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.1 + i * 0.05 }}
+                >
+                  <FooterNavLink link={link} />
+                </motion.li>
               ))}
             </ul>
           </div>
@@ -165,15 +188,16 @@ export default function Footer() {
               Üniversite
             </motion.h4>
             <ul className="space-y-1.5 md:space-y-2">
-              {footerLinks.universite.map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="text-white text-xs md:text-sm hover:opacity-80 transition-opacity"
-                  >
-                    {link.name}
-                  </a>
-                </li>
+              {footerLinks.universite.map((link, i) => (
+                <motion.li
+                  key={link.name}
+                  initial={{ opacity: 0, x: -8 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.2 + i * 0.05 }}
+                >
+                  <FooterNavLink link={link} />
+                </motion.li>
               ))}
             </ul>
           </div>
@@ -191,24 +215,16 @@ export default function Footer() {
               Dil Okulları
             </motion.h4>
             <ul className="space-y-1.5 md:space-y-2">
-              {footerLinks.dilOkullari.map((link) => (
-                <li key={link.name}>
-                  {link.href.startsWith('/') ? (
-                    <Link
-                      href={link.href}
-                      className="text-white text-xs md:text-sm hover:opacity-80 transition-opacity"
-                    >
-                      {link.name}
-                    </Link>
-                  ) : (
-                    <a
-                      href={link.href}
-                      className="text-white text-xs md:text-sm hover:opacity-80 transition-opacity"
-                    >
-                      {link.name}
-                    </a>
-                  )}
-                </li>
+              {footerLinks.dilOkullari.map((link, i) => (
+                <motion.li
+                  key={link.name}
+                  initial={{ opacity: 0, x: -8 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.3 + i * 0.05 }}
+                >
+                  <FooterNavLink link={link} />
+                </motion.li>
               ))}
             </ul>
           </div>

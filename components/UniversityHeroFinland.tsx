@@ -3,10 +3,13 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-export default function TeacherEducationHeroSwitzerland() {
+export default function UniversityHeroFinland() {
   return (
-    <section className="relative w-full min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] flex items-center justify-center mt-20 md:mt-24" style={{ backgroundColor: "#4A0F18" }}>
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8" style={{ maxWidth: "1200px" }}>
+    <section
+      className="w-full flex items-center min-h-[280px] sm:min-h-[320px] md:min-h-[400px] mt-20 md:mt-24"
+      style={{ backgroundColor: "#641a29" }}
+    >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 md:pt-8 lg:pt-12" style={{ maxWidth: "1200px" }}>
         <div className="max-w-3xl">
           <motion.nav
             className="mb-4 md:mb-6 text-xs sm:text-sm text-white opacity-90"
@@ -16,9 +19,9 @@ export default function TeacherEducationHeroSwitzerland() {
           >
             <Link href="/" className="hover:underline">Anasayfa</Link>
             <span className="mx-2">/</span>
-            <Link href="/ogretmen-hareketliligi" className="hover:underline">Öğretmen Hareketliliği</Link>
+            <Link href="/universite" className="hover:underline">Üniversite</Link>
             <span className="mx-2">/</span>
-            <span className="font-semibold">İsviçre</span>
+            <span className="font-semibold">Finlandiya Üniversite Programları</span>
           </motion.nav>
 
           <motion.h1
@@ -27,7 +30,7 @@ export default function TeacherEducationHeroSwitzerland() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
           >
-            İsviçre Öğretmen Eğitim Programları
+            Finlandiya Üniversite Programları
           </motion.h1>
 
           <motion.p
@@ -36,7 +39,7 @@ export default function TeacherEducationHeroSwitzerland() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           >
-            İsviçre, uluslararası eğitim standartları ve çok dilli eğitim sistemleri ile öğretmen yetiştirme programlarında öncü konumdadır. Pedagojik yaklaşımlar, çok kültürlü sınıf yönetimi ve modern eğitim teknolojileri konusunda uzmanlaşma fırsatı sunar.
+            Finlandiya&apos;nın dünyaca ünlü üniversiteleri, İngilizce lisans programları ve kaliteli eğitim sunar. AB vatandaşları için ücretsiz eğitim imkanı vardır.
           </motion.p>
         </div>
       </div>
