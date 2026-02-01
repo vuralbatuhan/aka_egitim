@@ -61,7 +61,7 @@ export default function ContactHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           >
-            Ücretsiz danışmanlık alın, size en uygun eğitim programını bulalım.
+            Bize ulaşın, size en uygun eğitim programını birlikte bulalım.
           </motion.p>
 
           {/* CTA Button */}
@@ -78,7 +78,7 @@ export default function ContactHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
           >
-            Ücretsiz Danışmanlık
+            İletişim
           </motion.button>
         </div>
       </div>

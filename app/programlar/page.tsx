@@ -1,8 +1,17 @@
+import type { Metadata } from "next";
 import Header from "@/components/Header";
 import PageHeader from "@/components/PageHeader";
 import ProgramlarList from "@/components/ProgramlarList";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Programlar",
+  description:
+    "AKA Eğitim programları: yurtdışı dil eğitimi, üniversite danışmanlığı, öğretmen hareketliliği ve sertifikalı eğitim programları. Programları inceleyin ve başvurun.",
+  path: "/programlar",
+});
 
 export default function ProgramlarPage() {
   return (

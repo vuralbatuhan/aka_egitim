@@ -1,14 +1,18 @@
+import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 import KurucumuzKimdirContent from "@/components/KurucumuzKimdirContent";
 import AnimatedSection from "@/components/AnimatedSection";
 import OverseasEducationForm from "@/components/OverseasEducationForm";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Kurucumuz Kimdir | AKA Eğitim",
-  description: "Ayhan Korkmaz ve Ayhan Korkmaz Akademi (AKA) kuruluş felsefesi: Azim, Kararlılık, Ayrıcalık.",
-};
+export const metadata: Metadata = createPageMetadata({
+  title: "Kurucumuz Kimdir",
+  description:
+    "Ayhan Korkmaz ve Ayhan Korkmaz Akademi (AKA) kuruluş felsefesi: Azim, Kararlılık, Ayrıcalık.",
+  path: "/kurucumuz-kimdir",
+});
 
 export default function KurucumuzKimdirPage() {
   return (

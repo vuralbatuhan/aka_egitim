@@ -1,13 +1,20 @@
+import type { Metadata } from "next";
 import Header from "@/components/Header";
 import PageHeader from "@/components/PageHeader";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
-import DilEgitimiProgramTypes from "@/components/DilEgitimiProgramTypes";
 import DilEgitimiWhatToConsider from "@/components/DilEgitimiWhatToConsider";
 import DilEgitimiCountryCards from "@/components/DilEgitimiCountryCards";
+import { createPageMetadata } from "@/lib/seo";
 
 const heroDescription =
-  "Ortaöğretim öğrencilerimiz için akran öğrenmesi ve özgüven gelişimini merkeze alan, öğretmen gözetiminde kısa süreli dil okulu programları düzenliyoruz. Öğrencinin kendi okuluyla ortaklaşa planlanan bu süreçte, eğitimler gidilen ülkenin uzmanlarınca verilirken, koordinasyon ve üniversite gezileri AKA tarafından yönetilerek takip edilir. Program sonunda okula, veliye ve öğrenciye detaylı bir \"Gelişim Raporu\" sunulur.";
+  "AKA Dil Okulu Hareketliliği, yabancı dil üzerinden öğrencilerimizi yaşayarak öğrenme ve kendini keşfetme yolculuğuna çıkarır. Öğrencilerimiz katıldığı program boyunca, öğrendiği yabancı dilin kültürüyle, yaşamın doğallığıyla ve akran etkileşimiyle bütünleşmiş gerçek bir öğrenme sürecine dâhil olur. Bu modelde amaç: öğrencinin dili sınıf ortamının ötesinde, yaşayarak edinmesini sağlamaktır.";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Dil Okulu Destinasyonlarımız",
+  description: heroDescription,
+  path: "/dil-egitimi",
+});
 
 export default function DilEgitimiPage() {
   return (
@@ -26,10 +33,6 @@ export default function DilEgitimiPage() {
           <DilEgitimiCountryCards />
         </AnimatedSection>
       </section>
-
-      <AnimatedSection direction="up" delay={0.25}>
-        <DilEgitimiProgramTypes />
-      </AnimatedSection>
 
       <AnimatedSection direction="up" delay={0.3}>
         <DilEgitimiWhatToConsider />

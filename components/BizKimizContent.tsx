@@ -16,7 +16,7 @@ export default function BizKimizContent() {
           </div>
           <div className="space-y-3 md:space-y-4">
             <p className="text-sm sm:text-base lg:text-lg leading-relaxed" style={{ color: "#666666" }}>
-              AKA-Ayhan KORKMAZ Akademi; &quot;Konu ülkenin geleceği ise özne eğitimdir.&quot; ilkesiyle yola çıkan öğretmenlerin kurduğu öncü bir eğitim oluşumudur.
+              AKA; &quot;Konu ülkenin geleceği ise özne eğitimdir.&quot; şiarıyla yola çıkan öğretmenlerin kurduğu öncü bir eğitim oluşumudur. Öğretmen rehberliğinde, öğrencilerimizin yurtdışına dair tüm hedef ve hayallerini yine öğretmen güvenirliği ve dokunuşu ile gerçekleştirmek amacıyla kurulmuştur.
             </p>
             <p className="text-sm sm:text-base lg:text-lg leading-relaxed" style={{ color: "#666666" }}>
               Azim, Kararlılık ve Ayrıcalık ilkelerini güven temeliyle birleştiren eğitimciler tarafından dayanışma ruhuyla hayata geçirilmiştir.

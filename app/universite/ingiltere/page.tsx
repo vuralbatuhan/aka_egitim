@@ -1,9 +1,18 @@
+import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import UniversityHeroEngland from "@/components/UniversityHeroEngland";
 import WhyEnglandUniversities from "@/components/WhyEnglandUniversities";
 import UniversityEnglandApplication from "@/components/UniversityEnglandApplication";
 import AnimatedSection from "@/components/AnimatedSection";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "İngiltere Üniversiteleri",
+  description:
+    "AKA Eğitim ile İngiltere'de üniversite eğitimi. İngiltere üniversiteleri, başvuru süreci ve İngiltere öğrenci vizesi. Öğretmen danışmanlığı ile İngiltere üniversite başvurusu.",
+  path: "/universite/ingiltere",
+});
 
 export default function UniversiteIngiltere() {
   return (

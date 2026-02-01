@@ -59,7 +59,7 @@ export default function CTASwitzerland() {
                     className="inline-block px-5 py-2 sm:px-6 sm:py-2.5 md:px-8 md:py-3 rounded-lg font-semibold text-white text-sm sm:text-base md:text-lg transition-all hover:opacity-90"
                     style={{ backgroundColor: "#F07D2C" }}
                   >
-                    Ücretsiz Danışmanlık
+                    İletişim
                   </motion.span>
                 </Link>
               </div>

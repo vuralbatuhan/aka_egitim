@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import TeacherEducationHeroSwitzerland from "@/components/TeacherEducationHeroSwitzerland";
@@ -5,6 +6,14 @@ import WhySwitzerland from "@/components/WhySwitzerland";
 import FAQSwitzerland from "@/components/FAQSwitzerland";
 import CTASwitzerland from "@/components/CTASwitzerland";
 import AnimatedSection from "@/components/AnimatedSection";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Öğretmen Hareketliliği - İsviçre",
+  description:
+    "AKA Eğitim ile İsviçre'de sertifikalı öğretmen eğitimi programları. Öğretmen hareketliliği, mesleki gelişim ve pedagojik eğitim fırsatları. İsviçre öğretmen eğitimi.",
+  path: "/ogretmen-hareketliligi/isvicre",
+});
 
 export default function OgretmenHareketliligiIsvicre() {
   return (

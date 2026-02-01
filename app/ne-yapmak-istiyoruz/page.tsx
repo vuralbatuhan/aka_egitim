@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
@@ -7,6 +8,14 @@ import Felsefemiz from "@/components/Felsefemiz";
 import NasilBasaracagiz from "@/components/NasilBasaracagiz";
 import NeYapmakIstiyoruzCTA from "@/components/NeYapmakIstiyoruzCTA";
 import OverseasEducationForm from "@/components/OverseasEducationForm";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Ne Yapmak İstiyoruz",
+  description:
+    "AKA Eğitim hedefleri ve felsefesi. Öğretmen rehberliğinde yurtdışı eğitim fırsatları sunarak öğrencilerin dil, üniversite ve mesleki gelişim hedeflerine ulaşmalarını sağlıyoruz.",
+  path: "/ne-yapmak-istiyoruz",
+});
 
 export default function NeYapmakIstiyoruzPage() {
   return (

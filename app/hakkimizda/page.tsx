@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Header from "@/components/Header";
 import PageHeader from "@/components/PageHeader";
 import AboutAKA from "@/components/AboutAKA";
@@ -6,6 +7,14 @@ import WhyAKA from "@/components/WhyAKA";
 import OverseasEducationForm from "@/components/OverseasEducationForm";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Hakkımızda",
+  description:
+    'AKA; "Konu ülkenin geleceği ise özne eğitimdir." şiarıyla yola çıkan öğretmenlerin kurduğu öncü bir eğitim oluşumudur. Öğretmen rehberliğinde, öğrencilerimizin yurtdışına dair tüm hedef ve hayallerini öğretmen güvenirliği ve dokunuşu ile gerçekleştirmek amacıyla kurulmuştur.',
+  path: "/hakkimizda",
+});
 
 export default function Hakkimizda() {
   return (
@@ -15,7 +24,7 @@ export default function Hakkimizda() {
         <PageHeader 
           title="Hakkımızda" 
           breadcrumbs={["Anasayfa", "Hakkımızda"]}
-          description="AKA olarak, eğitim alanında uzman kadromuzla öğrencilerimize ve öğretmenlerimize yurt içi ve yurt dışında kaliteli eğitim hizmetleri sunuyoruz. Misyonumuz, eğitim yolculuğunuzda güvenilir bir rehber olmak ve hedeflerinize ulaşmanızda size destek olmaktır."
+          description={`AKA; "Konu ülkenin geleceği ise özne eğitimdir." şiarıyla yola çıkan öğretmenlerin kurduğu öncü bir eğitim oluşumudur. Öğretmen rehberliğinde, öğrencilerimizin yurtdışına dair tüm hedef ve hayallerini öğretmen güvenirliği ve dokunuşu ile gerçekleştirmek amacıyla kurulmuştur.`}
         />
       </AnimatedSection>
       <AnimatedSection direction="up" delay={0.2}>

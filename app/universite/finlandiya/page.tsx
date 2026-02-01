@@ -1,10 +1,18 @@
+import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import UniversityHeroFinland from "@/components/UniversityHeroFinland";
 import WhyFinlandUniversities from "@/components/WhyFinlandUniversities";
 import UniversityFinlandApplication from "@/components/UniversityFinlandApplication";
-import UniversityFinlandFAQ from "@/components/UniversityFinlandFAQ";
 import AnimatedSection from "@/components/AnimatedSection";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Finlandiya Üniversiteleri",
+  description:
+    "AKA Eğitim ile Finlandiya'da üniversite eğitimi. Finlandiya üniversiteleri, başvuru koşulları ve vize süreci. Öğretmen danışmanlığı ile Finlandiya üniversite başvurusu.",
+  path: "/universite/finlandiya",
+});
 
 export default function UniversiteFinlandiya() {
   return (
@@ -16,9 +24,6 @@ export default function UniversiteFinlandiya() {
       </AnimatedSection>
       <AnimatedSection direction="up" delay={0.2}>
         <UniversityFinlandApplication />
-      </AnimatedSection>
-      <AnimatedSection direction="up" delay={0.3}>
-        <UniversityFinlandFAQ />
       </AnimatedSection>
       <Footer />
     </main>

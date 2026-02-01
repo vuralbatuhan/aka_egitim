@@ -55,7 +55,7 @@ export default function LanguageSchoolHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           >
-            İngiltere'de İngilizce öğrenmek, dilin doğduğu yerde aksan ve kültürünü deneyimleme fırsatıdır. British Council onaylı kaliteli dil okullarında eğitim alabilirsiniz.
+            Dilin doğduğu yerde, şehirleri kendi dilinde keşfederek İngilizcenizi geliştirmeye davetlisiniz. İngilterenin en güzel okullarında, tecrübeli eğitimciler, akredite programlar ve sertifikalar ile geleceğinizi şekillendirmek için AKA güvencesiyle sizi bekliyoruz.
           </motion.p>
         </div>
       </div>

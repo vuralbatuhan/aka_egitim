@@ -9,7 +9,6 @@ export default function Footer() {
     kurumsal: [
       { name: 'Programlar', href: '/programlar' },
       { name: 'Hakkımızda', href: '/hakkimizda' },
-      { name: 'Biz Kimiz', href: '/biz-kimiz' },
       { name: 'Kurucumuz Kimdir', href: '/kurucumuz-kimdir' },
       { name: 'Niçin Kurulduk', href: '/nicin-kurduk' },
       { name: 'Ne Yapmak İstiyoruz', href: '/ne-yapmak-istiyoruz' },
@@ -29,7 +28,7 @@ export default function Footer() {
 
   const linkClass =
     'inline-block text-white text-xs md:text-sm transition-all duration-300 ease-out ' +
-    'hover:text-[#FF6B35] hover:translate-x-1 relative group'
+    'hover:text-[#85142C] hover:translate-x-1 relative group'
 
   function FooterNavLink({ link }: { link: { name: string; href: string } }) {
     const isInternal = link.href.startsWith('/')
@@ -38,7 +37,7 @@ export default function Footer() {
         <span className="relative">
           {link.name}
           <span
-            className="absolute left-0 bottom-0 h-px w-0 bg-[#FF6B35] transition-all duration-300 ease-out group-hover:w-full"
+            className="absolute left-0 bottom-0 h-px w-0 bg-[#85142C] transition-all duration-300 ease-out group-hover:w-full"
             aria-hidden
           />
         </span>
@@ -109,18 +108,20 @@ export default function Footer() {
                   />
                 </a>
                 
-                {/* Facebook */}
+                {/* TikTok */}
                 <a
-                  href="#"
+                  href="https://www.tiktok.com/@aka.egitim"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white flex items-center justify-center transition-all duration-300 hover:!bg-[#60091B] hover:shadow-lg group"
-                  aria-label="Facebook"
+                  aria-label="TikTok"
                   style={{ backgroundColor: 'white' }}
                   onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#60091B'}
                   onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'white'}
                 >
                   <Image
-                    src="/images/facebook-app-symbol.png"
-                    alt="Facebook"
+                    src="/images/tiktok.svg"
+                    alt="TikTok"
                     width={20}
                     height={20}
                     className="object-contain group-hover:brightness-0 group-hover:invert transition-all duration-300 w-4 h-4 md:w-5 md:h-5"
@@ -156,7 +157,7 @@ export default function Footer() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-white font-bold mb-2 md:mb-4 text-sm md:text-base"
-              style={{ color: '#FF6B35' }}
+              style={{ color: '#85142C' }}
             >
               Kurumsal
             </motion.h4>
@@ -183,7 +184,7 @@ export default function Footer() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-white font-bold mb-2 md:mb-4 text-sm md:text-base"
-              style={{ color: '#FF6B35' }}
+              style={{ color: '#85142C' }}
             >
               Üniversite
             </motion.h4>
@@ -210,7 +211,7 @@ export default function Footer() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-white font-bold mb-2 md:mb-4 text-sm md:text-base"
-              style={{ color: '#FF6B35' }}
+              style={{ color: '#85142C' }}
             >
               Dil Okulları
             </motion.h4>

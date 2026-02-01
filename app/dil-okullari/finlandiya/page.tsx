@@ -1,11 +1,19 @@
+import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LanguageSchoolHeroFinland from "@/components/LanguageSchoolHeroFinland";
 import WhyFinland from "@/components/WhyFinland";
 import ApplicationProcessFinland from "@/components/ApplicationProcessFinland";
-import LanguageFAQFinland from "@/components/LanguageFAQFinland";
 import LanguageSchoolCTAFinland from "@/components/LanguageSchoolCTAFinland";
 import AnimatedSection from "@/components/AnimatedSection";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Finlandiya Dil Okulları",
+  description:
+    "AKA Eğitim ile Finlandiya'da dil eğitimi. Finlandiya dil okulu programları, başvuru süreci ve sertifikalı dil eğitimi fırsatları. Öğretmen güvenirliği ile Finlandiya dil okulu.",
+  path: "/dil-okullari/finlandiya",
+});
 
 export default function DilOkullariFinlandiya() {
   return (
@@ -19,9 +27,6 @@ export default function DilOkullariFinlandiya() {
         <ApplicationProcessFinland variant="language" />
       </AnimatedSection>
       <AnimatedSection direction="up" delay={0.3}>
-        <LanguageFAQFinland />
-      </AnimatedSection>
-      <AnimatedSection direction="up" delay={0.4}>
         <LanguageSchoolCTAFinland />
       </AnimatedSection>
       <Footer />

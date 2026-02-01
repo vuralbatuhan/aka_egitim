@@ -8,13 +8,13 @@ export default function LanguageDestinations() {
     {
       name: "İngiltere",
       image: "/images/1ec1d4a296c8860bf4765bb90d75a641-1200.png",
-      description: "İngiltere'de İngilizce öğrenmek, dilin doğduğu yerde aksan ve kültürünü deneyimleme fırsatıdır. British Council onaylı kaliteli dil okullarında eğitim alabilirsiniz.",
+      description: "Dilin doğduğu yerde, şehirleri kendi dilinde keşfederek İngilizcenizi geliştirmeye davetlisiniz. İngilterenin en güzel okullarında, tecrübeli eğitimciler, akredite programlar ve sertifikalar ile geleceğinizi şekillendirmek için AKA güvencesiyle sizi bekliyoruz.",
       buttonColor: "#FF8C00",
     },
     {
       name: "Finlandiya",
       image: "/images/ingiltere-vizesi.png",
-      description: "Finlandiya'da İngilizce öğrenmek, İskandinav yaşam tarzını deneyimleme ve dünya'nın en iyi eğitim sistemini yakından tanıma fırsatıdır.",
+      description: "Finlandiya'nın en büyük ve güzel kampüsünde, doğa ile iç içe İskandinav yaşam tarzını deneyimleyerek İngilizcenizi geliştirmeye davetlisiniz. Tecrübeli eğitimciler, sertifikalı akredite programlar ile geleceğinizi şekillendirmek için AKA güvencesiyle sizi bekliyoruz.",
       buttonColor: "#333333",
     },
   ];

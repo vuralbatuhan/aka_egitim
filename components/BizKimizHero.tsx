@@ -61,7 +61,7 @@ export default function BizKimizHero() {
             className="px-6 py-3 md:px-8 md:py-4 rounded-lg font-semibold text-white transition-all hover:opacity-90 hover:shadow-lg text-sm md:text-base"
             style={{ backgroundColor: "#f0771b" }}
           >
-            Ücretsiz Danışmanlık
+            İletişim
           </Link>
           <Link
             href="/dil-egitimi"

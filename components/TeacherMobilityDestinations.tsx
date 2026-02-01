@@ -6,16 +6,18 @@ import Link from "next/link";
 export default function TeacherMobilityDestinations() {
   const destinations = [
     {
-      name: "Finlandiya",
-      image: "/images/1ec1d4a296c8860bf4765bb90d75a641-1200.png",
-      description: "Finlandiya'da İngilizce öğrenmek, İskandinav yaşam tarzını deneyimleme ve dünya'nın en iyi eğitim sistemini yakından tanıma fırsatıdır.",
-      buttonColor: "#FF8C00",
+      name: "Belçika",
+      image: "/images/zurih-city.png",
+      description: "Belçika'da sertifikalı öğretmen eğitim programları. AKA güvencesiyle, öğretmen dokunuşuyla mesleki gelişim ve pedagojik derinleşme fırsatı.",
+      buttonColor: "#333333",
+      href: "/ogretmen-hareketliligi/belcika",
     },
     {
-      name: "İsviçre",
-      image: "/images/zurih-city.png",
-      description: "İsviçre'de öğretmen eğitimi almak, çok dilli bir ortamda profesyonel gelişim sağlama ve uluslararası standartlarda sertifika programlarına katılma fırsatıdır.",
-      buttonColor: "#333333",
+      name: "Finlandiya",
+      image: "/images/1ec1d4a296c8860bf4765bb90d75a641-1200.png",
+      description: "Finlandiya'da sertifikalı öğretmen eğitim programları. AKA güvencesiyle, öğretmen dokunuşuyla mesleki gelişim ve pedagojik derinleşme fırsatı.",
+      buttonColor: "#FF8C00",
+      href: "/ogretmen-hareketliligi/finlandiya",
     },
   ];
 
@@ -49,7 +51,7 @@ export default function TeacherMobilityDestinations() {
                   {destination.description}
                 </p>
                 <Link
-                  href={destination.name === "Finlandiya" ? "/ogretmen-hareketliligi/finlandiya" : destination.name === "İsviçre" ? "/ogretmen-hareketliligi/isvicre" : "#"}
+                  href={destination.href ?? "#"}
                   className="inline-flex items-center justify-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 rounded-lg md:rounded-xl text-white text-xs sm:text-sm font-semibold transition-all duration-300 shadow-md w-fit bg-gray-800 group-hover:bg-[#FF8C00] group-hover:scale-105 group-hover:shadow-lg"
                 >
                   Detaylı Bilgi

@@ -30,7 +30,7 @@ export default function AboutAKA() {
               className="text-sm sm:text-base lg:text-lg leading-relaxed"
               style={{ color: "#666666" }}
             >
-              AKA – Ayhan KORKMAZ Akademi: <span style={{ color: "#800000", fontWeight: "bold" }}>Öğretmen</span> rehberliğinde yurtdışı eğitim hareketliliğinin adı soyadı. Azim, Kararlılık ve Ayrıcalık ilkeleriyle öğrencilerinize güvenli eğitim yolculuğu.
+              AKA; &quot;Öğretmen rehberliğinde yurtdışı eğitim hareketliliğinin adı soyadı&quot; sloganıyla yola çıkmıştır. Azim, Kararlılık ve Ayrıcalık ilkeleri ile öğrencilerin yurtdışı eğitim yolculuğuna &quot;öğretmen güvencesi&quot; ile rehberlik eder.
             </p>
           </div>
         </div>

@@ -8,7 +8,7 @@ const countries = [
     id: "ingiltere",
     title: "İngiltere",
     description:
-      "İngiltere'de İngilizce öğrenmek, dilin doğduğu yerde aksan ve kültürünü deneyimleme fırsatıdır. British Council onaylı kaliteli dil okullarında eğitim alabilirsiniz.",
+      "Dilin doğduğu yerde, şehirleri kendi dilinde keşfederek İngilizcenizi geliştirmeye davetlisiniz. İngilterenin en güzel okullarında, tecrübeli eğitimciler, akredite programlar ve sertifikalar ile geleceğinizi şekillendirmek için AKA güvencesiyle sizi bekliyoruz.",
     href: "/dil-okullari",
     image: "/images/yurtdisi-dil-egitiminin-favori-ulkesi-ingiltere.png",
     imageExternal: null,
@@ -17,7 +17,7 @@ const countries = [
     id: "finlandiya",
     title: "Finlandiya",
     description:
-      "Finlandiya'da İngilizce öğrenmek, İskandinav yaşam tarzını deneyimleme ve dünya'nın en iyi eğitim sistemini yakından tanıma fırsatıdır.",
+      "Finlandiya'nın en büyük ve güzel kampüsünde, doğa ile iç içe İskandinav yaşam tarzını deneyimleyerek İngilizcenizi geliştirmeye davetlisiniz. Tecrübeli eğitimciler, sertifikalı akredite programlar ile geleceğinizi şekillendirmek için AKA güvencesiyle sizi bekliyoruz.",
     href: "/dil-okullari/finlandiya",
     image: "/images/1ec1d4a296c8860bf4765bb90d75a641-1200.png",
     imageExternal: null,

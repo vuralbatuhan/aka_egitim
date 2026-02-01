@@ -9,6 +9,9 @@ export async function updateSession(request: NextRequest) {
     request,
   });
 
+  const pathname = request.nextUrl.pathname;
+  const isAdminRoute = pathname.startsWith(ADMIN_PREFIX);
+
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
@@ -18,9 +21,13 @@ export async function updateSession(request: NextRequest) {
           return request.cookies.getAll();
         },
         setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value, options }) =>
-            response.cookies.set(name, value, options)
-          );
+          cookiesToSet.forEach(({ name, value, options }) => {
+            // Admin: session cookie — tarayıcı kapatılınca oturum düşsün (güvenlik)
+            const opts = isAdminRoute
+              ? { ...options, maxAge: undefined, expires: undefined }
+              : options;
+            response.cookies.set(name, value, opts);
+          });
         },
       },
     }
@@ -31,8 +38,6 @@ export async function updateSession(request: NextRequest) {
     data: { session },
   } = await supabase.auth.getSession();
 
-  const pathname = request.nextUrl.pathname;
-  const isAdminRoute = pathname.startsWith(ADMIN_PREFIX);
   const isLoginPage = pathname === ADMIN_LOGIN;
 
   if (isAdminRoute && !isLoginPage && !session) {

@@ -42,11 +42,11 @@ export default function ContactInfo() {
                 Telefon
               </span>
               <a 
-                href="tel:+905426230724"
+                href="tel:02165040252"
                 className="text-base sm:text-lg md:text-xl font-bold hover:opacity-80 transition-opacity truncate"
                 style={{ color: "#6A0B1C" }}
               >
-                +90 542 623 07 24
+                0216 504 02 52
               </a>
             </div>
           </div>
@@ -143,7 +143,7 @@ export default function ContactInfo() {
                 className="text-base sm:text-lg md:text-xl font-bold break-words"
                 style={{ color: "#6A0B1C" }}
               >
-                Lorem Ipsum Adres 123
+                Barbaros Mh. Bekir Sıtkı Sezgin Sk. NO=20 Özlem Sit. B-Blok Dükk. NO=45/E-b Üsküdar
               </span>
             </div>
           </div>

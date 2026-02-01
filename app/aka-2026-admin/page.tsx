@@ -4,7 +4,6 @@ import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { supabase } from "@/lib/supabase";
-import AdminToast, { type ToastState } from "@/components/admin/AdminToast";
 
 interface InstagramPost {
   id: string;
@@ -86,15 +85,7 @@ export default function AdminPanel() {
   const [programImageFiles, setProgramImageFiles] = useState<{ file: File | null; caption: string }[]>([]);
   const [existingProgramImages, setExistingProgramImages] = useState<ProgramImageRow[]>([]);
   const [programImagesToRemove, setProgramImagesToRemove] = useState<string[]>([]);
-  const [toast, setToast] = useState<ToastState>({ message: "", type: "info", show: false });
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  const showToast = useCallback((message: string, type: ToastState["type"] = "info") => {
-    setToast({ message, type, show: true });
-  }, []);
-  const hideToast = useCallback(() => {
-    setToast((prev) => ({ ...prev, show: false }));
-  }, []);
 
   useEffect(() => {
     checkAuth();
@@ -171,7 +162,7 @@ export default function AdminPanel() {
       setContactSubmissions(data || []);
     } catch (error: any) {
       console.error("Error fetching contact submissions:", error);
-      showToast(error?.message || "İletişim formları yüklenirken hata oluştu.", "error");
+      console.error("İletişim formları:", error?.message);
       setContactSubmissions([]);
     } finally {
       setLoading(false);
@@ -235,10 +226,7 @@ export default function AdminPanel() {
 
   const handleAddProgram = async () => {
     const validImages = programImageFiles.filter((item) => item.file && item.file.size > 0) as { file: File; caption: string }[];
-    if (validImages.length === 0) {
-      showToast("En az bir görsel ekleyin.", "error");
-      return;
-    }
+    if (validImages.length === 0) return;
     try {
       setProgramUploading(true);
       const { data: newProgram, error: programError } = await supabase
@@ -258,10 +246,8 @@ export default function AdminPanel() {
       setShowProgramModal(false);
       resetProgramForm();
       fetchPrograms();
-      showToast("Görsel(ler) eklendi.", "success");
     } catch (error: any) {
       console.error("Görsel eklenirken hata:", error);
-      showToast(error?.message || "Görsel eklenirken bir hata oluştu.", "error");
     } finally {
       setProgramUploading(false);
     }
@@ -286,10 +272,8 @@ export default function AdminPanel() {
       setShowProgramModal(false);
       resetProgramForm();
       fetchPrograms();
-      showToast("Görsel(ler) güncellendi.", "success");
     } catch (error: any) {
       console.error("Görsel güncellenirken hata:", error);
-      showToast(error?.message || "Görsel güncellenirken bir hata oluştu.", "error");
     } finally {
       setProgramUploading(false);
     }
@@ -303,7 +287,7 @@ export default function AdminPanel() {
       if (error) throw error;
       fetchPrograms();
     } catch (error: any) {
-      showToast(error?.message || "Program silinirken hata.", "error");
+      console.error("Program silinirken hata:", error?.message);
     }
   };
 
@@ -318,7 +302,6 @@ export default function AdminPanel() {
       }
 
       if (!imageUrl) {
-        showToast("Lütfen bir görsel URL'i girin veya dosya yükleyin.", "error");
         setUploading(false);
         return;
       }
@@ -331,11 +314,8 @@ export default function AdminPanel() {
       setShowAddModal(false);
       resetForm();
       fetchInstagramPosts();
-      showToast("Gönderi eklendi.", "success");
     } catch (error: any) {
       console.error("Error adding post:", error);
-      const errorMessage = error?.message || "Gönderi eklenirken bir hata oluştu.";
-      showToast(errorMessage, "error");
     } finally {
       setUploading(false);
     }
@@ -353,7 +333,6 @@ export default function AdminPanel() {
       }
 
       if (!imageUrl) {
-        showToast("Lütfen bir görsel URL'i girin veya dosya yükleyin.", "error");
         setUploading(false);
         return;
       }
@@ -370,11 +349,8 @@ export default function AdminPanel() {
       resetForm();
       setShowAddModal(false);
       fetchInstagramPosts();
-      showToast("Gönderi güncellendi.", "success");
     } catch (error: any) {
       console.error("Error updating post:", error);
-      const errorMessage = error?.message || "Gönderi güncellenirken bir hata oluştu.";
-      showToast(errorMessage, "error");
     } finally {
       setUploading(false);
     }
@@ -388,7 +364,6 @@ export default function AdminPanel() {
       fetchInstagramPosts();
     } catch (error) {
       console.error("Error deleting post:", error);
-      showToast("Gönderi silinirken bir hata oluştu.", "error");
     }
   };
 
@@ -425,8 +400,6 @@ export default function AdminPanel() {
       await fetchContactSubmissions();
     } catch (error: any) {
       console.error("Error deleting submission:", error);
-      const errorMessage = error?.message || "Form gönderisi silinirken bir hata oluştu.";
-      showToast(errorMessage, "error");
     }
   };
 
@@ -446,15 +419,8 @@ export default function AdminPanel() {
     const file = e.target.files?.[0];
     if (file) {
       // Check file type
-        if (!file.type.startsWith('image/')) {
-          showToast('Lütfen bir görsel dosyası seçin.', "error");
-          return;
-        }
-      // Check file size (max 5MB)
-      if (file.size > 5 * 1024 * 1024) {
-        showToast('Dosya boyutu 5MB\'dan küçük olmalıdır.', "error");
-        return;
-      }
+        if (!file.type.startsWith('image/')) return;
+      if (file.size > 5 * 1024 * 1024) return;
       setSelectedFile(file);
       // Create preview
       const reader = new FileReader();
@@ -1035,14 +1001,7 @@ export default function AdminPanel() {
                       e.stopPropagation();
                       const file = e.dataTransfer.files?.[0];
                       if (file) {
-                        if (!file.type.startsWith('image/')) {
-                          showToast('Lütfen bir görsel dosyası seçin.', "error");
-                          return;
-                        }
-                        if (file.size > 5 * 1024 * 1024) {
-                          showToast('Dosya boyutu 5MB\'dan küçük olmalıdır.', "error");
-                          return;
-                        }
+                        if (!file.type.startsWith('image/') || file.size > 5 * 1024 * 1024) return;
                         setSelectedFile(file);
                         const reader = new FileReader();
                         reader.onloadend = () => {
@@ -1473,7 +1432,6 @@ export default function AdminPanel() {
         )}
         </motion.div>
       </main>
-      <AdminToast toast={toast} onClose={hideToast} />
     </div>
   );
 }

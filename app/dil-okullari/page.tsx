@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LanguageSchoolHero from "@/components/LanguageSchoolHero";
@@ -6,6 +7,14 @@ import ApplicationProcess from "@/components/ApplicationProcess";
 import LanguageFAQ from "@/components/LanguageFAQ";
 import LanguageSchoolCTA from "@/components/LanguageSchoolCTA";
 import AnimatedSection from "@/components/AnimatedSection";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Dil Okulları - İngiltere",
+  description:
+    "AKA Eğitim ile İngiltere'de dil eğitimi. Yurtdışı dil okulu programları, başvuru süreci ve vize danışmanlığı. Öğretmen güvenirliği ile İngiltere dil okulu fırsatları.",
+  path: "/dil-okullari",
+});
 
 export default function DilOkullari() {
   return (

@@ -260,10 +260,10 @@ export default function OverseasEducationForm() {
                           style={{ fontSize: "15px" }}
                         >
                           <option value="">Program Türünü Seçin</option>
-                          <option value="undergraduate">Lisans</option>
-                          <option value="graduate">Yüksek Lisans</option>
-                          <option value="phd">Doktora</option>
-                          <option value="language">Dil Eğitimi</option>
+                          <option value="dil-kurslari">Dil kursları</option>
+                          <option value="yurt-disi-egitim-danismanligi">Yurt dışı eğitim danışmanlığı</option>
+                          <option value="cift-diploma-programi">Çift diploma programı</option>
+                          <option value="ogretmen-hareketliligi">Öğretmen hareketliliği</option>
                         </select>
                         <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
                           <svg
@@ -390,7 +390,7 @@ export default function OverseasEducationForm() {
                     fontSize: "16px",
                   }}
                 >
-                  {isSubmitting ? 'Gönderiliyor...' : 'Ücretsiz Danışmanlık Alın'}
+                  {isSubmitting ? 'Gönderiliyor...' : 'İletişime Geçin'}
                   {!isSubmitting && (
                     <svg
                       width="18"

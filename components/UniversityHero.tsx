@@ -41,7 +41,7 @@ export default function UniversityHero() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         >
-          Hem yurt dışında üniversite okumak isteyen Türk öğrencilere hem de Türkiye'de eğitim almak isteyen uluslararası öğrencilere hedeflerine uygun üniversite yerleşimi için rehberlik hizmeti sunuyoruz.
+          AKA yurtdışı eğitim danışmanlığında her ülkenin prestijli danışmanlık kurumları ile partnerlik oluşturarak yol alır. Alan bilgisinin önemine inanır ve ülkelerin akredite üniversiteleri ile protokoller eşliğinde çalışır.
         </motion.p>
       </div>
     </section>

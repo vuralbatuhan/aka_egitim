@@ -1,10 +1,18 @@
+import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import UniversityHeroItaly from "@/components/UniversityHeroItaly";
 import WhyItalyUniversities from "@/components/WhyItalyUniversities";
 import UniversityItalyApplication from "@/components/UniversityItalyApplication";
-import UniversityItalyFAQ from "@/components/UniversityItalyFAQ";
 import AnimatedSection from "@/components/AnimatedSection";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "İtalya Üniversiteleri",
+  description:
+    "AKA Eğitim ile İtalya'da üniversite eğitimi. İtalya üniversiteleri, başvuru koşulları ve vize süreci. Öğretmen danışmanlığı ile İtalya üniversite başvurusu.",
+  path: "/universite/italya",
+});
 
 export default function UniversiteItalya() {
   return (
@@ -16,9 +24,6 @@ export default function UniversiteItalya() {
       </AnimatedSection>
       <AnimatedSection direction="up" delay={0.2}>
         <UniversityItalyApplication />
-      </AnimatedSection>
-      <AnimatedSection direction="up" delay={0.3}>
-        <UniversityItalyFAQ />
       </AnimatedSection>
       <Footer />
     </main>

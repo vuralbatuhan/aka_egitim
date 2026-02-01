@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
@@ -6,6 +7,14 @@ import KurulusAmacimiz from "@/components/KurulusAmacimiz";
 import SistemimizinTemeli from "@/components/SistemimizinTemeli";
 import Cozumumuz from "@/components/Cozumumuz";
 import OverseasEducationForm from "@/components/OverseasEducationForm";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Niçin Kurulduk",
+  description:
+    "AKA Eğitim neden kuruldu? Öğretmenlerin kurduğu bu eğitim oluşumunun misyonu, kuruluş amacı ve öğrencilerin yurtdışı hedeflerini öğretmen güvenirliği ile gerçekleştirme vizyonu.",
+  path: "/nicin-kurduk",
+});
 
 export default function NicinKurdukPage() {
   return (

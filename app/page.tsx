@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import ProfessionalConsultancy from "@/components/ProfessionalConsultancy";
@@ -8,6 +9,14 @@ import OverseasEducationForm from "@/components/OverseasEducationForm";
 import ContactUs from "@/components/ContactUs";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Anasayfa",
+  description:
+    "AKA Eğitim; öğretmenlerin kurduğu, yurtdışı dil eğitimi, üniversite danışmanlığı ve öğretmen hareketliliği programları sunan eğitim oluşumu. Öğretmen güvenirliği ile yurtdışı hedeflerinizi gerçekleştirin.",
+  path: "/",
+});
 
 export default function Home() {
   return (

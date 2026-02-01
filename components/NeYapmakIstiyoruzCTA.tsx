@@ -32,7 +32,7 @@ export default function NeYapmakIstiyoruzCTA() {
               className="px-8 py-4 rounded-lg font-semibold text-white transition-all hover:opacity-90 text-center"
               style={{ backgroundColor: "#F48B21" }}
             >
-              Ücretsiz Danışmanlık
+              İletişim
             </Link>
             <a
               href="tel:+902121234567"

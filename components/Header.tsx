@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { motion, AnimatePresence } from 'framer-motion'
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -24,60 +25,83 @@ export default function Header() {
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1200px]">
         <div className="flex items-center justify-between h-24">
           {/* Logo */}
-          <Link href="/" className="flex items-center shrink-0">
-            <Image
-              src="/images/Group 108.png"
-              alt="AKA EĞİTİM Logo"
-              width={200}
-              height={64}
-              className="h-auto object-contain"
-              priority
-            />
-          </Link>
+          <motion.div
+            initial={{ opacity: 0, x: -16 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4 }}
+            className="shrink-0"
+          >
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/images/Group 108.png"
+                alt="AKA EĞİTİM Logo"
+                width={200}
+                height={64}
+                className="h-auto object-contain"
+                priority
+              />
+            </Link>
+          </motion.div>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8 flex-1 justify-center">
-            {navItems.map((item) => (
-              item.href.startsWith('/') ? (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={`text-sm font-bold transition-colors duration-300 relative ${
-                    item.active
-                      ? 'text-[#6A0B1C]'
-                      : 'text-[#333333] hover:text-[#6A0B1C]'
-                  }`}
-                >
-                  {item.name}
-                  <span 
-                    className={`absolute bottom-[-8px] left-1/2 transform -translate-x-1/2 h-[2px] bg-[#6A0B1C] transition-all duration-300 ease-in-out ${
-                      item.active ? 'w-[60%] opacity-100' : 'w-0 opacity-0'
+            {navItems.map((item, i) => (
+              <motion.div
+                key={item.name}
+                initial={{ opacity: 0, y: -12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.05 * i }}
+              >
+                {item.href.startsWith('/') ? (
+                  <Link
+                    href={item.href}
+                    className={`inline-block text-sm font-bold transition-all duration-300 ease-out relative group hover:translate-x-0.5 ${
+                      item.active
+                        ? 'text-[#6A0B1C]'
+                        : 'text-[#333333] hover:text-[#6A0B1C]'
                     }`}
-                  ></span>
-                </Link>
-              ) : (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className={`text-sm font-bold transition-colors duration-300 relative ${
-                    item.active
-                      ? 'text-[#6A0B1C]'
-                      : 'text-[#333333] hover:text-[#6A0B1C]'
-                  }`}
-                >
-                  {item.name}
-                  <span 
-                    className={`absolute bottom-[-8px] left-1/2 transform -translate-x-1/2 h-[2px] bg-[#6A0B1C] transition-all duration-300 ease-in-out ${
-                      item.active ? 'w-[60%] opacity-100' : 'w-0 opacity-0'
+                  >
+                    <span className="relative">
+                      {item.name}
+                      <span
+                        className={`absolute bottom-[-8px] left-1/2 -translate-x-1/2 h-[2px] bg-[#6A0B1C] transition-all duration-300 ease-out ${
+                          item.active ? 'w-[60%]' : 'w-0 group-hover:w-[60%]'
+                        }`}
+                        aria-hidden
+                      />
+                    </span>
+                  </Link>
+                ) : (
+                  <a
+                    href={item.href}
+                    className={`inline-block text-sm font-bold transition-all duration-300 ease-out relative group hover:translate-x-0.5 ${
+                      item.active
+                        ? 'text-[#6A0B1C]'
+                        : 'text-[#333333] hover:text-[#6A0B1C]'
                     }`}
-                  ></span>
-                </a>
-              )
+                  >
+                    <span className="relative">
+                      {item.name}
+                      <span
+                        className={`absolute bottom-[-8px] left-1/2 -translate-x-1/2 h-[2px] bg-[#6A0B1C] transition-all duration-300 ease-out ${
+                          item.active ? 'w-[60%]' : 'w-0 group-hover:w-[60%]'
+                        }`}
+                        aria-hidden
+                      />
+                    </span>
+                  </a>
+                )}
+              </motion.div>
             ))}
           </div>
 
           {/* Social Media Icons */}
-          <div className="hidden lg:flex items-center gap-3 shrink-0">
+          <motion.div
+            initial={{ opacity: 0, x: 16 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            className="hidden lg:flex items-center gap-3 shrink-0"
+          >
             {/* Instagram */}
             <a
               href="https://www.instagram.com/aka_egitim"
@@ -98,18 +122,20 @@ export default function Header() {
               />
             </a>
             
-            {/* Facebook */}
+            {/* TikTok */}
             <a
-              href="#"
+              href="https://www.tiktok.com/@aka.egitim"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-10 h-10 rounded-full bg-[#EEEEEE] flex items-center justify-center hover:!bg-[#60091B] hover:shadow-lg transition-all duration-300 group"
-              aria-label="Facebook"
+              aria-label="TikTok"
               style={{ backgroundColor: '#EEEEEE' }}
               onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#60091B'}
               onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#EEEEEE'}
             >
               <Image
-                src="/images/facebook-app-symbol.png"
-                alt="Facebook"
+                src="/images/tiktok.svg"
+                alt="TikTok"
                 width={20}
                 height={20}
                 className="object-contain group-hover:brightness-0 group-hover:invert transition-all duration-300"
@@ -135,7 +161,7 @@ export default function Header() {
                 className="object-contain group-hover:brightness-0 group-hover:invert transition-all duration-300"
               />
             </a>
-          </div>
+          </motion.div>
 
           {/* Mobile Menu Button */}
           <button
@@ -162,35 +188,52 @@ export default function Header() {
       </nav>
 
       {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="lg:hidden bg-white border-t">
-          <div className="container mx-auto px-4 py-4 space-y-4 max-w-[1200px]">
-            {navItems.map((item) => (
-              item.href.startsWith('/') ? (
-                <Link
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="lg:hidden bg-white border-t overflow-hidden"
+          >
+            <div className="container mx-auto px-4 py-4 space-y-4 max-w-[1200px]">
+              {navItems.map((item, i) => (
+                <motion.div
                   key={item.name}
-                  href={item.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block font-bold transition-colors duration-300 ${
-                    item.active ? 'text-[#6A0B1C]' : 'text-[#333333]'
-                  } hover:text-[#6A0B1C]`}
+                  initial={{ opacity: 0, x: -12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3, delay: 0.05 * i }}
                 >
-                  {item.name}
-                </Link>
-              ) : (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block font-bold transition-colors duration-300 ${
-                    item.active ? 'text-[#6A0B1C]' : 'text-[#333333]'
-                  } hover:text-[#6A0B1C]`}
-                >
-                  {item.name}
-                </a>
-              )
-            ))}
-            <div className="flex items-center gap-3 pt-4">
+                  {item.href.startsWith('/') ? (
+                    <Link
+                      href={item.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className={`inline-block font-bold transition-all duration-300 ease-out hover:translate-x-1 ${
+                        item.active ? 'text-[#6A0B1C]' : 'text-[#333333]'
+                      } hover:text-[#6A0B1C]`}
+                    >
+                      {item.name}
+                    </Link>
+                  ) : (
+                    <a
+                      href={item.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className={`inline-block font-bold transition-all duration-300 ease-out hover:translate-x-1 ${
+                        item.active ? 'text-[#6A0B1C]' : 'text-[#333333]'
+                      } hover:text-[#6A0B1C]`}
+                    >
+                      {item.name}
+                    </a>
+                  )}
+                </motion.div>
+              ))}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3, delay: 0.3 }}
+                className="flex items-center gap-3 pt-4"
+              >
               <a
                 href="https://www.instagram.com/aka_egitim"
                 target="_blank"
@@ -210,16 +253,18 @@ export default function Header() {
                 />
               </a>
               <a
-                href="#"
+                href="https://www.tiktok.com/@aka.egitim"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-[#EEEEEE] flex items-center justify-center hover:!bg-[#60091B] hover:shadow-lg transition-all duration-300 group"
-                aria-label="Facebook"
+                aria-label="TikTok"
                 style={{ backgroundColor: '#EEEEEE' }}
                 onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#60091B'}
                 onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#EEEEEE'}
               >
                 <Image
-                  src="/images/facebook-app-symbol.png"
-                  alt="Facebook"
+                  src="/images/tiktok.svg"
+                  alt="TikTok"
                   width={20}
                   height={20}
                   className="object-contain group-hover:brightness-0 group-hover:invert transition-all duration-300"
@@ -243,10 +288,11 @@ export default function Header() {
                   className="object-contain group-hover:brightness-0 group-hover:invert transition-all duration-300"
                 />
               </a>
+              </motion.div>
             </div>
-          </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   )
 }
