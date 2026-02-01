@@ -16,7 +16,8 @@
 
 1. Supabase Dashboard → Authentication → Settings
 2. "Enable Email Provider" seçeneğini açın
-3. İlk admin kullanıcısını oluşturun:
+3. **Güvenlik (HaveIBeenPwned):** Authentication → Providers → Email altında "Check for compromised passwords" / "Check passwords against HaveIBeenPwned" seçeneğini açın. Bu, zayıf veya sızdırılmış şifrelerin kullanılmasını engeller.
+4. İlk admin kullanıcısını oluşturun:
    - Authentication → Users → "Add User" butonuna tıklayın
    - Email ve şifre girin
    - "Auto Confirm User" seçeneğini işaretleyin
@@ -35,8 +36,9 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 ## 5. Row Level Security (RLS) Ayarları
 
 Schema SQL'i çalıştırdıktan sonra:
+- **Migration:** Güvenlik ve performans düzeltmeleri için `migrations/fix-rls-security-and-performance.sql` dosyasını SQL Editor'de çalıştırın.
 - Instagram posts: Herkes okuyabilir (is_active=true olanlar), sadece authenticated kullanıcılar yönetebilir
-- Contact submissions: Herkes ekleyebilir, sadece authenticated kullanıcılar okuyabilir ve güncelleyebilir
+- Contact submissions: Herkes ekleyebilir (zorunlu alanlar kontrol edilir), sadece authenticated kullanıcılar okuyabilir ve güncelleyebilir
 
 ## 6. İlk Admin Kullanıcısı Oluşturma
 
