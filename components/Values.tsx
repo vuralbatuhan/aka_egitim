@@ -40,7 +40,7 @@ export default function Values() {
           {/* Logo */}
           <div className="hidden sm:flex flex-col items-end">
             <Image
-              src="/images/Group 33 (1).png"
+              src="/images/group-33-1.png"
               alt="AKÆĞİTİM Logo"
               width={140}
               height={56}

@@ -33,7 +33,7 @@ export default function Header() {
           >
             <Link href="/" className="flex items-center">
               <Image
-                src="/images/Group 108.png"
+                src="/images/group-108.png"
                 alt="AKA EĞİTİM Logo"
                 width={200}
                 height={64}

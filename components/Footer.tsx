@@ -72,7 +72,7 @@ export default function Footer() {
               {/* Logo */}
               <div className="mb-3 md:mb-4">
                 <Image
-                  src="/images/beyaz logo.png"
+                  src="/images/beyaz-logo.png"
                   alt="AKA EĞİTİM Logo"
                   width={250}
                   height={80}

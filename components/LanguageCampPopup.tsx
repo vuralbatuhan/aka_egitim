@@ -84,7 +84,7 @@ export default function LanguageCampPopup() {
               >
                 <div className="relative w-full h-[32vh] sm:h-auto sm:aspect-[2/3] sm:max-h-[50vh]">
                   <Image
-                    src="/images/Dil Kampı Cambridge - Aka Eğitim 1.png"
+                    src="/images/dil-kampi-cambridge-aka-egitim-1.png"
                     alt="Londra & Cambridge Dil Kampı - 8 Gün 7 Gece, Haziran Temmuz Ağustos"
                     fill
                     sizes="(max-width: 640px) 100vw, 50vw"
@@ -104,7 +104,7 @@ export default function LanguageCampPopup() {
               >
                 <div className="relative w-full h-[32vh] sm:h-auto sm:aspect-[2/3] sm:max-h-[50vh]">
                   <Image
-                    src="/images/Finlandiya - Aka Eğitim -Anadolu.png"
+                    src="/images/finlandiya-aka-egitim-anadolu.png"
                     alt="Helsinki & Huvitus Dil Kampı - 8 Gün 7 Gece, Yaz Boyu Hareketlilik"
                     fill
                     sizes="(max-width: 640px) 100vw, 50vw"

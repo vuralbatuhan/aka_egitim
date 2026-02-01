@@ -148,7 +148,7 @@ export default function Hero() {
               }}
             >
               <Image
-                src="/images/Group 88.png"
+                src="/images/group-88.png"
                 alt="Öğretmen dokunuşu ikonu"
                 width={55}
                 height={55}

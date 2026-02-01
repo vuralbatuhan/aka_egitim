@@ -64,7 +64,7 @@ export default function KurucumuzKimdirContent() {
               />
               <div className="absolute inset-0 flex items-center justify-center p-4">
                 <Image
-                  src="/images/beyaz logo.png"
+                  src="/images/beyaz-logo.png"
                   alt="AKA Eğitim"
                   width={200}
                   height={80}
