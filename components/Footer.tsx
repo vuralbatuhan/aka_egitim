@@ -11,7 +11,7 @@ export default function Footer() {
       { name: 'Hakkımızda', href: '/hakkimizda' },
       { name: 'Biz Kimiz', href: '/biz-kimiz' },
       { name: 'Kurucumuz Kimdir', href: '/kurucumuz-kimdir' },
-      { name: 'Niçin Kurduk', href: '/nicin-kurduk' },
+      { name: 'Niçin Kurulduk', href: '/nicin-kurduk' },
       { name: 'Ne Yapmak İstiyoruz', href: '/ne-yapmak-istiyoruz' },
     ],
     universite: [

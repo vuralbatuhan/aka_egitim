@@ -26,7 +26,7 @@ export default function NicinKurdukHero() {
             </Link>
             <span className="mx-1.5 md:mx-2 text-white">/</span>
             <span className="font-semibold" style={{ color: "#f0771b" }}>
-              Niçin Kurduk
+              Niçin Kurulduk
             </span>
           </nav>
         </motion.div>
@@ -39,7 +39,7 @@ export default function NicinKurdukHero() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
         >
-          Niçin Kurduk
+          Niçin Kurulduk
         </motion.h1>
 
         {/* Subtitle */}

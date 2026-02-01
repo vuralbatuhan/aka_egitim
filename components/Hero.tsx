@@ -12,7 +12,7 @@ export default function Hero() {
   };
 
   const handleProgramsClick = () => {
-    router.push("/dil-egitimi");
+    router.push("/programlar");
   };
 
   return (
@@ -102,7 +102,7 @@ export default function Hero() {
                   backgroundColor: "#F07D2C",
                 }}
               >
-                Ücretsiz Danışmanlık
+                Bizimle iletişime geçin
               </button>
               <button
                 onClick={handleProgramsClick}
