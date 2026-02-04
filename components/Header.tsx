@@ -10,11 +10,16 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const pathname = usePathname()
 
+  const universityDropdownItems = [
+    { name: 'Çift Diploma', href: '/universite/cift-diploma' },
+    { name: 'Yurt Dışı Üniversite', href: '/universite/basvuru-formu' },
+  ]
+
   const navItems = [
     { name: 'Ana Sayfa', href: '/', active: pathname === '/' },
     { name: 'Hakkımızda', href: '/hakkimizda', active: pathname === '/hakkimizda' },
     { name: 'Dil Eğitimi', href: '/dil-egitimi', active: pathname === '/dil-egitimi' || pathname.startsWith('/dil-okullari') },
-    { name: 'Üniversite', href: '/universite', active: pathname === '/universite' },
+    { name: 'Üniversite', href: '/universite', active: pathname.startsWith('/universite') },
     { name: 'Öğretmen Hareketliliği', href: '/ogretmen-hareketliligi', active: pathname === '/ogretmen-hareketliligi' },
     { name: 'İletişim', href: '/iletisim', active: pathname === '/iletisim' },
   ]
@@ -52,7 +57,61 @@ export default function Header() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.05 * i }}
               >
-                {item.href.startsWith('/') ? (
+                {item.name === 'Üniversite' ? (
+                  <div className="relative group">
+                    <Link
+                      href="/universite"
+                      className={`inline-block text-sm font-bold transition-all duration-300 ease-out relative hover:translate-x-0.5 ${
+                        item.active
+                          ? 'text-[#6A0B1C]'
+                          : 'text-[#333333] hover:text-[#6A0B1C]'
+                      }`}
+                    >
+                      <span className="relative flex items-center gap-1">
+                        {item.name}
+                        <svg
+                          className="w-3 h-3 transition-transform duration-200 group-hover:rotate-180"
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 7.5L10 12.5L15 7.5"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                        <span
+                          className={`absolute bottom-[-8px] left-1/2 -translate-x-1/2 h-[2px] bg-[#6A0B1C] transition-all duration-300 ease-out ${
+                            item.active ? 'w-[60%]' : 'w-0 group-hover:w-[60%]'
+                          }`}
+                          aria-hidden
+                        />
+                      </span>
+                    </Link>
+
+                    {/* Dropdown menu */}
+                    <div className="absolute left-1/2 top-[140%] -translate-x-1/2 min-w-[220px] rounded-xl bg-white shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                      <div className="py-2">
+                        {universityDropdownItems.map((uniItem) => (
+                          <Link
+                            key={uniItem.href}
+                            href={uniItem.href}
+                            className={`block px-4 py-2.5 text-sm font-medium transition-colors duration-150 ${
+                              pathname === uniItem.href
+                                ? 'text-[#6A0B1C] bg-[#FBE9EC]'
+                                : 'text-[#333333] hover:bg-[#FBE9EC] hover:text-[#6A0B1C]'
+                            }`}
+                          >
+                            {uniItem.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ) : item.href.startsWith('/') ? (
                   <Link
                     href={item.href}
                     className={`inline-block text-sm font-bold transition-all duration-300 ease-out relative group hover:translate-x-0.5 ${
@@ -225,6 +284,22 @@ export default function Header() {
                     >
                       {item.name}
                     </a>
+                  )}
+                  {item.name === 'Üniversite' && (
+                    <div className="mt-2 ml-4 space-y-2">
+                      {universityDropdownItems.map((uniItem) => (
+                        <Link
+                          key={uniItem.href}
+                          href={uniItem.href}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className={`block text-sm font-medium transition-all duration-300 ease-out hover:translate-x-1 ${
+                            pathname === uniItem.href ? 'text-[#6A0B1C]' : 'text-[#555555]'
+                          } hover:text-[#6A0B1C]`}
+                        >
+                          {uniItem.name}
+                        </Link>
+                      ))}
+                    </div>
                   )}
                 </motion.div>
               ))}
