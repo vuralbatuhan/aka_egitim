@@ -84,8 +84,8 @@ export default function LanguageCampPopup() {
               >
                 <div className="relative w-full h-[32vh] sm:h-auto sm:aspect-[2/3] sm:max-h-[50vh]">
                   <Image
-                    src="/images/dil-kampi-cambridge-aka-egitim-1.png"
-                    alt="Londra & Cambridge Dil Kampı - 8 Gün 7 Gece, Haziran Temmuz Ağustos"
+                    src="/images/ingilt.jpeg"
+                    alt="İngiltere Dil Kampı - Cambridge / Oxford, 8 Gün 7 Gece"
                     fill
                     sizes="(max-width: 640px) 100vw, 50vw"
                     className="object-contain sm:object-cover sm:object-top"
@@ -94,7 +94,7 @@ export default function LanguageCampPopup() {
                 </div>
               </a>
               <p className="text-center text-xs sm:text-sm text-gray-600 mt-1 sm:mt-2 font-medium">
-                Londra & Cambridge Dil Kampı
+                İngiltere Dil Kampı (Cambridge / Oxford)
               </p>
             </div>
             <div className="flex-shrink-0 sm:flex-1 min-w-0">
@@ -104,8 +104,8 @@ export default function LanguageCampPopup() {
               >
                 <div className="relative w-full h-[32vh] sm:h-auto sm:aspect-[2/3] sm:max-h-[50vh]">
                   <Image
-                    src="/images/finlandiya-aka-egitim-anadolu.png"
-                    alt="Helsinki & Huvitus Dil Kampı - 8 Gün 7 Gece, Yaz Boyu Hareketlilik"
+                    src="/images/finla.jpeg"
+                    alt="Finlandiya & İsveç Dil Kampı - Turku, Helsinki, Stockholm"
                     fill
                     sizes="(max-width: 640px) 100vw, 50vw"
                     className="object-contain sm:object-cover sm:object-top"
@@ -114,7 +114,7 @@ export default function LanguageCampPopup() {
                 </div>
               </a>
               <p className="text-center text-xs sm:text-sm text-gray-600 mt-1 sm:mt-2 font-medium">
-                Helsinki & Huvitus Dil Kampı
+                Finlandiya & İsveç Dil Kampı
               </p>
             </div>
           </div>
