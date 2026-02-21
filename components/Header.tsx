@@ -17,10 +17,10 @@ export default function Header() {
 
   const navItems = [
     { name: 'Ana Sayfa', href: '/', active: pathname === '/' },
-    { name: 'Hakkımızda', href: '/hakkimizda', active: pathname === '/hakkimizda' },
-    { name: 'Dil Eğitimi', href: '/dil-egitimi', active: pathname === '/dil-egitimi' || pathname.startsWith('/dil-okullari') },
     { name: 'Üniversite', href: '/universite', active: pathname.startsWith('/universite') },
+    { name: 'Dil Eğitimi', href: '/dil-egitimi', active: pathname === '/dil-egitimi' || pathname.startsWith('/dil-okullari') },
     { name: 'Öğretmen Hareketliliği', href: '/ogretmen-hareketliligi', active: pathname === '/ogretmen-hareketliligi' },
+    { name: 'Hakkımızda', href: '/hakkimizda', active: pathname === '/hakkimizda' },
     { name: 'İletişim', href: '/iletisim', active: pathname === '/iletisim' },
   ]
 
@@ -36,13 +36,13 @@ export default function Header() {
             transition={{ duration: 0.4 }}
             className="shrink-0"
           >
-            <Link href="/" className="flex items-center">
+            <Link href="/" className="flex items-center max-w-[160px] lg:max-w-none">
               <Image
                 src="/images/group-108.png"
                 alt="AKA EĞİTİM Logo"
                 width={200}
                 height={64}
-                className="h-auto object-contain"
+                className="h-auto w-full object-contain object-left lg:w-auto"
                 priority
               />
             </Link>
@@ -222,10 +222,12 @@ export default function Header() {
             </a>
           </motion.div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - 44px min touch target */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 rounded-lg text-[#333333]"
+            className="lg:hidden min-w-[44px] min-h-[44px] p-2 rounded-lg text-[#333333] flex items-center justify-center touch-manipulation"
+            aria-expanded={isMobileMenuOpen}
+            aria-label={isMobileMenuOpen ? 'Menüyü kapat' : 'Menüyü aç'}
           >
             <svg
               className="w-6 h-6"
@@ -256,21 +258,22 @@ export default function Header() {
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="lg:hidden bg-white border-t overflow-hidden"
           >
-            <div className="container mx-auto px-4 py-4 space-y-4 max-w-[1200px]">
+            <div className="container mx-auto px-4 py-4 space-y-0 max-w-[1200px]">
               {navItems.map((item, i) => (
                 <motion.div
                   key={item.name}
                   initial={{ opacity: 0, x: -12 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: 0.05 * i }}
+                  className="border-b border-gray-100 last:border-b-0"
                 >
                   {item.href.startsWith('/') ? (
                     <Link
                       href={item.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className={`inline-block font-bold transition-all duration-300 ease-out hover:translate-x-1 ${
+                      className={`block py-3.5 font-bold transition-all duration-300 ease-out active:bg-gray-50 ${
                         item.active ? 'text-[#6A0B1C]' : 'text-[#333333]'
-                      } hover:text-[#6A0B1C]`}
+                      } hover:text-[#6A0B1C] min-h-[44px] flex items-center touch-manipulation`}
                     >
                       {item.name}
                     </Link>
@@ -278,21 +281,21 @@ export default function Header() {
                     <a
                       href={item.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className={`inline-block font-bold transition-all duration-300 ease-out hover:translate-x-1 ${
+                      className={`block py-3.5 font-bold transition-all duration-300 ease-out active:bg-gray-50 ${
                         item.active ? 'text-[#6A0B1C]' : 'text-[#333333]'
-                      } hover:text-[#6A0B1C]`}
+                      } hover:text-[#6A0B1C] min-h-[44px] flex items-center touch-manipulation`}
                     >
                       {item.name}
                     </a>
                   )}
                   {item.name === 'Üniversite' && (
-                    <div className="mt-2 ml-4 space-y-2">
+                    <div className="pb-3 pl-1 space-y-1">
                       {universityDropdownItems.map((uniItem) => (
                         <Link
                           key={uniItem.href}
                           href={uniItem.href}
                           onClick={() => setIsMobileMenuOpen(false)}
-                          className={`block text-sm font-medium transition-all duration-300 ease-out hover:translate-x-1 ${
+                          className={`block py-2.5 pl-4 text-sm font-medium rounded-lg active:bg-gray-50 transition-all duration-300 ease-out min-h-[44px] flex items-center ${
                             pathname === uniItem.href ? 'text-[#6A0B1C]' : 'text-[#555555]'
                           } hover:text-[#6A0B1C]`}
                         >

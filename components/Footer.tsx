@@ -12,6 +12,7 @@ export default function Footer() {
       { name: 'Kurucumuz Kimdir', href: '/kurucumuz-kimdir' },
       { name: 'Niçin Kurulduk', href: '/nicin-kurduk' },
       { name: 'Ne Yapmak İstiyoruz', href: '/ne-yapmak-istiyoruz' },
+      { name: 'Gizlilik (KVKK)', href: '/gizlilik' },
     ],
     universite: [
       { name: 'İngiltere Dil Eğitimi', href: '/dil-okullari' },

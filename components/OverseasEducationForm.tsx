@@ -1,8 +1,21 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
+
+// Sitede olan ülkeler – İlgilendiği Ülke sadece bunlardan seçilebilir
+const SITE_COUNTRIES = [
+  "Amerika",
+  "Kanada",
+  "İngiltere",
+  "Finlandiya",
+  "Almanya",
+  "İtalya",
+  "İsviçre",
+  "Belçika",
+] as const;
 
 export default function OverseasEducationForm() {
   const [formData, setFormData] = useState({
@@ -10,14 +23,23 @@ export default function OverseasEducationForm() {
     lastName: "",
     phone: "",
     city: "",
+    email: "",
+    highSchool: "",
+    interestedCountry: "",
     programType: "",
     program: "",
     message: "",
   });
+  const [kvkkAccepted, setKvkkAccepted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error' | null; message: string }>({ type: null, message: '' });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const target = e.target;
+    if (target.type === "checkbox" && target.name === "kvkkAccepted") {
+      setKvkkAccepted((target as HTMLInputElement).checked);
+      return;
+    }
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -26,6 +48,10 @@ export default function OverseasEducationForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!kvkkAccepted) {
+      setSubmitStatus({ type: 'error', message: 'Formu göndermek için KVKK Aydınlatma Metni\'ni kabul etmeniz gerekmektedir.' });
+      return;
+    }
     setIsSubmitting(true);
     setSubmitStatus({ type: null, message: '' });
 
@@ -38,9 +64,13 @@ export default function OverseasEducationForm() {
             last_name: formData.lastName,
             phone: formData.phone,
             city: formData.city || null,
+            email: formData.email || null,
+            high_school: formData.highSchool || null,
+            interested_country: formData.interestedCountry || null,
             program_type: formData.programType || null,
             program: formData.program || null,
             message: formData.message || null,
+            kvkk_accepted: true,
           },
         ])
         .select();
@@ -51,13 +81,16 @@ export default function OverseasEducationForm() {
         type: 'success', 
         message: 'Formunuz başarıyla gönderildi! En kısa sürede sizinle iletişime geçeceğiz.' 
       });
-      
+      setKvkkAccepted(false);
       // Reset form
       setFormData({
         firstName: "",
         lastName: "",
         phone: "",
         city: "",
+        email: "",
+        highSchool: "",
+        interestedCountry: "",
         programType: "",
         program: "",
         message: "",
@@ -248,6 +281,73 @@ export default function OverseasEducationForm() {
                   <div className="h-px bg-gray-200 mb-4"></div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
+                      <label className="block text-gray-700 mb-2" style={{ fontSize: "14px" }}>
+                        E-mail
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="E-mail"
+                        value={formData.email}
+                        onChange={handleChange}
+                        className="w-full px-3 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        style={{ fontSize: "15px" }}
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-gray-700 mb-2" style={{ fontSize: "14px" }}>
+                        Mezun Olduğunuz Lise
+                      </label>
+                      <input
+                        type="text"
+                        name="highSchool"
+                        placeholder="Mezun Olduğunuz Lise"
+                        value={formData.highSchool}
+                        onChange={handleChange}
+                        className="w-full px-3 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        style={{ fontSize: "15px" }}
+                      />
+                    </div>
+                    <div className="sm:col-span-2">
+                      <label className="block text-gray-700 mb-2" style={{ fontSize: "14px" }}>
+                        İlgilendiği Ülke
+                      </label>
+                      <div className="relative">
+                        <select
+                          name="interestedCountry"
+                          value={formData.interestedCountry}
+                          onChange={handleChange}
+                          className="w-full px-3 py-2.5 pr-10 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none"
+                          style={{ fontSize: "15px" }}
+                        >
+                          <option value="">İlgilendiği Ülke</option>
+                          {SITE_COUNTRIES.map((country) => (
+                            <option key={country} value={country}>
+                              {country}
+                            </option>
+                          ))}
+                        </select>
+                        <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                          <svg
+                            width="20"
+                            height="20"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="text-gray-900"
+                          >
+                            <path
+                              d="M5 7.5L10 12.5L15 7.5"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
                       <label className="block text-gray-700 mb-2 text-sm">
                         Program Türünü Seçin
                       </label>
@@ -366,6 +466,26 @@ export default function OverseasEducationForm() {
                   </div>
                 </div>
 
+                {/* KVKK */}
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <input
+                      type="checkbox"
+                      id="kvkkAccepted"
+                      name="kvkkAccepted"
+                      checked={kvkkAccepted}
+                      onChange={handleChange}
+                      className="mt-1 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                    />
+                    <label htmlFor="kvkkAccepted" className="text-sm text-gray-700 leading-tight cursor-pointer">
+                      <Link href="/gizlilik" target="_blank" className="text-blue-600 hover:underline font-medium">
+                        KVKK Aydınlatma Metni
+                      </Link>
+                      &apos;ni okudum, kişisel verilerimin işlenmesini kabul ediyorum. Form gönderimi için işaretlemeniz gerekmektedir.
+                    </label>
+                  </div>
+                </div>
+
                 {/* Submit Status Message */}
                 {submitStatus.type && (
                   <div
@@ -382,7 +502,7 @@ export default function OverseasEducationForm() {
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !kvkkAccepted}
                   className="w-full text-white rounded-lg font-bold hover:opacity-90 transition-opacity flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                   style={{
                     padding: "14px 32px",

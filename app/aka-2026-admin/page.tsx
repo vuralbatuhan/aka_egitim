@@ -21,9 +21,13 @@ interface ContactSubmission {
   last_name: string;
   phone: string;
   city: string | null;
+  email: string | null;
+  high_school: string | null;
+  interested_country: string | null;
   program_type: string | null;
   program: string | null;
   message: string | null;
+  kvkk_accepted: boolean;
   is_read: boolean;
   created_at: string;
 }
@@ -772,6 +776,9 @@ export default function AdminPanel() {
                           Şehir
                         </th>
                         <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                          İlgilendiği Ülke
+                        </th>
+                        <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                           Program
                         </th>
                         <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
@@ -799,6 +806,9 @@ export default function AdminPanel() {
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                             {submission.city || "-"}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                            {submission.interested_country || "-"}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                             {submission.program_type && submission.program
@@ -1243,6 +1253,36 @@ export default function AdminPanel() {
                     <p className="text-gray-900 font-medium">{selectedSubmission.city}</p>
                   </div>
                 )}
+                {selectedSubmission.email && (
+                  <div className="bg-gray-50 rounded-lg p-4">
+                    <label className="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">
+                      E-mail
+                    </label>
+                    <p className="text-gray-900 font-medium">{selectedSubmission.email}</p>
+                  </div>
+                )}
+                {selectedSubmission.high_school && (
+                  <div className="bg-gray-50 rounded-lg p-4">
+                    <label className="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">
+                      Mezun Olduğu Lise
+                    </label>
+                    <p className="text-gray-900 font-medium">{selectedSubmission.high_school}</p>
+                  </div>
+                )}
+                {selectedSubmission.interested_country && (
+                  <div className="bg-gray-50 rounded-lg p-4">
+                    <label className="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">
+                      İlgilendiği Ülke
+                    </label>
+                    <p className="text-gray-900 font-medium">{selectedSubmission.interested_country}</p>
+                  </div>
+                )}
+                <div className="bg-gray-50 rounded-lg p-4">
+                  <label className="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">
+                    KVKK onayı
+                  </label>
+                  <p className="text-gray-900 font-medium">{selectedSubmission.kvkk_accepted ? "Evet" : "Hayır"}</p>
+                </div>
                 {(selectedSubmission.program_type || selectedSubmission.program) && (
                   <div className="bg-gray-50 rounded-lg p-4">
                     <label className="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">

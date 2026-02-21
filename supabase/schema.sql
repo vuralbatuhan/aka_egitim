@@ -17,9 +17,19 @@ CREATE TABLE IF NOT EXISTS contact_submissions (
   last_name TEXT NOT NULL,
   phone TEXT NOT NULL,
   city TEXT,
+  email TEXT,
+  high_school TEXT,
+  interested_country TEXT CHECK (
+    interested_country IS NULL
+    OR interested_country IN (
+      'Amerika', 'Kanada', 'İngiltere', 'Finlandiya',
+      'Almanya', 'İtalya', 'İsviçre', 'Belçika'
+    )
+  ),
   program_type TEXT,
   program TEXT,
   message TEXT,
+  kvkk_accepted BOOLEAN DEFAULT false,
   is_read BOOLEAN DEFAULT false,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc', NOW())
 );
