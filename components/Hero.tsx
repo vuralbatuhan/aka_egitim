@@ -19,16 +19,17 @@ const SLIDES = [
     image: "/images/koln-katedrali.png",
     alt: "Köln Katedrali, Almanya",
   },
-  {
-    id: "cin",
-    country: "Çin",
-    image: "/images/cinin-teknolojik-yukselisi.png",
-    alt: "Şangay silüeti, Çin",
-  },
+  // {
+  //   id: "cin",
+  //   country: "Çin",
+  //   image: "/images/cinin-teknolojik-yukselisi.png",
+  //   alt: "Şangay silüeti, Çin",
+  // },
   {
     id: "dunya-kesfi",
     isDefault: true,
-    image: "/images/handsome-latin-man-helping-his-colleagues-out-by-explaining-some-his-work-library.png",
+    image:
+      "/images/handsome-latin-man-helping-his-colleagues-out-by-explaining-some-his-work-library.png",
     alt: "Öğretmen ve öğrenciler kütüphanede",
   },
 ];
@@ -48,8 +49,14 @@ export default function Hero() {
     });
   }, []);
 
-  const goNext = useCallback(() => goTo(currentIndex + 1), [currentIndex, goTo]);
-  const goPrev = useCallback(() => goTo(currentIndex - 1), [currentIndex, goTo]);
+  const goNext = useCallback(
+    () => goTo(currentIndex + 1),
+    [currentIndex, goTo],
+  );
+  const goPrev = useCallback(
+    () => goTo(currentIndex - 1),
+    [currentIndex, goTo],
+  );
 
   useEffect(() => {
     const t = setInterval(goNext, 6000);
@@ -57,7 +64,7 @@ export default function Hero() {
   }, [goNext]);
 
   const handleConsultationClick = () => router.push("/iletisim#contact-form");
-  const handleProgramsClick = () => router.push("/programlar");
+  const handleProgramsClick = () => router.push("/dil-egitimi");
 
   const slide = SLIDES[currentIndex];
 
@@ -92,7 +99,13 @@ export default function Hero() {
           style={{ backgroundColor: "#F07D2C" }}
         >
           <span className="truncate">Üniversite Tercih Formu</span>
-          <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <svg
+            className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
         </Link>
@@ -149,11 +162,16 @@ export default function Hero() {
                   {"isDefault" in slide && slide.isDefault ? (
                     <>
                       AKA&apos;da eğitime dair her yolculuk bir{" "}
-                      <span style={{ color: "#F07D2C", fontWeight: "700" }}>öğretmen</span>
+                      <span style={{ color: "#F07D2C", fontWeight: "700" }}>
+                        öğretmen
+                      </span>
                       <br className="hidden sm:block" />
                       <span className="sm:hidden"> </span>
                       eşliğinde başlar ve{" "}
-                      <span style={{ color: "#F07D2C", fontWeight: "700" }}>öğretmen</span> eşliğinde tamamlanır.
+                      <span style={{ color: "#F07D2C", fontWeight: "700" }}>
+                        öğretmen
+                      </span>{" "}
+                      eşliğinde tamamlanır.
                     </>
                   ) : (
                     HERO_DESCRIPTION
@@ -190,7 +208,10 @@ export default function Hero() {
                         style={{
                           width: i === currentIndex ? 28 : 12,
                           height: 6,
-                          backgroundColor: i === currentIndex ? "#F07D2C" : "rgba(255,255,255,0.5)",
+                          backgroundColor:
+                            i === currentIndex
+                              ? "#F07D2C"
+                              : "rgba(255,255,255,0.5)",
                         }}
                       />
                     </button>
@@ -249,7 +270,15 @@ export default function Hero() {
         className="absolute left-2 sm:left-3 md:left-6 top-1/2 -translate-y-1/2 z-20 min-w-[44px] min-h-[44px] w-11 h-11 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 border-2 border-white/40 text-white/90 hover:border-white hover:text-white hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-transparent touch-manipulation"
         aria-label="Önceki slayt"
       >
-        <svg className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <svg
+          className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 shrink-0"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
           <path d="M15 18l-6-6 6-6" />
         </svg>
       </button>
@@ -258,7 +287,15 @@ export default function Hero() {
         className="absolute right-2 sm:right-3 md:right-6 top-1/2 -translate-y-1/2 z-20 min-w-[44px] min-h-[44px] w-11 h-11 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 border-2 border-[#F07D2C] text-[#F07D2C] hover:bg-[#F07D2C] hover:text-white hover:border-[#F07D2C] focus:outline-none focus:ring-2 focus:ring-[#F07D2C] focus:ring-offset-2 focus:ring-offset-transparent touch-manipulation"
         aria-label="Sonraki slayt"
       >
-        <svg className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <svg
+          className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 shrink-0"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
           <path d="M9 18l6-6-6-6" />
         </svg>
       </button>

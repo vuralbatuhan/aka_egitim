@@ -8,28 +8,31 @@ export default function UniversityDestinations() {
     {
       name: "İngiltere",
       image: "/images/ingiltere-vizesi.png",
-      description: "İngiltere'nin dünyaca ünlü üniversiteleri, çeşitli alanlarda lisans ve önlisans programları sunar. Oxford ve Cambridge gibi tarihi üniversitelerden modern araştırma üniversitelerine kadar geniş seçenekler.",
+      description:
+        "İngiltere'nin dünyaca ünlü üniversiteleri, çeşitli alanlarda lisans ve önlisans programları sunar. Oxford ve Cambridge gibi tarihi üniversitelerden modern araştırma üniversitelerine kadar geniş seçenekler.",
       buttonColor: "#FF8C00",
       href: "/universite/ingiltere",
     },
-    {
-      name: "Finlandiya",
-      image: "/images/1ec1d4a296c8860bf4765bb90d75a641-1200.png",
-      description: "Finlandiya'nın dünyaca ünlü üniversiteleri, İngilizce lisans programları ve kaliteli eğitim sunar. AB vatandaşları için ücretsiz eğitim imkanı vardır.",
-      buttonColor: "#333333",
-      href: "/universite/finlandiya",
-    },
+    // {
+    //   name: "Finlandiya",
+    //   image: "/images/1ec1d4a296c8860bf4765bb90d75a641-1200.png",
+    //   description: "Finlandiya'nın dünyaca ünlü üniversiteleri, İngilizce lisans programları ve kaliteli eğitim sunar. AB vatandaşları için ücretsiz eğitim imkanı vardır.",
+    //   buttonColor: "#333333",
+    //   href: "/universite/finlandiya",
+    // },
     {
       name: "Almanya",
       image: "/images/shutterstock_551502508_4_3_1533105146.png",
-      description: "Almanya'nın prestijli üniversiteleri dünya çapında tanınan lisans programları sunar. Ücretsiz veya çok düşük maliyetli eğitim ile kaliteli akademik deneyim.",
+      description:
+        "Almanya'nın prestijli üniversiteleri dünya çapında tanınan lisans programları sunar. Ücretsiz veya çok düşük maliyetli eğitim ile kaliteli akademik deneyim.",
       buttonColor: "#333333",
       href: "#",
     },
     {
       name: "İtalya",
       image: "/images/MyIC_Inline_20316.png",
-      description: "İtalya'nın köklü üniversiteleri, dünya çapında tanınan akademik programlar sunar. Bologna Üniversitesi gibi dünyanın en eski üniversitelerinden modern teknik üniversitelere kadar geniş bir yelpazede eğitim imkanları bulunur.",
+      description:
+        "İtalya'nın köklü üniversiteleri, dünya çapında tanınan akademik programlar sunar. Bologna Üniversitesi gibi dünyanın en eski üniversitelerinden modern teknik üniversitelere kadar geniş bir yelpazede eğitim imkanları bulunur.",
       buttonColor: "#333333",
       href: "/universite/italya",
     },

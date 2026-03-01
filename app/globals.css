@@ -21,3 +21,9 @@ label[for],
 .cursor-pointer {
   cursor: url('/images/cursor-32.png') 16 16, pointer;
 }
+
+/* İstanbul ilini haritada her zaman turuncu göster */
+.map-container [data-city="istanbul"] path,
+.map-container [data-city="istanbul"] {
+  fill: #f07d2c !important;
+}
