@@ -28,28 +28,28 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-white">
       {/* Main Header */}
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1200px]">
-        <div className="flex items-center justify-between h-24">
+        <div className="flex items-center justify-between h-24 gap-2 min-w-0">
           {/* Logo */}
           <motion.div
             initial={{ opacity: 0, x: -16 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.4 }}
-            className="shrink-0"
+            className="shrink-0 min-w-0"
           >
-            <Link href="/" className="flex items-center max-w-[160px] lg:max-w-none">
+            <Link href="/" className="flex items-center max-w-[140px] sm:max-w-[160px] lg:max-w-[180px] xl:max-w-none">
               <Image
                 src="/images/group-108.png"
                 alt="AKA EĞİTİM Logo"
                 width={200}
                 height={64}
-                className="h-auto w-full object-contain object-left lg:w-auto"
+                className="h-auto max-h-16 w-full object-contain object-left lg:w-auto"
                 priority
               />
             </Link>
           </motion.div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8 flex-1 justify-center">
+          {/* Desktop Navigation - tighter gap on laptop */}
+          <div className="hidden lg:flex items-center gap-4 xl:gap-8 flex-1 justify-center min-w-0 flex-shrink">
             {navItems.map((item, i) => (
               <motion.div
                 key={item.name}
@@ -58,10 +58,10 @@ export default function Header() {
                 transition={{ duration: 0.4, delay: 0.05 * i }}
               >
                 {item.name === 'Üniversite' ? (
-                  <div className="relative group">
+                  <div className="relative group shrink-0">
                     <Link
                       href="/universite"
-                      className={`inline-block text-sm font-bold transition-all duration-300 ease-out relative hover:translate-x-0.5 ${
+                      className={`inline-block text-xs xl:text-sm font-bold transition-all duration-300 ease-out relative hover:translate-x-0.5 whitespace-nowrap ${
                         item.active
                           ? 'text-[#6A0B1C]'
                           : 'text-[#333333] hover:text-[#6A0B1C]'
@@ -114,7 +114,7 @@ export default function Header() {
                 ) : item.href.startsWith('/') ? (
                   <Link
                     href={item.href}
-                    className={`inline-block text-sm font-bold transition-all duration-300 ease-out relative group hover:translate-x-0.5 ${
+                    className={`inline-block text-xs xl:text-sm font-bold transition-all duration-300 ease-out relative group hover:translate-x-0.5 whitespace-nowrap ${
                       item.active
                         ? 'text-[#6A0B1C]'
                         : 'text-[#333333] hover:text-[#6A0B1C]'
@@ -133,7 +133,7 @@ export default function Header() {
                 ) : (
                   <a
                     href={item.href}
-                    className={`inline-block text-sm font-bold transition-all duration-300 ease-out relative group hover:translate-x-0.5 ${
+                    className={`inline-block text-xs xl:text-sm font-bold transition-all duration-300 ease-out relative group hover:translate-x-0.5 whitespace-nowrap ${
                       item.active
                         ? 'text-[#6A0B1C]'
                         : 'text-[#333333] hover:text-[#6A0B1C]'
@@ -159,7 +159,7 @@ export default function Header() {
             initial={{ opacity: 0, x: 16 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.4, delay: 0.2 }}
-            className="hidden lg:flex items-center gap-3 shrink-0"
+            className="hidden lg:flex items-center gap-2 xl:gap-3 shrink-0"
           >
             {/* Instagram */}
             <a

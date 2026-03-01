@@ -57,7 +57,7 @@ export default function Hero() {
   }, [goNext]);
 
   const handleConsultationClick = () => router.push("/iletisim#contact-form");
-  const handleProgramsClick = () => router.push("/programlar");
+  const handleProgramsClick = () => router.push("/dil-egitimi");
 
   const slide = SLIDES[currentIndex];
 
