@@ -88,7 +88,7 @@ export default function Header() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.05 * i }}
               >
-                {item.name === "Üniversite" ? (
+                {item.name === "Üniversite" || item.name === "Derneğimiz" ? (
                   <div className="relative group">
                     <Link
                       href="/universite"
