@@ -33,7 +33,11 @@ export default function Header() {
     {
       name: "Derneğimiz",
       href: "/hakkimizda",
-      active: pathname === "/hakkimizda" || pathname === "/kurucumuz-kimdir" || pathname === "/nicin-kurduk" || pathname === "/ne-yapmak-istiyoruz",
+      active:
+        pathname === "/hakkimizda" ||
+        pathname === "/kurucumuz-kimdir" ||
+        pathname === "/nicin-kurduk" ||
+        pathname === "/ne-yapmak-istiyoruz",
     },
     {
       name: "Hakkımızda",
@@ -62,7 +66,7 @@ export default function Header() {
           >
             <Link
               href="/"
-              className="flex items-center max-w-[140px] sm:max-w-[160px] lg:max-w-[180px] xl:max-w-none"
+              className="flex items-center max-w-[160px] lg:max-w-none"
             >
               <Image
                 src="/images/group-108.png"
@@ -84,11 +88,11 @@ export default function Header() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.05 * i }}
               >
-                {item.name === "Üniversite" || item.name === "Derneğimiz" ? (
-                  <div className="relative group shrink-0">
+                {item.name === "Üniversite" ? (
+                  <div className="relative group">
                     <Link
-                      href={item.href}
-                      className={`inline-block text-xs xl:text-sm font-bold transition-all duration-300 ease-out relative hover:translate-x-0.5 whitespace-nowrap ${
+                      href="/universite"
+                      className={`inline-block text-sm font-bold transition-all duration-300 ease-out relative hover:translate-x-0.5 ${
                         item.active
                           ? "text-[#6A0B1C]"
                           : "text-[#333333] hover:text-[#6A0B1C]"
@@ -122,7 +126,10 @@ export default function Header() {
                     {/* Dropdown menu */}
                     <div className="absolute left-1/2 top-[140%] -translate-x-1/2 min-w-[220px] rounded-xl bg-white shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                       <div className="py-2">
-                        {(item.name === "Üniversite" ? universityDropdownItems : dernegimizdropdownItems).map((dropItem) => (
+                        {(item.name === "Üniversite"
+                          ? universityDropdownItems
+                          : dernegimizdropdownItems
+                        ).map((dropItem) => (
                           <Link
                             key={dropItem.href}
                             href={dropItem.href}
@@ -327,9 +334,13 @@ export default function Header() {
                       {item.name}
                     </a>
                   )}
-                  {(item.name === "Üniversite" || item.name === "Derneğimiz") && (
+                  {(item.name === "Üniversite" ||
+                    item.name === "Derneğimiz") && (
                     <div className="pb-3 pl-1 space-y-1">
-                      {(item.name === "Üniversite" ? universityDropdownItems : dernegimizdropdownItems).map((dropItem) => (
+                      {(item.name === "Üniversite"
+                        ? universityDropdownItems
+                        : dernegimizdropdownItems
+                      ).map((dropItem) => (
                         <Link
                           key={dropItem.href}
                           href={dropItem.href}
