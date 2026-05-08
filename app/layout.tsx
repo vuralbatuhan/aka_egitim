@@ -32,7 +32,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <ScrollToTop />
         {children}
         <WhatsAppFloat />
-        <LanguageCampPopup />
+        {/* <LanguageCampPopup /> */}
       </body>
     </html>
   );

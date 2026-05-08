@@ -6,19 +6,25 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useState, useCallback, useEffect } from "react";
 
-const SLIDES = [
-  {
-    id: "italya",
-    country: "İtalya",
-    image: "/images/pisa.png",
-    alt: "Pisa Kulesi ve İtalya",
-  },
-  {
-    id: "almanya",
-    country: "Almanya",
-    image: "/images/koln-katedrali.png",
-    alt: "Köln Katedrali, Almanya",
-  },
+type HeroSlide = {
+  id: string;
+  image: string;
+  alt: string;
+} & ({ isDefault: true } | { country: string });
+
+const SLIDES: HeroSlide[] = [
+  // {
+  //   id: "italya",
+  //   country: "İtalya",
+  //   image: "/images/pisa.png",
+  //   alt: "Pisa Kulesi ve İtalya",
+  // },
+  // {
+  //   id: "almanya",
+  //   country: "Almanya",
+  //   image: "/images/koln-katedrali.png",
+  //   alt: "Köln Katedrali, Almanya",
+  // },
   // {
   //   id: "cin",
   //   country: "Çin",
@@ -265,7 +271,7 @@ export default function Hero() {
       </div>
 
       {/* Slider okları - mobilde dokunmatik alan 44px+ */}
-      <button
+      {/* <button
         onClick={goPrev}
         className="absolute left-2 sm:left-3 md:left-6 top-1/2 -translate-y-1/2 z-20 min-w-[44px] min-h-[44px] w-11 h-11 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 border-2 border-white/40 text-white/90 hover:border-white hover:text-white hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-transparent touch-manipulation"
         aria-label="Önceki slayt"
@@ -298,7 +304,7 @@ export default function Hero() {
         >
           <path d="M9 18l6-6-6-6" />
         </svg>
-      </button>
+      </button> */}
     </section>
   );
 }
