@@ -7,22 +7,22 @@ import { motion } from "framer-motion";
 import { supabase } from "@/lib/supabase";
 
 const ILLER = [
-  "Adana","Adıyaman","Afyonkarahisar","Ağrı","Aksaray","Amasya","Ankara","Antalya",
-  "Ardahan","Artvin","Aydın","Balıkesir","Bartın","Batman","Bayburt","Bilecik",
-  "Bingöl","Bitlis","Bolu","Burdur","Bursa","Çanakkale","Çankırı","Çorum",
-  "Denizli","Diyarbakır","Düzce","Edirne","Elazığ","Erzincan","Erzurum","Eskişehir",
-  "Gaziantep","Giresun","Gümüşhane","Hakkari","Hatay","Iğdır","Isparta","İstanbul",
-  "İzmir","Kahramanmaraş","Karabük","Karaman","Kars","Kastamonu","Kayseri","Kilis",
-  "Kırıkkale","Kırklareli","Kırşehir","Kocaeli","Konya","Kütahya","Malatya","Manisa",
-  "Mardin","Mersin","Muğla","Muş","Nevşehir","Niğde","Ordu","Osmaniye","Rize",
-  "Sakarya","Samsun","Siirt","Sinop","Sivas","Şanlıurfa","Şırnak","Tekirdağ",
-  "Tokat","Trabzon","Tunceli","Uşak","Van","Yalova","Yozgat","Zonguldak",
+  "Adana", "Adıyaman", "Afyonkarahisar", "Ağrı", "Aksaray", "Amasya", "Ankara", "Antalya",
+  "Ardahan", "Artvin", "Aydın", "Balıkesir", "Bartın", "Batman", "Bayburt", "Bilecik",
+  "Bingöl", "Bitlis", "Bolu", "Burdur", "Bursa", "Çanakkale", "Çankırı", "Çorum",
+  "Denizli", "Diyarbakır", "Düzce", "Edirne", "Elazığ", "Erzincan", "Erzurum", "Eskişehir",
+  "Gaziantep", "Giresun", "Gümüşhane", "Hakkari", "Hatay", "Iğdır", "Isparta", "İstanbul",
+  "İzmir", "Kahramanmaraş", "Karabük", "Karaman", "Kars", "Kastamonu", "Kayseri", "Kilis",
+  "Kırıkkale", "Kırklareli", "Kırşehir", "Kocaeli", "Konya", "Kütahya", "Malatya", "Manisa",
+  "Mardin", "Mersin", "Muğla", "Muş", "Nevşehir", "Niğde", "Ordu", "Osmaniye", "Rize",
+  "Sakarya", "Samsun", "Siirt", "Sinop", "Sivas", "Şanlıurfa", "Şırnak", "Tekirdağ",
+  "Tokat", "Trabzon", "Tunceli", "Uşak", "Van", "Yalova", "Yozgat", "Zonguldak",
 ];
 
-const KAN_GRUPLARI = ["A+","A-","B+","B-","AB+","AB-","0+","0-"];
+const KAN_GRUPLARI = ["A+", "A-", "B+", "B-", "AB+", "AB-", "0+", "0-"];
 
 const EGITIM_DURUMLARI = [
-  "İlkokul","Ortaokul","Lise","Ön Lisans","Lisans","Yüksek Lisans","Doktora",
+  "İlkokul", "Ortaokul", "Lise", "Ön Lisans", "Lisans", "Yüksek Lisans", "Doktora",
 ];
 
 export default function UyelikFormu() {
@@ -115,8 +115,7 @@ export default function UyelikFormu() {
   };
 
   const inputClass = (field: string) =>
-    `w-full px-4 py-2.5 border rounded-lg text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#6A0B1C]/30 focus:border-[#6A0B1C] transition-colors ${
-      errors[field] ? "border-red-400 bg-red-50" : "border-gray-300 bg-white"
+    `w-full px-4 py-2.5 border rounded-lg text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#6A0B1C]/30 focus:border-[#6A0B1C] transition-colors ${errors[field] ? "border-red-400 bg-red-50" : "border-gray-300 bg-white"
     }`;
 
   const labelClass = "block text-xs font-semibold text-gray-600 mb-1";
@@ -387,7 +386,6 @@ export default function UyelikFormu() {
                   <div>
                     <label className={labelClass}>
                       Göreviniz/Ünvanınız
-                      <span className="text-gray-400 font-normal ml-1">(Öğretmen, Müdür, Akademisyen vb.)</span>
                     </label>
                     <input
                       type="text"
@@ -397,9 +395,6 @@ export default function UyelikFormu() {
                       placeholder="Görev/Ünvan Yazınız"
                       className={inputClass("gorevUnvan")}
                     />
-                    <p className="text-gray-400 text-xs mt-1">
-                      Herhangi bir göreviniz/ünvanınız yoksa boş bırakınız
-                    </p>
                   </div>
                   <div>
                     <label className={labelClass}>Kan Grubu</label>
@@ -483,40 +478,8 @@ export default function UyelikFormu() {
                       <option key={il} value={il}>{il}</option>
                     ))}
                   </select>
-                  <p className="text-gray-400 text-xs mt-1">
-                    Herhangi bir göreviniz/ünvanınız yoksa ikamet ilinizi seçiniz
-                  </p>
                   {errors.gorevIl && (
                     <p className="text-red-500 text-xs mt-1">{errors.gorevIl}</p>
-                  )}
-                </div>
-
-                {/* Kayıt Şartları */}
-                <div>
-                  <label className="flex items-start gap-2.5 cursor-pointer">
-                    <input
-                      type="checkbox"
-                      checked={kayitSartlari}
-                      onChange={(e) => {
-                        setKayitSartlari(e.target.checked);
-                        if (errors.kayitSartlari)
-                          setErrors((prev) => ({ ...prev, kayitSartlari: "" }));
-                      }}
-                      className="mt-0.5 w-4 h-4 rounded accent-[#6A0B1C] cursor-pointer"
-                    />
-                    <span className="text-xs text-gray-600 italic">
-                      AKADER&apos;e kaydolarak kayıt şartlarını kabul etmiş olursunuz:{" "}
-                      <a
-                        href="/gizlilik"
-                        className="font-semibold underline hover:text-[#6A0B1C] transition-colors not-italic"
-                        style={{ color: "#6A0B1C" }}
-                      >
-                        Kayıt Şartları
-                      </a>
-                    </span>
-                  </label>
-                  {errors.kayitSartlari && (
-                    <p className="text-red-500 text-xs mt-1 ml-6">{errors.kayitSartlari}</p>
                   )}
                 </div>
 
