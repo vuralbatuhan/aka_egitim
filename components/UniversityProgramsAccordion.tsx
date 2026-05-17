@@ -35,15 +35,17 @@ const PROGRAMS: ProgramItem[] = [
             İngilizce Öğrenmek veya Üniversite Programlarına Giriş
           </h4>
           <p>
-            İngilizce öğrenmek istiyorsanız veya okul ya da iş için bir İkinci Dil Olarak İngilizce
-            (ESL) programına katılmanız gerekiyorsa, size uygun kursları birlikte
-            belirleyebiliriz. Kurs ücretleri haftalık yaklaşık 200 USD ile 600 USD arasında
-            değişmektedir.
+            İngilizce öğrenmek istiyorsanız veya okul ya da iş için bir İkinci
+            Dil Olarak İngilizce (ESL) programına katılmanız gerekiyorsa, size
+            uygun kursları birlikte belirleyebiliriz. Kurs ücretleri haftalık
+            yaklaşık 200 USD ile 600 USD arasında değişmektedir.
           </p>
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Üniversite veya Kolej Eğitimi</h4>
+          <h4 className="font-semibold text-gray-900">
+            Üniversite veya Kolej Eğitimi
+          </h4>
           <ol className="list-decimal list-inside space-y-1">
             <li>Seçeneklerinizi araştırın</li>
             <li>Öğreniminizi finanse edin</li>
@@ -54,26 +56,36 @@ const PROGRAMS: ProgramItem[] = [
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Genel Üniversite Kabul Koşulları</h4>
+          <h4 className="font-semibold text-gray-900">
+            Genel Üniversite Kabul Koşulları
+          </h4>
           <ul className="list-disc list-inside space-y-1">
             <li>En az 2.5 GPA (100 üzerinden yaklaşık 77 ortalama)</li>
             <li>Minimum TOEFL 69 veya IELTS 5.5</li>
             <li>Minimum yıllık üniversite eğitim ücreti yaklaşık 10.400 USD</li>
-            <li>Ön lisans bölümleri dönem başına yaklaşık 3.000 USD&apos;den başlar</li>
-            <li>Gerekli şartları sağlayan öğrencilere sınavsız direkt giriş imkânı</li>
+            <li>
+              Ön lisans bölümleri dönem başına yaklaşık 3.000 USD&apos;den
+              başlar
+            </li>
+            <li>
+              Gerekli şartları sağlayan öğrencilere sınavsız direkt giriş imkânı
+            </li>
           </ul>
         </div>
 
         <div className="space-y-1">
           <h4 className="font-semibold text-gray-900">Burs Seçenekleri</h4>
-          <p>Bizimle başvurularda yıllık yaklaşık 5.000 USD – 15.000 USD burs imkânı.</p>
+          <p>
+            Bizimle başvurularda yıllık yaklaşık 5.000 USD – 15.000 USD burs
+            imkânı.
+          </p>
         </div>
 
         <div className="space-y-1">
           <h4 className="font-semibold text-gray-900">Yaşam Maliyetleri</h4>
           <p>
-            Şehre ve eyalete göre değişmekle birlikte aylık yaşam maliyetleri ortalama 1.200 USD
-            ile 1.700 USD arasında değişmektedir.
+            Şehre ve eyalete göre değişmekle birlikte aylık yaşam maliyetleri
+            ortalama 1.200 USD ile 1.700 USD arasında değişmektedir.
           </p>
         </div>
 
@@ -86,12 +98,15 @@ const PROGRAMS: ProgramItem[] = [
         <div className="pt-3 border-t border-gray-200 space-y-2">
           <h4 className="font-semibold text-gray-900">Study English</h4>
           <p>
-            If you want to learn English or need to join an English as a Second Language (ESL)
-            program for school or work, you can choose courses that best match your goals. Typical
-            tuition ranges from 200 USD to 600 USD per week.
+            If you want to learn English or need to join an English as a Second
+            Language (ESL) program for school or work, you can choose courses
+            that best match your goals. Typical tuition ranges from 200 USD to
+            600 USD per week.
           </p>
 
-          <h4 className="font-semibold text-gray-900 mt-3">Study University or College</h4>
+          <h4 className="font-semibold text-gray-900 mt-3">
+            Study University or College
+          </h4>
           <ol className="list-decimal list-inside space-y-1">
             <li>Research your options</li>
             <li>Finance your studies</li>
@@ -123,13 +138,16 @@ const PROGRAMS: ProgramItem[] = [
         <div className="space-y-2">
           <h4 className="font-semibold text-gray-900">Study English</h4>
           <p>
-            If you want to learn English or need to join an English as a Second Language (ESL)
-            program for school or work, please research for courses that suit you.
+            If you want to learn English or need to join an English as a Second
+            Language (ESL) program for school or work, please research for
+            courses that suit you.
           </p>
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Study University or College</h4>
+          <h4 className="font-semibold text-gray-900">
+            Study University or College
+          </h4>
           <ol className="list-decimal list-inside space-y-1">
             <li>Research your options</li>
             <li>Finance your studies</li>
@@ -193,7 +211,8 @@ const PROGRAMS: ProgramItem[] = [
           <div className="space-y-1">
             <h5 className="font-semibold text-gray-900">Homestay</h5>
             <p>
-              225 CAD/week (235 CAD/week for minors) – includes 3 meals and airport pickup.
+              225 CAD/week (235 CAD/week for minors) – includes 3 meals and
+              airport pickup.
             </p>
           </div>
 
@@ -234,34 +253,43 @@ const PROGRAMS: ProgramItem[] = [
             Yüksek öğrenim için neden Almanya&apos;yı seçmelisiniz?
           </h4>
           <ul className="list-disc list-inside space-y-1">
-            <li>Lisans, yüksek lisans ve doktora sırasında yarı zamanlı çalışma imkânı</li>
+            <li>
+              Lisans, yüksek lisans ve doktora sırasında yarı zamanlı çalışma
+              imkânı
+            </li>
             <li>Eğitim sonrası 18 aylık çalışma izni</li>
             <li>Güvenli bir iş piyasasına kolay erişim</li>
             <li>Birinci sınıf eğitim ve uygun yaşam maliyetleri</li>
             <li>Birçok seçkin kurs ve üniversite seçeneği</li>
             <li>Dünya çapında tanınan diplomalar</li>
-            <li>Canlı öğrencilik hayatı ve sunulan çok çeşitli aktivite imkânları</li>
+            <li>
+              Canlı öğrencilik hayatı ve sunulan çok çeşitli aktivite imkânları
+            </li>
           </ul>
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Alman Üniversitelerine Giden Yol</h4>
+          <h4 className="font-semibold text-gray-900">
+            Alman Üniversitelerine Giden Yol
+          </h4>
           <ul className="list-none space-y-1">
             <li>&gt; Minimum 12 haftalık programlar</li>
             <li>&gt; TELC Almanca hazırlık</li>
             <li>&gt; Başvuru, vize ve üniversite yerleştirme desteği</li>
             <li>
-              &gt; Uni-Assist ile 250&apos;den fazla devlet ve özel üniversiteye yerleştirme hizmeti
+              &gt; Uni-Assist ile 250&apos;den fazla devlet ve özel üniversiteye
+              yerleştirme hizmeti
             </li>
             <li>
-              &gt; Studienkolleg ve 300&apos;den fazla lisans, yüksek lisans ve doktora
-              programlarına erişim
+              &gt; Studienkolleg ve 300&apos;den fazla lisans, yüksek lisans ve
+              doktora programlarına erişim
             </li>
           </ul>
         </div>
 
         <p className="text-sm text-gray-600 italic">
-          * Daha fazla bilgi ve program detayları için lütfen danışmanlarımızla iletişime geçin.
+          * Daha fazla bilgi ve program detayları için lütfen danışmanlarımızla
+          iletişime geçin.
         </p>
       </div>
     ),
@@ -276,8 +304,8 @@ const PROGRAMS: ProgramItem[] = [
     details: (
       <div className="space-y-4 text-sm sm:text-base text-gray-800 leading-relaxed">
         <p>
-          Arizona State University is ranked <strong>#13 in the USA</strong> for undergraduate
-          accounting (U.S. News &amp; World Report 2021).
+          Arizona State University is ranked <strong>#13 in the USA</strong> for
+          undergraduate accounting (U.S. News &amp; World Report 2021).
         </p>
 
         <div className="space-y-1">
@@ -301,7 +329,9 @@ const PROGRAMS: ProgramItem[] = [
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Your path to university – Your degree</h4>
+          <h4 className="font-semibold text-gray-900">
+            Your path to university – Your degree
+          </h4>
           <p>Direct Admission – Year 1, Year 2, Year 3, Year 4</p>
         </div>
 
@@ -325,10 +355,11 @@ const PROGRAMS: ProgramItem[] = [
     details: (
       <div className="space-y-4 text-sm sm:text-base text-gray-800 leading-relaxed">
         <p>
-          STEM-classified degree: graduates are eligible for <strong>3 years of Optional Practical
-          Training (OPT)</strong> in the USA. Arizona State University is ranked{" "}
-          <strong>#12 in the USA</strong> for graduate accounting programs (U.S. News Best Grad
-          Schools 2022).
+          STEM-classified degree: graduates are eligible for{" "}
+          <strong>3 years of Optional Practical Training (OPT)</strong> in the
+          USA. Arizona State University is ranked{" "}
+          <strong>#12 in the USA</strong> for graduate accounting programs (U.S.
+          News Best Grad Schools 2022).
         </p>
 
         <div className="space-y-1">
@@ -352,12 +383,16 @@ const PROGRAMS: ProgramItem[] = [
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Your path to university – Your degree</h4>
+          <h4 className="font-semibold text-gray-900">
+            Your path to university – Your degree
+          </h4>
           <p>Direct Admission – 9 months</p>
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Academic Year – Key Facts</h4>
+          <h4 className="font-semibold text-gray-900">
+            Academic Year – Key Facts
+          </h4>
           <ul className="list-disc list-inside space-y-1">
             <li>English entry: TOEFL 80 (IELTS 6.5, Pearson PTE 60)</li>
             <li>GPA entry: 3.0 GPA or equivalent</li>
@@ -380,8 +415,9 @@ const PROGRAMS: ProgramItem[] = [
       <div className="space-y-4 text-sm sm:text-base text-gray-800 leading-relaxed">
         <p>
           STEM-classified degree: graduates are eligible for{" "}
-          <strong>3 years of Optional Practical Training (OPT)</strong> in the USA. Arizona State
-          University is ranked a <strong>world top 150 university for mathematics</strong> (Times
+          <strong>3 years of Optional Practical Training (OPT)</strong> in the
+          USA. Arizona State University is ranked a{" "}
+          <strong>world top 150 university for mathematics</strong> (Times
           Higher Education Rankings by Subject 2021).
         </p>
 
@@ -406,12 +442,16 @@ const PROGRAMS: ProgramItem[] = [
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Your path to university – Your degree</h4>
+          <h4 className="font-semibold text-gray-900">
+            Your path to university – Your degree
+          </h4>
           <p>Direct Admission – Year 1, Year 2, Year 3, Year 4</p>
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Academic Year – Key Facts</h4>
+          <h4 className="font-semibold text-gray-900">
+            Academic Year – Key Facts
+          </h4>
           <ul className="list-disc list-inside space-y-1">
             <li>English entry: TOEFL 61</li>
             <li>GPA entry: 3.0 GPA or equivalent</li>
@@ -434,8 +474,9 @@ const PROGRAMS: ProgramItem[] = [
       <div className="space-y-4 text-sm sm:text-base text-gray-800 leading-relaxed">
         <p>
           STEM-classified degree: graduates are eligible for{" "}
-          <strong>3 years of Optional Practical Training (OPT)</strong> in the USA. Arizona State
-          University is ranked a <strong>world top 150 university for mathematics</strong> (Times
+          <strong>3 years of Optional Practical Training (OPT)</strong> in the
+          USA. Arizona State University is ranked a{" "}
+          <strong>world top 150 university for mathematics</strong> (Times
           Higher Education Rankings by Subject 2021).
         </p>
 
@@ -460,12 +501,16 @@ const PROGRAMS: ProgramItem[] = [
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Your path to university – Your degree</h4>
+          <h4 className="font-semibold text-gray-900">
+            Your path to university – Your degree
+          </h4>
           <p>Direct Admission – Year 1, Year 2, Year 3, Year 4</p>
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Academic Year – Key Facts</h4>
+          <h4 className="font-semibold text-gray-900">
+            Academic Year – Key Facts
+          </h4>
           <ul className="list-disc list-inside space-y-1">
             <li>English entry: TOEFL 80 (IELTS 6.5, Pearson PTE 60)</li>
             <li>GPA entry: 3.0 GPA or equivalent</li>
@@ -488,8 +533,9 @@ const PROGRAMS: ProgramItem[] = [
       <div className="space-y-4 text-sm sm:text-base text-gray-800 leading-relaxed">
         <p>
           STEM-classified degree: graduates are eligible for{" "}
-          <strong>3 years of Optional Practical Training (OPT)</strong> in the USA. This degree is
-          accredited by the <strong>Aviation Accreditation Board International</strong>.
+          <strong>3 years of Optional Practical Training (OPT)</strong> in the
+          USA. This degree is accredited by the{" "}
+          <strong>Aviation Accreditation Board International</strong>.
         </p>
 
         <div className="space-y-1">
@@ -513,12 +559,16 @@ const PROGRAMS: ProgramItem[] = [
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Your path to university – Your degree</h4>
+          <h4 className="font-semibold text-gray-900">
+            Your path to university – Your degree
+          </h4>
           <p>Direct Admission – Year 1, Year 2, Year 3, Year 4</p>
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Academic Year – Key Facts</h4>
+          <h4 className="font-semibold text-gray-900">
+            Academic Year – Key Facts
+          </h4>
           <ul className="list-disc list-inside space-y-1">
             <li>English entry: TOEFL 61</li>
             <li>GPA entry: 3.0 GPA or equivalent</li>
@@ -532,17 +582,20 @@ const PROGRAMS: ProgramItem[] = [
   },
   {
     id: "bs-aero-mgmt-tech-atm2",
-    category: "BS Aeronautical Management Technology (Air Transportation Management)",
+    category:
+      "BS Aeronautical Management Technology (Air Transportation Management)",
     country: "Arizona State University, Polytechnic Campus",
     region: "USA",
-    title: "BS Aeronautical Management Technology (Air Transportation Management)",
+    title:
+      "BS Aeronautical Management Technology (Air Transportation Management)",
     shortLabel: "Lisans Programı",
     details: (
       <div className="space-y-4 text-sm sm:text-base text-gray-800 leading-relaxed">
         <p>
           STEM-classified degree: graduates are eligible for{" "}
-          <strong>3 years of Optional Practical Training (OPT)</strong> in the USA. This degree is
-          accredited by the <strong>Aviation Accreditation Board International</strong>.
+          <strong>3 years of Optional Practical Training (OPT)</strong> in the
+          USA. This degree is accredited by the{" "}
+          <strong>Aviation Accreditation Board International</strong>.
         </p>
 
         <div className="space-y-1">
@@ -566,7 +619,9 @@ const PROGRAMS: ProgramItem[] = [
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Your path to university – Your degree</h4>
+          <h4 className="font-semibold text-gray-900">
+            Your path to university – Your degree
+          </h4>
           <p>Direct Admission – Year 1, Year 2, Year 3, Year 4</p>
         </div>
 
@@ -591,8 +646,9 @@ const PROGRAMS: ProgramItem[] = [
       <div className="space-y-4 text-sm sm:text-base text-gray-800 leading-relaxed">
         <p>
           STEM-classified degree: graduates are eligible for{" "}
-          <strong>3 years of Optional Practical Training (OPT)</strong> in the USA. This degree is
-          accredited by the <strong>Aviation Accreditation Board International</strong>.
+          <strong>3 years of Optional Practical Training (OPT)</strong> in the
+          USA. This degree is accredited by the{" "}
+          <strong>Aviation Accreditation Board International</strong>.
         </p>
 
         <div className="space-y-1">
@@ -616,7 +672,9 @@ const PROGRAMS: ProgramItem[] = [
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Your path to university – Your degree</h4>
+          <h4 className="font-semibold text-gray-900">
+            Your path to university – Your degree
+          </h4>
           <p>Direct Admission – Year 1, Year 2, Year 3, Year 4</p>
         </div>
 
@@ -641,8 +699,9 @@ const PROGRAMS: ProgramItem[] = [
       <div className="space-y-4 text-sm sm:text-base text-gray-800 leading-relaxed">
         <p>
           STEM-classified degree: graduates are eligible for{" "}
-          <strong>3 years of Optional Practical Training (OPT)</strong> in the USA. Arizona State
-          University is ranked <strong>#25 in the USA</strong> for graduate aerospace engineering
+          <strong>3 years of Optional Practical Training (OPT)</strong> in the
+          USA. Arizona State University is ranked{" "}
+          <strong>#25 in the USA</strong> for graduate aerospace engineering
           programs (U.S. News Best Grad Schools 2022).
         </p>
 
@@ -667,7 +726,9 @@ const PROGRAMS: ProgramItem[] = [
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Your path to university – Your degree</h4>
+          <h4 className="font-semibold text-gray-900">
+            Your path to university – Your degree
+          </h4>
           <p>Direct Admission – Year 1, Year 2</p>
         </div>
 
@@ -691,8 +752,9 @@ const PROGRAMS: ProgramItem[] = [
     details: (
       <div className="space-y-4 text-sm sm:text-base text-gray-800 leading-relaxed">
         <p>
-          Arizona State University is ranked <strong>#66 in the world</strong> for social sciences
-          (Times Higher Education World University Rankings by Subject 2021).
+          Arizona State University is ranked <strong>#66 in the world</strong>{" "}
+          for social sciences (Times Higher Education World University Rankings
+          by Subject 2021).
         </p>
 
         <div className="space-y-1">
@@ -716,7 +778,9 @@ const PROGRAMS: ProgramItem[] = [
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Your path to university – Your degree</h4>
+          <h4 className="font-semibold text-gray-900">
+            Your path to university – Your degree
+          </h4>
           <p>Direct Admission – Year 1, Year 2, Year 3, Year 4</p>
         </div>
 
@@ -740,8 +804,9 @@ const PROGRAMS: ProgramItem[] = [
     details: (
       <div className="space-y-4 text-sm sm:text-base text-gray-800 leading-relaxed">
         <p>
-          Arizona State University is ranked <strong>#66 in the world</strong> for social sciences
-          (Times Higher Education World University Rankings by Subject 2021).
+          Arizona State University is ranked <strong>#66 in the world</strong>{" "}
+          for social sciences (Times Higher Education World University Rankings
+          by Subject 2021).
         </p>
 
         <div className="space-y-1">
@@ -765,7 +830,9 @@ const PROGRAMS: ProgramItem[] = [
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Your path to university – Your degree</h4>
+          <h4 className="font-semibold text-gray-900">
+            Your path to university – Your degree
+          </h4>
           <p>Direct Admission – Year 1, Year 2, Year 3, Year 4</p>
         </div>
 
@@ -781,7 +848,8 @@ const PROGRAMS: ProgramItem[] = [
   },
   {
     id: "ms-american-indian-studies-rights",
-    category: "MS American Indian Studies (Indigenous Rights and Social Justice)",
+    category:
+      "MS American Indian Studies (Indigenous Rights and Social Justice)",
     country: "Arizona State University, Tempe Campus",
     region: "USA",
     title: "MS American Indian Studies (Indigenous Rights and Social Justice)",
@@ -789,8 +857,9 @@ const PROGRAMS: ProgramItem[] = [
     details: (
       <div className="space-y-4 text-sm sm:text-base text-gray-800 leading-relaxed">
         <p>
-          Arizona State University is ranked <strong>#66 in the world</strong> for social sciences
-          (Times Higher Education World University Rankings by Subject 2021).
+          Arizona State University is ranked <strong>#66 in the world</strong>{" "}
+          for social sciences (Times Higher Education World University Rankings
+          by Subject 2021).
         </p>
 
         <div className="space-y-1">
@@ -814,12 +883,16 @@ const PROGRAMS: ProgramItem[] = [
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Your path to university – Your degree</h4>
+          <h4 className="font-semibold text-gray-900">
+            Your path to university – Your degree
+          </h4>
           <p>Direct Admission – Year 1, Year 2</p>
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Academic Year – Key Facts</h4>
+          <h4 className="font-semibold text-gray-900">
+            Academic Year – Key Facts
+          </h4>
           <ul className="list-disc list-inside space-y-1">
             <li>English entry: TOEFL 80 (IELTS 6.5, Pearson PTE 60)</li>
             <li>GPA entry: 3.0 GPA or equivalent</li>
@@ -841,8 +914,9 @@ const PROGRAMS: ProgramItem[] = [
     details: (
       <div className="space-y-4 text-sm sm:text-base text-gray-800 leading-relaxed">
         <p>
-          Arizona State University is ranked <strong>#66 in the world</strong> for social sciences
-          (Times Higher Education World University Rankings by Subject 2021).
+          Arizona State University is ranked <strong>#66 in the world</strong>{" "}
+          for social sciences (Times Higher Education World University Rankings
+          by Subject 2021).
         </p>
 
         <div className="space-y-1">
@@ -866,12 +940,16 @@ const PROGRAMS: ProgramItem[] = [
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Your path to university – Your degree</h4>
+          <h4 className="font-semibold text-gray-900">
+            Your path to university – Your degree
+          </h4>
           <p>Direct Admission – Year 1, Year 2</p>
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Academic Year – Key Facts</h4>
+          <h4 className="font-semibold text-gray-900">
+            Academic Year – Key Facts
+          </h4>
           <ul className="list-disc list-inside space-y-1">
             <li>English entry: TOEFL 80 (IELTS 6.5, Pearson PTE 60)</li>
             <li>GPA entry: 3.0 GPA or equivalent</li>
@@ -893,9 +971,10 @@ const PROGRAMS: ProgramItem[] = [
     details: (
       <div className="space-y-4 text-sm sm:text-base text-gray-800 leading-relaxed">
         <p>
-          Professors have strengths in areas including critical ethnic studies, indigeneity
-          studies, gender studies, Black studies, immigration studies, justice studies, disability
-          studies, transborder studies, and Asian American studies.
+          Professors have strengths in areas including critical ethnic studies,
+          indigeneity studies, gender studies, Black studies, immigration
+          studies, justice studies, disability studies, transborder studies, and
+          Asian American studies.
         </p>
 
         <div className="space-y-1">
@@ -919,12 +998,16 @@ const PROGRAMS: ProgramItem[] = [
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Your path to university – Your degree</h4>
+          <h4 className="font-semibold text-gray-900">
+            Your path to university – Your degree
+          </h4>
           <p>Direct Admission – Year 1, Year 2</p>
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Academic Year – Key Facts</h4>
+          <h4 className="font-semibold text-gray-900">
+            Academic Year – Key Facts
+          </h4>
           <ul className="list-disc list-inside space-y-1">
             <li>English entry: TOEFL 90 (IELTS 7.0, Pearson PTE 65)</li>
             <li>GPA entry: 3.0 GPA or equivalent</li>
@@ -946,8 +1029,9 @@ const PROGRAMS: ProgramItem[] = [
     details: (
       <div className="space-y-4 text-sm sm:text-base text-gray-800 leading-relaxed">
         <p>
-          Arizona State University is ranked <strong>#66 in the world</strong> for social sciences
-          (Times Higher Education World University Rankings by Subject 2021).
+          Arizona State University is ranked <strong>#66 in the world</strong>{" "}
+          for social sciences (Times Higher Education World University Rankings
+          by Subject 2021).
         </p>
 
         <div className="space-y-1">
@@ -971,12 +1055,16 @@ const PROGRAMS: ProgramItem[] = [
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Your path to university – Your degree</h4>
+          <h4 className="font-semibold text-gray-900">
+            Your path to university – Your degree
+          </h4>
           <p>Direct Admission – Year 1, Year 2, Year 3, Year 4</p>
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Academic Year – Key Facts</h4>
+          <h4 className="font-semibold text-gray-900">
+            Academic Year – Key Facts
+          </h4>
           <ul className="list-disc list-inside space-y-1">
             <li>English entry: TOEFL 61</li>
             <li>GPA entry: 3.0 GPA or equivalent</li>
@@ -998,8 +1086,8 @@ const PROGRAMS: ProgramItem[] = [
     details: (
       <div className="space-y-4 text-sm sm:text-base text-gray-800 leading-relaxed">
         <p>
-          Arizona State University is ranked <strong>#35 in the world</strong> for anthropology (QS
-          World University Rankings by Subject 2021).
+          Arizona State University is ranked <strong>#35 in the world</strong>{" "}
+          for anthropology (QS World University Rankings by Subject 2021).
         </p>
 
         <div className="space-y-1">
@@ -1023,12 +1111,16 @@ const PROGRAMS: ProgramItem[] = [
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Your path to university – Your degree</h4>
+          <h4 className="font-semibold text-gray-900">
+            Your path to university – Your degree
+          </h4>
           <p>Direct Admission – Year 1, Year 2, Year 3, Year 4</p>
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Academic Year – Key Facts</h4>
+          <h4 className="font-semibold text-gray-900">
+            Academic Year – Key Facts
+          </h4>
           <ul className="list-disc list-inside space-y-1">
             <li>English entry: TOEFL 61</li>
             <li>GPA entry: 3.0 GPA or equivalent</li>
@@ -1050,8 +1142,8 @@ const PROGRAMS: ProgramItem[] = [
     details: (
       <div className="space-y-4 text-sm sm:text-base text-gray-800 leading-relaxed">
         <p>
-          Arizona State University is ranked <strong>#35 in the world</strong> for anthropology (QS
-          World University Rankings by Subject 2021).
+          Arizona State University is ranked <strong>#35 in the world</strong>{" "}
+          for anthropology (QS World University Rankings by Subject 2021).
         </p>
 
         <div className="space-y-1">
@@ -1075,12 +1167,16 @@ const PROGRAMS: ProgramItem[] = [
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Your path to university – Your degree</h4>
+          <h4 className="font-semibold text-gray-900">
+            Your path to university – Your degree
+          </h4>
           <p>Direct Admission – Year 1, Year 2, Year 3, Year 4</p>
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Academic Year – Key Facts</h4>
+          <h4 className="font-semibold text-gray-900">
+            Academic Year – Key Facts
+          </h4>
           <ul className="list-disc list-inside space-y-1">
             <li>English entry: TOEFL 61</li>
             <li>GPA entry: 3.0 GPA or equivalent</li>
@@ -1102,8 +1198,9 @@ const PROGRAMS: ProgramItem[] = [
     details: (
       <div className="space-y-4 text-sm sm:text-base text-gray-800 leading-relaxed">
         <p>
-          Arizona State University is ranked <strong>#66 in the world</strong> for social sciences
-          (Times Higher Education World University Rankings by Subject 2021).
+          Arizona State University is ranked <strong>#66 in the world</strong>{" "}
+          for social sciences (Times Higher Education World University Rankings
+          by Subject 2021).
         </p>
 
         <div className="space-y-1">
@@ -1127,12 +1224,16 @@ const PROGRAMS: ProgramItem[] = [
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Your path to university – Your degree</h4>
+          <h4 className="font-semibold text-gray-900">
+            Your path to university – Your degree
+          </h4>
           <p>Direct Admission – Year 1, Year 2</p>
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Academic Year – Key Facts</h4>
+          <h4 className="font-semibold text-gray-900">
+            Academic Year – Key Facts
+          </h4>
           <ul className="list-disc list-inside space-y-1">
             <li>English entry: TOEFL 80 (IELTS 6.5, Pearson PTE 60)</li>
             <li>GPA entry: 3.0 GPA or equivalent</li>
@@ -1155,8 +1256,9 @@ const PROGRAMS: ProgramItem[] = [
       <div className="space-y-4 text-sm sm:text-base text-gray-800 leading-relaxed">
         <p>
           STEM-classified degree: graduates are eligible for{" "}
-          <strong>3 years of Optional Practical Training (OPT)</strong> in the USA. Arizona State
-          University is ranked a <strong>world top 175 university for biological sciences</strong>{" "}
+          <strong>3 years of Optional Practical Training (OPT)</strong> in the
+          USA. Arizona State University is ranked a{" "}
+          <strong>world top 175 university for biological sciences</strong>{" "}
           (Times Higher Education World University Rankings by Subject 2021).
         </p>
 
@@ -1181,12 +1283,16 @@ const PROGRAMS: ProgramItem[] = [
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Your path to university – Your degree</h4>
+          <h4 className="font-semibold text-gray-900">
+            Your path to university – Your degree
+          </h4>
           <p>Direct Admission – Year 1, Year 2</p>
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Academic Year – Key Facts</h4>
+          <h4 className="font-semibold text-gray-900">
+            Academic Year – Key Facts
+          </h4>
           <ul className="list-disc list-inside space-y-1">
             <li>English entry: TOEFL 80 (IELTS 6.5, Pearson PTE 60)</li>
             <li>GPA entry: 3.0 GPA or equivalent</li>
@@ -1209,8 +1315,9 @@ const PROGRAMS: ProgramItem[] = [
       <div className="space-y-4 text-sm sm:text-base text-gray-800 leading-relaxed">
         <p>
           STEM-classified degree: graduates are eligible for{" "}
-          <strong>3 years of Optional Practical Training (OPT)</strong> in the USA. Arizona State
-          University is ranked a <strong>world top 175 university for biological sciences</strong>{" "}
+          <strong>3 years of Optional Practical Training (OPT)</strong> in the
+          USA. Arizona State University is ranked a{" "}
+          <strong>world top 175 university for biological sciences</strong>{" "}
           (Times Higher Education World University Rankings by Subject 2021).
         </p>
 
@@ -1235,12 +1342,16 @@ const PROGRAMS: ProgramItem[] = [
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Your path to university – Your degree</h4>
+          <h4 className="font-semibold text-gray-900">
+            Your path to university – Your degree
+          </h4>
           <p>Direct Admission – Year 1, Year 2, Year 3, Year 4</p>
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Academic Year – Key Facts</h4>
+          <h4 className="font-semibold text-gray-900">
+            Academic Year – Key Facts
+          </h4>
           <ul className="list-disc list-inside space-y-1">
             <li>English entry: TOEFL 61</li>
             <li>GPA entry: 3.0 GPA or equivalent</li>
@@ -1263,8 +1374,9 @@ const PROGRAMS: ProgramItem[] = [
       <div className="space-y-4 text-sm sm:text-base text-gray-800 leading-relaxed">
         <p>
           STEM-classified degree: graduates are eligible for{" "}
-          <strong>3 years of Optional Practical Training (OPT)</strong> in the USA. Arizona State
-          University is ranked a <strong>world top 175 university for biological sciences</strong>{" "}
+          <strong>3 years of Optional Practical Training (OPT)</strong> in the
+          USA. Arizona State University is ranked a{" "}
+          <strong>world top 175 university for biological sciences</strong>{" "}
           (Times Higher Education World University Rankings by Subject 2021).
         </p>
 
@@ -1289,12 +1401,16 @@ const PROGRAMS: ProgramItem[] = [
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Your path to university – Your degree</h4>
+          <h4 className="font-semibold text-gray-900">
+            Your path to university – Your degree
+          </h4>
           <p>Direct Admission – Year 1, Year 2, Year 3, Year 4</p>
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Academic Year – Key Facts</h4>
+          <h4 className="font-semibold text-gray-900">
+            Academic Year – Key Facts
+          </h4>
           <ul className="list-disc list-inside space-y-1">
             <li>English entry: TOEFL 61</li>
             <li>GPA entry: 3.0 GPA or equivalent</li>
@@ -1317,8 +1433,9 @@ const PROGRAMS: ProgramItem[] = [
       <div className="space-y-4 text-sm sm:text-base text-gray-800 leading-relaxed">
         <p>
           STEM-classified degree: graduates are eligible for{" "}
-          <strong>3 years of Optional Practical Training (OPT)</strong> in the USA. Arizona State
-          University is ranked a <strong>world top 175 university for biological sciences</strong>{" "}
+          <strong>3 years of Optional Practical Training (OPT)</strong> in the
+          USA. Arizona State University is ranked a{" "}
+          <strong>world top 175 university for biological sciences</strong>{" "}
           (Times Higher Education World University Rankings by Subject 2021).
         </p>
 
@@ -1343,12 +1460,16 @@ const PROGRAMS: ProgramItem[] = [
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Your path to university – Your degree</h4>
+          <h4 className="font-semibold text-gray-900">
+            Your path to university – Your degree
+          </h4>
           <p>Direct Admission – Year 1, Year 2, Year 3, Year 4</p>
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Academic Year – Key Facts</h4>
+          <h4 className="font-semibold text-gray-900">
+            Academic Year – Key Facts
+          </h4>
           <ul className="list-disc list-inside space-y-1">
             <li>English entry: TOEFL 61</li>
             <li>GPA entry: 3.0 GPA or equivalent</li>
@@ -1371,8 +1492,9 @@ const PROGRAMS: ProgramItem[] = [
       <div className="space-y-4 text-sm sm:text-base text-gray-800 leading-relaxed">
         <p>
           STEM-classified degree: graduates are eligible for{" "}
-          <strong>3 years of Optional Practical Training (OPT)</strong> in the USA. Arizona State
-          University is ranked a <strong>world top 175 university for biological sciences</strong>{" "}
+          <strong>3 years of Optional Practical Training (OPT)</strong> in the
+          USA. Arizona State University is ranked a{" "}
+          <strong>world top 175 university for biological sciences</strong>{" "}
           (Times Higher Education World University Rankings by Subject 2021).
         </p>
 
@@ -1397,12 +1519,16 @@ const PROGRAMS: ProgramItem[] = [
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Your path to university – Your degree</h4>
+          <h4 className="font-semibold text-gray-900">
+            Your path to university – Your degree
+          </h4>
           <p>Direct Admission – Year 1, Year 2, Year 3, Year 4</p>
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Academic Year – Key Facts</h4>
+          <h4 className="font-semibold text-gray-900">
+            Academic Year – Key Facts
+          </h4>
           <ul className="list-disc list-inside space-y-1">
             <li>English entry: TOEFL 61</li>
             <li>GPA entry: 3.0 GPA or equivalent</li>
@@ -1424,8 +1550,9 @@ const PROGRAMS: ProgramItem[] = [
     details: (
       <div className="space-y-4 text-sm sm:text-base text-gray-800 leading-relaxed">
         <p>
-          UWE Bristol is ranked <strong>21st in the UK</strong> for Aeronautical and Manufacturing
-          Engineering (Times and Sunday Times Good University Guide 2021).
+          UWE Bristol is ranked <strong>21st in the UK</strong> for Aeronautical
+          and Manufacturing Engineering (Times and Sunday Times Good University
+          Guide 2021).
         </p>
 
         <div className="space-y-1">
@@ -1449,26 +1576,34 @@ const PROGRAMS: ProgramItem[] = [
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">UWE Bristol Highlights</h4>
+          <h4 className="font-semibold text-gray-900">
+            UWE Bristol Highlights
+          </h4>
           <ul className="list-disc list-inside space-y-1">
             <li>Top 40 in the UK (Guardian University Guide 2022)</li>
-            <li>Top 25 in the UK for student satisfaction (Guardian University Guide 2022)</li>
             <li>
-              Home to GradLink, the award-winning careers website for international students
+              Top 25 in the UK for student satisfaction (Guardian University
+              Guide 2022)
+            </li>
+            <li>
+              Home to GradLink, the award-winning careers website for
+              international students
             </li>
           </ul>
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Your path to university – Your degree</h4>
+          <h4 className="font-semibold text-gray-900">
+            Your path to university – Your degree
+          </h4>
           <ul className="list-disc list-inside space-y-1">
             <li>
-              <strong>Foundation Certificate</strong> – Year 1, Year 2, Year 3 – IELTS 5.5 (at least
-              4.5 in all skills)
+              <strong>Foundation Certificate</strong> – Year 1, Year 2, Year 3 –
+              IELTS 5.5 (at least 4.5 in all skills)
             </li>
             <li>
-              <strong>International Year One</strong> – Year 2, Year 3 – IELTS 5.5 (at least 5.0 in
-              all skills)
+              <strong>International Year One</strong> – Year 2, Year 3 – IELTS
+              5.5 (at least 5.0 in all skills)
             </li>
           </ul>
         </div>
@@ -1505,18 +1640,26 @@ const PROGRAMS: ProgramItem[] = [
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">UWE Bristol Highlights</h4>
+          <h4 className="font-semibold text-gray-900">
+            UWE Bristol Highlights
+          </h4>
           <ul className="list-disc list-inside space-y-1">
             <li>Top 40 in the UK (Guardian University Guide 2022)</li>
-            <li>Top 25 in the UK for student satisfaction (Guardian University Guide 2022)</li>
             <li>
-              Home to GradLink, the award-winning careers website for international students
+              Top 25 in the UK for student satisfaction (Guardian University
+              Guide 2022)
+            </li>
+            <li>
+              Home to GradLink, the award-winning careers website for
+              international students
             </li>
           </ul>
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Your path to university</h4>
+          <h4 className="font-semibold text-gray-900">
+            Your path to university
+          </h4>
           <p>
             <strong>Pre-Master&apos;s</strong> – Year 1
           </p>
@@ -1534,8 +1677,9 @@ const PROGRAMS: ProgramItem[] = [
     details: (
       <div className="space-y-4 text-sm sm:text-base text-gray-800 leading-relaxed">
         <p>
-          Located in the historic Niagara region, Brock offers all the benefits of a young and
-          modern university in a safe, community-minded city with beautiful natural surroundings.
+          Located in the historic Niagara region, Brock offers all the benefits
+          of a young and modern university in a safe, community-minded city with
+          beautiful natural surroundings.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -1544,7 +1688,9 @@ const PROGRAMS: ProgramItem[] = [
             <p>18,462</p>
           </div>
           <div className="space-y-1">
-            <h4 className="font-semibold text-gray-900">International students</h4>
+            <h4 className="font-semibold text-gray-900">
+              International students
+            </h4>
             <p>10%</p>
           </div>
           <div className="space-y-1">
@@ -1559,43 +1705,56 @@ const PROGRAMS: ProgramItem[] = [
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Faculty of Applied Health Sciences</h4>
+          <h4 className="font-semibold text-gray-900">
+            Faculty of Applied Health Sciences
+          </h4>
           <p>
-            Canadian Studies / Classics / Comparative Religion / Economics / English / Child Health
-            BA / Community Health BA / Kinesiology BKin / Kinesiology BSc / Medical Sciences BSc /
-            Nursing BScN / Physical Education BPhEd / Public Health BPH, Public Health BPH Co-op /
+            Canadian Studies / Classics / Comparative Religion / Economics /
+            English / Child Health BA / Community Health BA / Kinesiology BKin /
+            Kinesiology BSc / Medical Sciences BSc / Nursing BScN / Physical
+            Education BPhEd / Public Health BPH, Public Health BPH Co-op /
             Recreation and Leisure Studies BRLS / Sport Management BSM
           </p>
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Faculty of Mathematics &amp; Science</h4>
+          <h4 className="font-semibold text-gray-900">
+            Faculty of Mathematics &amp; Science
+          </h4>
           <p>
-            Biological Sciences BSc / Biomedical Sciences BSc / Biophysics BSc / Physics BSc, Physics
-            BSc Co-op / Sciences BSc / Game Programming BSc / Chemistry BSc, Chemistry BSc Co-op /
-            Oenology and Viticulture BSc Co-op only / Biotechnology BSc, Biotechnology BSc Co-op /
-            Biochemistry BSc, Biochemistry BSc Co-op / Computer Science BSc, Computer Science BSc
-            Co-op / Neuroscience BSc, Neuroscience BSc Co-op / Earth Sciences BSc, Earth Sciences BSc
-            Co-op / Computer Science and Mathematics BSc Co-op only / Computing and Business BCB,
-            Computing and Business BCB Co-op / Computing and Network Communications BSc Co-op only /
-            Computing and Solid State Device Technology BSc, Computing and Solid State Device
-            Technology BSc Co-op / Environmental Geoscience BSc, Environmental Geoscience BSc
-            Co-op / Mathematics and Statistics BSc; Mathematics and Statistics BSc Co-op /
-            Mathematics and Statistics BSc – Accelerated Mathematics and Statistics Studies
+            Biological Sciences BSc / Biomedical Sciences BSc / Biophysics BSc /
+            Physics BSc, Physics BSc Co-op / Sciences BSc / Game Programming BSc
+            / Chemistry BSc, Chemistry BSc Co-op / Oenology and Viticulture BSc
+            Co-op only / Biotechnology BSc, Biotechnology BSc Co-op /
+            Biochemistry BSc, Biochemistry BSc Co-op / Computer Science BSc,
+            Computer Science BSc Co-op / Neuroscience BSc, Neuroscience BSc
+            Co-op / Earth Sciences BSc, Earth Sciences BSc Co-op / Computer
+            Science and Mathematics BSc Co-op only / Computing and Business BCB,
+            Computing and Business BCB Co-op / Computing and Network
+            Communications BSc Co-op only / Computing and Solid State Device
+            Technology BSc, Computing and Solid State Device Technology BSc
+            Co-op / Environmental Geoscience BSc, Environmental Geoscience BSc
+            Co-op / Mathematics and Statistics BSc; Mathematics and Statistics
+            BSc Co-op / Mathematics and Statistics BSc – Accelerated Mathematics
+            and Statistics Studies
           </p>
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Goodman School of Business</h4>
+          <h4 className="font-semibold text-gray-900">
+            Goodman School of Business
+          </h4>
           <p>
-            Accounting BAcc, Accounting BAcc Co-op / Business Administration BBA, Business
-            Administration BBA Co-op / Business Administration BBA – International Dual Degree
-            Co-op only
+            Accounting BAcc, Accounting BAcc Co-op / Business Administration
+            BBA, Business Administration BBA Co-op / Business Administration BBA
+            – International Dual Degree Co-op only
           </p>
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Admissions &amp; Deadlines</h4>
+          <h4 className="font-semibold text-gray-900">
+            Admissions &amp; Deadlines
+          </h4>
           <ul className="list-disc list-inside space-y-1">
             <li>Wait time for CLOA: 2 weeks</li>
             <li>Soft deadline 1 April for September intake</li>
@@ -1609,7 +1768,10 @@ const PROGRAMS: ProgramItem[] = [
           <ul className="list-disc list-inside space-y-1">
             <li>A completed online application form</li>
             <li>Application fee: 235 CAD (through OUAC)</li>
-            <li>Official transcripts &amp; certificates from secondary and/or postsecondary institutions</li>
+            <li>
+              Official transcripts &amp; certificates from secondary and/or
+              postsecondary institutions
+            </li>
             <li>Passport copy</li>
             <li>ECLC&apos;s letter of acceptance</li>
           </ul>
@@ -1632,13 +1794,15 @@ const PROGRAMS: ProgramItem[] = [
     details: (
       <div className="space-y-4 text-sm sm:text-base text-gray-800 leading-relaxed">
         <p>
-          The University of Nottingham is ranked <strong>14th in the UK</strong> for Mechanical
-          Engineering (Guardian University Guide 2021).
+          The University of Nottingham is ranked <strong>14th in the UK</strong>{" "}
+          for Mechanical Engineering (Guardian University Guide 2021).
         </p>
 
         <div className="space-y-1">
           <h4 className="font-semibold text-gray-900">School / Department</h4>
-          <p>Department of Mechanical, Materials and Manufacturing Engineering</p>
+          <p>
+            Department of Mechanical, Materials and Manufacturing Engineering
+          </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -1657,23 +1821,29 @@ const PROGRAMS: ProgramItem[] = [
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">University of Nottingham Highlights</h4>
+          <h4 className="font-semibold text-gray-900">
+            University of Nottingham Highlights
+          </h4>
           <ul className="list-disc list-inside space-y-1">
             <li>
-              International and Sports University of the Year 2019 (Times and Sunday Times Good
-              University Guide)
+              International and Sports University of the Year 2019 (Times and
+              Sunday Times Good University Guide)
             </li>
             <li>Top 20 in the UK (QS World University Rankings 2022)</li>
             <li>
-              4th most-targeted UK university by graduate employers (High Fliers Research 2021)
+              4th most-targeted UK university by graduate employers (High Fliers
+              Research 2021)
             </li>
           </ul>
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Your path to university – Your degree</h4>
+          <h4 className="font-semibold text-gray-900">
+            Your path to university – Your degree
+          </h4>
           <p>
-            <strong>Foundation Certificate</strong> – Year 1, Year 2, Year 3, Year 4, Year 5
+            <strong>Foundation Certificate</strong> – Year 1, Year 2, Year 3,
+            Year 4, Year 5
           </p>
         </div>
 
@@ -1714,19 +1884,23 @@ const PROGRAMS: ProgramItem[] = [
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">University of Essex Highlights</h4>
+          <h4 className="font-semibold text-gray-900">
+            University of Essex Highlights
+          </h4>
           <ul className="list-disc list-inside space-y-1">
             <li>University of the Year 2018 (Times Higher Education Awards)</li>
             <li>Top 30 in the UK (Complete University Guide 2022)</li>
             <li>
-              3rd in the UK for investment in facilities and services (Times and Sunday Times Good
-              University Guide 2022)
+              3rd in the UK for investment in facilities and services (Times and
+              Sunday Times Good University Guide 2022)
             </li>
           </ul>
         </div>
 
         <div className="space-y-2">
-          <h4 className="font-semibold text-gray-900">Your path to university</h4>
+          <h4 className="font-semibold text-gray-900">
+            Your path to university
+          </h4>
           <p>
             <strong>Pre-Master&apos;s</strong> – Year 1
           </p>
@@ -1811,7 +1985,7 @@ export default function UniversityProgramsAccordion() {
                         </Link>
                         <div className="flex items-center justify-between gap-3 rounded-full border border-[#6A0B1C] px-4 py-2.5 text-xs sm:text-sm md:text-base text-[#6A0B1C]">
                           <span className="font-semibold">Telefon</span>
-                          <span>+90 542 623 07 24</span>
+                          <span>+90 546 440 02 97</span>
                         </div>
                       </div>
                     </div>
@@ -1830,4 +2004,3 @@ export default function UniversityProgramsAccordion() {
     </section>
   );
 }
-

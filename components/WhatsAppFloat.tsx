@@ -1,6 +1,6 @@
 "use client";
 
-const WHATSAPP_NUMBER = "905426230724";
+const WHATSAPP_NUMBER = "905464400297";
 const MESSAGE = "Merhaba, AKADER sitesinden ulaşıyorum.";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(MESSAGE)}`;
 
