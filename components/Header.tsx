@@ -98,7 +98,7 @@ export default function Header() {
                 {item.name === "Üniversite" || item.name === "Derneğimiz" ? (
                   <div className="relative group">
                     <Link
-                      href="/universite"
+                      href={item.href}
                       className={`inline-block text-sm font-bold transition-all duration-300 ease-out relative hover:translate-x-0.5 ${
                         item.active
                           ? "text-[#6A0B1C]"
