@@ -6,10 +6,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    /*
-     * Match only admin routes so we don't run Supabase auth on every request.
-     */
-    "/aka-2026-admin/:path*",
-  ],
+  matcher: ["/aka-2026-admin/:path*"],
 };

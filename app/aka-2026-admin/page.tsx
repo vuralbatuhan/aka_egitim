@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { supabase } from "@/lib/supabase";
+import TemsilcilerTab from "./TemsilcilerTab";
 
 interface InstagramPost {
   id: string;
@@ -60,7 +61,7 @@ interface ProgramRow {
 
 export default function AdminPanel() {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState<"instagram" | "contacts" | "programs">("instagram");
+  const [activeTab, setActiveTab] = useState<"instagram" | "contacts" | "programs" | "temsilciler">("instagram");
   const [instagramPosts, setInstagramPosts] = useState<InstagramPost[]>([]);
   const [contactSubmissions, setContactSubmissions] = useState<ContactSubmission[]>([]);
   const [loading, setLoading] = useState(true);
@@ -109,30 +110,20 @@ export default function AdminPanel() {
 
   const checkAuth = async () => {
     try {
-      const { data: { session }, error } = await supabase.auth.getSession();
-      
-      if (error) throw error;
-      
-      if (!session) {
-        router.push("/aka-2026-admin/login");
+      const res = await fetch("/api/admin-verify");
+      if (!res.ok) {
+        router.push("/admin-login");
         return;
       }
-      
       setCheckingAuth(false);
-    } catch (error) {
-      console.error("Auth check error:", error);
-      router.push("/aka-2026-admin/login");
+    } catch {
+      router.push("/admin-login");
     }
   };
 
   const handleLogout = async () => {
-    try {
-      const { error } = await supabase.auth.signOut();
-      if (error) throw error;
-      router.push("/aka-2026-admin/login");
-    } catch (error) {
-      console.error("Logout error:", error);
-    }
+    await fetch("/api/admin-logout", { method: "POST" });
+    router.push("/admin-login");
   };
 
   const fetchInstagramPosts = async () => {
@@ -497,6 +488,7 @@ export default function AdminPanel() {
     { id: "instagram" as const, label: "Instagram Gönderileri", icon: "M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z", color: "#F07D2C" },
     { id: "contacts" as const, label: "İletişim Formları", icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z", color: "#3699BF" },
     { id: "programs" as const, label: "Programlar", icon: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 7V7a2 2 0 012-2m0 0V5a2 2 0 012 2m0 6v6a2 2 0 01-2 2h-2m-4 0h-2a2 2 0 01-2-2v-6a2 2 0 012-2h2a2 2 0 012 2v6a2 2 0 01-2 2z", color: "#641a29" },
+    { id: "temsilciler" as const, label: "Temsilciler", icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z", color: "#641a29" },
   ];
 
   return (
@@ -581,6 +573,7 @@ export default function AdminPanel() {
             {activeTab === "instagram" && "Instagram Gönderileri"}
             {activeTab === "contacts" && "İletişim Formları"}
             {activeTab === "programs" && "Programlar"}
+            {activeTab === "temsilciler" && "Temsilciler"}
           </h2>
         </div>
 
@@ -879,6 +872,9 @@ export default function AdminPanel() {
             )}
           </div>
         )}
+
+        {/* Temsilciler Tab */}
+        {activeTab === "temsilciler" && <TemsilcilerTab />}
 
         {/* Programlar Tab */}
         {activeTab === "programs" && (

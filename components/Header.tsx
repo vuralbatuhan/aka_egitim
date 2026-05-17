@@ -19,15 +19,16 @@ export default function Header() {
     { name: "Genel Başkan", href: "/kurucumuz-kimdir" },
     { name: "Niçin Kurulduk", href: "/nicin-kurduk" },
     { name: "Ne Yapmak İstiyoruz", href: "/ne-yapmak-istiyoruz" },
+    { name: "İl Temsilcilerimiz", href: "/il-temsilcilerimiz" },
   ];
 
   const navItems = [
     { name: "Ana Sayfa", href: "/", active: pathname === "/" },
-    {
-      name: "Üniversite",
-      href: "/universite",
-      active: pathname.startsWith("/universite"),
-    },
+    // {
+    //   name: "Üniversite",
+    //   href: "/universite",
+    //   active: pathname.startsWith("/universite"),
+    // },
     // { name: 'Dil Eğitimi', href: '/dil-egitimi', active: pathname === '/dil-egitimi' || pathname.startsWith('/dil-okullari') },
     // { name: 'Öğretmen Hareketliliği', href: '/ogretmen-hareketliligi', active: pathname === '/ogretmen-hareketliligi' },
     {
@@ -37,7 +38,13 @@ export default function Header() {
         pathname === "/hakkimizda" ||
         pathname === "/kurucumuz-kimdir" ||
         pathname === "/nicin-kurduk" ||
-        pathname === "/ne-yapmak-istiyoruz",
+        pathname === "/ne-yapmak-istiyoruz" ||
+        pathname === "/il-temsilcilerimiz",
+    },
+    {
+      name: "Çözüm Ortaklarımız",
+      href: "/cozum-ortaklarimiz",
+      active: pathname === "/cozum-ortaklarimiz",
     },
     {
       name: "Hakkımızda",

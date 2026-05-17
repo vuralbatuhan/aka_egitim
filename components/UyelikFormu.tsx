@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
@@ -33,8 +33,6 @@ export default function UyelikFormu() {
     tcKimlik: "",
     telefon: "",
     dogumTarihi: "",
-    sifre: "",
-    sifreTekrar: "",
     adres: "",
     gorevUnvan: "",
     kanGrubu: "",
@@ -43,12 +41,21 @@ export default function UyelikFormu() {
     ikametIl: "",
     gorevIl: "",
   });
-  const [sifreGoster, setSifreGoster] = useState(false);
-  const [sifreTekrarGoster, setSifreTekrarGoster] = useState(false);
+  const [foto, setFoto] = useState<File | null>(null);
+  const [fotoPreview, setFotoPreview] = useState<string | null>(null);
   const [kayitSartlari, setKayitSartlari] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [validationBanner, setValidationBanner] = useState(false);
+  const formTopRef = useRef<HTMLDivElement>(null);
+
+  const handleFotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setFoto(file);
+    setFotoPreview(URL.createObjectURL(file));
+  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -68,9 +75,6 @@ export default function UyelikFormu() {
     else if (formData.tcKimlik.length !== 11) newErrors.tcKimlik = "TC Kimlik 11 haneli olmalıdır.";
     if (!formData.telefon.trim()) newErrors.telefon = "Telefon zorunludur.";
     if (!formData.dogumTarihi) newErrors.dogumTarihi = "Doğum tarihi zorunludur.";
-    if (!formData.sifre) newErrors.sifre = "Şifre zorunludur.";
-    else if (formData.sifre.length < 6) newErrors.sifre = "Şifre en az 6 karakter olmalıdır.";
-    if (formData.sifre !== formData.sifreTekrar) newErrors.sifreTekrar = "Şifreler eşleşmiyor.";
     if (!formData.adres.trim()) newErrors.adres = "Adres zorunludur.";
     if (!formData.ikametIl) newErrors.ikametIl = "İkamet ili zorunludur.";
     if (!formData.gorevIl) newErrors.gorevIl = "Görev ili zorunludur.";
@@ -80,13 +84,31 @@ export default function UyelikFormu() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setValidationBanner(false);
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
+      setValidationBanner(true);
+      formTopRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
       return;
     }
     setIsSubmitting(true);
     try {
+      let foto_url: string | null = null;
+      if (foto) {
+        const ext = foto.name.split(".").pop();
+        const dosyaAdi = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+        const { data: uploadData, error: uploadError } = await supabase.storage
+          .from("uye-fotograflari")
+          .upload(dosyaAdi, foto, { upsert: false });
+        if (!uploadError && uploadData) {
+          const { data: urlData } = supabase.storage
+            .from("uye-fotograflari")
+            .getPublicUrl(uploadData.path);
+          foto_url = urlData.publicUrl;
+        }
+      }
+
       const { error } = await supabase.from("uyelik_basvurulari").insert([
         {
           ad: formData.ad,
@@ -103,6 +125,7 @@ export default function UyelikFormu() {
           ikamet_il: formData.ikametIl,
           gorev_il: formData.gorevIl,
           kayit_sartlari: true,
+          foto_url,
         },
       ]);
       if (error) throw error;
@@ -185,7 +208,7 @@ export default function UyelikFormu() {
             </div>
           ) : (
             <>
-              <div className="text-center mb-8">
+              <div ref={formTopRef} className="text-center mb-8">
                 <h2 className="text-xl sm:text-2xl font-bold mb-1" style={{ color: "#6A0B1C" }}>
                   AKADER | Üyelik Formu
                 </h2>
@@ -193,6 +216,17 @@ export default function UyelikFormu() {
                   Lütfen formu eksiksiz ve doğru doldurduğunuzdan emin olun
                 </p>
               </div>
+
+              {validationBanner && (
+                <div className="flex items-center gap-3 px-4 py-3 rounded-lg bg-red-50 border border-red-200 mb-4">
+                  <svg className="w-5 h-5 shrink-0 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+                  </svg>
+                  <p className="text-sm text-red-700 font-medium">
+                    Lütfen kırmızı işaretli zorunlu alanları eksiksiz doldurun.
+                  </p>
+                </div>
+              )}
 
               <form onSubmit={handleSubmit} noValidate className="space-y-5">
                 {/* Ad / Soyad */}
@@ -293,78 +327,6 @@ export default function UyelikFormu() {
                   </div>
                 </div>
 
-                {/* Şifre / Şifre Tekrar */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className={labelClass}>
-                      Şifreniz <span className="text-red-500">*</span>
-                    </label>
-                    <div className="relative">
-                      <input
-                        type={sifreGoster ? "text" : "password"}
-                        name="sifre"
-                        value={formData.sifre}
-                        onChange={handleChange}
-                        placeholder="Şifrenizi yazınız"
-                        className={inputClass("sifre") + " pr-10"}
-                      />
-                      <button
-                        type="button"
-                        onClick={() => setSifreGoster((v) => !v)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
-                        tabIndex={-1}
-                      >
-                        {sifreGoster ? (
-                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
-                          </svg>
-                        ) : (
-                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                          </svg>
-                        )}
-                      </button>
-                    </div>
-                    {errors.sifre && <p className="text-red-500 text-xs mt-1">{errors.sifre}</p>}
-                  </div>
-                  <div>
-                    <label className={labelClass}>
-                      Şifre Tekrar <span className="text-red-500">*</span>
-                    </label>
-                    <div className="relative">
-                      <input
-                        type={sifreTekrarGoster ? "text" : "password"}
-                        name="sifreTekrar"
-                        value={formData.sifreTekrar}
-                        onChange={handleChange}
-                        placeholder="Şifreyi tekrar yazınız"
-                        className={inputClass("sifreTekrar") + " pr-10"}
-                      />
-                      <button
-                        type="button"
-                        onClick={() => setSifreTekrarGoster((v) => !v)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
-                        tabIndex={-1}
-                      >
-                        {sifreTekrarGoster ? (
-                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
-                          </svg>
-                        ) : (
-                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                          </svg>
-                        )}
-                      </button>
-                    </div>
-                    {errors.sifreTekrar && (
-                      <p className="text-red-500 text-xs mt-1">{errors.sifreTekrar}</p>
-                    )}
-                  </div>
-                </div>
-
                 {/* Adres */}
                 <div>
                   <label className={labelClass}>
@@ -379,6 +341,33 @@ export default function UyelikFormu() {
                     className={inputClass("adres")}
                   />
                   {errors.adres && <p className="text-red-500 text-xs mt-1">{errors.adres}</p>}
+                </div>
+
+                {/* Fotoğraf */}
+                <div>
+                  <label className={labelClass}>Profil Fotoğrafı</label>
+                  <div className="flex items-center gap-4">
+                    <div className="w-20 h-20 rounded-full overflow-hidden bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center shrink-0">
+                      {fotoPreview ? (
+                        <img src={fotoPreview} alt="Önizleme" className="w-full h-full object-cover" />
+                      ) : (
+                        <svg className="w-8 h-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                        </svg>
+                      )}
+                    </div>
+                    <label className="flex-1 cursor-pointer">
+                      <div className="w-full px-4 py-2.5 border border-dashed border-gray-300 rounded-lg text-sm text-gray-500 text-center hover:border-[#6A0B1C] hover:text-[#6A0B1C] transition-colors">
+                        {foto ? foto.name : "Fotoğraf seç (JPG, PNG, WEBP)"}
+                      </div>
+                      <input
+                        type="file"
+                        accept="image/jpeg,image/png,image/webp"
+                        onChange={handleFotoChange}
+                        className="hidden"
+                      />
+                    </label>
+                  </div>
                 </div>
 
                 {/* Görev/Ünvan / Kan Grubu */}
@@ -480,6 +469,40 @@ export default function UyelikFormu() {
                   </select>
                   {errors.gorevIl && (
                     <p className="text-red-500 text-xs mt-1">{errors.gorevIl}</p>
+                  )}
+                </div>
+
+                {/* Kayıt Şartları */}
+                <div>
+                  <label className="flex items-start gap-3 cursor-pointer select-none">
+                    <input
+                      type="checkbox"
+                      checked={kayitSartlari}
+                      onChange={(e) => {
+                        setKayitSartlari(e.target.checked);
+                        if (errors.kayitSartlari)
+                          setErrors((prev) => ({ ...prev, kayitSartlari: "" }));
+                      }}
+                      className="mt-0.5 w-4 h-4 shrink-0 accent-[#6A0B1C] cursor-pointer"
+                    />
+                    <span className="text-sm text-gray-600 leading-relaxed">
+                      AKADER üyelik koşullarını ve{" "}
+                      <a
+                        href="/gizlilik"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline hover:text-[#6A0B1C] transition-colors"
+                        style={{ color: "#6A0B1C" }}
+                      >
+                        gizlilik politikasını
+                      </a>{" "}
+                      okudum, kabul ediyorum.
+                    </span>
+                  </label>
+                  {errors.kayitSartlari && (
+                    <p className="text-red-500 text-xs mt-1.5 ml-7">
+                      {errors.kayitSartlari}
+                    </p>
                   )}
                 </div>
 
