@@ -140,10 +140,10 @@ export default function Hero() {
                         Öğretmen Dokunuşuyla
                       </span>
                       <span
-                        className="block text-4xl sm:text-5xl md:text-6xl lg:text-[72px]"
+                        className="block text-4xl sm:text-5xl md:text-6xl sm:text-[72px]"
                         style={{ fontWeight: "700", color: "#F07D2C" }}
                       >
-                        Dünya Keşfi
+                        Güvenli Yurt Dışı Eğitim Yolculuğu
                       </span>
                     </>
                   ) : (
