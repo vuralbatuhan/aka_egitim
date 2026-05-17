@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { supabase } from "@/lib/supabase";
 
@@ -10,12 +9,8 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const searchParams = useSearchParams();
 
   useEffect(() => {
-    if (searchParams.get("hata") === "yetkisiz") {
-      setError("Bu hesabın admin yetkisi bulunmuyor.");
-    }
     checkSession();
   }, []);
 
