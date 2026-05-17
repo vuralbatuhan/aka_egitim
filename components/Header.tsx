@@ -20,6 +20,7 @@ export default function Header() {
     { name: "Niçin Kurulduk", href: "/nicin-kurduk" },
     { name: "Ne Yapmak İstiyoruz", href: "/ne-yapmak-istiyoruz" },
     { name: "İl Temsilcilerimiz", href: "/il-temsilcilerimiz" },
+    { name: "Tüzüğümüz", href: "/tuzugumuz" },
   ];
 
   const navItems = [
@@ -39,7 +40,8 @@ export default function Header() {
         pathname === "/kurucumuz-kimdir" ||
         pathname === "/nicin-kurduk" ||
         pathname === "/ne-yapmak-istiyoruz" ||
-        pathname === "/il-temsilcilerimiz",
+        pathname === "/il-temsilcilerimiz" ||
+        pathname === "/tuzugumuz",
     },
     {
       name: "Çözüm Ortaklarımız",
