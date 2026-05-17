@@ -14,13 +14,16 @@ import { createPageMetadata } from "@/lib/seo";
 export const metadata: Metadata = createPageMetadata({
   title: "Anasayfa",
   description:
-    "AKA Eğitim; öğretmenlerin kurduğu, yurtdışı dil eğitimi, üniversite danışmanlığı ve öğretmen hareketliliği programları sunan eğitim oluşumu. Öğretmen güvenirliği ile yurtdışı hedeflerinizi gerçekleştirin.",
+    "AKADER; öğretmenlerin kurduğu, yurtdışı dil eğitimi, üniversite danışmanlığı ve öğretmen hareketliliği programları sunan eğitim oluşumu. Öğretmen güvenirliği ile yurtdışı hedeflerinizi gerçekleştirin.",
   path: "/",
 });
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col gap-8 md:gap-16" style={{ backgroundColor: "#F5F5F5" }}>
+    <main
+      className="min-h-screen flex flex-col gap-8 md:gap-16"
+      style={{ backgroundColor: "#F5F5F5" }}
+    >
       <Header />
       <Hero />
       <AnimatedSection direction="up" delay={0.1}>

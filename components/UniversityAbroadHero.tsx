@@ -21,7 +21,9 @@ export default function UniversityAbroadHero() {
             <span className="mx-1.5 md:mx-2 text-white">/</span>
             <span className="text-white">Üniversite</span>
             <span className="mx-1.5 md:mx-2 text-white">/</span>
-            <span className="text-[#f0771b] font-semibold">Yurt Dışı Üniversite</span>
+            <span className="text-[#f0771b] font-semibold">
+              Yurt Dışı Üniversite
+            </span>
           </nav>
         </motion.div>
 
@@ -43,12 +45,11 @@ export default function UniversityAbroadHero() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         >
-          Amerika, Kanada, Avrupa ve daha birçok ülkede üniversite ve yabancı dil programlarını
-          tek ekranda keşfedin. AKA Eğitim’in öğretmen danışmanlığı ile size en uygun programı
-          birlikte seçelim.
+          Amerika, Kanada, Avrupa ve daha birçok ülkede üniversite ve yabancı
+          dil programlarını tek ekranda keşfedin. AKADER’in öğretmen
+          danışmanlığı ile size en uygun programı birlikte seçelim.
         </motion.p>
       </div>
     </section>
   );
 }
-

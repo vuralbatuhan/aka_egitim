@@ -10,13 +10,16 @@ import { createPageMetadata } from "@/lib/seo";
 export const metadata: Metadata = createPageMetadata({
   title: "Öğretmen Hareketliliği - Belçika",
   description:
-    "AKA Eğitim ile Belçika'da sertifikalı öğretmen eğitimi programları. Öğretmen hareketliliği, mesleki gelişim ve pedagojik eğitim fırsatları. Belçika öğretmen eğitimi.",
+    "AKADER ile Belçika'da sertifikalı öğretmen eğitimi programları. Öğretmen hareketliliği, mesleki gelişim ve pedagojik eğitim fırsatları. Belçika öğretmen eğitimi.",
   path: "/ogretmen-hareketliligi/belcika",
 });
 
 export default function OgretmenHareketliligiBelcika() {
   return (
-    <main className="min-h-screen flex flex-col gap-8 md:gap-16" style={{ backgroundColor: "#F5F5F5" }}>
+    <main
+      className="min-h-screen flex flex-col gap-8 md:gap-16"
+      style={{ backgroundColor: "#F5F5F5" }}
+    >
       <Header />
       <TeacherEducationHeroBelgium />
       <AnimatedSection direction="up" delay={0.1}>

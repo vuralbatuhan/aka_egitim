@@ -10,7 +10,7 @@ import { createPageMetadata } from "@/lib/seo";
 export const metadata: Metadata = createPageMetadata({
   title: "Çift Diploma Programı - Amerikan Lise Diploması ve AP Dersleri",
   description:
-    "Mevcut lise eğitiminize devam ederken Amerikan Lise Diploması ve AP dersleri ile çift diploma imkânı. AKA Eğitim ile üniversiteye bir adım önde başlayın.",
+    "Mevcut lise eğitiminize devam ederken Amerikan Lise Diploması ve AP dersleri ile çift diploma imkânı. AKADER ile üniversiteye bir adım önde başlayın.",
   path: "/universite/cift-diploma",
 });
 
@@ -29,4 +29,3 @@ export default function UniversiteCiftDiploma() {
     </main>
   );
 }
-

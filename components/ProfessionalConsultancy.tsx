@@ -28,9 +28,7 @@ export default function ProfessionalConsultancy() {
 
                 {/* Main Heading */}
                 <h2 className="leading-tight">
-                  <span
-                    className="text-white block mb-1 text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-bold"
-                  >
+                  <span className="text-white block mb-1 text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-bold">
                     Hayalinizdeki Eğitim
                   </span>
                   <span
@@ -48,7 +46,7 @@ export default function ProfessionalConsultancy() {
                   className="text-white leading-relaxed max-w-xl text-sm md:text-base mx-auto lg:mx-0"
                   style={{ lineHeight: "1.6" }}
                 >
-                  Aka Eğitim profesyonel danışmanlarımızla görüşün ve size özel
+                  AKADER profesyonel danışmanlarımızla görüşün ve size özel
                   yurtdışı eğitim planınızı oluşturalım
                 </p>
 
@@ -82,16 +80,17 @@ export default function ProfessionalConsultancy() {
 
               {/* Right Column - Image */}
               <div className="relative hidden lg:flex items-end justify-center lg:justify-end h-full">
-                <div
-                  className="relative w-full max-w-[450px] h-full translate-y-4"
-                >
+                <div className="relative w-full max-w-[450px] h-full translate-y-4">
                   <Image
                     src="/images/375274645_96eb2f85-aa60-40d0-83f7-2674070a32e8.png"
                     alt="Profesyonel danışmanlık - Genç danışman"
                     width={450}
                     height={600}
                     className="w-full h-full"
-                    style={{ objectFit: "contain", objectPosition: "right bottom" }}
+                    style={{
+                      objectFit: "contain",
+                      objectPosition: "right bottom",
+                    }}
                   />
                 </div>
               </div>

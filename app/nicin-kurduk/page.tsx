@@ -12,13 +12,16 @@ import { createPageMetadata } from "@/lib/seo";
 export const metadata: Metadata = createPageMetadata({
   title: "Niçin Kurulduk",
   description:
-    "AKA Eğitim neden kuruldu? Öğretmenlerin kurduğu bu eğitim oluşumunun misyonu, kuruluş amacı ve öğrencilerin yurtdışı hedeflerini öğretmen güvenirliği ile gerçekleştirme vizyonu.",
+    "AKADER neden kuruldu? Öğretmenlerin kurduğu bu eğitim oluşumunun misyonu, kuruluş amacı ve öğrencilerin yurtdışı hedeflerini öğretmen güvenirliği ile gerçekleştirme vizyonu.",
   path: "/nicin-kurduk",
 });
 
 export default function NicinKurdukPage() {
   return (
-    <main className="min-h-screen flex flex-col" style={{ backgroundColor: "#F5F5F5" }}>
+    <main
+      className="min-h-screen flex flex-col"
+      style={{ backgroundColor: "#F5F5F5" }}
+    >
       <Header />
       <NicinKurdukHero />
       <AnimatedSection direction="up" delay={0.1}>

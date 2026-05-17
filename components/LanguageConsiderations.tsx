@@ -37,14 +37,24 @@ export default function LanguageConsiderations() {
                 className="w-1 h-16"
                 style={{ backgroundColor: "#800000" }}
               ></div>
-              <h2 className="text-4xl lg:text-5xl font-bold" style={{ color: "#1a1a1a" }}>
+              <h2
+                className="text-4xl lg:text-5xl font-bold"
+                style={{ color: "#1a1a1a" }}
+              >
                 Dil Okulu Seçerken Nelere Dikkat Etmelisiniz?
               </h2>
             </div>
 
             {/* Introduction Paragraph */}
-            <p className="text-base lg:text-lg leading-relaxed mb-8" style={{ color: "#666666" }}>
-              Aka Eğitim, hedeflerinize uygun programı belirlerken dil seviyeniz, bütçeniz, çalışma planlarınız ve vize koşullarını analiz eder. Destinasyon seçimi yaparken yıl boyu yaşam maliyetlerini, konaklama alternatiflerini ve kültürel uyum sürecinizi birlikte planlarız.
+            <p
+              className="text-base lg:text-lg leading-relaxed mb-8"
+              style={{ color: "#666666" }}
+            >
+              AKADER, hedeflerinize uygun programı belirlerken dil seviyeniz,
+              bütçeniz, çalışma planlarınız ve vize koşullarını analiz eder.
+              Destinasyon seçimi yaparken yıl boyu yaşam maliyetlerini,
+              konaklama alternatiflerini ve kültürel uyum sürecinizi birlikte
+              planlarız.
             </p>
 
             {/* Information Blocks */}
@@ -54,11 +64,15 @@ export default function LanguageConsiderations() {
                   key={index}
                   className="rounded-lg p-4 transition-all duration-300"
                   style={{
-                    backgroundColor: consideration.isPrimary ? "#800000" : "#F5EFEF",
+                    backgroundColor: consideration.isPrimary
+                      ? "#800000"
+                      : "#F5EFEF",
                     color: consideration.isPrimary ? "#FFFFFF" : "#333333",
                   }}
                 >
-                  <p className="text-base leading-relaxed">{consideration.text}</p>
+                  <p className="text-base leading-relaxed">
+                    {consideration.text}
+                  </p>
                 </div>
               ))}
             </div>

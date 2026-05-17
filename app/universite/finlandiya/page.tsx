@@ -10,13 +10,16 @@ import { createPageMetadata } from "@/lib/seo";
 export const metadata: Metadata = createPageMetadata({
   title: "Finlandiya Üniversiteleri",
   description:
-    "AKA Eğitim ile Finlandiya'da üniversite eğitimi. Finlandiya üniversiteleri, başvuru koşulları ve vize süreci. Öğretmen danışmanlığı ile Finlandiya üniversite başvurusu.",
+    "AKADER ile Finlandiya'da üniversite eğitimi. Finlandiya üniversiteleri, başvuru koşulları ve vize süreci. Öğretmen danışmanlığı ile Finlandiya üniversite başvurusu.",
   path: "/universite/finlandiya",
 });
 
 export default function UniversiteFinlandiya() {
   return (
-    <main className="min-h-screen flex flex-col gap-8 md:gap-16" style={{ backgroundColor: "#F5F5F5" }}>
+    <main
+      className="min-h-screen flex flex-col gap-8 md:gap-16"
+      style={{ backgroundColor: "#F5F5F5" }}
+    >
       <Header />
       <UniversityHeroFinland />
       <AnimatedSection direction="up" delay={0.1}>

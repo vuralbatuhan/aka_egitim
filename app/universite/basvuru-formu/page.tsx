@@ -8,7 +8,7 @@ import { createPageMetadata } from "@/lib/seo";
 export const metadata: Metadata = createPageMetadata({
   title: "Yurt Dışı Üniversite Programları",
   description:
-    "AKA Eğitim ile Amerika, Kanada, İngiltere ve birçok ülkede üniversite ve yabancı dil programlarını tek sayfada inceleyin. Kabul şartları, maliyetler ve başvuru adımlarına göz atın.",
+    "AKADER ile Amerika, Kanada, İngiltere ve birçok ülkede üniversite ve yabancı dil programlarını tek sayfada inceleyin. Kabul şartları, maliyetler ve başvuru adımlarına göz atın.",
   path: "/universite/basvuru-formu",
 });
 
@@ -25,4 +25,3 @@ export default function UniversiteBasvuruFormu() {
     </main>
   );
 }
-

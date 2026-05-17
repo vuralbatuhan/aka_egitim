@@ -4,9 +4,7 @@ import Image from "next/image";
 
 export default function AboutAKA() {
   return (
-    <section
-      className="relative flex flex-col items-center overflow-hidden py-10 md:py-16 px-4 lg:px-8 bg-[#F5F5F5] w-full max-w-[1200px] mx-auto"
-    >
+    <section className="relative flex flex-col items-center overflow-hidden py-10 md:py-16 px-4 lg:px-8 bg-[#F5F5F5] w-full max-w-[1200px] mx-auto">
       <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center">
         {/* Left Column - Content */}
         <div className="flex flex-col justify-center">
@@ -20,7 +18,7 @@ export default function AboutAKA() {
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold"
               style={{ color: "#1a1a1a" }}
             >
-              AKA Eğitim Hakkında
+              AKADER Hakkında
             </h2>
           </div>
 
@@ -30,7 +28,25 @@ export default function AboutAKA() {
               className="text-sm sm:text-base lg:text-lg leading-relaxed"
               style={{ color: "#666666" }}
             >
-              AKA; &quot;Öğretmen rehberliğinde yurtdışı eğitim hareketliliğinin adı soyadı&quot; sloganıyla yola çıkmıştır. Azim, Kararlılık ve Ayrıcalık ilkeleri ile öğrencilerin yurtdışı eğitim yolculuğuna &quot;öğretmen güvencesi&quot; ile rehberlik eder.
+              Akader &quot;Öğretmen rehberliğinde yurtdışı eğitim
+              hareketliliğinin adı soyadı&quot; sloganıyla yola çıkmıştır. Azim,
+              Kararlılık ve Ayrıcalık ilkeleri ile öğrencilerin yurtdışı eğitim
+              yolculuğuna ;öğretmen güvencesi ile rehberlik eder.
+            </p>
+            <p
+              className="text-sm sm:text-base lg:text-lg leading-relaxed"
+              style={{ color: "#666666" }}
+            >
+              Akaderin amacı öğrencilerin yıllar içinde yurtdışında birbirlerini
+              bulmaları, kulüpler oluşturmaları, ülkeleri için bir arada
+              bulunmalarıdır.
+            </p>
+            <p
+              className="text-sm sm:text-base lg:text-lg leading-relaxed"
+              style={{ color: "#666666" }}
+            >
+              Akader aileler ve öğrencilerle beraber ülkemiz adına güvenli bir
+              kariyer planlaması gelecek planlaması hedefler
             </p>
           </div>
         </div>

@@ -13,13 +13,16 @@ import { createPageMetadata } from "@/lib/seo";
 export const metadata: Metadata = createPageMetadata({
   title: "Ne Yapmak İstiyoruz",
   description:
-    "AKA Eğitim hedefleri ve felsefesi. Öğretmen rehberliğinde yurtdışı eğitim fırsatları sunarak öğrencilerin dil, üniversite ve mesleki gelişim hedeflerine ulaşmalarını sağlıyoruz.",
+    "AKADER hedefleri ve felsefesi. Öğretmen rehberliğinde yurtdışı eğitim fırsatları sunarak öğrencilerin dil, üniversite ve mesleki gelişim hedeflerine ulaşmalarını sağlıyoruz.",
   path: "/ne-yapmak-istiyoruz",
 });
 
 export default function NeYapmakIstiyoruzPage() {
   return (
-    <main className="min-h-screen flex flex-col" style={{ backgroundColor: "#F5F5F5" }}>
+    <main
+      className="min-h-screen flex flex-col"
+      style={{ backgroundColor: "#F5F5F5" }}
+    >
       <Header />
       <NeYapmakIstiyoruzHero />
       <AnimatedSection direction="up" delay={0.1}>

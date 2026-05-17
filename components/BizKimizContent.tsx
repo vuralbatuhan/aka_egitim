@@ -9,20 +9,42 @@ export default function BizKimizContent() {
         {/* Left - Title + Content */}
         <div className="flex flex-col justify-center">
           <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-6">
-            <div className="h-10 md:h-12 w-1 rounded-full" style={{ backgroundColor: "#800000" }} />
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold" style={{ color: "#1a1a1a" }}>
+            <div
+              className="h-10 md:h-12 w-1 rounded-full"
+              style={{ backgroundColor: "#800000" }}
+            />
+            <h2
+              className="text-2xl sm:text-3xl md:text-4xl font-bold"
+              style={{ color: "#1a1a1a" }}
+            >
               Biz Kimiz?
             </h2>
           </div>
           <div className="space-y-3 md:space-y-4">
-            <p className="text-sm sm:text-base lg:text-lg leading-relaxed" style={{ color: "#666666" }}>
-              AKA; &quot;Konu ülkenin geleceği ise özne eğitimdir.&quot; şiarıyla yola çıkan öğretmenlerin kurduğu öncü bir eğitim oluşumudur. Öğretmen rehberliğinde, öğrencilerimizin yurtdışına dair tüm hedef ve hayallerini yine öğretmen güvenirliği ve dokunuşu ile gerçekleştirmek amacıyla kurulmuştur.
+            <p
+              className="text-sm sm:text-base lg:text-lg leading-relaxed"
+              style={{ color: "#666666" }}
+            >
+              AKADER &quot;Konu ülkenin geleceği ise özne eğitimdir.&quot;
+              şiarıyla yola çıkan öğretmenlerin kurduğu öncü bir eğitim
+              oluşumudur. Öğretmen rehberliğinde, öğrencilerimizin yurtdışına
+              dair tüm hedef ve hayallerini yine öğretmen güvenirliği ve
+              dokunuşu ile gerçekleştirmek amacıyla kurulmuştur.
             </p>
-            <p className="text-sm sm:text-base lg:text-lg leading-relaxed" style={{ color: "#666666" }}>
-              Azim, Kararlılık ve Ayrıcalık ilkelerini güven temeliyle birleştiren eğitimciler tarafından dayanışma ruhuyla hayata geçirilmiştir.
+            <p
+              className="text-sm sm:text-base lg:text-lg leading-relaxed"
+              style={{ color: "#666666" }}
+            >
+              Azim, Kararlılık ve Ayrıcalık ilkelerini güven temeliyle
+              birleştiren eğitimciler tarafından dayanışma ruhuyla hayata
+              geçirilmiştir.
             </p>
-            <p className="text-sm sm:text-base lg:text-lg leading-relaxed" style={{ color: "#666666" }}>
-              Bünyemiz, uluslararası öğrenci ve öğretmen hareketliliğini bizzat eğitimci bakış açısıyla yöneten profesyonellerden oluşmaktadır.
+            <p
+              className="text-sm sm:text-base lg:text-lg leading-relaxed"
+              style={{ color: "#666666" }}
+            >
+              Bünyemiz, uluslararası öğrenci ve öğretmen hareketliliğini bizzat
+              eğitimci bakış açısıyla yöneten profesyonellerden oluşmaktadır.
             </p>
           </div>
         </div>

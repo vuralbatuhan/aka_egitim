@@ -11,13 +11,16 @@ import { createPageMetadata } from "@/lib/seo";
 export const metadata: Metadata = createPageMetadata({
   title: "Finlandiya Dil Okulları",
   description:
-    "AKA Eğitim ile Finlandiya'da dil eğitimi. Finlandiya dil okulu programları, başvuru süreci ve sertifikalı dil eğitimi fırsatları. Öğretmen güvenirliği ile Finlandiya dil okulu.",
+    "AKADER ile Finlandiya'da dil eğitimi. Finlandiya dil okulu programları, başvuru süreci ve sertifikalı dil eğitimi fırsatları. Öğretmen güvenirliği ile Finlandiya dil okulu.",
   path: "/dil-okullari/finlandiya",
 });
 
 export default function DilOkullariFinlandiya() {
   return (
-    <main className="min-h-screen flex flex-col gap-8 md:gap-16" style={{ backgroundColor: "#F5F5F5" }}>
+    <main
+      className="min-h-screen flex flex-col gap-8 md:gap-16"
+      style={{ backgroundColor: "#F5F5F5" }}
+    >
       <Header />
       <LanguageSchoolHeroFinland />
       <AnimatedSection direction="up" delay={0.1}>

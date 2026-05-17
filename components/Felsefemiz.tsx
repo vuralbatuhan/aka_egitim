@@ -24,9 +24,15 @@ export default function Felsefemiz() {
               viewport={{ once: true }}
               className="text-base md:text-lg leading-relaxed text-gray-700 max-w-[60rem] space-y-0"
             >
-              <span className="block">AKA Eğitim, öğrenmenin ve öğretmenin evrenselliğine inanır.</span>
-              <span className="block">Her yeni gözlemin ve yaşantının öğretmen rehberliğinde</span>
-              <span className="block">öğrencilere aktarılan cümlelerde olduğuna inanır.</span>
+              <span className="block">
+                AKADER, öğrenmenin ve öğretmenin evrenselliğine inanır.
+              </span>
+              <span className="block">
+                Her yeni gözlemin ve yaşantının öğretmen rehberliğinde
+              </span>
+              <span className="block">
+                öğrencilere aktarılan cümlelerde olduğuna inanır.
+              </span>
             </motion.div>
           </div>
 
@@ -48,8 +54,12 @@ export default function Felsefemiz() {
               >
                 &quot;Her ülke öğretmen için bir ansiklopedidir.&quot;
               </p>
-              <p className="text-sm md:text-base leading-relaxed" style={{ color: "#6B1C28" }}>
-                &quot;Konu ülkenin geleceği ise özne eğitim, eğitimin öznesi ise değerli kılınmış öğretmendir.&quot;
+              <p
+                className="text-sm md:text-base leading-relaxed"
+                style={{ color: "#6B1C28" }}
+              >
+                &quot;Konu ülkenin geleceği ise özne eğitim, eğitimin öznesi ise
+                değerli kılınmış öğretmendir.&quot;
               </p>
             </motion.div>
           </div>

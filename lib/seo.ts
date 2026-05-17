@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 
 export const SITE_CONFIG = {
-  name: "AKA Eğitim - Anadolu",
-  shortName: "AKA Eğitim",
+  name: "AKADER - Anadolu",
+  shortName: "AKADER",
   description:
-    "AKA Eğitim; öğretmenlerin kurduğu, yurtdışı dil eğitimi, üniversite danışmanlığı ve öğretmen hareketliliği programları sunan eğitim oluşumu. Öğretmen güvenirliği ile yurtdışı hedeflerinizi gerçekleştirin.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://aka-omervordexs-projects.vercel.app",
+    "AKADER; öğretmenlerin kurduğu, yurtdışı dil eğitimi, üniversite danışmanlığı ve öğretmen hareketliliği programları sunan eğitim oluşumu. Öğretmen güvenirliği ile yurtdışı hedeflerinizi gerçekleştirin.",
+  url:
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    "https://aka-omervordexs-projects.vercel.app",
   locale: "tr_TR",
   ogImage: "/images/baskl.png",
 } as const;
@@ -23,9 +25,13 @@ export function createPageMetadata({
   noIndex?: boolean;
   image?: string;
 }): Metadata {
-  const fullTitle = title.includes(SITE_CONFIG.shortName) ? title : `${title} | ${SITE_CONFIG.shortName}`;
+  const fullTitle = title.includes(SITE_CONFIG.shortName)
+    ? title
+    : `${title} | ${SITE_CONFIG.shortName}`;
   const canonicalUrl = path ? `${SITE_CONFIG.url}${path}` : SITE_CONFIG.url;
-  const ogImageUrl = image ? `${SITE_CONFIG.url}${image}` : `${SITE_CONFIG.url}${SITE_CONFIG.ogImage}`;
+  const ogImageUrl = image
+    ? `${SITE_CONFIG.url}${image}`
+    : `${SITE_CONFIG.url}${SITE_CONFIG.ogImage}`;
 
   return {
     title: fullTitle,
@@ -49,13 +55,15 @@ export function createPageMetadata({
       description,
       images: [ogImageUrl],
     },
-    robots: noIndex ? { index: false, follow: false } : { index: true, follow: true },
+    robots: noIndex
+      ? { index: false, follow: false }
+      : { index: true, follow: true },
     keywords: [
       "yurtdışı eğitim",
       "dil okulu",
       "üniversite danışmanlığı",
       "öğretmen hareketliliği",
-      "AKA Eğitim",
+      "AKADER",
       "yurtdışı dil eğitimi",
       "Finlandiya dil okulu",
       "İngiltere üniversite",

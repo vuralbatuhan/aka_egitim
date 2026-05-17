@@ -4,9 +4,7 @@ import Image from "next/image";
 
 export default function WhyAKA() {
   return (
-    <section
-      className="relative flex flex-col items-center overflow-hidden py-10 md:py-16 px-4 lg:px-8 bg-[#F5F5F5] w-full max-w-[1200px] mx-auto"
-    >
+    <section className="relative flex flex-col items-center overflow-hidden py-10 md:py-16 px-4 lg:px-8 bg-[#F5F5F5] w-full max-w-[1200px] mx-auto">
       {/* Header Section */}
       <div className="w-full mb-6 md:mb-12">
         <div className="flex flex-col lg:flex-row items-start lg:items-center gap-4 md:gap-8">
@@ -20,7 +18,7 @@ export default function WhyAKA() {
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold"
               style={{ color: "#1a1a1a" }}
             >
-              Neden AKA Eğitim?
+              Neden AKADER?
             </h2>
           </div>
 
@@ -30,7 +28,7 @@ export default function WhyAKA() {
               className="text-xs sm:text-sm lg:text-base leading-relaxed text-left lg:text-right"
               style={{ color: "#1a1a1a" }}
             >
-              AKA Eğitim, yurtdışı eğitimin merkezine{" "}
+              AKADER, yurtdışı eğitimin merkezine{" "}
               <span style={{ color: "#EB702B" }}>"Öğretmen Rehberliği"</span>{" "}
               koyar.
               <br className="hidden md:block" />
@@ -50,9 +48,7 @@ export default function WhyAKA() {
       {/* Two Column Image Layout */}
       <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
         {/* Left Content Block - Global Partner Network */}
-        <div
-          className="relative mx-auto w-full aspect-[4/3] md:aspect-[648/480]"
-        >
+        <div className="relative mx-auto w-full aspect-[4/3] md:aspect-[648/480]">
           <div className="relative w-full h-full rounded-xl md:rounded-2xl overflow-hidden">
             <Image
               src="/images/expanding-opportunities-people-networking-business-success-eide.png"
@@ -95,9 +91,7 @@ export default function WhyAKA() {
         </div>
 
         {/* Right Content Block - Student Future Tracking */}
-        <div
-          className="relative mx-auto w-full aspect-[4/3] md:aspect-[648/480]"
-        >
+        <div className="relative mx-auto w-full aspect-[4/3] md:aspect-[648/480]">
           <div className="relative w-full h-full rounded-xl md:rounded-2xl overflow-hidden">
             <Image
               src="/images/medium-shot-girl-posing-with-graduation-background.png"

@@ -12,13 +12,16 @@ import { createPageMetadata } from "@/lib/seo";
 export const metadata: Metadata = createPageMetadata({
   title: "Dil Okulları - İngiltere",
   description:
-    "AKA Eğitim ile İngiltere'de dil eğitimi. Yurtdışı dil okulu programları, başvuru süreci ve vize danışmanlığı. Öğretmen güvenirliği ile İngiltere dil okulu fırsatları.",
+    "AKADER ile İngiltere'de dil eğitimi. Yurtdışı dil okulu programları, başvuru süreci ve vize danışmanlığı. Öğretmen güvenirliği ile İngiltere dil okulu fırsatları.",
   path: "/dil-okullari",
 });
 
 export default function DilOkullari() {
   return (
-    <main className="min-h-screen flex flex-col gap-8 md:gap-16" style={{ backgroundColor: "#F5F5F5" }}>
+    <main
+      className="min-h-screen flex flex-col gap-8 md:gap-16"
+      style={{ backgroundColor: "#F5F5F5" }}
+    >
       <Header />
       <LanguageSchoolHero />
       <AnimatedSection direction="up" delay={0.1}>

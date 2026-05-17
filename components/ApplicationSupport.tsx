@@ -22,7 +22,10 @@ export default function ApplicationSupport() {
 
   return (
     <section className="py-10 md:py-20 bg-[#F5F5F5]">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8" style={{ maxWidth: "1200px" }}>
+      <div
+        className="container mx-auto px-4 sm:px-6 lg:px-8"
+        style={{ maxWidth: "1200px" }}
+      >
         {/* Başlık alanı - maroon şerit */}
         <div
           className="rounded-t-2xl md:rounded-t-3xl px-6 sm:px-8 md:px-10 lg:px-12 py-6 md:py-8"
@@ -32,7 +35,11 @@ export default function ApplicationSupport() {
             Başvuru Sürecinde Nasıl Destek Oluyoruz?
           </h2>
           <p className="text-sm sm:text-base md:text-lg text-white/95 mt-3 md:mt-4 leading-relaxed max-w-3xl">
-            Aka Eğitim olarak program karşılaştırması, başvuru takvimi planlaması, motivasyon mektubu hazırlığı, burs ve finansal planlama, öğrenci vizesi ve konaklama süreçlerinin her adımında yanınızdayız. Süreci şeffaf biçimde yöneterek belgelerinizin eksiksiz ve zamanında gönderilmesini sağlıyoruz.
+            AKADER olarak program karşılaştırması, başvuru takvimi planlaması,
+            motivasyon mektubu hazırlığı, burs ve finansal planlama, öğrenci
+            vizesi ve konaklama süreçlerinin her adımında yanınızdayız. Süreci
+            şeffaf biçimde yöneterek belgelerinizin eksiksiz ve zamanında
+            gönderilmesini sağlıyoruz.
           </p>
         </div>
 

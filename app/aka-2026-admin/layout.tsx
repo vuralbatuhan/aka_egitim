@@ -3,7 +3,7 @@ import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Yönetim",
-  description: "AKA Eğitim yönetim paneli.",
+  description: "AKADER yönetim paneli.",
   path: "/aka-2026-admin",
   noIndex: true,
 });
