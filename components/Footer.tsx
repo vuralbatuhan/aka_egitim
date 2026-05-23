@@ -266,7 +266,7 @@ export default function Footer() {
           <p className="text-white text-xs md:text-sm">
             ©2026 AKADER ve Danışmanlık. Tüm hakları saklıdır.
           </p>
-          <p className="mt-2 text-[10px] md:text-xs text-gray-400">
+          {/* <p className="mt-2 text-[10px] md:text-xs text-gray-400">
             Developed by{" "}
             <a
               href="https://vordex.info"
@@ -276,7 +276,7 @@ export default function Footer() {
             >
               vordex.info
             </a>
-          </p>
+          </p> */}
         </motion.div>
       </div>
     </footer>

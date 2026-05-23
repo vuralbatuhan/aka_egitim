@@ -18,16 +18,21 @@ interface InstagramPost {
 
 interface ContactSubmission {
   id: string;
-  first_name: string;
-  last_name: string;
+  full_name: string;
+  tc_kimlik: string;
+  email: string;
   phone: string;
-  city: string | null;
-  email: string | null;
+  city: string;
   high_school: string | null;
-  interested_country: string | null;
-  program_type: string | null;
-  program: string | null;
-  message: string | null;
+  high_school_type: string | null;
+  high_school_grade: string | null;
+  yks_score: string | null;
+  foreign_language: string | null;
+  target_degree: string | null;
+  target_department: string | null;
+  preferred_country_city: string | null;
+  preferred_university: string | null;
+  target_education_language: string | null;
   kvkk_accepted: boolean;
   is_read: boolean;
   created_at: string;
@@ -766,13 +771,13 @@ export default function AdminPanel() {
                           Telefon
                         </th>
                         <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                          E-posta
+                        </th>
+                        <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                           Şehir
                         </th>
                         <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                          İlgilendiği Ülke
-                        </th>
-                        <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                          Program
+                          Hedeflenen Derece
                         </th>
                         <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                           Durum
@@ -792,21 +797,19 @@ export default function AdminPanel() {
                             {new Date(submission.created_at).toLocaleDateString("tr-TR")}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                            {submission.first_name} {submission.last_name}
+                            {submission.full_name}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                             {submission.phone}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                            {submission.email || "-"}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                             {submission.city || "-"}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                            {submission.interested_country || "-"}
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                            {submission.program_type && submission.program
-                              ? `${submission.program_type} - ${submission.program}`
-                              : submission.program_type || submission.program || "-"}
+                            {submission.target_degree || "-"}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
                             {submission.is_read ? (
@@ -832,21 +835,19 @@ export default function AdminPanel() {
                                   Okundu
                                 </button>
                               )}
-                              {submission.message && (
-                                <button
-                                  onClick={() => {
-                                    setSelectedSubmission(submission);
-                                    setShowMessageModal(true);
-                                  }}
-                                  className="px-3 py-1.5 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-all duration-200 transform hover:scale-105 text-xs font-medium flex items-center gap-1"
-                                >
-                                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                                  </svg>
-                                  Mesaj
-                                </button>
-                              )}
+                              <button
+                                onClick={() => {
+                                  setSelectedSubmission(submission);
+                                  setShowMessageModal(true);
+                                }}
+                                className="px-3 py-1.5 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-all duration-200 transform hover:scale-105 text-xs font-medium flex items-center gap-1"
+                              >
+                                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                                Detay
+                              </button>
                               <button
                                 onClick={() => handleDeleteSubmission(submission.id)}
                                 className="px-3 py-1.5 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all duration-200 transform hover:scale-105 text-xs font-medium flex items-center gap-1"
@@ -1211,7 +1212,7 @@ export default function AdminPanel() {
           <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
             <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto transform transition-all">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-2xl font-bold" style={{ color: "#60091b" }}>Mesaj Detayları</h3>
+                <h3 className="text-2xl font-bold" style={{ color: "#60091b" }}>Kayıt Detayları</h3>
                 <button
                   onClick={() => {
                     setShowMessageModal(false);
@@ -1225,14 +1226,20 @@ export default function AdminPanel() {
                 </button>
               </div>
               <div className="space-y-5">
+                {/* Kişisel Bilgiler */}
+                <p className="text-xs font-bold text-blue-500 uppercase tracking-wider">Kişisel Bilgiler</p>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-gray-50 rounded-lg p-4">
                     <label className="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">
                       Ad Soyad
                     </label>
-                    <p className="text-gray-900 font-medium">
-                      {selectedSubmission.first_name} {selectedSubmission.last_name}
-                    </p>
+                    <p className="text-gray-900 font-medium">{selectedSubmission.full_name}</p>
+                  </div>
+                  <div className="bg-gray-50 rounded-lg p-4">
+                    <label className="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">
+                      T.C. Kimlik No
+                    </label>
+                    <p className="text-gray-900 font-medium">{selectedSubmission.tc_kimlik || "-"}</p>
                   </div>
                   <div className="bg-gray-50 rounded-lg p-4">
                     <label className="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">
@@ -1240,67 +1247,117 @@ export default function AdminPanel() {
                     </label>
                     <p className="text-gray-900 font-medium">{selectedSubmission.phone}</p>
                   </div>
-                </div>
-                {selectedSubmission.city && (
+                  <div className="bg-gray-50 rounded-lg p-4">
+                    <label className="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">
+                      E-posta
+                    </label>
+                    <p className="text-gray-900 font-medium">{selectedSubmission.email || "-"}</p>
+                  </div>
                   <div className="bg-gray-50 rounded-lg p-4">
                     <label className="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">
                       Şehir
                     </label>
-                    <p className="text-gray-900 font-medium">{selectedSubmission.city}</p>
+                    <p className="text-gray-900 font-medium">{selectedSubmission.city || "-"}</p>
                   </div>
-                )}
-                {selectedSubmission.email && (
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <label className="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">
-                      E-mail
-                    </label>
-                    <p className="text-gray-900 font-medium">{selectedSubmission.email}</p>
-                  </div>
-                )}
-                {selectedSubmission.high_school && (
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <label className="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">
-                      Mezun Olduğu Lise
-                    </label>
-                    <p className="text-gray-900 font-medium">{selectedSubmission.high_school}</p>
-                  </div>
-                )}
-                {selectedSubmission.interested_country && (
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <label className="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">
-                      İlgilendiği Ülke
-                    </label>
-                    <p className="text-gray-900 font-medium">{selectedSubmission.interested_country}</p>
-                  </div>
-                )}
+                </div>
+
+                {/* Mevcut Eğitim Durumu */}
+                <p className="text-xs font-bold text-blue-500 uppercase tracking-wider pt-2">Mevcut Eğitim Durumu</p>
+                <div className="grid grid-cols-2 gap-4">
+                  {selectedSubmission.high_school && (
+                    <div className="bg-gray-50 rounded-lg p-4">
+                      <label className="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">
+                        Mezun Olduğu Lise
+                      </label>
+                      <p className="text-gray-900 font-medium">{selectedSubmission.high_school}</p>
+                    </div>
+                  )}
+                  {selectedSubmission.high_school_type && (
+                    <div className="bg-gray-50 rounded-lg p-4">
+                      <label className="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">
+                        Lise Türü
+                      </label>
+                      <p className="text-gray-900 font-medium">{selectedSubmission.high_school_type}</p>
+                    </div>
+                  )}
+                  {selectedSubmission.high_school_grade && (
+                    <div className="bg-gray-50 rounded-lg p-4">
+                      <label className="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">
+                        Lise Diploma Puanı
+                      </label>
+                      <p className="text-gray-900 font-medium">{selectedSubmission.high_school_grade}</p>
+                    </div>
+                  )}
+                  {selectedSubmission.yks_score && (
+                    <div className="bg-gray-50 rounded-lg p-4">
+                      <label className="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">
+                        YKS Puanı / Sıralaması
+                      </label>
+                      <p className="text-gray-900 font-medium">{selectedSubmission.yks_score}</p>
+                    </div>
+                  )}
+                  {selectedSubmission.foreign_language && (
+                    <div className="bg-gray-50 rounded-lg p-4">
+                      <label className="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">
+                        Bilinen Yabancı Dil
+                      </label>
+                      <p className="text-gray-900 font-medium">{selectedSubmission.foreign_language}</p>
+                    </div>
+                  )}
+                </div>
+
+                {/* Hedeflenen Eğitim */}
+                <p className="text-xs font-bold text-blue-500 uppercase tracking-wider pt-2">Hedeflenen Eğitim</p>
+                <div className="grid grid-cols-2 gap-4">
+                  {selectedSubmission.target_degree && (
+                    <div className="bg-gray-50 rounded-lg p-4">
+                      <label className="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">
+                        Hedeflenen Derece
+                      </label>
+                      <p className="text-gray-900 font-medium">{selectedSubmission.target_degree}</p>
+                    </div>
+                  )}
+                  {selectedSubmission.target_department && (
+                    <div className="bg-gray-50 rounded-lg p-4">
+                      <label className="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">
+                        Hedeflenen Bölüm
+                      </label>
+                      <p className="text-gray-900 font-medium">{selectedSubmission.target_department}</p>
+                    </div>
+                  )}
+                  {selectedSubmission.preferred_country_city && (
+                    <div className="bg-gray-50 rounded-lg p-4">
+                      <label className="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">
+                        Tercih Edilen Ülke / Şehir
+                      </label>
+                      <p className="text-gray-900 font-medium">{selectedSubmission.preferred_country_city}</p>
+                    </div>
+                  )}
+                  {selectedSubmission.preferred_university && (
+                    <div className="bg-gray-50 rounded-lg p-4">
+                      <label className="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">
+                        Tercih Edilen Üniversite
+                      </label>
+                      <p className="text-gray-900 font-medium">{selectedSubmission.preferred_university}</p>
+                    </div>
+                  )}
+                  {selectedSubmission.target_education_language && (
+                    <div className="bg-gray-50 rounded-lg p-4 col-span-2">
+                      <label className="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">
+                        Hedef Eğitim Dili
+                      </label>
+                      <p className="text-gray-900 font-medium">{selectedSubmission.target_education_language}</p>
+                    </div>
+                  )}
+                </div>
+
+                {/* Meta */}
                 <div className="bg-gray-50 rounded-lg p-4">
                   <label className="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">
-                    KVKK onayı
+                    KVKK Onayı
                   </label>
                   <p className="text-gray-900 font-medium">{selectedSubmission.kvkk_accepted ? "Evet" : "Hayır"}</p>
                 </div>
-                {(selectedSubmission.program_type || selectedSubmission.program) && (
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <label className="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">
-                      Program
-                    </label>
-                    <p className="text-gray-900 font-medium">
-                      {selectedSubmission.program_type && selectedSubmission.program
-                        ? `${selectedSubmission.program_type} - ${selectedSubmission.program}`
-                        : selectedSubmission.program_type || selectedSubmission.program}
-                    </p>
-                  </div>
-                )}
-                {selectedSubmission.message && (
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <label className="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">
-                      Mesaj
-                    </label>
-                    <p className="text-gray-900 whitespace-pre-wrap leading-relaxed">
-                      {selectedSubmission.message}
-                    </p>
-                  </div>
-                )}
                 <div className="bg-gray-50 rounded-lg p-4">
                   <label className="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">
                     Tarih

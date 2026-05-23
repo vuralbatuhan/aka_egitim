@@ -1,105 +1,135 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
 
-// Sitede olan ülkeler – İlgilendiği Ülke sadece bunlardan seçilebilir
-const SITE_COUNTRIES = [
-  "Amerika",
-  "Kanada",
-  "İngiltere",
-  "Finlandiya",
-  "Almanya",
-  "İtalya",
-  "İsviçre",
-  "Belçika",
-] as const;
+const HIGH_SCHOOL_TYPES = [
+  "Anadolu Lisesi",
+  "Fen Lisesi",
+  "Sosyal Bilimler Lisesi",
+  "Güzel Sanatlar Lisesi",
+  "Spor Lisesi",
+  "Meslek / Teknik Lisesi",
+  "İmam Hatip Lisesi",
+  "Özel Lise",
+  "Diğer",
+];
+
+const TARGET_DEGREES = ["Lisans", "Ön Lisans", "Yüksek Lisans", "Doktora"];
+
+interface FormData {
+  full_name: string;
+  tc_kimlik: string;
+  email: string;
+  phone: string;
+  city: string;
+  high_school: string;
+  high_school_type: string;
+  high_school_grade: string;
+  yks_score: string;
+  foreign_language: string;
+  target_degree: string;
+  target_department: string;
+  preferred_country_city: string;
+  preferred_university: string;
+  target_education_language: string;
+}
+
+const EMPTY_FORM: FormData = {
+  full_name: "",
+  tc_kimlik: "",
+  email: "",
+  phone: "",
+  city: "",
+  high_school: "",
+  high_school_type: "",
+  high_school_grade: "",
+  yks_score: "",
+  foreign_language: "",
+  target_degree: "",
+  target_department: "",
+  preferred_country_city: "",
+  preferred_university: "",
+  target_education_language: "",
+};
 
 export default function OverseasEducationForm() {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    phone: "",
-    city: "",
-    email: "",
-    highSchool: "",
-    interestedCountry: "",
-    programType: "",
-    program: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState<FormData>(EMPTY_FORM);
   const [kvkkAccepted, setKvkkAccepted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error' | null; message: string }>({ type: null, message: '' });
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const target = e.target;
-    if (target.type === "checkbox" && target.name === "kvkkAccepted") {
-      setKvkkAccepted((target as HTMLInputElement).checked);
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
+    const { name, value } = e.target;
+    if (name === "tc_kimlik") {
+      const digits = value.replace(/\D/g, "").slice(0, 11);
+      setFormData({ ...formData, tc_kimlik: digits });
       return;
     }
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    if (name === "phone") {
+      const digits = value.replace(/\D/g, "").slice(0, 15);
+      setFormData({ ...formData, phone: digits });
+      return;
+    }
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!kvkkAccepted) {
-      setSubmitStatus({ type: 'error', message: 'Formu göndermek için KVKK Aydınlatma Metni\'ni kabul etmeniz gerekmektedir.' });
+      setSubmitStatus({
+        type: "error",
+        message:
+          "Formu göndermek için KVKK Aydınlatma Metni'ni kabul etmeniz gerekmektedir.",
+      });
       return;
     }
     setIsSubmitting(true);
-    setSubmitStatus({ type: null, message: '' });
+    setSubmitStatus({ type: null, message: "" });
 
     try {
-      const { data, error } = await supabase
-        .from('contact_submissions')
-        .insert([
-          {
-            first_name: formData.firstName,
-            last_name: formData.lastName,
-            phone: formData.phone,
-            city: formData.city || null,
-            email: formData.email || null,
-            high_school: formData.highSchool || null,
-            interested_country: formData.interestedCountry || null,
-            program_type: formData.programType || null,
-            program: formData.program || null,
-            message: formData.message || null,
-            kvkk_accepted: true,
-          },
-        ])
-        .select();
+      const { error } = await supabase.from("contact_submissions").insert([
+        {
+          full_name: formData.full_name,
+          tc_kimlik: formData.tc_kimlik,
+          email: formData.email,
+          phone: formData.phone,
+          city: formData.city,
+          high_school: formData.high_school || null,
+          high_school_type: formData.high_school_type || null,
+          high_school_grade: formData.high_school_grade || null,
+          yks_score: formData.yks_score || null,
+          foreign_language: formData.foreign_language || null,
+          target_degree: formData.target_degree || null,
+          target_department: formData.target_department || null,
+          preferred_country_city: formData.preferred_country_city || null,
+          preferred_university: formData.preferred_university || null,
+          target_education_language: formData.target_education_language || null,
+          kvkk_accepted: true,
+        },
+      ]);
 
       if (error) throw error;
 
-      setSubmitStatus({ 
-        type: 'success', 
-        message: 'Formunuz başarıyla gönderildi! En kısa sürede sizinle iletişime geçeceğiz.' 
+      setSubmitStatus({
+        type: "success",
+        message:
+          "Kaydınız başarıyla tamamlandı! En kısa sürede sizinle iletişime geçeceğiz.",
       });
       setKvkkAccepted(false);
-      // Reset form
-      setFormData({
-        firstName: "",
-        lastName: "",
-        phone: "",
-        city: "",
-        email: "",
-        highSchool: "",
-        interestedCountry: "",
-        programType: "",
-        program: "",
-        message: "",
-      });
+      setFormData(EMPTY_FORM);
     } catch (error: any) {
-      console.error('Error submitting form:', error);
-      setSubmitStatus({ 
-        type: 'error', 
-        message: 'Bir hata oluştu. Lütfen tekrar deneyin veya bizimle doğrudan iletişime geçin.' 
+      console.error("Error submitting form:", error);
+      setSubmitStatus({
+        type: "error",
+        message:
+          "Bir hata oluştu. Lütfen tekrar deneyin veya bizimle doğrudan iletişime geçin.",
       });
     } finally {
       setIsSubmitting(false);
@@ -107,529 +137,359 @@ export default function OverseasEducationForm() {
   };
 
   return (
-    <section id="contact-form" className="relative py-10 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "#F5F5F5" }}>
-      <div className="w-full max-w-[1200px] mx-auto">
-        {/* Header Text Section */}
-        <div className="flex flex-col lg:flex-row gap-4 md:gap-8 mb-6 md:mb-8 items-start">
-          <div className="flex items-start gap-3 flex-shrink-0">
-            <div className="w-1 bg-blue-500 rounded-full min-h-[50px] md:min-h-[60px]"></div>
-            <h2
-              className="text-gray-900 font-bold text-2xl sm:text-3xl md:text-[34px] leading-tight"
-            >
-              Yurt Dışı Eğitim<br />
-              Yolculuğunuza Başlayın
-            </h2>
-          </div>
+    <section
+      id="kayit-formu"
+      className="relative py-12 px-4 sm:px-6 lg:px-8"
+      style={{ backgroundColor: "#F5F5F5" }}
+    >
+      <div className="w-full max-w-[700px] mx-auto">
+        {/* Başlık */}
+        <div className="text-center mb-8">
           <p
-            className="text-gray-600 flex-1 text-sm md:text-[15px] leading-relaxed ml-0 lg:ml-auto lg:max-w-md lg:text-right"
+            className="font-extrabold text-lg mb-1"
+            style={{ color: "#60091b" }}
           >
-            Formu doldurun, uzman danışmanlarımız en kısa sürede sizinle
-            <br className="hidden md:block" />
-            <span className="md:hidden"> </span>
-            iletişime geçsin ve size özel eğitim planınızı oluşturalım
+            AKADER
+          </p>
+          <h2 className="text-3xl font-bold text-gray-900 mb-2">
+            Öğrenci Kayıt Formu
+          </h2>
+          <p className="text-gray-500 text-sm">
+            Yurtdışı eğitim hayalinize ilk adımı atın.
           </p>
         </div>
 
-        {/* Form and Image Container with Rounded Corners */}
-        <div className="bg-[#FFFFFF] rounded-2xl overflow-hidden shadow-lg">
-          <div className="grid grid-cols-1 lg:grid-cols-2">
-            {/* Left Column - Form */}
-            <div className="p-6 lg:p-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Personal Information Section */}
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3 mb-2">
-                    <h3 className="text-gray-900 font-bold text-base md:text-lg">
-                      Kişisel Bilgiler
-                    </h3>
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      style={{ color: "#4A90E2" }}
-                    >
-                      <path
-                        d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M20.59 22C20.59 18.13 16.74 15 12 15C7.26 15 3.41 18.13 3.41 22"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </div>
-                  <div className="h-px bg-gray-200 mb-4"></div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-gray-700 mb-2" style={{ fontSize: "14px" }}>
-                        Adınız Soyadınız
-                      </label>
-                      <input
-                        type="text"
-                        name="firstName"
-                        placeholder="Adınız Soyadınız"
-                        value={formData.firstName}
-                        onChange={handleChange}
-                        className="w-full px-3 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        style={{ fontSize: "15px" }}
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-gray-700 mb-2" style={{ fontSize: "14px" }}>
-                        Adınız Soyadınız
-                      </label>
-                      <input
-                        type="text"
-                        name="lastName"
-                        placeholder="Adınız Soyadınız"
-                        value={formData.lastName}
-                        onChange={handleChange}
-                        className="w-full px-3 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        style={{ fontSize: "15px" }}
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-gray-700 mb-2" style={{ fontSize: "14px" }}>
-                        Telefon Numaranız
-                      </label>
-                      <input
-                        type="tel"
-                        name="phone"
-                        placeholder="Telefon Numaranız"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className="w-full px-3 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        style={{ fontSize: "15px" }}
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-gray-700 mb-2" style={{ fontSize: "14px" }}>
-                        Bulunduğunuz Şehir
-                      </label>
-                      <input
-                        type="text"
-                        name="city"
-                        placeholder="Bulunduğunuz Şehir"
-                        value={formData.city}
-                        onChange={handleChange}
-                        className="w-full px-3 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        style={{ fontSize: "15px" }}
-                      />
-                    </div>
-                  </div>
+        {/* Form Kartı */}
+        <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8">
+          <form onSubmit={handleSubmit} className="space-y-8">
+            {/* ── Kişisel Bilgiler ── */}
+            <div>
+              <h3
+                className="text-base font-bold mb-4"
+                style={{ color: "#3B82F6" }}
+              >
+                Kişisel Bilgiler
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm text-gray-700 mb-1">
+                    Ad Soyad <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="full_name"
+                    required
+                    value={formData.full_name}
+                    onChange={handleChange}
+                    className="w-full px-3 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                  />
                 </div>
-
-                {/* Education Preferences Section */}
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3 mb-2">
-                    <h3 className="text-gray-900 font-bold text-base md:text-lg">
-                      Eğitim Tercihleri
-                    </h3>
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      style={{ color: "#4A90E2" }}
-                    >
-                      <path
-                        d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M14 2V8H20"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M16 13H8"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M16 17H8"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M10 9H9H8"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </div>
-                  <div className="h-px bg-gray-200 mb-4"></div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-gray-700 mb-2" style={{ fontSize: "14px" }}>
-                        E-mail
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        placeholder="E-mail"
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="w-full px-3 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        style={{ fontSize: "15px" }}
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-gray-700 mb-2" style={{ fontSize: "14px" }}>
-                        Mezun Olduğunuz Lise
-                      </label>
-                      <input
-                        type="text"
-                        name="highSchool"
-                        placeholder="Mezun Olduğunuz Lise"
-                        value={formData.highSchool}
-                        onChange={handleChange}
-                        className="w-full px-3 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        style={{ fontSize: "15px" }}
-                      />
-                    </div>
-                    <div className="sm:col-span-2">
-                      <label className="block text-gray-700 mb-2" style={{ fontSize: "14px" }}>
-                        İlgilendiği Ülke
-                      </label>
-                      <div className="relative">
-                        <select
-                          name="interestedCountry"
-                          value={formData.interestedCountry}
-                          onChange={handleChange}
-                          className="w-full px-3 py-2.5 pr-10 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none"
-                          style={{ fontSize: "15px" }}
-                        >
-                          <option value="">İlgilendiği Ülke</option>
-                          {SITE_COUNTRIES.map((country) => (
-                            <option key={country} value={country}>
-                              {country}
-                            </option>
-                          ))}
-                        </select>
-                        <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-                          <svg
-                            width="20"
-                            height="20"
-                            viewBox="0 0 20 20"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="text-gray-900"
-                          >
-                            <path
-                              d="M5 7.5L10 12.5L15 7.5"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <label className="block text-gray-700 mb-2 text-sm">
-                        Program Türünü Seçin
-                      </label>
-                      <div className="relative">
-                        <select
-                          name="programType"
-                          value={formData.programType}
-                          onChange={handleChange}
-                          className="w-full px-3 py-2.5 pr-10 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none"
-                          style={{ fontSize: "15px" }}
-                        >
-                          <option value="">Program Türünü Seçin</option>
-                          <option value="dil-kurslari">Dil kursları</option>
-                          <option value="yurt-disi-egitim-danismanligi">Yurt dışı eğitim danışmanlığı</option>
-                          <option value="cift-diploma-programi">Çift diploma programı</option>
-                          <option value="ogretmen-hareketliligi">Öğretmen hareketliliği</option>
-                        </select>
-                        <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-                          <svg
-                            width="20"
-                            height="20"
-                            viewBox="0 0 20 20"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="text-gray-900"
-                          >
-                            <path
-                              d="M5 7.5L10 12.5L15 7.5"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <label className="block text-gray-700 mb-2" style={{ fontSize: "14px" }}>
-                        Bir Program Seçin
-                      </label>
-                      <div className="relative">
-                        <select
-                          name="program"
-                          value={formData.program}
-                          onChange={handleChange}
-                          className="w-full px-3 py-2.5 pr-10 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none"
-                          style={{ fontSize: "15px" }}
-                        >
-                          <option value="">Bir Program Seçin</option>
-                          <option value="engineering">Mühendislik</option>
-                          <option value="business">İşletme</option>
-                          <option value="medicine">Tıp</option>
-                          <option value="arts">Sanat</option>
-                        </select>
-                        <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-                          <svg
-                            width="20"
-                            height="20"
-                            viewBox="0 0 20 20"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="text-gray-900"
-                          >
-                            <path
-                              d="M5 7.5L10 12.5L15 7.5"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <div>
+                  <label className="block text-sm text-gray-700 mb-1">
+                    T.C. Kimlik No <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="tc_kimlik"
+                    required
+                    inputMode="numeric"
+                    maxLength={11}
+                    pattern="\d{11}"
+                    title="11 haneli T.C. kimlik numaranızı giriniz"
+                    // placeholder="00000000000"
+                    value={formData.tc_kimlik}
+                    onChange={handleChange}
+                    className="w-full px-3 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                  />
                 </div>
-
-                {/* Message Section */}
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3 mb-2">
-                    <h3 className="text-gray-900 font-bold text-base md:text-lg">
-                      Mesajınız
-                    </h3>
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      style={{ color: "#4A90E2" }}
-                    >
-                      <path
-                        d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </div>
-                  <div className="h-px bg-gray-200 mb-4"></div>
-                  <div>
-                    <label className="block text-gray-700 mb-2" style={{ fontSize: "14px" }}>
-                      Detayları Bizimle Paylaşın
-                    </label>
-                    <textarea
-                      name="message"
-                      placeholder="Detayları Bizimle Paylaşın"
-                      value={formData.message}
-                      onChange={handleChange}
-                      rows={5}
-                      className="w-full px-3 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
-                      style={{ fontSize: "15px" }}
-                    />
-                  </div>
+                <div>
+                  <label className="block text-sm text-gray-700 mb-1">
+                    E-posta <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full px-3 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                  />
                 </div>
-
-                {/* KVKK */}
-                <div className="space-y-3">
-                  <div className="flex items-start gap-3">
-                    <input
-                      type="checkbox"
-                      id="kvkkAccepted"
-                      name="kvkkAccepted"
-                      checked={kvkkAccepted}
-                      onChange={handleChange}
-                      className="mt-1 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                    />
-                    <label htmlFor="kvkkAccepted" className="text-sm text-gray-700 leading-tight cursor-pointer">
-                      <Link href="/gizlilik" target="_blank" className="text-blue-600 hover:underline font-medium">
-                        KVKK Aydınlatma Metni
-                      </Link>
-                      &apos;ni okudum, kişisel verilerimin işlenmesini kabul ediyorum. Form gönderimi için işaretlemeniz gerekmektedir.
-                    </label>
-                  </div>
+                <div>
+                  <label className="block text-sm text-gray-700 mb-1">
+                    Telefon <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    required
+                    inputMode="numeric"
+                    placeholder="05XXXXXXXXX"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full px-3 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                  />
                 </div>
-
-                {/* Submit Status Message */}
-                {submitStatus.type && (
-                  <div
-                    className={`p-4 rounded-lg ${
-                      submitStatus.type === 'success'
-                        ? 'bg-green-50 text-green-800 border border-green-200'
-                        : 'bg-red-50 text-red-800 border border-red-200'
-                    }`}
-                  >
-                    {submitStatus.message}
-                  </div>
-                )}
-
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  disabled={isSubmitting || !kvkkAccepted}
-                  className="w-full text-white rounded-lg font-bold hover:opacity-90 transition-opacity flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                  style={{
-                    padding: "14px 32px",
-                    background: "linear-gradient(to right, #1E88E5, #26C6DA)",
-                    fontSize: "16px",
-                  }}
-                >
-                  {isSubmitting ? 'Gönderiliyor...' : 'İletişime Geçin'}
-                  {!isSubmitting && (
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="ml-1"
-                    >
-                      <path
-                        d="M21 2L3 10.53V11.5L9.84 14.16L12.5 21H13.46L21 2Z"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  )}
-                </button>
-              </form>
-            </div>
-
-            {/* Right Column - Image */}
-            <div className="relative hidden lg:block">
-              <div className="relative w-full h-full rounded-r-2xl overflow-hidden">
-                <Image
-                  src="/images/photo-realistic-student-with-backpack-graduation-cap-whimsical-background-school-graduati.png"
-                  alt="Yurt dışı eğitim öğrencisi"
-                  width={600}
-                  height={800}
-                  className="w-full h-full object-cover"
-                  priority
-                />
+                <div className="sm:col-span-2">
+                  <label className="block text-sm text-gray-700 mb-1">
+                    Yaşadığı Şehir <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="city"
+                    required
+                    value={formData.city}
+                    onChange={handleChange}
+                    className="w-full px-3 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* Bottom Section - Benefit Cards */}
-        <div className="flex flex-wrap justify-center gap-4 md:gap-5 mt-6 md:mt-8">
-          {/* Card 2: 24 Saat İçinde */}
-          <div
-            className="flex items-center gap-3 p-4 md:p-5 rounded-2xl min-w-[300px] max-w-[420px]"
-            style={{
-              backgroundColor: "#E8F3F8",
-              border: "2px solid #60A5FA",
-            }}
-          >
-            <div
-              className="shrink-0 rounded-full flex items-center justify-center w-12 h-12 md:w-[60px] md:h-[60px]"
+            {/* ── Mevcut Eğitim Durumu ── */}
+            <div>
+              <h3
+                className="text-base font-bold mb-4"
+                style={{ color: "#3B82F6" }}
+              >
+                Mevcut Eğitim Durumu
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm text-gray-700 mb-1">
+                    Mezun Olduğu / Okuduğu Lise
+                  </label>
+                  <input
+                    type="text"
+                    name="high_school"
+                    value={formData.high_school}
+                    onChange={handleChange}
+                    className="w-full px-3 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm text-gray-700 mb-1">
+                    Lise Türü
+                  </label>
+                  <div className="relative">
+                    <select
+                      name="high_school_type"
+                      value={formData.high_school_type}
+                      onChange={handleChange}
+                      className="w-full px-3 py-2.5 pr-10 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none text-sm"
+                    >
+                      <option value="">Seçiniz</option>
+                      {HIGH_SCHOOL_TYPES.map((t) => (
+                        <option key={t} value={t}>
+                          {t}
+                        </option>
+                      ))}
+                    </select>
+                    <ChevronDown />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm text-gray-700 mb-1">
+                    Lise Diploma Puanı (Örn: 85.50)
+                  </label>
+                  <input
+                    type="text"
+                    name="high_school_grade"
+                    placeholder="Örn: 85.50"
+                    value={formData.high_school_grade}
+                    onChange={handleChange}
+                    className="w-full px-3 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm text-gray-700 mb-1">
+                    YKS Puanı / Sıralaması
+                  </label>
+                  <input
+                    type="text"
+                    name="yks_score"
+                    value={formData.yks_score}
+                    onChange={handleChange}
+                    className="w-full px-3 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                  />
+                </div>
+                <div className="sm:col-span-2">
+                  <label className="block text-sm text-gray-700 mb-1">
+                    Bilinen Yabancı Dil
+                  </label>
+                  <input
+                    type="text"
+                    name="foreign_language"
+                    placeholder="Örn: İngilizce, Almanca"
+                    value={formData.foreign_language}
+                    onChange={handleChange}
+                    className="w-full px-3 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* ── Hedeflenen Eğitim ── */}
+            <div>
+              <h3
+                className="text-base font-bold mb-4"
+                style={{ color: "#3B82F6" }}
+              >
+                Hedeflenen Eğitim
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm text-gray-700 mb-1">
+                    Hedeflenen Derece
+                  </label>
+                  <div className="relative">
+                    <select
+                      name="target_degree"
+                      value={formData.target_degree}
+                      onChange={handleChange}
+                      className="w-full px-3 py-2.5 pr-10 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none text-sm"
+                    >
+                      <option value="">Seçiniz</option>
+                      {TARGET_DEGREES.map((d) => (
+                        <option key={d} value={d}>
+                          {d}
+                        </option>
+                      ))}
+                    </select>
+                    <ChevronDown />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm text-gray-700 mb-1">
+                    Hedeflenen Bölüm
+                  </label>
+                  <input
+                    type="text"
+                    name="target_department"
+                    placeholder="Örn: Bilgisayar Mühendisliği"
+                    value={formData.target_department}
+                    onChange={handleChange}
+                    className="w-full px-3 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm text-gray-700 mb-1">
+                    Tercih Edilen Ülke / Şehir
+                  </label>
+                  <input
+                    type="text"
+                    name="preferred_country_city"
+                    placeholder="Örn: Almanya / Münih"
+                    value={formData.preferred_country_city}
+                    onChange={handleChange}
+                    className="w-full px-3 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm text-gray-700 mb-1">
+                    Tercih Edilen Üniversite (Varsa)
+                  </label>
+                  <input
+                    type="text"
+                    name="preferred_university"
+                    placeholder="Örn: Technical University of Munich"
+                    value={formData.preferred_university}
+                    onChange={handleChange}
+                    className="w-full px-3 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                  />
+                </div>
+                <div className="sm:col-span-2">
+                  <label className="block text-sm text-gray-700 mb-1">
+                    Hedef Eğitim Dili
+                  </label>
+                  <input
+                    type="text"
+                    name="target_education_language"
+                    placeholder="Örn: İngilizce veya %100 Almanca"
+                    value={formData.target_education_language}
+                    onChange={handleChange}
+                    className="w-full px-3 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* KVKK */}
+            <div className="flex items-start gap-3">
+              <input
+                type="checkbox"
+                id="kvkkAccepted"
+                checked={kvkkAccepted}
+                onChange={(e) => setKvkkAccepted(e.target.checked)}
+                className="mt-1 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 shrink-0"
+              />
+              <label
+                htmlFor="kvkkAccepted"
+                className="text-sm text-gray-700 leading-tight cursor-pointer"
+              >
+                <Link
+                  href="/gizlilik"
+                  target="_blank"
+                  className="text-blue-600 hover:underline font-medium"
+                >
+                  KVKK Aydınlatma Metni
+                </Link>
+                &apos;ni okudum, kişisel verilerimin işlenmesini kabul ediyorum.
+              </label>
+            </div>
+
+            {/* Durum mesajı */}
+            {submitStatus.type && (
+              <div
+                className={`p-4 rounded-lg text-sm ${
+                  submitStatus.type === "success"
+                    ? "bg-green-50 text-green-800 border border-green-200"
+                    : "bg-red-50 text-red-800 border border-red-200"
+                }`}
+              >
+                {submitStatus.message}
+              </div>
+            )}
+
+            {/* Gönder butonu */}
+            <button
+              type="submit"
+              disabled={isSubmitting || !kvkkAccepted}
+              className="w-full text-white rounded-lg font-bold hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
               style={{
-                backgroundColor: "#60A5FA",
+                padding: "14px 32px",
+                background: "linear-gradient(to right, #1E88E5, #26C6DA)",
+                fontSize: "16px",
               }}
             >
-              <Image
-                src="/images/wall-clock_833602.svg"
-                alt="Saat ikonu"
-                width={32}
-                height={32}
-                className="w-6 h-6 md:w-8 md:h-8"
-                style={{ filter: "brightness(0) invert(1)" }}
-              />
-            </div>
-            <div>
-              <h4
-                className="font-bold mb-0.5 md:mb-1 text-base md:text-lg"
-                style={{ color: "#1a1a1a" }}
-              >
-                24 Saat İçinde
-              </h4>
-              <p
-                className="text-sm md:text-[15px]"
-                style={{ color: "#1a1a1a" }}
-              >
-                Hızlı Geri Dönüş
-              </p>
-            </div>
-          </div>
-
-          {/* Card 3: Uzman Kadro */}
-          <div
-            className="flex items-center gap-3 p-4 md:p-5 rounded-2xl min-w-[300px] max-w-[420px]"
-            style={{
-              backgroundColor: "#FFF0F0",
-              border: "2px solid #B91C1C",
-            }}
-          >
-            <div
-              className="shrink-0 rounded-full flex items-center justify-center w-12 h-12 md:w-[60px] md:h-[60px]"
-              style={{
-                backgroundColor: "#B91C1C",
-              }}
-            >
-              <Image
-                src="/images/people_3171593.svg"
-                alt="İnsanlar ikonu"
-                width={32}
-                height={32}
-                className="w-6 h-6 md:w-8 md:h-8"
-                style={{ filter: "brightness(0) invert(1)" }}
-              />
-            </div>
-            <div>
-              <h4
-                className="font-bold mb-0.5 md:mb-1 text-base md:text-lg"
-                style={{ color: "#1a1a1a" }}
-              >
-                Uzman Kadro
-              </h4>
-              <p
-                className="text-sm md:text-[15px]"
-                style={{ color: "#1a1a1a" }}
-              >
-                Profesyonel Destek
-              </p>
-            </div>
-          </div>
+              {isSubmitting ? "Gönderiliyor..." : "Kaydımı Tamamla"}
+            </button>
+          </form>
         </div>
       </div>
     </section>
+  );
+}
+
+function ChevronDown() {
+  return (
+    <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="text-gray-500"
+      >
+        <path
+          d="M5 7.5L10 12.5L15 7.5"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </div>
   );
 }

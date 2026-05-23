@@ -38,9 +38,9 @@ export default function Home() {
       <AnimatedSection direction="up" delay={0.4}>
         <WhyAKA />
       </AnimatedSection>
-      <AnimatedSection direction="up" delay={0.5}>
+      {/* <AnimatedSection direction="up" delay={0.5}>
         <InstagramPosts />
-      </AnimatedSection>
+      </AnimatedSection> */}
       <AnimatedSection direction="up" delay={0.6}>
         <OverseasEducationForm />
       </AnimatedSection>

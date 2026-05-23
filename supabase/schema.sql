@@ -10,25 +10,29 @@ CREATE TABLE IF NOT EXISTS instagram_posts (
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc', NOW())
 );
 
--- Contact Submissions Table
+-- Student Registration (Contact Submissions) Table
 CREATE TABLE IF NOT EXISTS contact_submissions (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  first_name TEXT NOT NULL,
-  last_name TEXT NOT NULL,
+  -- Kişisel Bilgiler
+  full_name TEXT NOT NULL,
+  tc_kimlik CHAR(11) NOT NULL,
+  email TEXT NOT NULL,
   phone TEXT NOT NULL,
-  city TEXT,
-  email TEXT,
+  city TEXT NOT NULL,
+  -- Mevcut Eğitim Durumu
   high_school TEXT,
-  interested_country TEXT CHECK (
-    interested_country IS NULL
-    OR interested_country IN (
-      'Amerika', 'Kanada', 'İngiltere', 'Finlandiya',
-      'Almanya', 'İtalya', 'İsviçre', 'Belçika'
-    )
-  ),
-  program_type TEXT,
-  program TEXT,
-  message TEXT,
+  high_school_type TEXT,
+  high_school_grade TEXT,
+  yks_score TEXT,
+  foreign_language TEXT,
+  language_level TEXT,
+  -- Hedeflenen Eğitim
+  target_degree TEXT,
+  target_department TEXT,
+  preferred_country_city TEXT,
+  preferred_university TEXT,
+  target_education_language TEXT,
+  -- Meta
   kvkk_accepted BOOLEAN DEFAULT false,
   is_read BOOLEAN DEFAULT false,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc', NOW())
