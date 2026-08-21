@@ -153,8 +153,7 @@ export default function ContactInfo() {
                 className="text-base sm:text-lg md:text-xl font-bold break-words"
                 style={{ color: "#6A0B1C" }}
               >
-                Cevizlik mah. Hüsreviye sok. Dış Kapı No:1 Karaca İş Hanı İç
-                Kapı No: 46 Bakırköy/İstanbul
+                Fulya Mh. Büyükdere Cd. Hukukçular Sitesi No:8 Şişli / İSTANBUL
               </span>
             </div>
           </div>
