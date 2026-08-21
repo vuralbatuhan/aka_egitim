@@ -70,7 +70,7 @@ export default function Hero() {
   }, [goNext]);
 
   const handleConsultationClick = () => router.push("/iletisim#contact-form");
-  const handleProgramsClick = () => router.push("/dil-egitimi");
+  const handleProgramsClick = () => router.push("/universite");
 
   const slide = SLIDES[currentIndex];
 

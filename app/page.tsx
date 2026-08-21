@@ -6,7 +6,6 @@ import WhyAKA from "@/components/WhyAKA";
 import InstagramPosts from "@/components/InstagramPosts";
 import Values from "@/components/Values";
 import OverseasEducationForm from "@/components/OverseasEducationForm";
-import ContactUs from "@/components/ContactUs";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
 import { createPageMetadata } from "@/lib/seo";
@@ -26,9 +25,6 @@ export default function Home() {
     >
       <Header />
       <Hero />
-      <AnimatedSection direction="up" delay={0.1}>
-        <ContactUs />
-      </AnimatedSection>
       <AnimatedSection direction="up" delay={0.2}>
         <ProfessionalConsultancy />
       </AnimatedSection>

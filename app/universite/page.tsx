@@ -21,7 +21,7 @@ export default function Universite() {
       style={{ backgroundColor: "#F5F5F5" }}
     >
       <Header />
-      <UniversityHero />
+      {/* <UniversityHero /> */}
       <AnimatedSection direction="up" delay={0.1}>
         <UniversityDestinations />
       </AnimatedSection>

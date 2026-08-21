@@ -5,14 +5,6 @@ import Link from "next/link";
 
 export default function UniversityDestinations() {
   const destinations = [
-    {
-      name: "İngiltere",
-      image: "/images/ingiltere-vizesi.png",
-      description:
-        "İngiltere'nin dünyaca ünlü üniversiteleri, çeşitli alanlarda lisans ve önlisans programları sunar. Oxford ve Cambridge gibi tarihi üniversitelerden modern araştırma üniversitelerine kadar geniş seçenekler.",
-      buttonColor: "#FF8C00",
-      href: "/universite/ingiltere",
-    },
     // {
     //   name: "Finlandiya",
     //   image: "/images/1ec1d4a296c8860bf4765bb90d75a641-1200.png",
