@@ -3,7 +3,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { supabase } from "@/lib/supabase";
 import TemsilcilerTab from "./TemsilcilerTab";
 
 interface InstagramPost {
@@ -133,12 +132,9 @@ export default function AdminPanel() {
 
   const fetchInstagramPosts = async () => {
     try {
-      const { data, error } = await supabase
-        .from("instagram_posts")
-        .select("*")
-        .order("order_index", { ascending: true });
-
-      if (error) throw error;
+      const res = await fetch("/api/instagram-posts?all=1");
+      if (!res.ok) throw new Error("Failed to fetch");
+      const data = await res.json();
       setInstagramPosts(data || []);
     } catch (error) {
       console.error("Error fetching Instagram posts:", error);
@@ -150,19 +146,12 @@ export default function AdminPanel() {
   const fetchContactSubmissions = async () => {
     try {
       setLoading(true);
-      const { data, error } = await supabase
-        .from("contact_submissions")
-        .select("*")
-        .order("created_at", { ascending: false });
-
-      if (error) {
-        console.error("Supabase error:", error);
-        throw error;
-      }
+      const res = await fetch("/api/contact-submissions");
+      if (!res.ok) throw new Error("Failed to fetch");
+      const data = await res.json();
       setContactSubmissions(data || []);
     } catch (error: any) {
       console.error("Error fetching contact submissions:", error);
-      console.error("İletişim formları:", error?.message);
       setContactSubmissions([]);
     } finally {
       setLoading(false);
@@ -172,11 +161,9 @@ export default function AdminPanel() {
   const fetchPrograms = async () => {
     try {
       setLoading(true);
-      const { data, error } = await supabase
-        .from("programs")
-        .select("*")
-        .order("order_index", { ascending: true });
-      if (error) throw error;
+      const res = await fetch("/api/programs");
+      if (!res.ok) throw new Error("Failed to fetch");
+      const data = await res.json();
       setPrograms(data || []);
     } catch (error: any) {
       console.error("Error fetching programs:", error);
@@ -186,16 +173,21 @@ export default function AdminPanel() {
     }
   };
 
+  const uploadFile = async (bucket: string, file: File): Promise<string> => {
+    const form = new FormData();
+    form.append("file", file);
+    form.append("bucket", bucket);
+    const res = await fetch("/api/uploads", { method: "POST", body: form });
+    if (!res.ok) {
+      const body = await res.json().catch(() => ({}));
+      throw new Error(body.error || "Yükleme hatası.");
+    }
+    const { url } = await res.json();
+    return url;
+  };
+
   const uploadProgramImage = async (file: File): Promise<string> => {
-    const fileExt = file.name.split(".").pop();
-    const fileName = `${Math.random().toString(36).slice(2)}.${fileExt}`;
-    const filePath = `programs/${fileName}`;
-    const { data, error } = await supabase.storage
-      .from("images")
-      .upload(filePath, file, { cacheControl: "3600", upsert: false });
-    if (error) throw error;
-    const { data: { publicUrl } } = supabase.storage.from("images").getPublicUrl(filePath);
-    return publicUrl;
+    return uploadFile("programs", file);
   };
 
   const resetProgramForm = () => {
@@ -214,14 +206,15 @@ export default function AdminPanel() {
   };
 
   const fetchProgramImages = async (programId: string): Promise<ProgramImageRow[]> => {
-    const { data, error } = await supabase
-      .from("program_images")
-      .select("*")
-      .eq("program_id", programId)
-      .order("order_index", { ascending: true });
-    const list = !error && data ? data : [];
-    setExistingProgramImages(list);
-    return list;
+    try {
+      const res = await fetch(`/api/program-images?program_id=${programId}`);
+      const list = res.ok ? await res.json() : [];
+      setExistingProgramImages(list);
+      return list;
+    } catch {
+      setExistingProgramImages([]);
+      return [];
+    }
   };
 
   const handleAddProgram = async () => {
@@ -229,19 +222,23 @@ export default function AdminPanel() {
     if (validImages.length === 0) return;
     try {
       setProgramUploading(true);
-      const { data: newProgram, error: programError } = await supabase
-        .from("programs")
-        .insert([{ title: "Program", order_index: 0, is_active: true }])
-        .select("id")
-        .single();
-      if (programError) throw programError;
+      const programRes = await fetch("/api/programs", { method: "POST" });
+      if (!programRes.ok) throw new Error("Failed to create program");
+      const newProgram = await programRes.json();
       const programId = newProgram.id;
       for (let i = 0; i < validImages.length; i++) {
         const { file, caption } = validImages[i];
         const imageUrl = await uploadProgramImage(file);
-        await supabase.from("program_images").insert([
-          { program_id: programId, image_url: imageUrl, caption: caption.trim() || null, order_index: i },
-        ]);
+        await fetch("/api/program-images", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            program_id: programId,
+            image_url: imageUrl,
+            caption: caption.trim() || null,
+            order_index: i,
+          }),
+        });
       }
       setShowProgramModal(false);
       resetProgramForm();
@@ -258,16 +255,23 @@ export default function AdminPanel() {
     try {
       setProgramUploading(true);
       for (const id of programImagesToRemove) {
-        await supabase.from("program_images").delete().eq("id", id);
+        await fetch(`/api/program-images/${id}`, { method: "DELETE" });
       }
       const kept = existingProgramImages.filter((img) => !programImagesToRemove.includes(img.id));
       const validNewImages = programImageFiles.filter((item) => item.file && item.file.size > 0) as { file: File; caption: string }[];
       for (let i = 0; i < validNewImages.length; i++) {
         const { file, caption } = validNewImages[i];
         const imageUrl = await uploadProgramImage(file);
-        await supabase.from("program_images").insert([
-          { program_id: editingProgram.id, image_url: imageUrl, caption: caption.trim() || null, order_index: kept.length + i },
-        ]);
+        await fetch("/api/program-images", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            program_id: editingProgram.id,
+            image_url: imageUrl,
+            caption: caption.trim() || null,
+            order_index: kept.length + i,
+          }),
+        });
       }
       setShowProgramModal(false);
       resetProgramForm();
@@ -282,9 +286,8 @@ export default function AdminPanel() {
   const handleDeleteProgram = async (id: string) => {
     if (!confirm("Bu programı silmek istediğinize emin misiniz? Tüm görseller de silinecektir.")) return;
     try {
-      await supabase.from("program_images").delete().eq("program_id", id);
-      const { error } = await supabase.from("programs").delete().eq("id", id);
-      if (error) throw error;
+      const res = await fetch(`/api/programs/${id}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("Failed to delete");
       fetchPrograms();
     } catch (error: any) {
       console.error("Program silinirken hata:", error?.message);
@@ -306,11 +309,12 @@ export default function AdminPanel() {
         return;
       }
 
-      const { error } = await supabase.from("instagram_posts").insert([{
-        ...formData,
-        image_url: imageUrl
-      }]);
-      if (error) throw error;
+      const res = await fetch("/api/instagram-posts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, image_url: imageUrl }),
+      });
+      if (!res.ok) throw new Error("Failed to add post");
       setShowAddModal(false);
       resetForm();
       fetchInstagramPosts();
@@ -337,14 +341,12 @@ export default function AdminPanel() {
         return;
       }
 
-      const { error } = await supabase
-        .from("instagram_posts")
-        .update({
-          ...formData,
-          image_url: imageUrl
-        })
-        .eq("id", editingPost.id);
-      if (error) throw error;
+      const res = await fetch(`/api/instagram-posts/${editingPost.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, image_url: imageUrl }),
+      });
+      if (!res.ok) throw new Error("Failed to update post");
       setEditingPost(null);
       resetForm();
       setShowAddModal(false);
@@ -359,8 +361,8 @@ export default function AdminPanel() {
   const handleDeletePost = async (id: string) => {
     if (!confirm("Bu gönderiyi silmek istediğinize emin misiniz?")) return;
     try {
-      const { error } = await supabase.from("instagram_posts").delete().eq("id", id);
-      if (error) throw error;
+      const res = await fetch(`/api/instagram-posts/${id}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("Failed to delete");
       fetchInstagramPosts();
     } catch (error) {
       console.error("Error deleting post:", error);
@@ -369,11 +371,12 @@ export default function AdminPanel() {
 
   const handleMarkAsRead = async (id: string) => {
     try {
-      const { error } = await supabase
-        .from("contact_submissions")
-        .update({ is_read: true })
-        .eq("id", id);
-      if (error) throw error;
+      const res = await fetch(`/api/contact-submissions/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ is_read: true }),
+      });
+      if (!res.ok) throw new Error("Failed to update");
       fetchContactSubmissions();
     } catch (error) {
       console.error("Error marking as read:", error);
@@ -383,19 +386,15 @@ export default function AdminPanel() {
   const handleDeleteSubmission = async (id: string) => {
     if (!confirm("Bu form gönderisini silmek istediğinize emin misiniz? Bu işlem geri alınamaz.")) return;
     try {
-      const { error } = await supabase
-        .from("contact_submissions")
-        .delete()
-        .eq("id", id);
-      
-      if (error) {
-        console.error("Supabase delete error:", error);
-        throw error;
+      const res = await fetch(`/api/contact-submissions/${id}`, { method: "DELETE" });
+
+      if (!res.ok) {
+        throw new Error("Failed to delete submission");
       }
-      
+
       // Optimistically update the list
       setContactSubmissions(prev => prev.filter(sub => sub.id !== id));
-      
+
       // Refresh to ensure consistency
       await fetchContactSubmissions();
     } catch (error: any) {
@@ -433,29 +432,7 @@ export default function AdminPanel() {
 
   const uploadImage = async (file: File): Promise<string> => {
     try {
-      const fileExt = file.name.split('.').pop();
-      const fileName = `${Math.random()}.${fileExt}`;
-      const filePath = `instagram-posts/${fileName}`;
-
-      const { data, error } = await supabase.storage
-        .from('images')
-        .upload(filePath, file, {
-          cacheControl: '3600',
-          upsert: false
-        });
-
-      if (error) {
-        if (error.message.includes('Bucket not found') || error.message.includes('not found')) {
-          throw new Error('Storage bucket bulunamadı! Lütfen Supabase Dashboard\'dan "images" adında bir public bucket oluşturun. Detaylar için storage-setup.md dosyasına bakın.');
-        }
-        throw error;
-      }
-
-      const { data: { publicUrl } } = supabase.storage
-        .from('images')
-        .getPublicUrl(filePath);
-
-      return publicUrl;
+      return await uploadFile("instagram-posts", file);
     } catch (error: any) {
       console.error('Error uploading image:', error);
       throw error;

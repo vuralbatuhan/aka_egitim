@@ -1,40 +1,40 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
-import { createHmac } from "crypto";
+import bcrypt from "bcryptjs";
+import { sql } from "@/lib/db";
+import { ADMIN_COOKIE_NAME, signAdminToken } from "@/lib/adminAuth";
 
-function signToken(email: string): string {
-  const secret = process.env.ADMIN_SESSION_SECRET!;
-  const payload = Buffer.from(
-    JSON.stringify({ email, exp: Date.now() + 7 * 24 * 60 * 60 * 1000 })
-  ).toString("base64url");
-  const sig = createHmac("sha256", secret).update(payload).digest("base64url");
-  return `${payload}.${sig}`;
-}
+// Admin bulunamasa bile sabit maliyetli bir karşılaştırma yapılır ki
+// yanıt süresinden e-posta adresinin var olup olmadığı çıkarılamasın.
+const DUMMY_HASH =
+  "$2b$10$CwTycUXWue0Thq9StjUM0uJ8bIVCPUJKUQnUJ8bIVCPUJKUQnUJ8b";
 
 export async function POST(req: NextRequest) {
   try {
     const { email, password } = await req.json();
     if (!email || !password) {
-      return NextResponse.json({ error: "Email ve şifre gerekli." }, { status: 400 });
+      return NextResponse.json(
+        { error: "Email ve şifre gerekli." },
+        { status: 400 },
+      );
     }
 
-    const supabase = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-    );
+    const rows = await sql<{ password_hash: string }[]>`
+      SELECT password_hash FROM admins WHERE email = ${email} LIMIT 1
+    `;
 
-    const { data: valid, error } = await supabase.rpc("verify_admin", {
-      p_email: email,
-      p_password: password,
-    });
+    const hash = rows[0]?.password_hash ?? DUMMY_HASH;
+    const valid = await bcrypt.compare(password, hash);
 
-    if (error || !valid) {
-      return NextResponse.json({ error: "E-posta veya şifre hatalı." }, { status: 401 });
+    if (!rows[0] || !valid) {
+      return NextResponse.json(
+        { error: "E-posta veya şifre hatalı." },
+        { status: 401 },
+      );
     }
 
-    const token = signToken(email);
+    const token = signAdminToken(email);
     const res = NextResponse.json({ success: true });
-    res.cookies.set("admin_token", token, {
+    res.cookies.set(ADMIN_COOKIE_NAME, token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "lax",

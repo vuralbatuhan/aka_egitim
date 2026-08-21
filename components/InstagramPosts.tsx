@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { supabase } from "@/lib/supabase";
 
 interface InstagramPost {
   id: string;
@@ -21,15 +20,10 @@ export default function InstagramPosts() {
 
   const fetchInstagramPosts = async () => {
     try {
-      const { data, error } = await supabase
-        .from('instagram_posts')
-        .select('*')
-        .eq('is_active', true)
-        .order('order_index', { ascending: true })
-        .limit(3);
+      const res = await fetch('/api/instagram-posts?limit=3');
+      if (!res.ok) throw new Error('Failed to fetch');
+      const data = await res.json();
 
-      if (error) throw error;
-      
       setInstagramPosts(data || []);
     } catch (error) {
       console.error('Error fetching Instagram posts:', error);

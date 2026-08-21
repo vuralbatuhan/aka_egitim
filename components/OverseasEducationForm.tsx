@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { supabase } from "@/lib/supabase";
 
 const HIGH_SCHOOL_TYPES = [
   "Anadolu Lisesi",
@@ -94,8 +93,10 @@ export default function OverseasEducationForm() {
     setSubmitStatus({ type: null, message: "" });
 
     try {
-      const { error } = await supabase.from("contact_submissions").insert([
-        {
+      const res = await fetch("/api/contact-submissions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
           full_name: formData.full_name,
           tc_kimlik: formData.tc_kimlik,
           email: formData.email,
@@ -112,10 +113,10 @@ export default function OverseasEducationForm() {
           preferred_university: formData.preferred_university || null,
           target_education_language: formData.target_education_language || null,
           kvkk_accepted: true,
-        },
-      ]);
+        }),
+      });
 
-      if (error) throw error;
+      if (!res.ok) throw new Error("Failed to submit");
 
       setSubmitStatus({
         type: "success",

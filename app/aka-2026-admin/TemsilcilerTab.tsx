@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { supabase } from "@/lib/supabase";
 
 const ILLER = [
   "Adana", "Adıyaman", "Afyonkarahisar", "Ağrı", "Aksaray", "Amasya", "Ankara", "Antalya",
@@ -87,11 +86,9 @@ export default function TemsilcilerTab() {
   const fetchTemsilciler = async () => {
     try {
       setLoading(true);
-      const { data, error } = await supabase
-        .from("uyelik_basvurulari")
-        .select("*")
-        .order("created_at", { ascending: false });
-      if (error) throw error;
+      const res = await fetch("/api/uyelik-basvurulari");
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
       setTemsilciler(data || []);
     } catch (err) {
       console.error("Temsilciler yüklenemedi:", err);
@@ -157,16 +154,16 @@ export default function TemsilcilerTab() {
       let foto_url: string | null = editing?.foto_url || null;
 
       if (fotoFile) {
-        const ext = fotoFile.name.split(".").pop();
-        const dosyaAdi = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
-        const { data: uploadData, error: uploadError } = await supabase.storage
-          .from("uye-fotograflari")
-          .upload(dosyaAdi, fotoFile, { upsert: false });
-        if (!uploadError && uploadData) {
-          const { data: urlData } = supabase.storage
-            .from("uye-fotograflari")
-            .getPublicUrl(uploadData.path);
-          foto_url = urlData.publicUrl;
+        const uploadForm = new FormData();
+        uploadForm.append("file", fotoFile);
+        uploadForm.append("bucket", "uye-fotograflari");
+        const uploadRes = await fetch("/api/uploads", {
+          method: "POST",
+          body: uploadForm,
+        });
+        if (uploadRes.ok) {
+          const uploadData = await uploadRes.json();
+          foto_url = uploadData.url;
         }
       }
 
@@ -182,18 +179,19 @@ export default function TemsilcilerTab() {
         foto_url,
       };
 
-      if (editing) {
-        const { error } = await supabase
-          .from("uyelik_basvurulari")
-          .update(payload)
-          .eq("id", editing.id);
-        if (error) throw error;
-      } else {
-        const { error } = await supabase
-          .from("uyelik_basvurulari")
-          .insert([payload]);
-        if (error) throw error;
-      }
+      const res = editing
+        ? await fetch(`/api/uyelik-basvurulari/${editing.id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          })
+        : await fetch("/api/uyelik-basvurulari", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+
+      if (!res.ok) throw new Error("Failed to save");
 
       closeModal();
       fetchTemsilciler();
@@ -208,11 +206,10 @@ export default function TemsilcilerTab() {
   const handleDelete = async (id: string) => {
     if (!confirm("Bu temsilciyi silmek istediğinize emin misiniz?")) return;
     try {
-      const { error } = await supabase
-        .from("uyelik_basvurulari")
-        .delete()
-        .eq("id", id);
-      if (error) throw error;
+      const res = await fetch(`/api/uyelik-basvurulari/${id}`, {
+        method: "DELETE",
+      });
+      if (!res.ok) throw new Error("Failed to delete");
       fetchTemsilciler();
     } catch (err) {
       console.error("Silme hatası:", err);

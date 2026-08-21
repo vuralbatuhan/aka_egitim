@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
-import { supabase } from "@/lib/supabase";
 
 type Uye = {
   ad: string;
@@ -33,17 +32,10 @@ export default function IlTemsilcileriClient() {
   useEffect(() => {
     const fetchUyeler = async () => {
       try {
-        const { data, error } = await supabase
-          .from("uyelik_basvurulari")
-          .select("ad, soyad, gorev_unvan, alan_brans, gorev_il, email, foto_url")
-          .order("gorev_il", { ascending: true })
-          .order("ad", { ascending: true });
-
-        if (error) {
-          setDbError(error.message);
-        } else {
-          setUyeler((data as Uye[]) ?? []);
-        }
+        const res = await fetch("/api/temsilciler");
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        setUyeler((data as Uye[]) ?? []);
       } catch (err) {
         setDbError(String(err));
       } finally {

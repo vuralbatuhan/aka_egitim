@@ -30,6 +30,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# local uploads (UPLOAD_DIR belirtilmediğinde buraya yazılır)
+/uploads
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

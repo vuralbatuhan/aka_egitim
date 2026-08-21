@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { supabase } from "@/lib/supabase";
 import { motion } from "framer-motion";
 
 interface ProgramImageRow {
@@ -20,25 +19,10 @@ export default function ProgramlarList() {
   useEffect(() => {
     async function fetchImages() {
       try {
-        const { data: programsData } = await supabase
-          .from("programs")
-          .select("id")
-          .eq("is_active", true);
-
-        if (!programsData?.length) {
-          setImages([]);
-          return;
-        }
-
-        const programIds = programsData.map((p) => p.id);
-        const { data: imagesData, error } = await supabase
-          .from("program_images")
-          .select("*")
-          .in("program_id", programIds)
-          .order("order_index", { ascending: true });
-
-        if (!error) setImages(imagesData || []);
-        else setImages([]);
+        const res = await fetch("/api/program-images");
+        if (!res.ok) throw new Error("Failed to fetch");
+        const data = await res.json();
+        setImages(data || []);
       } catch (e) {
         console.error("Görseller yüklenirken hata:", e);
         setImages([]);

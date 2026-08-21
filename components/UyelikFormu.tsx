@@ -4,7 +4,6 @@ import { useState, useRef } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
-import { supabase } from "@/lib/supabase";
 
 const ILLER = [
   "Adana", "Adıyaman", "Afyonkarahisar", "Ağrı", "Aksaray", "Amasya", "Ankara", "Antalya",
@@ -96,21 +95,23 @@ export default function UyelikFormu() {
     try {
       let foto_url: string | null = null;
       if (foto) {
-        const ext = foto.name.split(".").pop();
-        const dosyaAdi = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
-        const { data: uploadData, error: uploadError } = await supabase.storage
-          .from("uye-fotograflari")
-          .upload(dosyaAdi, foto, { upsert: false });
-        if (!uploadError && uploadData) {
-          const { data: urlData } = supabase.storage
-            .from("uye-fotograflari")
-            .getPublicUrl(uploadData.path);
-          foto_url = urlData.publicUrl;
+        const uploadForm = new FormData();
+        uploadForm.append("file", foto);
+        uploadForm.append("bucket", "uye-fotograflari");
+        const uploadRes = await fetch("/api/uploads", {
+          method: "POST",
+          body: uploadForm,
+        });
+        if (uploadRes.ok) {
+          const uploadData = await uploadRes.json();
+          foto_url = uploadData.url;
         }
       }
 
-      const { error } = await supabase.from("uyelik_basvurulari").insert([
-        {
+      const res = await fetch("/api/uyelik-basvurulari", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
           ad: formData.ad,
           soyad: formData.soyad,
           email: formData.email,
@@ -126,9 +127,9 @@ export default function UyelikFormu() {
           gorev_il: formData.gorevIl,
           kayit_sartlari: true,
           foto_url,
-        },
-      ]);
-      if (error) throw error;
+        }),
+      });
+      if (!res.ok) throw new Error("Failed to submit");
       setSubmitStatus("success");
     } catch {
       setSubmitStatus("error");
